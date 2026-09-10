@@ -5,7 +5,6 @@ import { AnimatePresence, motion, useMotionValue, useReducedMotion, useScroll, u
 import { GitHubHoverCard } from "@/components/Hero/GitHubHoverCard";
 import { XHoverCard } from "@/components/Hero/XHoverCard";
 import { LinkedInHoverCard } from "@/components/Hero/LinkedInHoverCard";
-import { LogoBadge } from "@/components/Hero/LogoBadge";
 import { WelcomeGate } from "@/components/WelcomeGate";
 import { useWelcomeDone } from "@/components/WelcomeDoneContext";
 import { Button, ButtonLink } from "@/components/motion/button";
@@ -32,9 +31,6 @@ function HeroContent() {
   const [pillOffset, setPillOffset] = useState(0);
   const [pillCardY, setPillCardY] = useState(0);
   const [mailCopied, setMailCopied] = useState(false);
-  const [logoHovered, setLogoHovered] = useState<string | null>(null);
-  // motion.p leaves inline filter:blur(0px) after FADE_UP, so blur text via inner spans, not the <p>
-  const blurCls = `transition-[filter] duration-300 ${logoHovered ? "blur-[8px]" : ""}`;
   const reduce = useReducedMotion() ?? false;
   // same bottom treatment as the work page: content rises above the fixed
   // blur/dock zone as the page scrolls
@@ -118,8 +114,8 @@ function HeroContent() {
           />
         </motion.div>
 
-        <p className="text-[22px] font-medium leading-none text-foreground" style={{ fontFamily: "var(--font-overused-grotesk)" }}>
-          <TextScramble text="Hi, I'm Shakib, Product Design Engineer." active={welcomeDone} />
+        <p className="text-[24px] sm:text-[26px] font-semibold leading-snug text-foreground" style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}>
+          <TextScramble text="০৯ নভেম্বর — আমাদের ভালোবাসার গল্প" glyphs="অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহ০১২৩৪৫৬৭৮৯" active={welcomeDone} />
         </p>
 
         <motion.p
@@ -127,9 +123,10 @@ function HeroContent() {
           initial={reduce ? false : "hidden"}
           animate={welcomeDone ? "visible" : "hidden"}
           transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
-          className="mt-4 whitespace-pre-line max-w-[540px] text-[15px] leading-relaxed text-neutral-500 dark:text-neutral-400"
+          className="mt-4 whitespace-pre-line max-w-[540px] text-[15px] sm:text-[16px] leading-relaxed text-neutral-600 dark:text-neutral-300"
+          style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
         >
-          <span className={`transition-[filter] duration-300 ${logoHovered ? "blur-[8px]" : ""}`}>Based in Bangladesh, working globally. I started with design, but my{"\n"}curiosity about how things work pulled me toward code.</span>
+          ০৯ নভেম্বর ২০২৪ — ক্যালেন্ডারের সাধারণ একটা দিন, যা আমাদের দুজনের ভালোবাসার ছোঁয়ায় চিরদিনের জন্য অনন্য হয়ে উঠল। ফার্মগেটের সেই ব্যস্ত সন্ধ্যায় প্রথমবার হাত ধরা থেকে শুরু করে, রিকশায় পাশাপাশি বসে হারিয়ে যাওয়ার প্রতিটি মুহূর্ত আজ আমাদের জীবনের সবচেয়ে মধুর গল্প।
         </motion.p>
 
         <motion.p
@@ -137,15 +134,10 @@ function HeroContent() {
           initial={reduce ? false : "hidden"}
           animate={welcomeDone ? "visible" : "hidden"}
           transition={{ duration: 0.45, ease: "easeOut", delay: 0.12 }}
-          className="mt-6 whitespace-pre-line max-w-[540px] text-[15px] leading-relaxed text-neutral-500 dark:text-neutral-400"
+          className="mt-4 whitespace-pre-line max-w-[540px] text-[15px] sm:text-[16px] leading-relaxed text-neutral-600 dark:text-neutral-300"
+          style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
         >
-          <span className={`transition-[filter] duration-300 ${logoHovered ? "blur-[8px]" : ""}`}>Currently, I&apos;m a Design Engineer at{" "}</span>
-          <LogoBadge id="vivetica" label="Vivetica" src="/badges/company-logo.svg" href="https://viveticacapital.ch" videoSrc="/badges/vivetica.mp4" width={290} imgClassName="dark:invert" active={logoHovered === "vivetica"} dimmed={logoHovered !== null && logoHovered !== "vivetica"} onHoverChange={setLogoHovered}>
-            <span className="inline-flex h-[21px] items-center justify-center rounded-full bg-[#f2f2f2] px-[10px] align-middle dark:bg-neutral-800">
-              <img src="/badges/company-logo.svg" alt="Vivetica" draggable={false} className="h-[13px] w-[74px] dark:invert" />
-            </span>
-          </LogoBadge>{" "}
-          <span className={`transition-[filter] duration-300 ${logoHovered ? "blur-[8px]" : ""}`}> building{"\n"}design frameworks and systems.</span>
+          এক মুঠো লাল গোলাপ, টিএসসির শান্ত বাতাস, মিস হয়ে যাওয়া সেই বাস আর উত্তরায় হেঁটে চলা গোধূলি বেলা—সবকিছুতেই জড়িয়ে আছে তোমার মিষ্টি হাসি আর আমাদের না-বলা সহস্র অনুভূতির মুগ্ধতা।
         </motion.p>
 
         <motion.p
@@ -153,36 +145,10 @@ function HeroContent() {
           initial={reduce ? false : "hidden"}
           animate={welcomeDone ? "visible" : "hidden"}
           transition={{ duration: 0.45, ease: "easeOut", delay: 0.19 }}
-          className="mt-4 whitespace-pre-line max-w-[540px] text-[15px] leading-relaxed text-neutral-500 dark:text-neutral-400"
+          className="mt-4 whitespace-pre-line max-w-[540px] text-[15px] sm:text-[16px] leading-relaxed text-neutral-600 dark:text-neutral-300"
+          style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
         >
-          <span className={`transition-[filter] duration-300 ${logoHovered ? "blur-[8px]" : ""}`}>I worked a Sr Product Designer at{" "}</span>
-          <LogoBadge id="orbix" label="Orbix Studio" src="/badges/orbix.png" href="https://www.orbix.studio/" videoSrc="/badges/orbix.mp4" width={290} active={logoHovered === "orbix"} dimmed={logoHovered !== null && logoHovered !== "orbix"} onHoverChange={setLogoHovered}>
-            <span className="whitespace-nowrap">
-              <span className="mx-[1px] inline-block size-[21px] align-middle">
-                <img src="/badges/orbix.png" alt="Orbix Studio" draggable={false} className="size-full rounded-full object-cover" />
-              </span>{" "}
-              <span className="font-medium text-black dark:text-white">Orbix Studio</span>
-            </span>
-          </LogoBadge>{" "}
-          <span className={`transition-[filter] duration-300 ${logoHovered ? "blur-[8px]" : ""}`}>&amp;{" "}</span>
-          <LogoBadge id="screens" label="ScreensDesign" src="/badges/screens.png" href="https://screensdesign.com" videoSrc="/badges/screens.mp4" width={290} active={logoHovered === "screens"} dimmed={logoHovered !== null && logoHovered !== "screens"} onHoverChange={setLogoHovered}>
-            <span className="whitespace-nowrap">
-              <span className="mx-[1px] inline-block size-[21px] align-middle">
-                <img src="/badges/screens.png" alt="ScreensDesign" draggable={false} className="size-full rounded-full object-cover" />
-              </span>{" "}
-              <span className="font-medium text-black dark:text-white">ScreensDesign</span>
-            </span>
-          </LogoBadge>
-          <span className={`transition-[filter] duration-300 ${logoHovered ? "blur-[8px]" : ""}`}>{"\n"}Outside of work, I build and open-source apps like{" "}</span>
-          <LogoBadge id="pintop" label="Pintop" src="/badges/pintop.png" href="https://github.com/iamshakibali/pin-top" popup={false} active={logoHovered === "pintop"} dimmed={logoHovered !== null && logoHovered !== "pintop"} onHoverChange={setLogoHovered}>
-            <span className="whitespace-nowrap">
-              <span className="mx-[1px] inline-block h-[21px] w-[21px] align-middle">
-                <img src="/badges/pintop.png" alt="Pintop" draggable={false} className="size-full object-contain" />
-              </span>{" "}
-              <span className="font-medium text-black dark:text-white">Pintop</span>
-            </span>
-          </LogoBadge>
-          <span className={`transition-[filter] duration-300 ${logoHovered ? "blur-[8px]" : ""}`}>, and{"\n"}love contributing to open-source projects.</span>
+          আজ আমাদের এই বিশেষ দিনে একটাই প্রার্থনা—সময়ের সাথে সাথে আমাদের ভালোবাসা যেন প্রতিদিন নতুন রঙে রঙিন হয়ে ওঠে, আর জীবনের প্রতিটি বাঁকে এভাবেই তোমার পাশে ছায়া হয়ে থাকতে পারি। শুভ বার্ষিকী, ভালোবাসা! ❤️
         </motion.p>
 
         <div ref={pillRowRef} className="relative mt-8">
