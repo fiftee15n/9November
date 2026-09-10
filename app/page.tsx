@@ -10,7 +10,6 @@ import { useWelcomeDone } from "@/components/WelcomeDoneContext";
 import { Button, ButtonLink } from "@/components/motion/button";
 import { ActionSwapCascadeText, ActionSwapIcon } from "@/components/motion/action-swap";
 import { TextScramble } from "@/components/motion/text-scramble";
-import { ContributionGraph } from "@/components/ContributionGraph";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ArchiveSection } from "@/components/ArchiveSection";
 import { ColophonSection } from "@/components/ColophonSection";
@@ -350,16 +349,6 @@ function HeroContent() {
           animate={welcomeDone ? "visible" : "hidden"}
           transition={{ duration: 0.45, ease: "easeOut", delay: 0.33 }}
           className="mt-10 w-full"
-        >
-          <ContributionGraph />
-        </motion.div>
-
-        <motion.div
-          variants={FADE_UP}
-          initial={reduce ? false : "hidden"}
-          animate={welcomeDone ? "visible" : "hidden"}
-          transition={{ duration: 0.45, ease: "easeOut", delay: 0.4 }}
-          className="mt-14 w-full"
         >
           <ProjectsSection />
         </motion.div>

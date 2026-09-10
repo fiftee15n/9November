@@ -30,80 +30,54 @@ export function ProjectsSection() {
 
   return (
     <section className="w-full">
-      <div className="flex items-baseline justify-between mb-4">
-        <div>
-          <h2
-            className="text-[17px] font-semibold text-black dark:text-white"
-            style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
-          >
-            আমাদের কিছু প্রিয় মুহূর্ত
-          </h2>
-          <p
-            className="text-[13px] text-neutral-500 dark:text-neutral-400 mt-0.5"
-            style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
-          >
-            প্রতিটি ছবির পেছনে জড়িয়ে আছে আমাদের ভালোবাসার এক একটি অধ্যায়
-          </p>
-        </div>
-        <span className="text-[12px] font-mono text-neutral-400">
-          {content.projects.length} Moments
+      <div className="flex items-center justify-between mb-3">
+        <h2
+          className="text-sm font-medium text-neutral-500 dark:text-neutral-400"
+          style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
+        >
+          স্মৃতির অ্যালবাম • <span className="text-foreground font-semibold">আমাদের মুহূর্তগুলো</span>
+        </h2>
+        <span className="text-[11px] font-mono text-neutral-400">
+          {content.projects.length} Photos
         </span>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {/* Compact Photo Strip / Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
         {content.projects.map((project, idx) => {
-          const isWide = idx === 0 || idx === 3;
           return (
             <div
               key={project.name}
               onClick={() => setSelectedIdx(idx)}
-              className={`group relative overflow-hidden rounded-xl border border-dashed border-neutral-200 bg-neutral-50/60 p-2.5 transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-100/90 cursor-pointer dark:border-neutral-800/80 dark:bg-neutral-900/40 dark:hover:border-neutral-700 dark:hover:bg-neutral-900/80 shadow-sm ${
-                isWide ? "sm:col-span-2" : ""
-              }`}
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-neutral-200/80 bg-neutral-100/60 p-1.5 transition-all duration-300 hover:border-neutral-400 hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900/60 dark:hover:border-neutral-700"
             >
-              <div
-                className={`relative w-full overflow-hidden rounded-lg bg-neutral-200 dark:bg-neutral-800 ${
-                  isWide ? "aspect-[16/10] sm:aspect-[21/9]" : "aspect-[4/3]"
-                }`}
-              >
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-neutral-200 dark:bg-neutral-800">
                 <img
                   src={project.image}
-                  alt={`${project.name}`}
+                  alt={project.name}
                   draggable={false}
                   className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
                 
-                {project.date && (
-                  <span className="absolute top-2.5 right-2.5 rounded-full bg-black/60 px-2.5 py-0.5 text-[11px] font-medium text-white backdrop-blur-md">
-                    {project.date}
-                  </span>
-                )}
-              </div>
-
-              <div className="flex items-center justify-between px-1.5 pt-3">
-                <span
-                  className="text-[15px] font-medium text-black dark:text-white"
-                  style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
-                >
-                  {project.name}
-                </span>
-                {project.location && (
-                  <span
-                    className="inline-flex items-center gap-1 rounded-full bg-neutral-200/70 px-2 py-0.5 text-[11px] text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"
+                {/* Overlay Text */}
+                <div className="absolute inset-x-0 bottom-0 p-2 text-white">
+                  <p
+                    className="text-[12px] font-medium leading-tight"
                     style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
                   >
-                    📍 {project.location}
-                  </span>
-                )}
+                    {project.name}
+                  </p>
+                  {project.location && (
+                    <p
+                      className="mt-0.5 text-[10px] text-white/70 truncate"
+                      style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
+                    >
+                      📍 {project.location}
+                    </p>
+                  )}
+                </div>
               </div>
-
-              <p
-                className="px-1.5 pb-1 pt-1.5 text-[13px] leading-relaxed text-neutral-600 dark:text-neutral-400"
-                style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
-              >
-                {project.description}
-              </p>
             </div>
           );
         })}
@@ -117,32 +91,32 @@ export function ProjectsSection() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-md"
             onClick={() => setSelectedIdx(null)}
           >
             <motion.div
-              initial={{ scale: 0.94, opacity: 0 }}
+              initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.94, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="relative max-h-[90vh] w-full max-w-2xl overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 shadow-2xl text-white"
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+              className="relative max-h-[90vh] w-full max-w-lg overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 shadow-2xl text-white"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <button
                 type="button"
                 onClick={() => setSelectedIdx(null)}
-                className="absolute top-3 right-3 z-10 flex size-9 items-center justify-center rounded-full bg-black/60 text-white/80 transition-colors hover:bg-black hover:text-white"
+                className="absolute top-3 right-3 z-10 flex size-8 items-center justify-center rounded-full bg-black/60 text-white/80 transition-colors hover:bg-black hover:text-white"
                 aria-label="Close modal"
               >
                 ✕
               </button>
 
-              {/* Prev / Next buttons */}
+              {/* Navigation Arrows */}
               <button
                 type="button"
                 onClick={handlePrev}
-                className="absolute left-3 top-1/2 z-10 -translate-y-1/2 flex size-9 items-center justify-center rounded-full bg-black/60 text-white/80 transition-colors hover:bg-black hover:text-white"
+                className="absolute left-2.5 top-1/2 z-10 -translate-y-1/2 flex size-8 items-center justify-center rounded-full bg-black/60 text-white/80 transition-colors hover:bg-black hover:text-white"
                 aria-label="Previous image"
               >
                 ‹
@@ -150,26 +124,26 @@ export function ProjectsSection() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="absolute right-3 top-1/2 z-10 -translate-y-1/2 flex size-9 items-center justify-center rounded-full bg-black/60 text-white/80 transition-colors hover:bg-black hover:text-white"
+                className="absolute right-2.5 top-1/2 z-10 -translate-y-1/2 flex size-8 items-center justify-center rounded-full bg-black/60 text-white/80 transition-colors hover:bg-black hover:text-white"
                 aria-label="Next image"
               >
                 ›
               </button>
 
               {/* Main Image */}
-              <div className="relative w-full max-h-[62vh] flex items-center justify-center bg-black/40 overflow-hidden">
+              <div className="relative w-full max-h-[60vh] flex items-center justify-center bg-black/50 overflow-hidden">
                 <img
                   src={content.projects[selectedIdx].image}
                   alt={content.projects[selectedIdx].name}
-                  className="max-h-[62vh] w-auto object-contain select-none"
+                  className="max-h-[60vh] w-auto object-contain select-none"
                 />
               </div>
 
               {/* Info text */}
-              <div className="p-5">
+              <div className="p-4 bg-neutral-900">
                 <div className="flex items-center justify-between">
                   <h3
-                    className="text-lg font-medium text-white"
+                    className="text-base font-semibold text-white"
                     style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
                   >
                     {content.projects[selectedIdx].name}
