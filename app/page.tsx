@@ -9,10 +9,9 @@ import { WelcomeGate } from "@/components/WelcomeGate";
 import { useWelcomeDone } from "@/components/WelcomeDoneContext";
 import { Button, ButtonLink } from "@/components/motion/button";
 import { ActionSwapCascadeText, ActionSwapIcon } from "@/components/motion/action-swap";
-import { TextScramble } from "@/components/motion/text-scramble";
+import { TypewriterStory } from "@/components/Hero/TypewriterStory";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ArchiveSection } from "@/components/ArchiveSection";
-import { ColophonSection } from "@/components/ColophonSection";
 import { LinksLine } from "@/components/LinksLine";
 import { ProgressiveBlur } from "@/registry/magicui/progressive-blur";
 
@@ -90,7 +89,7 @@ function HeroContent() {
 
   return (
     <div
-      className="relative flex flex-1 flex-col bg-background text-foreground"
+      className="relative flex flex-1 flex-col bg-transparent text-foreground"
       onMouseMove={handleSigMagnetic}
     >
       <motion.div className="flex flex-1 flex-col items-center justify-start px-6 pt-16" style={{ paddingBottom: pb }}>
@@ -113,42 +112,7 @@ function HeroContent() {
           />
         </motion.div>
 
-        <p className="text-[24px] sm:text-[26px] font-semibold leading-snug text-foreground" style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}>
-          <TextScramble text="আমাদের ভালোবাসার গল্প" glyphs="অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহ০১২৩৪৫৬৭৮৯" active={welcomeDone} />
-        </p>
-
-        <motion.p
-          variants={FADE_UP}
-          initial={reduce ? false : "hidden"}
-          animate={welcomeDone ? "visible" : "hidden"}
-          transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
-          className="mt-4 whitespace-pre-line max-w-[540px] text-[15px] sm:text-[16px] leading-relaxed text-neutral-600 dark:text-neutral-300"
-          style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
-        >
-          ০৯ নভেম্বর — ক্যালেন্ডারের সাধারণ একটা দিন, যা আমাদের দুজনের ভালোবাসার ছোঁয়ায় চিরদিনের জন্য অনন্য হয়ে উঠল। ফার্মগেটের সেই ব্যস্ত সন্ধ্যায় প্রথমবার হাত ধরা থেকে শুরু করে, রিকশায় পাশাপাশি বসে হারিয়ে যাওয়ার প্রতিটি মুহূর্ত আজ আমাদের জীবনের সবচেয়ে মধুর গল্প।
-        </motion.p>
-
-        <motion.p
-          variants={FADE_UP}
-          initial={reduce ? false : "hidden"}
-          animate={welcomeDone ? "visible" : "hidden"}
-          transition={{ duration: 0.45, ease: "easeOut", delay: 0.12 }}
-          className="mt-4 whitespace-pre-line max-w-[540px] text-[15px] sm:text-[16px] leading-relaxed text-neutral-600 dark:text-neutral-300"
-          style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
-        >
-          এক মুঠো লাল গোলাপ, টিএসসির শান্ত বাতাস, মিস হয়ে যাওয়া সেই বাস আর উত্তরায় হেঁটে চলা গোধূলি বেলা—সবকিছুতেই জড়িয়ে আছে তোমার মিষ্টি হাসি আর আমাদের না-বলা সহস্র অনুভূতির মুগ্ধতা।
-        </motion.p>
-
-        <motion.p
-          variants={FADE_UP}
-          initial={reduce ? false : "hidden"}
-          animate={welcomeDone ? "visible" : "hidden"}
-          transition={{ duration: 0.45, ease: "easeOut", delay: 0.19 }}
-          className="mt-4 whitespace-pre-line max-w-[540px] text-[15px] sm:text-[16px] leading-relaxed text-neutral-600 dark:text-neutral-300"
-          style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
-        >
-          আজ আমাদের এই বিশেষ দিনে একটাই প্রার্থনা—সময়ের সাথে সাথে আমাদের ভালোবাসা যেন প্রতিদিন নতুন রঙে রঙিন হয়ে ওঠে, আর জীবনের প্রতিটি বাঁকে এভাবেই তোমার পাশে ছায়া হয়ে থাকতে পারি। শুভ বার্ষিকী, ভালোবাসা! ❤️
-        </motion.p>
+        <TypewriterStory active={welcomeDone} />
 
         <div ref={pillRowRef} className="relative mt-8">
         <motion.div
@@ -372,16 +336,6 @@ function HeroContent() {
           className="mt-14 w-full"
         >
           <LinksLine />
-        </motion.div>
-
-        <motion.div
-          variants={FADE_UP}
-          initial={reduce ? false : "hidden"}
-          animate={welcomeDone ? "visible" : "hidden"}
-          transition={{ duration: 0.45, ease: "easeOut", delay: 0.61 }}
-          className="mt-14 w-full"
-        >
-          <ColophonSection />
         </motion.div>
         </div>
       </motion.div>
