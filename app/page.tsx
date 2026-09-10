@@ -232,7 +232,7 @@ function HeroContent() {
               rel="noopener noreferrer"
               style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
             >
-              স্পর্শ
+              হাত ধরে অনন্তে
               <span className="flex pl-[6px]">
                 <span className="size-[15px] shrink-0 text-[#171717] dark:text-white">
                   <svg
@@ -316,8 +316,8 @@ function HeroContent() {
         <AnimatePresence>
           {pillHovered && (
             <motion.div
-              initial={{ opacity: 0, y: pillCardY + 16, filter: "blur(12px)", x: pillOffset, height: pillHovered === "gh" ? 138 : 175 }}
-              animate={{ opacity: 1, y: pillCardY, filter: "blur(0px)", x: pillOffset, height: pillHovered === "gh" ? 138 : 175 }}
+              initial={{ opacity: 0, y: pillCardY + 16, filter: "blur(12px)", x: pillOffset, height: pillHovered === "gh" ? 138 : (pillHovered === "x" ? 220 : 175) }}
+              animate={{ opacity: 1, y: pillCardY, filter: "blur(0px)", x: pillOffset, height: pillHovered === "gh" ? 138 : (pillHovered === "x" ? 220 : 175) }}
               exit={{ opacity: 0, y: pillCardY + 10, filter: "blur(10px)" }}
               transition={{
                 opacity: { duration: 0.2, ease: "easeOut" },

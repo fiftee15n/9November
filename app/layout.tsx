@@ -56,6 +56,7 @@ export default function RootLayout({
   preload("/memories/memory-3.jpg", { as: "image" });
   preload("/memories/memory-4.jpg", { as: "image" });
   preload("/memories/memory-5.jpg", { as: "image" });
+  preload("/hands-holding.jpg", { as: "image" });
   preload("/avatar.gif", { as: "image" });
   preload("/badges/company-logo.svg", { as: "image" });
   preload("/badges/orbix.png", { as: "image" });
