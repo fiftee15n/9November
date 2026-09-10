@@ -10,17 +10,20 @@ export function XHoverCard() {
         <div className="size-[64px] shrink-0 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/x-avatar.png"
-            alt="Shakib Ali"
+            src="/logo-cropped.png"
+            alt="স্পর্শ"
             width={64}
             height={64}
             draggable={false}
-            className="size-full scale-[1.45] object-cover object-[58%_22%]"
+            className="size-full object-cover object-top"
           />
         </div>
         <div className="shrink-0 rounded-full bg-black px-[16px] py-[10px] dark:bg-white">
-          <p className="whitespace-nowrap text-[14.4px] font-semibold leading-[14.4px] tracking-[-0.288px] text-white dark:text-black">
-            Follow
+          <p
+            className="whitespace-nowrap text-[13px] font-semibold leading-[14.4px] text-white dark:text-black"
+            style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
+          >
+            অনুসরণ
           </p>
         </div>
       </div>
@@ -28,10 +31,10 @@ export function XHoverCard() {
       {/* Name + verified */}
       <div className="flex w-full items-center gap-[6px] pt-[12px]">
         <p
-          className="shrink-0 text-[17.6px] font-medium leading-[17.6px] tracking-[-0.8766px] text-[#171717] dark:text-zinc-100"
-          style={{ fontFamily: "var(--font-overused-grotesk)" }}
+          className="shrink-0 text-[18px] font-semibold leading-[18px] text-[#171717] dark:text-zinc-100"
+          style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
         >
-          Shakib
+          স্পর্শ
         </p>
         <span className="size-[16px] shrink-0">
           <svg viewBox="0 0 13.6669 13.6669" fill="none" xmlns="http://www.w3.org/2000/svg" className="size-full" aria-hidden>

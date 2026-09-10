@@ -230,8 +230,9 @@ function HeroContent() {
               href="https://x.com/iamshakibali"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
             >
-              X
+              স্পর্শ
               <span className="flex pl-[6px]">
                 <span className="size-[15px] shrink-0 text-[#171717] dark:text-white">
                   <svg
