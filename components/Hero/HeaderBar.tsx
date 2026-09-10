@@ -92,7 +92,9 @@ export function HeaderBar() {
                 draggable={false}
               />
             </span>
-            <span>iamshakibali</span>
+            <span className="text-base font-semibold tracking-normal" style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}>
+              আমরা
+            </span>
           </a>
           <AnimatePresence>
             {logoHovered && (
