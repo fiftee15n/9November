@@ -44,7 +44,8 @@ const STORY_MOMENTS: StoryMoment[] = [
     id: "tsc",
     title: "টিএসসি",
     subtitle: "রিকশায় পাশাপাশি,\nশহরটা সেদিন যেন একটু ধীর হয়ে গিয়েছিল।",
-    duration: 5000,
+    duration: 5200,
+    bgImage: "/tsc.jpg",
   },
   {
     id: "missed-bus",
@@ -56,7 +57,8 @@ const STORY_MOMENTS: StoryMoment[] = [
     id: "metro",
     title: "মেট্রোর পথে",
     subtitle: "বাস না থাক, পথ তো থেমে থাকেনি—\nআমরাও থামিনি।",
-    duration: 4800,
+    duration: 5200,
+    bgImage: "/metro.jpg",
   },
   {
     id: "uttara",

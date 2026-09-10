@@ -52,6 +52,8 @@ export default function RootLayout({
   // visibility:hidden (loads start but unprioritized), so on a cold cache
   preload("/couple-sunset-bg.jpg", { as: "image" });
   preload("/farmgate.jpg", { as: "image" });
+  preload("/tsc.jpg", { as: "image" });
+  preload("/metro.jpg", { as: "image" });
   preload("/logo.png", { as: "image" });
   preload("/logo-cropped.png", { as: "image" });
   preload("/memories/memory-1.jpg", { as: "image" });
