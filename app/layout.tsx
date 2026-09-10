@@ -51,6 +51,11 @@ export default function RootLayout({
   // images could still be fetching when the loader lifts and pop in late.
   preload("/logo.png", { as: "image" });
   preload("/logo-cropped.png", { as: "image" });
+  preload("/memories/memory-1.jpg", { as: "image" });
+  preload("/memories/memory-2.jpg", { as: "image" });
+  preload("/memories/memory-3.jpg", { as: "image" });
+  preload("/memories/memory-4.jpg", { as: "image" });
+  preload("/memories/memory-5.jpg", { as: "image" });
   preload("/avatar.gif", { as: "image" });
   preload("/badges/company-logo.svg", { as: "image" });
   preload("/badges/orbix.png", { as: "image" });
