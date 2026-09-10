@@ -11,11 +11,9 @@ import {
 } from "motion/react";
 import {
   STORY_MILESTONES,
-  OUR_STORY_HEADER,
   StoryMilestone,
 } from "@/lib/ourStoryData";
 import {
-  StoryHeaderBanner,
   MilestoneDoodle,
   CurvingPathArrow,
 } from "./MapDoodles";
@@ -184,14 +182,8 @@ export function OurStoryMap() {
 
   return (
     <div className="relative w-full max-w-4xl mx-auto py-4 sm:py-8 px-2 sm:px-6">
-      {/* Top Hand-Drawn Banner */}
-      <StoryHeaderBanner
-        title={OUR_STORY_HEADER.title}
-        names={OUR_STORY_HEADER.coupleNames}
-      />
-
       {/* Illustrated Roadmap Layout */}
-      <div className="relative mt-6 sm:mt-8 flex flex-col space-y-4 sm:space-y-6">
+      <div className="relative mt-2 sm:mt-4 flex flex-col space-y-4 sm:space-y-6">
         {STORY_MILESTONES.map((m, idx) => {
           const isLeft = m.side === "left";
           const isRight = m.side === "right";
@@ -262,27 +254,7 @@ export function OurStoryMap() {
         })}
       </div>
 
-      {/* Wedding / Grand Finale Ribbon Footer */}
-      <div className="relative mt-12 sm:mt-16 text-center px-2">
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          className="inline-block p-4 sm:p-6 rounded-3xl border-2 border-dashed border-rose-400/80 bg-gradient-to-r from-rose-50/80 via-pink-50/70 to-amber-50/80 dark:from-neutral-900 dark:via-neutral-850 dark:to-neutral-900 shadow-xl w-full max-w-md"
-        >
-          <div className="text-2xl sm:text-3xl mb-2">💍 ❤️ 💐</div>
-          <span
-            className="text-lg sm:text-2xl font-black tracking-wide text-rose-600 dark:text-rose-400 block"
-            style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
-          >
-            হাত ধরে অনন্তের পথে...
-          </span>
-          <p
-            className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 mt-2 max-w-xs sm:max-w-md mx-auto"
-            style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
-          >
-            আমাদের ভালোবাসার গল্প এগিয়ে চলেছে প্রতিদিন, প্রতি মুহূর্তে নতুন আলোয়
-          </p>
-        </motion.div>
-      </div>
+
 
       {/* Fullscreen Cinema Modal */}
       <AnimatePresence>
