@@ -2,7 +2,7 @@
 
 import React from "react";
 
-// Top Ribbon Banner with Couple figures on each side as in the sketch
+// Top Ribbon Banner with Couple names
 export function StoryHeaderBanner({
   title = "OUR STORY",
   names = "শাকিব ও স্পর্শ",
@@ -11,22 +11,22 @@ export function StoryHeaderBanner({
   names?: string;
 }) {
   return (
-    <div className="relative w-full max-w-2xl mx-auto my-6 px-4 select-none">
-      <div className="relative flex flex-col items-center justify-center p-6 text-center">
+    <div className="relative w-full max-w-2xl mx-auto my-4 sm:my-6 px-2 sm:px-4 select-none">
+      <div className="relative flex flex-col items-center justify-center p-4 sm:p-6 text-center">
         {/* Decorative Laurel & Ribbon Box */}
-        <div className="relative w-full rounded-2xl border-2 border-dashed border-rose-300/70 bg-gradient-to-r from-rose-50/70 via-amber-50/50 to-pink-50/70 p-6 shadow-md dark:border-rose-500/30 dark:from-neutral-900/80 dark:via-neutral-850 dark:to-neutral-900/80 backdrop-blur-sm">
+        <div className="relative w-full rounded-2xl border-2 border-dashed border-rose-300/70 bg-gradient-to-r from-rose-50/70 via-amber-50/50 to-pink-50/70 p-4 sm:p-6 shadow-md dark:border-rose-500/30 dark:from-neutral-900/80 dark:via-neutral-850 dark:to-neutral-900/80 backdrop-blur-sm">
           {/* Top Banner Ribbon */}
-          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 mb-2">
-            <span className="text-rose-500 text-xs">✨</span>
-            <span className="text-xs sm:text-sm font-bold tracking-widest text-rose-600 dark:text-rose-400 uppercase font-mono">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 mb-2">
+            <span className="text-rose-500 text-[10px] sm:text-xs">✨</span>
+            <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-widest text-rose-600 dark:text-rose-400 uppercase font-mono">
               {title}
             </span>
-            <span className="text-rose-500 text-xs">✨</span>
+            <span className="text-rose-500 text-[10px] sm:text-xs">✨</span>
           </div>
 
           {/* Couple Names */}
           <h1
-            className="text-2xl sm:text-4xl font-extrabold tracking-tight text-neutral-800 dark:text-white mt-1"
+            className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-neutral-800 dark:text-white mt-1"
             style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
           >
             {names}
@@ -34,17 +34,17 @@ export function StoryHeaderBanner({
 
           {/* Subtitle tag */}
           <p
-            className="mt-2 text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 italic"
+            className="mt-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 italic"
             style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
           >
             আমাদের জীবনের প্রতিটি সুন্দর অধ্যায়ের রঙিন স্মৃতিকথা
           </p>
 
           {/* Decorative Corner Stars & Florals */}
-          <div className="absolute -top-3 -left-3 text-rose-400 text-lg select-none">🌸</div>
-          <div className="absolute -top-3 -right-3 text-amber-400 text-lg select-none">✨</div>
-          <div className="absolute -bottom-3 -left-3 text-pink-400 text-lg select-none">🌿</div>
-          <div className="absolute -bottom-3 -right-3 text-rose-400 text-lg select-none">💐</div>
+          <div className="absolute -top-2.5 -left-2.5 text-base sm:text-lg select-none">🌸</div>
+          <div className="absolute -top-2.5 -right-2.5 text-base sm:text-lg select-none">✨</div>
+          <div className="absolute -bottom-2.5 -left-2.5 text-base sm:text-lg select-none">🌿</div>
+          <div className="absolute -bottom-2.5 -right-2.5 text-base sm:text-lg select-none">💐</div>
         </div>
       </div>
     </div>
@@ -54,7 +54,7 @@ export function StoryHeaderBanner({
 // Doodle icons for each story node
 export function MilestoneDoodle({ type, color }: { type: string; color: string }) {
   const iconProps = {
-    className: "w-8 h-8 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-110",
+    className: "w-7 h-7 sm:w-9 sm:h-9 transition-transform duration-300 group-hover:scale-110",
     strokeWidth: 1.6,
     stroke: color,
     fill: "none",
@@ -173,7 +173,7 @@ export function MilestoneDoodle({ type, color }: { type: string; color: string }
   }
 }
 
-// Hand-drawn style connecting arrow curve between milestones
+// Hand-drawn style connecting arrow curve between milestones (Responsive)
 export function CurvingPathArrow({
   direction = "right-to-left",
   color = "#F43F5E",
@@ -181,10 +181,11 @@ export function CurvingPathArrow({
   direction?: "right-to-left" | "left-to-right" | "center-to-right" | "center-to-left" | "down";
   color?: string;
 }) {
-  if (direction === "left-to-right") {
-    return (
-      <div className="hidden sm:flex justify-center my-2 opacity-75">
-        <svg width="140" height="48" viewBox="0 0 140 48" fill="none">
+  return (
+    <div className="flex justify-center my-1.5 sm:my-3 opacity-75">
+      {/* Desktop / Tablet Curved Arrow */}
+      {direction === "left-to-right" && (
+        <svg className="hidden sm:block w-32 h-10 md:w-36 md:h-12" viewBox="0 0 140 48" fill="none">
           <path
             d="M10 10 C 60 42, 80 44, 125 18"
             stroke={color}
@@ -200,14 +201,10 @@ export function CurvingPathArrow({
             strokeLinejoin="round"
           />
         </svg>
-      </div>
-    );
-  }
+      )}
 
-  if (direction === "right-to-left") {
-    return (
-      <div className="hidden sm:flex justify-center my-2 opacity-75">
-        <svg width="140" height="48" viewBox="0 0 140 48" fill="none">
+      {direction === "right-to-left" && (
+        <svg className="hidden sm:block w-32 h-10 md:w-36 md:h-12" viewBox="0 0 140 48" fill="none">
           <path
             d="M125 10 C 80 42, 60 44, 15 18"
             stroke={color}
@@ -223,13 +220,10 @@ export function CurvingPathArrow({
             strokeLinejoin="round"
           />
         </svg>
-      </div>
-    );
-  }
+      )}
 
-  return (
-    <div className="flex justify-center my-2 opacity-75">
-      <svg width="32" height="48" viewBox="0 0 32 48" fill="none">
+      {/* Mobile Downward Winding Arrow (Always crisp and centered) */}
+      <svg className={`${direction !== "down" ? "sm:hidden" : ""} w-6 h-8 sm:w-8 sm:h-10`} viewBox="0 0 32 48" fill="none">
         <path
           d="M16 6 C 10 20, 22 28, 16 42"
           stroke={color}

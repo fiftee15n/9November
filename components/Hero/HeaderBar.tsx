@@ -54,14 +54,14 @@ export function HeaderBar() {
 
   return (
     <motion.header
-      className="sticky top-0 z-20 flex w-full items-center justify-between bg-background px-6 py-4 md:px-10"
+      className="sticky top-0 z-30 flex w-full items-center justify-between bg-background/70 backdrop-blur-md px-4 py-3 sm:px-6 md:px-10 border-b border-white/5"
       initial={reduce ? false : { opacity: 0, y: -10, filter: "blur(6px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ duration: 0.45, ease: "easeOut" }}
     >
       {/* Left: Emoji reaction + Logo with avatar hover */}
       <motion.div
-        className="flex items-center gap-3"
+        className="flex items-center gap-2.5 sm:gap-3"
         initial={reduce ? false : { opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut", delay: 0.08 }}
@@ -82,17 +82,17 @@ export function HeaderBar() {
             href="/"
             className="group relative z-10 flex items-center gap-2 text-sm font-medium tracking-tight"
           >
-            <span className="relative flex size-6 shrink-0 items-center justify-center overflow-hidden rounded-full ring-1 ring-neutral-200/80 transition-transform duration-200 group-hover:scale-105 dark:ring-neutral-700/60">
+            <span className="relative flex size-6 sm:size-7 shrink-0 items-center justify-center overflow-hidden rounded-full ring-1 ring-neutral-200/80 transition-transform duration-200 group-hover:scale-105 dark:ring-neutral-700/60 shadow-xs">
               <img
                 src="/logo-cropped.png"
                 alt="Logo"
-                width={24}
-                height={24}
+                width={28}
+                height={28}
                 className="size-full object-cover object-top"
                 draggable={false}
               />
             </span>
-            <span className="text-base font-semibold tracking-normal" style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}>
+            <span className="text-base sm:text-lg font-bold tracking-normal text-foreground" style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}>
               আমরা
             </span>
           </a>
@@ -113,7 +113,7 @@ export function HeaderBar() {
                   filter: { duration: 0.24, ease: "easeOut" },
                   x: { type: "tween", duration: 0.16, ease: "easeOut" },
                 }}
-                className="pointer-events-none absolute left-0 top-full z-20 mt-[-2px]"
+                className="pointer-events-none absolute left-0 top-full z-20 mt-[-2px] hidden sm:block"
               >
                 <div className="flex h-[203px] w-[200px] shrink-0 items-center justify-center overflow-hidden rounded-2xl border-8 border-white bg-neutral-50/90 p-2 shadow-[0px_53px_79px_rgba(0,0,0,0.12)] backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-900/90">
                   <img
@@ -133,7 +133,7 @@ export function HeaderBar() {
 
       {/* Right: Timer + Coordinates + Theme toggle */}
       <motion.div
-        className="flex h-8 items-center gap-5"
+        className="flex h-8 items-center gap-3 sm:gap-5"
         initial={reduce ? false : { opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut", delay: 0.16 }}
