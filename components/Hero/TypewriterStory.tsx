@@ -130,7 +130,7 @@ export function TypewriterStory({ active = true }: TypewriterStoryProps) {
   return (
     <div
       ref={containerRef}
-      className="max-w-[540px] text-left select-text"
+      className="max-w-2xl w-full text-left select-text"
       style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
     >
       {/* Title */}

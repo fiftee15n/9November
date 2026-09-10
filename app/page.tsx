@@ -11,8 +11,6 @@ import { Button, ButtonLink } from "@/components/motion/button";
 import { ActionSwapCascadeText, ActionSwapIcon } from "@/components/motion/action-swap";
 import { TypewriterStory } from "@/components/Hero/TypewriterStory";
 import { ProjectsSection } from "@/components/ProjectsSection";
-import { ArchiveSection } from "@/components/ArchiveSection";
-import { LinksLine } from "@/components/LinksLine";
 import { ProgressiveBlur } from "@/registry/magicui/progressive-blur";
 
 const GH_CARD_W = 290;
@@ -92,8 +90,8 @@ function HeroContent() {
       className="relative flex flex-1 flex-col bg-transparent text-foreground"
       onMouseMove={handleSigMagnetic}
     >
-      <motion.div className="flex flex-1 flex-col items-center justify-start px-6 pt-16" style={{ paddingBottom: pb }}>
-        <div className="flex w-full max-w-[540px] flex-col items-start text-left">
+      <motion.div className="flex flex-1 flex-col items-center justify-start px-4 sm:px-6 pt-16" style={{ paddingBottom: pb }}>
+        <div className="flex w-full max-w-3xl flex-col items-center text-left">
         <motion.div
           id="hero-signature"
           ref={sigRef}
@@ -313,29 +311,9 @@ function HeroContent() {
           initial={reduce ? false : "hidden"}
           animate={welcomeDone ? "visible" : "hidden"}
           transition={{ duration: 0.45, ease: "easeOut", delay: 0.33 }}
-          className="mt-10 w-full"
+          className="mt-8 w-full"
         >
           <ProjectsSection />
-        </motion.div>
-
-        <motion.div
-          variants={FADE_UP}
-          initial={reduce ? false : "hidden"}
-          animate={welcomeDone ? "visible" : "hidden"}
-          transition={{ duration: 0.45, ease: "easeOut", delay: 0.47 }}
-          className="mt-6 w-full"
-        >
-          <ArchiveSection />
-        </motion.div>
-
-        <motion.div
-          variants={FADE_UP}
-          initial={reduce ? false : "hidden"}
-          animate={welcomeDone ? "visible" : "hidden"}
-          transition={{ duration: 0.45, ease: "easeOut", delay: 0.54 }}
-          className="mt-14 w-full"
-        >
-          <LinksLine />
         </motion.div>
         </div>
       </motion.div>
