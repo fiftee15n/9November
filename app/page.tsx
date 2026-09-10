@@ -115,7 +115,7 @@ function HeroContent() {
         </motion.div>
 
         <p className="text-[24px] sm:text-[26px] font-semibold leading-snug text-foreground" style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}>
-          <TextScramble text="০৯ নভেম্বর — আমাদের ভালোবাসার গল্প" glyphs="অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহ০১২৩৪৫৬৭৮৯" active={welcomeDone} />
+          <TextScramble text="আমাদের ভালোবাসার গল্প" glyphs="অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহ০১২৩৪৫৬৭৮৯" active={welcomeDone} />
         </p>
 
         <motion.p
@@ -126,7 +126,7 @@ function HeroContent() {
           className="mt-4 whitespace-pre-line max-w-[540px] text-[15px] sm:text-[16px] leading-relaxed text-neutral-600 dark:text-neutral-300"
           style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
         >
-          ০৯ নভেম্বর ২০২৪ — ক্যালেন্ডারের সাধারণ একটা দিন, যা আমাদের দুজনের ভালোবাসার ছোঁয়ায় চিরদিনের জন্য অনন্য হয়ে উঠল। ফার্মগেটের সেই ব্যস্ত সন্ধ্যায় প্রথমবার হাত ধরা থেকে শুরু করে, রিকশায় পাশাপাশি বসে হারিয়ে যাওয়ার প্রতিটি মুহূর্ত আজ আমাদের জীবনের সবচেয়ে মধুর গল্প।
+          ০৯ নভেম্বর — ক্যালেন্ডারের সাধারণ একটা দিন, যা আমাদের দুজনের ভালোবাসার ছোঁয়ায় চিরদিনের জন্য অনন্য হয়ে উঠল। ফার্মগেটের সেই ব্যস্ত সন্ধ্যায় প্রথমবার হাত ধরা থেকে শুরু করে, রিকশায় পাশাপাশি বসে হারিয়ে যাওয়ার প্রতিটি মুহূর্ত আজ আমাদের জীবনের সবচেয়ে মধুর গল্প।
         </motion.p>
 
         <motion.p
