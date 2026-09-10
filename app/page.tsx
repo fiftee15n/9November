@@ -16,7 +16,6 @@ import { ProjectsSection } from "@/components/ProjectsSection";
 import { ArchiveSection } from "@/components/ArchiveSection";
 import { ColophonSection } from "@/components/ColophonSection";
 import { LinksLine } from "@/components/LinksLine";
-import { SignatureGlyph } from "@/components/Signature";
 import { ProgressiveBlur } from "@/registry/magicui/progressive-blur";
 
 const GH_CARD_W = 290;
@@ -45,7 +44,7 @@ function HeroContent() {
   const xWrapperRef = useRef<HTMLDivElement>(null);
   const liWrapperRef = useRef<HTMLDivElement>(null);
   const pillRowRef = useRef<HTMLDivElement>(null);
-  const sigRef = useRef<SVGSVGElement>(null);
+  const sigRef = useRef<HTMLDivElement>(null);
 
   // magnetic ink: the resting signature leans toward a nearby cursor (max ~3px
   // drift + ~1.2deg tilt) and settles back with a soft spring when it leaves
@@ -101,20 +100,23 @@ function HeroContent() {
     >
       <motion.div className="flex flex-1 flex-col items-center justify-start px-6 pt-16" style={{ paddingBottom: pb }}>
         <div className="flex w-full max-w-[540px] flex-col items-start text-left">
-        <motion.svg
-          viewBox="0 0 1920 1080"
+        <motion.div
           id="hero-signature"
           ref={sigRef}
-          className="-ml-4 mb-6 h-24 w-auto shrink-0 self-start text-foreground"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-label="Shakib signature"
+          className="mb-6 h-28 w-auto shrink-0 self-start"
+          aria-label="Logo"
           style={{ x: sigSpringX, y: sigSpringY, rotate: sigSpringR }}
           initial={reduce ? false : { opacity: 0 }}
           animate={welcomeDone ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0 }}
         >
-            <SignatureGlyph />
-        </motion.svg>
+          <img
+            src="/logo-cropped.png"
+            alt="Logo"
+            className="h-28 w-auto object-contain select-none"
+            draggable={false}
+          />
+        </motion.div>
 
         <p className="text-[22px] font-medium leading-none text-foreground" style={{ fontFamily: "var(--font-overused-grotesk)" }}>
           <TextScramble text="Hi, I'm Shakib, Product Design Engineer." active={welcomeDone} />
