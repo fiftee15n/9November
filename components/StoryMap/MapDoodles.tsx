@@ -4,8 +4,8 @@ import React from "react";
 
 // Top Ribbon Banner with Couple names
 export function StoryHeaderBanner({
-  title = "OUR STORY",
-  names = "শাকিব ও স্পর্শ",
+  title = "Tamal & Diba's Story",
+  names = "Tamal & Diba",
 }: {
   title?: string;
   names?: string;
@@ -19,17 +19,17 @@ export function StoryHeaderBanner({
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 mb-2">
             <span className="text-rose-500 text-[10px] sm:text-xs">✨</span>
             <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-widest text-rose-600 dark:text-rose-400 uppercase font-mono">
-              {title}
+              ROADMAP • MEMORIES
             </span>
             <span className="text-rose-500 text-[10px] sm:text-xs">✨</span>
           </div>
 
-          {/* Couple Names */}
+          {/* Story Title */}
           <h1
             className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-neutral-800 dark:text-white mt-1"
             style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
           >
-            {names}
+            {title}
           </h1>
 
           {/* Subtitle tag */}

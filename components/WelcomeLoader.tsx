@@ -11,6 +11,7 @@ interface StoryMoment {
   subtitle?: string;
   footer?: string;
   duration?: number;
+  bgImage?: string;
 }
 
 const STORY_MOMENTS: StoryMoment[] = [
@@ -24,7 +25,8 @@ const STORY_MOMENTS: StoryMoment[] = [
     id: "farmgate",
     title: "ফার্মগেট",
     subtitle: "একটা সাধারণ জায়গা, যেখানে শুরু হয়েছিল অসাধারণ এক গল্প।",
-    duration: 4800,
+    duration: 5200,
+    bgImage: "/farmgate.jpg",
   },
   {
     id: "first-hand",
@@ -202,6 +204,29 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
       role="dialog"
       aria-label="Welcome Story"
     >
+      {/* Dynamic Background Photo Layer (e.g. Farmgate Sunset Painting) */}
+      <AnimatePresence>
+        {phase === "story" && currentMoment.bgImage && (
+          <motion.div
+            key={currentMoment.bgImage}
+            initial={{ opacity: 0, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1.0 }}
+            exit={{ opacity: 0, scale: 1.04 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0 pointer-events-none z-0 overflow-hidden"
+          >
+            <img
+              src={currentMoment.bgImage}
+              alt={currentMoment.title || "Background"}
+              className="size-full object-cover object-center filter brightness-[0.7] contrast-[1.05]"
+            />
+            {/* Cinematic Gradient Scrim to keep typography ultra crisp */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/85" />
+            <div className="absolute inset-0 bg-radial from-transparent via-black/30 to-black/80" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {phase === "story" || !path ? (
         <>
           {/* Top minimal skip button */}

@@ -13,9 +13,10 @@ export interface StoryMilestone {
 }
 
 export const OUR_STORY_HEADER = {
-  title: "OUR STORY",
-  bengaliTitle: "আমাদের ভালোবাসার গল্প",
-  coupleNames: "শাকিব ও স্পর্শ",
+  title: "Tamal & Diba's Story",
+  bengaliTitle: "তমাল ও দিবা'র গল্প",
+  coupleNames: "Tamal & Diba",
+  bengaliNames: "তমাল ও দিবা",
   subtitle: "আমাদের জীবনের সুন্দরতম অধ্যায়গুলোর স্মৃতিময় মানচিত্র",
 };
 

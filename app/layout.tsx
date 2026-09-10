@@ -33,13 +33,15 @@ const overusedGrotesk = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Iamshakibali | Design Engineer",
-  description: content.subtext,
+  title: "Tamal & Diba's Story",
+  description: "Tamal & Diba's Story",
   icons: {
     icon: [
+      { url: "/favicon.ico" },
       { url: "/favicon-light.png" },
       { url: "/favicon-dark.png", media: "(prefers-color-scheme: dark)" },
     ],
+    apple: "/icon.png",
   },
 };
 
@@ -49,6 +51,7 @@ export default function RootLayout({
   // Hero images as head preloads: the welcome gate hides content with
   // visibility:hidden (loads start but unprioritized), so on a cold cache
   preload("/couple-sunset-bg.jpg", { as: "image" });
+  preload("/farmgate.jpg", { as: "image" });
   preload("/logo.png", { as: "image" });
   preload("/logo-cropped.png", { as: "image" });
   preload("/memories/memory-1.jpg", { as: "image" });
