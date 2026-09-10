@@ -80,9 +80,19 @@ export function HeaderBar() {
         >
           <a
             href="/"
-            className="relative z-10 text-sm font-medium tracking-tight"
+            className="group relative z-10 flex items-center gap-2 text-sm font-medium tracking-tight"
           >
-            iamshakibali
+            <span className="relative flex size-6 shrink-0 items-center justify-center overflow-hidden rounded-full ring-1 ring-neutral-200/80 transition-transform duration-200 group-hover:scale-105 dark:ring-neutral-700/60">
+              <img
+                src="/logo-cropped.png"
+                alt="Logo"
+                width={24}
+                height={24}
+                className="size-full object-cover object-top"
+                draggable={false}
+              />
+            </span>
+            <span>iamshakibali</span>
           </a>
           <AnimatePresence>
             {logoHovered && (
@@ -103,13 +113,13 @@ export function HeaderBar() {
                 }}
                 className="pointer-events-none absolute left-0 top-full z-20 mt-[-2px]"
               >
-                <div className="h-[203px] w-[200px] shrink-0 overflow-hidden rounded-2xl border-8 border-white shadow-[0px_53px_79px_rgba(0,0,0,0.1)] dark:border-neutral-800">
+                <div className="flex h-[203px] w-[200px] shrink-0 items-center justify-center overflow-hidden rounded-2xl border-8 border-white bg-neutral-50/90 p-2 shadow-[0px_53px_79px_rgba(0,0,0,0.12)] backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-900/90">
                   <img
-                    src="/avatar.gif"
-                    alt="Shakib Ali"
+                    src="/logo.png"
+                    alt="Logo"
                     width={200}
                     height={203}
-                    className="h-full w-full rounded-xl object-cover"
+                    className="size-full rounded-xl object-contain drop-shadow-sm"
                     draggable={false}
                   />
                 </div>

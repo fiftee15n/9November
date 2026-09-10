@@ -49,6 +49,8 @@ export default function RootLayout({
   // Hero images as head preloads: the welcome gate hides content with
   // visibility:hidden (loads start but unprioritized), so on a cold cache
   // images could still be fetching when the loader lifts and pop in late.
+  preload("/logo.png", { as: "image" });
+  preload("/logo-cropped.png", { as: "image" });
   preload("/avatar.gif", { as: "image" });
   preload("/badges/company-logo.svg", { as: "image" });
   preload("/badges/orbix.png", { as: "image" });
