@@ -1,21 +1,19 @@
 "use client";
 
 import { useRef, useMemo, useEffect, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { useTheme } from "next-themes";
 
-// Petal shape geometry
+// Petal shape geometry for floating 3D rose petals
 function createPetalGeometry() {
   const shape = new THREE.Shape();
-  // Delicate curved teardrop/petal shape
   shape.moveTo(0, 0);
   shape.bezierCurveTo(0.2, 0.3, 0.4, 0.8, 0.2, 1.2);
   shape.bezierCurveTo(0.0, 1.4, -0.2, 1.2, -0.2, 1.2);
   shape.bezierCurveTo(-0.4, 0.8, -0.2, 0.3, 0, 0);
 
   const geometry = new THREE.ShapeGeometry(shape, 12);
-  // Add slight 3D curve to petal vertices
   const pos = geometry.attributes.position;
   for (let i = 0; i < pos.count; i++) {
     const x = pos.getX(i);
@@ -37,19 +35,23 @@ interface PetalData {
   swaySpeed: number;
 }
 
-function FloatingPetals({ count = 45 }: { count?: number }) {
+function FloatingPetals({ count = 35 }: { count?: number }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const petalGeo = useMemo(() => createPetalGeometry(), []);
   const dummy = useMemo(() => new THREE.Object3D(), []);
+  const { viewport } = useThree();
+
+  const boundX = Math.max(viewport.width * 1.2, 20);
+  const boundY = Math.max(viewport.height * 1.2, 18);
 
   const petals = useMemo<PetalData[]>(() => {
     const arr: PetalData[] = [];
     for (let i = 0; i < count; i++) {
       arr.push({
         pos: new THREE.Vector3(
-          (Math.random() - 0.5) * 18,
-          Math.random() * 20 - 10,
-          (Math.random() - 0.5) * 10
+          (Math.random() - 0.5) * boundX * 2,
+          Math.random() * boundY * 2 - boundY,
+          (Math.random() - 0.5) * 8
         ),
         rot: new THREE.Euler(
           Math.random() * Math.PI * 2,
@@ -57,22 +59,22 @@ function FloatingPetals({ count = 45 }: { count?: number }) {
           Math.random() * Math.PI * 2
         ),
         rotSpeed: new THREE.Vector3(
-          (Math.random() - 0.5) * 0.015,
-          (Math.random() - 0.5) * 0.02,
-          (Math.random() - 0.5) * 0.015
+          (Math.random() - 0.5) * 0.012,
+          (Math.random() - 0.5) * 0.016,
+          (Math.random() - 0.5) * 0.012
         ),
         velocity: new THREE.Vector3(
-          -0.005 - Math.random() * 0.01,
-          -0.012 - Math.random() * 0.015,
-          (Math.random() - 0.5) * 0.005
+          -0.004 - Math.random() * 0.008,
+          -0.01 - Math.random() * 0.012,
+          (Math.random() - 0.5) * 0.004
         ),
         scale: 0.12 + Math.random() * 0.16,
         swayOffset: Math.random() * Math.PI * 2,
-        swaySpeed: 0.6 + Math.random() * 0.8,
+        swaySpeed: 0.5 + Math.random() * 0.7,
       });
     }
     return arr;
-  }, [count]);
+  }, [count, boundX, boundY]);
 
   useFrame((state) => {
     if (!meshRef.current) return;
@@ -81,23 +83,20 @@ function FloatingPetals({ count = 45 }: { count?: number }) {
     for (let i = 0; i < count; i++) {
       const p = petals[i];
 
-      // Update position with gentle wind and sine swaying
       p.pos.y += p.velocity.y;
-      p.pos.x += p.velocity.x + Math.sin(time * p.swaySpeed + p.swayOffset) * 0.008;
-      p.pos.z += Math.cos(time * p.swaySpeed + p.swayOffset) * 0.005;
+      p.pos.x += p.velocity.x + Math.sin(time * p.swaySpeed + p.swayOffset) * 0.006;
+      p.pos.z += Math.cos(time * p.swaySpeed + p.swayOffset) * 0.004;
 
-      // Update tumbling rotation
       p.rot.x += p.rotSpeed.x;
       p.rot.y += p.rotSpeed.y;
-      p.rot.z += p.rotSpeed.z + Math.sin(time * 0.5) * 0.005;
+      p.rot.z += p.rotSpeed.z;
 
-      // Wrap around screen boundaries
-      if (p.pos.y < -10) {
-        p.pos.y = 10;
-        p.pos.x = (Math.random() - 0.5) * 18;
+      if (p.pos.y < -boundY) {
+        p.pos.y = boundY;
+        p.pos.x = (Math.random() - 0.5) * boundX * 2;
       }
-      if (p.pos.x < -10) {
-        p.pos.x = 10;
+      if (p.pos.x < -boundX) {
+        p.pos.x = boundX;
       }
 
       dummy.position.copy(p.pos);
@@ -119,44 +118,45 @@ function FloatingPetals({ count = 45 }: { count?: number }) {
       <meshStandardMaterial
         color="#fb7185"
         emissive="#e11d48"
-        emissiveIntensity={0.25}
-        roughness={0.4}
+        emissiveIntensity={0.35}
+        roughness={0.35}
         metalness={0.1}
         side={THREE.DoubleSide}
         transparent
-        opacity={0.82}
+        opacity={0.85}
       />
     </instancedMesh>
   );
 }
 
-// Glowing Fireflies / Warm Embers
+// Glowing Fireflies / Warm Bokeh Embers
 function GlowingFireflies({ count = 50 }: { count?: number }) {
   const pointsRef = useRef<THREE.Points>(null);
+  const { viewport } = useThree();
 
-  const [positions, scales, velocities, phases] = useMemo(() => {
+  const boundX = Math.max(viewport.width * 1.2, 22);
+  const boundY = Math.max(viewport.height * 1.2, 20);
+
+  const [positions, velocities, phases] = useMemo(() => {
     const pos = new Float32Array(count * 3);
-    const scl = new Float32Array(count);
     const vel = new Float32Array(count * 3);
     const phs = new Float32Array(count);
 
     for (let i = 0; i < count; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 20;
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 18;
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 12;
+      pos[i * 3] = (Math.random() - 0.5) * boundX * 2;
+      pos[i * 3 + 1] = (Math.random() - 0.5) * boundY * 2;
+      pos[i * 3 + 2] = (Math.random() - 0.5) * 10;
 
-      scl[i] = 1.5 + Math.random() * 3.5;
       phs[i] = Math.random() * Math.PI * 2;
 
-      vel[i * 3] = (Math.random() - 0.5) * 0.006;
-      vel[i * 3 + 1] = (Math.random() - 0.5) * 0.008;
-      vel[i * 3 + 2] = (Math.random() - 0.5) * 0.006;
+      vel[i * 3] = (Math.random() - 0.5) * 0.005;
+      vel[i * 3 + 1] = (Math.random() - 0.5) * 0.007;
+      vel[i * 3 + 2] = (Math.random() - 0.5) * 0.005;
     }
-    return [pos, scl, vel, phs];
-  }, [count]);
+    return [pos, vel, phs];
+  }, [count, boundX, boundY]);
 
   const texture = useMemo(() => {
-    // Generate circular soft glow texture dynamically
     if (typeof document === "undefined") return null;
     const canvas = document.createElement("canvas");
     canvas.width = 64;
@@ -165,32 +165,29 @@ function GlowingFireflies({ count = 50 }: { count?: number }) {
     if (ctx) {
       const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
       grad.addColorStop(0, "rgba(255, 255, 255, 1)");
-      grad.addColorStop(0.2, "rgba(251, 191, 36, 0.9)");
-      grad.addColorStop(0.5, "rgba(244, 63, 94, 0.4)");
+      grad.addColorStop(0.25, "rgba(251, 191, 36, 0.95)");
+      grad.addColorStop(0.6, "rgba(244, 63, 94, 0.4)");
       grad.addColorStop(1, "rgba(244, 63, 94, 0)");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, 64, 64);
     }
-    const tex = new THREE.CanvasTexture(canvas);
-    return tex;
+    return new THREE.CanvasTexture(canvas);
   }, []);
 
   useFrame((state) => {
     if (!pointsRef.current) return;
     const time = state.clock.getElapsedTime();
-    const geo = pointsRef.current.geometry;
-    const posAttr = geo.attributes.position;
+    const posAttr = pointsRef.current.geometry.attributes.position;
 
     for (let i = 0; i < count; i++) {
-      let x = posAttr.getX(i) + velocities[i * 3] + Math.sin(time * 0.5 + phases[i]) * 0.004;
-      let y = posAttr.getY(i) + velocities[i * 3 + 1] + Math.cos(time * 0.4 + phases[i]) * 0.004;
+      let x = posAttr.getX(i) + velocities[i * 3] + Math.sin(time * 0.5 + phases[i]) * 0.003;
+      let y = posAttr.getY(i) + velocities[i * 3 + 1] + Math.cos(time * 0.4 + phases[i]) * 0.003;
       let z = posAttr.getZ(i) + velocities[i * 3 + 2];
 
-      // Screen boundary wrap
-      if (x > 10) x = -10;
-      if (x < -10) x = 10;
-      if (y > 9) y = -9;
-      if (y < -9) y = 9;
+      if (x > boundX) x = -boundX;
+      if (x < -boundX) x = boundX;
+      if (y > boundY) y = -boundY;
+      if (y < -boundY) y = boundY;
 
       posAttr.setXYZ(i, x, y, z);
     }
@@ -208,27 +205,27 @@ function GlowingFireflies({ count = 50 }: { count?: number }) {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.35}
+        size={0.45}
         map={texture}
         transparent
         depthWrite={false}
         blending={THREE.AdditiveBlending}
-        opacity={0.8}
+        opacity={0.9}
       />
     </points>
   );
 }
 
-// Mouse Follow Light
+// Mouse Follow Warm Light
 function MouseLight() {
   const lightRef = useRef<THREE.PointLight>(null);
-  const targetPos = useRef(new THREE.Vector3(0, 0, 3));
+  const targetPos = useRef(new THREE.Vector3(0, 0, 2.5));
 
   useEffect(() => {
     const handleMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth) * 2 - 1;
       const y = -(e.clientY / window.innerHeight) * 2 + 1;
-      targetPos.current.set(x * 6, y * 4, 3);
+      targetPos.current.set(x * 8, y * 5, 2.5);
     };
     window.addEventListener("mousemove", handleMove);
     return () => window.removeEventListener("mousemove", handleMove);
@@ -236,7 +233,7 @@ function MouseLight() {
 
   useFrame(() => {
     if (lightRef.current) {
-      lightRef.current.position.lerp(targetPos.current, 0.05);
+      lightRef.current.position.lerp(targetPos.current, 0.06);
     }
   });
 
@@ -244,8 +241,8 @@ function MouseLight() {
     <pointLight
       ref={lightRef}
       color="#f43f5e"
-      intensity={3.5}
-      distance={12}
+      intensity={2.8}
+      distance={14}
       decay={2}
     />
   );
@@ -264,32 +261,38 @@ export function RomanticBackgroundScene() {
   const isDark = resolvedTheme === "dark";
 
   return (
-    <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-      {/* Gentle ethereal gradient wash in the background */}
+    <div className="fixed inset-0 w-screen h-screen pointer-events-none -z-10 overflow-hidden">
+      {/* Background Photo with Sunset Ambience */}
       <div
-        className={`absolute inset-0 transition-opacity duration-1000 ${
+        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-all duration-1000 scale-105"
+        style={{ backgroundImage: "url('/couple-sunset-bg.jpg')" }}
+      />
+
+      {/* Atmospheric Scrim / Overlay for readability */}
+      <div
+        className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
           isDark
-            ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-rose-950/20 via-neutral-950/60 to-background"
-            : "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-rose-100/40 via-pink-50/20 to-background"
+            ? "bg-black/60 backdrop-blur-[1.5px]"
+            : "bg-white/40 backdrop-blur-[1px]"
         }`}
       />
 
+      {/* Subtle vignette gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-background/50" />
+
+      {/* 3D Floating Petals and Firefly Canvas */}
       <Canvas
-        camera={{ position: [0, 0, 7], fov: 60 }}
+        camera={{ position: [0, 0, 6], fov: 55 }}
         gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
         dpr={[1, 1.5]}
-        style={{ pointerEvents: "none" }}
+        className="w-full h-full"
+        style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh", pointerEvents: "none" }}
       >
-        <ambientLight intensity={isDark ? 0.7 : 1.2} />
+        <ambientLight intensity={isDark ? 0.9 : 1.4} />
         <directionalLight
-          position={[5, 8, 5]}
-          intensity={isDark ? 0.8 : 1.5}
+          position={[4, 6, 4]}
+          intensity={isDark ? 1.0 : 1.6}
           color="#fed7aa"
-        />
-        <pointLight
-          position={[-6, -4, 2]}
-          intensity={1.2}
-          color="#f43f5e"
         />
         <MouseLight />
 
@@ -297,7 +300,7 @@ export function RomanticBackgroundScene() {
         <FloatingPetals count={40} />
 
         {/* Glowing Fireflies / Stardust */}
-        <GlowingFireflies count={45} />
+        <GlowingFireflies count={55} />
       </Canvas>
     </div>
   );

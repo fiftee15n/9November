@@ -48,7 +48,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   // Hero images as head preloads: the welcome gate hides content with
   // visibility:hidden (loads start but unprioritized), so on a cold cache
-  // images could still be fetching when the loader lifts and pop in late.
+  preload("/couple-sunset-bg.jpg", { as: "image" });
   preload("/logo.png", { as: "image" });
   preload("/logo-cropped.png", { as: "image" });
   preload("/memories/memory-1.jpg", { as: "image" });
