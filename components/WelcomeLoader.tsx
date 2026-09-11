@@ -17,7 +17,7 @@ interface StoryMoment {
 const STORY_MOMENTS: StoryMoment[] = [
   {
     id: "date-intro",
-    title: "০৯ নভেম্বর ২০২৪",
+    title: "৯ নভেম্বর",
     subtitle: "একটা তারিখ… যে তারিখটা আমাদের হয়ে গেল।",
     duration: 4500,
   },
@@ -88,7 +88,7 @@ const STORY_MOMENTS: StoryMoment[] = [
     type: "climax",
     title: "সেদিন আমরা জানতাম না…",
     subtitle: "এই ছোট্ট পথচলাই একদিন\nআমাদের সবচেয়ে সুন্দর স্মৃতিগুলোর শুরু হয়ে থাকবে।",
-    footer: "০৯ নভেম্বর ২০২৪ — যেদিন থেকে “আমি” আর “তুমি”-র গল্পটা “আমরা” হয়ে গেল।",
+    footer: "৯ নভেম্বর — যেদিন থেকে “আমি” আর “তুমি”-র গল্পটা “আমরা” হয়ে গেল।",
     duration: 7000,
   },
 ];

@@ -2,8 +2,8 @@
 // later — nothing personal is hardcoded in the components.
 export const content = {
   name: "Tamal & Diba",
-  headline: "Tamal & Diba's Story",
-  subtext: "০৯ নভেম্বর — আমাদের পথচলা",
+  headline: "আমাদের ভালোবাসার গল্প",
+  subtext: "৯ নভেম্বর — আমাদের পথচলা",
   email: "tamalanddiba@gmail.com",
   resumeUrl: "https://drive.google.com/file/d/1xPchJJRMhTQe21jW2U7mDiCiPBWgVExV/view",
   socials: [
