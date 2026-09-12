@@ -115,15 +115,19 @@ function MapPhotoCard({
         <div className="mt-2.5 sm:mt-3 text-left">
           <div className="flex items-center justify-between gap-1 mb-1">
             <span
-              className="text-[10px] sm:text-[11px] font-bold tracking-wider font-mono uppercase px-2 py-0.5 rounded-full"
+              className="text-[10px] sm:text-[11px] font-bold tracking-wider px-2.5 py-0.5 rounded-full"
               style={{
                 backgroundColor: `${milestone.accentColor}18`,
                 color: milestone.accentColor,
+                fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif",
               }}
             >
               {milestone.stepNumber} • {milestone.title}
             </span>
-            <span className="text-[10px] font-mono text-neutral-400">
+            <span
+              className="text-[10px] text-neutral-400"
+              style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
+            >
               {milestone.date}
             </span>
           </div>
@@ -225,12 +229,18 @@ export function OurStoryMap() {
                     </div>
                     <div className={isCenter ? "text-center" : isRight ? "sm:text-right text-left" : "text-left"}>
                       <span
-                        className="text-xs font-black tracking-wider uppercase font-mono"
-                        style={{ color: m.accentColor }}
+                        className="text-xs font-bold tracking-wide block"
+                        style={{
+                          color: m.accentColor,
+                          fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif",
+                        }}
                       >
                         {m.title}
                       </span>
-                      <p className="text-[10px] sm:text-[11px] text-neutral-400 font-mono">
+                      <p
+                        className="text-[10px] sm:text-[11px] text-neutral-400 mt-0.5"
+                        style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
+                      >
                         {m.date}
                       </p>
                     </div>
@@ -319,8 +329,11 @@ export function OurStoryMap() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                   <div>
                     <span
-                      className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider"
-                      style={{ color: STORY_MILESTONES[selectedIdx].accentColor }}
+                      className="text-[11px] sm:text-xs font-bold tracking-wider block"
+                      style={{
+                        color: STORY_MILESTONES[selectedIdx].accentColor,
+                        fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif",
+                      }}
                     >
                       {STORY_MILESTONES[selectedIdx].stepNumber} • {STORY_MILESTONES[selectedIdx].title}
                     </span>
