@@ -55,6 +55,7 @@ export default function RootLayout({
   preload("/first-hand.jpg", { as: "image" });
   preload("/tsc.jpg", { as: "image" });
   preload("/metro.jpg", { as: "image" });
+  preload("/airport.jpg", { as: "image" });
   preload("/logo.png", { as: "image" });
   preload("/logo-cropped.png", { as: "image" });
   preload("/memories/memory-1.jpg", { as: "image" });

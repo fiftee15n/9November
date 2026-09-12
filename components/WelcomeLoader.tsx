@@ -62,16 +62,11 @@ const STORY_MOMENTS: StoryMoment[] = [
     bgImage: "/metro.jpg",
   },
   {
-    id: "uttara",
-    title: "উত্তরা",
-    subtitle: "অচেনা পথ, পরিচিত একজন…\nআর পাশে তুমি।",
-    duration: 4800,
-  },
-  {
     id: "airport",
     title: "এয়ারপোর্টের পথে",
     subtitle: "আরেকটা রিকশা,\nআরও কিছু গল্প, আরও কিছুটা সময় একসাথে।",
     duration: 5200,
+    bgImage: "/airport.jpg",
   },
   {
     id: "hall",
