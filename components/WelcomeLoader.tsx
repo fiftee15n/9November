@@ -33,6 +33,7 @@ const STORY_MOMENTS: StoryMoment[] = [
     title: "প্রথম হাত ধরা",
     subtitle: "সেদিন প্রথমবার তোমার হাতটা ধরেছিলাম…\nজানি না কেন, কিন্তু ছাড়তে ইচ্ছে করেনি।",
     duration: 5200,
+    bgImage: "/first-hand.jpg",
   },
   {
     id: "flowers",
