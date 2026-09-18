@@ -29,7 +29,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     date: "০৯ সেপ্টেম্বর ২০২১",
     location: "ক্যাম্পাসের প্রাঙ্গণ",
     story: "চোখে চোখ পড়ার সেই প্রথম মুহূর্ত—যেখান থেকে শুরু হয়েছিল একটি অচেনা গল্পের অনাবিল সূচনা।",
-    image: "/memories/memory-2.jpg",
+    image: "/first-met.jpg",
     icon: "meet",
     accentColor: "#F43F5E", // Rose
     side: "center",
