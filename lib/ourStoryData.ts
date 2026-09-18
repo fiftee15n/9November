@@ -47,4 +47,17 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#10B981", // Emerald
     side: "right",
   },
+  {
+    id: "rickshaw-ride",
+    stepNumber: "০৩",
+    title: "রিকশায় পাশাপাশি",
+    subtitle: "টিএসসি ও একগুচ্ছ ফুল",
+    date: "অক্টোবর ২০২১",
+    location: "টিএসসি চত্বর",
+    story: "বিকেলের নরম আলোয় রিকশায় পাশাপাশি বসে শহরের বুকে হারিয়ে যাওয়ার সেই অমলিন দিন—সাথে ভালোবাসার একগুচ্ছ ফুল।",
+    image: "/rickshaw-ride.jpg",
+    icon: "monument",
+    accentColor: "#3B82F6", // Blue
+    side: "left",
+  },
 ];
