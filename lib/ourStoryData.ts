@@ -35,8 +35,21 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     side: "center",
   },
   {
-    id: "first-date",
+    id: "first-glance",
     stepNumber: "০২",
+    title: "দূর থেকে দেখা",
+    subtitle: "সন্ধ্যাবেলার আলোয় মুগ্ধতা",
+    date: "সেপ্টেম্বর ২০২১",
+    location: "ক্যাম্পাসের চত্বর",
+    story: "আলো-আঁধারির মাঝে দূর থেকে দাঁড়িয়ে তোমাকে প্রথম লক্ষ্য করা—সেই মায়াবী দৃষ্টিতে হৃদয়ে জেগেছিল এক অচেনা অনুভূতি।",
+    image: "/first-glance.jpg",
+    icon: "sparkles",
+    accentColor: "#F59E0B", // Amber
+    side: "right",
+  },
+  {
+    id: "first-date",
+    stepNumber: "০৩",
     title: "প্রথম ডেট",
     subtitle: "প্রথম ডেট ও হাঁটা",
     date: "সেপ্টেম্বর ২০২১",
@@ -45,11 +58,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     image: "/first-date.jpg",
     icon: "hiking",
     accentColor: "#10B981", // Emerald
-    side: "right",
+    side: "left",
   },
   {
     id: "rickshaw-ride",
-    stepNumber: "০৩",
+    stepNumber: "০৪",
     title: "রিকশায় পাশাপাশি",
     subtitle: "টিএসসি ও একগুচ্ছ ফুল",
     date: "অক্টোবর ২০২১",
@@ -58,6 +71,6 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     image: "/rickshaw-ride.jpg",
     icon: "monument",
     accentColor: "#3B82F6", // Blue
-    side: "left",
+    side: "right",
   },
 ];

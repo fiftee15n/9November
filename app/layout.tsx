@@ -57,6 +57,7 @@ export default function RootLayout({
   preload("/metro.jpg", { as: "image" });
   preload("/airport.jpg", { as: "image" });
   preload("/first-met.jpg", { as: "image" });
+  preload("/first-glance.jpg", { as: "image" });
   preload("/first-date.jpg", { as: "image" });
   preload("/rickshaw-ride.jpg", { as: "image" });
   preload("/logo.png", { as: "image" });
