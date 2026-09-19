@@ -138,6 +138,14 @@ export function MilestoneDoodle({ type, color }: { type: string; color: string }
         </svg>
       );
 
+    case "coffee":
+      return (
+        <svg viewBox="0 0 24 24" {...iconProps}>
+          <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" strokeLinecap="round" strokeLinejoin="round" fill={`${color}15`} />
+          <path d="M6 2v3M10 2v3M14 2v3" strokeLinecap="round" />
+        </svg>
+      );
+
     case "grad_m":
     case "grad_n":
       return (

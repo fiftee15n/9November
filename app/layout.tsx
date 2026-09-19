@@ -60,6 +60,7 @@ export default function RootLayout({
   preload("/first-glance.jpg", { as: "image" });
   preload("/first-date.jpg", { as: "image" });
   preload("/rickshaw-ride.jpg", { as: "image" });
+  preload("/tea-date.jpg", { as: "image" });
   preload("/logo.png", { as: "image" });
   preload("/logo-cropped.png", { as: "image" });
   preload("/memories/memory-1.jpg", { as: "image" });

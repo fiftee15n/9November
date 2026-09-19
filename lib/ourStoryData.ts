@@ -7,7 +7,7 @@ export interface StoryMilestone {
   location?: string;
   story: string;
   image?: string;
-  icon: "meet" | "hiking" | "monument" | "car" | "ski" | "cabin" | "house" | "trip" | "sushi" | "grad_m" | "grad_n" | "engaged" | "married" | "sparkles" | "heart";
+  icon: "meet" | "hiking" | "monument" | "car" | "ski" | "cabin" | "house" | "trip" | "sushi" | "coffee" | "grad_m" | "grad_n" | "engaged" | "married" | "sparkles" | "heart";
   accentColor: string; // Tailwind / Hex color
   side: "left" | "right" | "center";
 }
@@ -72,5 +72,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     icon: "monument",
     accentColor: "#3B82F6", // Blue
     side: "right",
+  },
+  {
+    id: "tea-date",
+    stepNumber: "০৫",
+    title: "এক কাপ চা ও আড্ডা",
+    subtitle: "ধোঁয়া ওঠা চায়ের কাপে",
+    date: "অক্টোবর ২০২১",
+    location: "ক্যাম্পাসের চায়ের টং",
+    story: "ধোঁয়া ওঠা চায়ের কাপ হাতে নিয়ে ঘণ্টার পর ঘণ্টা কথা—যেখানে প্রতিটি চুমুকে মিশে ছিল না-বলা হাজারো মিষ্টি অনুভূতি।",
+    image: "/tea-date.jpg",
+    icon: "coffee",
+    accentColor: "#D97706", // Amber / Caramel
+    side: "left",
   },
 ];
