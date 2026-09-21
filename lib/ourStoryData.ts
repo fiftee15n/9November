@@ -265,4 +265,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#6366F1", // Indigo / Digital Connection
     side: "right",
   },
+  {
+    id: "matching-blue",
+    stepNumber: "১৯",
+    title: "আকাশি রঙে দুজন",
+    subtitle: "একই রঙে রাঙানো সুন্দর একটি দিন",
+    date: "২০২৩",
+    location: "ক্যাফের মায়াবী আলোয়",
+    story: "দুজনের একই রঙের আকাশি পোশাকে সেজে ওঠা একটি বিশেষ দিন। পাশাপাশি মাথা রেখে উষ্ণ আলোর নিচে ফ্রেমবন্দী হওয়া—যেখানে প্রতিটি হাসিতে মিশে ছিল গভীর নির্ভরতা।",
+    image: "/matching-blue.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#0EA5E9", // Sky Blue
+    side: "left",
+  },
 ];
