@@ -172,6 +172,32 @@ export function MilestoneDoodle({ type, color }: { type: string; color: string }
         </svg>
       );
 
+    case "camera":
+      return (
+        <svg viewBox="0 0 24 24" {...iconProps}>
+          <path
+            d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"
+            fill={`${color}15`}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <circle cx="12" cy="13" r="4" fill={`${color}25`} strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="18" cy="9.5" r="1" fill={color} />
+        </svg>
+      );
+
+    case "heart":
+      return (
+        <svg viewBox="0 0 24 24" {...iconProps}>
+          <path
+            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+            fill={`${color}20`}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+
     default:
       return (
         <svg viewBox="0 0 24 24" {...iconProps}>

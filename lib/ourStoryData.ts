@@ -7,7 +7,7 @@ export interface StoryMilestone {
   location?: string;
   story: string;
   image?: string;
-  icon: "meet" | "hiking" | "monument" | "car" | "ski" | "cabin" | "house" | "trip" | "sushi" | "coffee" | "grad_m" | "grad_n" | "engaged" | "married" | "sparkles" | "heart";
+  icon: "meet" | "hiking" | "monument" | "car" | "ski" | "cabin" | "house" | "trip" | "sushi" | "coffee" | "grad_m" | "grad_n" | "engaged" | "married" | "sparkles" | "heart" | "camera";
   accentColor: string; // Tailwind / Hex color
   side: "left" | "right" | "center";
 }
@@ -85,5 +85,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     icon: "coffee",
     accentColor: "#D97706", // Amber / Caramel
     side: "left",
+  },
+  {
+    id: "cafe-date",
+    stepNumber: "০৬",
+    title: "রেস্টুরেন্ট ডেট ও সেলফি",
+    subtitle: "গোল্ড ক্যাফেতে মিষ্টি সন্ধ্যা",
+    date: "নভেম্বর ২০২১",
+    location: "গোল্ড রেস্টুরেন্ট অ্যান্ড ক্যাফে",
+    story: "রেস্টুরেন্টের উষ্ণ আলো, একসাথে খাবারের মধুর আড্ডা আর আয়নায় ফ্রেমবন্দী মিষ্টি সেলফি—মুহূর্তটি যেন আজীবনের ভালোবাসায় রঙিন হয়ে রইল।",
+    image: "/cafe-date.jpg",
+    icon: "camera",
+    accentColor: "#8B5CF6", // Purple / Violet
+    side: "right",
   },
 ];
