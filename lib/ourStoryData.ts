@@ -138,4 +138,17 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#EC4899", // Warm Pink / Magenta
     side: "left",
   },
+  {
+    id: "hands-holding-walk",
+    stepNumber: "১০",
+    title: "হাতে হাত রেখে পথচলা",
+    subtitle: "একসাথে প্রতিটি পদক্ষেপে নির্ভরতা",
+    date: "বসন্ত ২০২২",
+    location: "একসাথে হাঁটার পথ",
+    story: "ব্যস্ত শহরের পথে পাশাপাশি হেঁটে চলা, শক্ত করে হাত ধরা আর নিঃশব্দে অনুভব করা—যে পথেই যাই না কেন, আমাদের গন্তব্য শুধুই একে অপরকে ঘিরে।",
+    image: "/hands-holding-walk.jpg",
+    icon: "hiking",
+    accentColor: "#F59E0B", // Warm Amber Gold
+    side: "right",
+  },
 ];
