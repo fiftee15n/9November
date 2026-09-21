@@ -195,4 +195,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#D97706", // Mehendi Amber / Warm Henna
     side: "left",
   },
+  {
+    id: "forehead-kiss",
+    stepNumber: "১৪",
+    title: "কপালে স্নেহের পরশ",
+    subtitle: "নীল আকাশের নিচে মিষ্টি নির্ভরতা",
+    date: "শরৎ ২০২২",
+    location: "খোলা আকাশের নিচে",
+    story: "নীল আকাশ, হাতে শুভ্র ফুল আর কপালে এঁকে দেওয়া স্নেহের এক ফোঁটা পরশ—যেখানে মিশে ছিল নিখাদ যত্ন, সম্মান আর আজীবন পাশে থাকার অঙ্গীকার।",
+    image: "/forehead-kiss.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#0891B2", // Ocean Cyan / Teal
+    side: "right",
+  },
 ];
