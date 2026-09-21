@@ -167,4 +167,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#E11D48", // Vivid Rose Red
     side: "left",
   },
+  {
+    id: "follow-me-walk",
+    stepNumber: "১২",
+    title: "হাত ধরে এগিয়ে চলা",
+    subtitle: "বৃষ্টিস্নাত লাল ইটের পথে মায়াবী দৃষ্টি",
+    date: "বর্ষা ২০২২",
+    location: "বৃষ্টিভেজা ক্যাম্পাস প্রাঙ্গণ",
+    story: "বৃষ্টিভেজা লাল ইটের পথ, ভেজা বাতাসের স্নিগ্ধতা আর আমার হাত ধরে তোমার পেছন ফিরে তাকানো—সেই মায়াবী এক পলকে যেন পুরো পৃথিবী থমকে গিয়েছিল।",
+    image: "/follow-me-walk.jpg",
+    imageAspect: "portrait",
+    icon: "hiking",
+    accentColor: "#0284C7", // Sky / Lake Blue
+    side: "right",
+  },
 ];
