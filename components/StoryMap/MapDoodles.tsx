@@ -198,6 +198,16 @@ export function MilestoneDoodle({ type, color }: { type: string; color: string }
         </svg>
       );
 
+    case "luggage":
+      return (
+        <svg viewBox="0 0 24 24" {...iconProps}>
+          <rect x="5" y="7" width="14" height="13" rx="2" fill={`${color}15`} strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3M9 11v5M15 11v5" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="8" cy="20.5" r="0.8" fill={color} />
+          <circle cx="16" cy="20.5" r="0.8" fill={color} />
+        </svg>
+      );
+
     default:
       return (
         <svg viewBox="0 0 24 24" {...iconProps}>

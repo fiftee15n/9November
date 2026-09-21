@@ -7,7 +7,7 @@ export interface StoryMilestone {
   location?: string;
   story: string;
   image?: string;
-  icon: "meet" | "hiking" | "monument" | "car" | "ski" | "cabin" | "house" | "trip" | "sushi" | "coffee" | "grad_m" | "grad_n" | "engaged" | "married" | "sparkles" | "heart" | "camera";
+  icon: "meet" | "hiking" | "monument" | "car" | "ski" | "cabin" | "house" | "trip" | "sushi" | "coffee" | "grad_m" | "grad_n" | "engaged" | "married" | "sparkles" | "heart" | "camera" | "luggage";
   accentColor: string; // Tailwind / Hex color
   side: "left" | "right" | "center";
 }
@@ -98,5 +98,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     icon: "camera",
     accentColor: "#8B5CF6", // Purple / Violet
     side: "right",
+  },
+  {
+    id: "airport-journey",
+    stepNumber: "০৭",
+    title: "হাতে হাত রেখে অপেক্ষা",
+    subtitle: "এয়ারপোর্টে একসাথে অপেক্ষার মুহূর্ত",
+    date: "ডিসেম্বর ২০২১",
+    location: "বিমানবন্দর টার্মিনাল",
+    story: "ভ্রমণের প্রস্তুতি, লাল স্যুটকেস পাশে রেখে মেঝেতে পাশাপাশি বসা। কোলাহলের মাঝেও তোমার হাত শক্ত করে ধরে থাকার সেই নিশ্চিন্ত নির্ভরতা।",
+    image: "/airport-journey.jpg",
+    icon: "luggage",
+    accentColor: "#E11D48", // Rose Red / Crimson
+    side: "left",
   },
 ];
