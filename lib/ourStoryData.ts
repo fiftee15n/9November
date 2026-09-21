@@ -125,4 +125,17 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#0D9488", // Teal / Botanical Garden Green
     side: "right",
   },
+  {
+    id: "playful-smile",
+    stepNumber: "০৯",
+    title: "খুনসুটি ও আদুরে হাসি",
+    subtitle: "চিবুক ছুঁয়ে ভালোবাসার প্রকাশ",
+    date: "ফেব্রুয়ারি ২০২২",
+    location: "সবুজের মাঝে",
+    story: "ক্যামেরার ফ্রেমে মিষ্টি খুনসুটি, আদুরে স্পর্শে চিবুক ধরে রাখার সেই মায়াবী হাসি—যে হাসিতে মিশে ছিল নিখাদ আনন্দ আর চিরদিনের অধিকার।",
+    image: "/playful-smile.jpg",
+    icon: "heart",
+    accentColor: "#EC4899", // Warm Pink / Magenta
+    side: "left",
+  },
 ];
