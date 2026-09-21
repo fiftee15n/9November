@@ -230,6 +230,15 @@ export function MilestoneDoodle({ type, color }: { type: string; color: string }
         </svg>
       );
 
+    case "video":
+      return (
+        <svg viewBox="0 0 24 24" {...iconProps}>
+          <rect x="2" y="6" width="14" height="12" rx="2" fill={`${color}15`} strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M16 10l5-3v10l-5-3v-4z" fill={`${color}30`} strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="9" cy="12" r="1.5" fill={color} />
+        </svg>
+      );
+
     default:
       return (
         <svg viewBox="0 0 24 24" {...iconProps}>

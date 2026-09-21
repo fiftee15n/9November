@@ -8,7 +8,7 @@ export interface StoryMilestone {
   story: string;
   image?: string;
   imageAspect?: "portrait" | "landscape" | "square";
-  icon: "meet" | "hiking" | "monument" | "car" | "ski" | "cabin" | "house" | "trip" | "sushi" | "coffee" | "grad_m" | "grad_n" | "engaged" | "married" | "sparkles" | "heart" | "camera" | "luggage" | "flower" | "cat";
+  icon: "meet" | "hiking" | "monument" | "car" | "ski" | "cabin" | "house" | "trip" | "sushi" | "coffee" | "grad_m" | "grad_n" | "engaged" | "married" | "sparkles" | "heart" | "camera" | "luggage" | "flower" | "cat" | "video";
   accentColor: string; // Tailwind / Hex color
   side: "left" | "right" | "center";
 }
@@ -250,5 +250,19 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     icon: "cat",
     accentColor: "#F97316", // Warm Ginger Orange
     side: "left",
+  },
+  {
+    id: "video-call",
+    stepNumber: "১৮",
+    title: "ভিডিও কলে দূর থেকে কাছে",
+    subtitle: "স্ক্রিনের ওপারে তোমার মিষ্টি হাসি",
+    date: "২০২৩",
+    location: "স্ক্রিনের দুই প্রান্তে",
+    story: "দূরত্ব যতই হোক, স্ক্রিনের ওপারে তোমার সেই মায়াবী হাসি আর ঘণ্টার পর ঘণ্টা কথা—এক নিমিষেই ভুলিয়ে দিত সব ক্লান্তি আর একাকিত্ব।",
+    image: "/video-call.jpg",
+    imageAspect: "portrait",
+    icon: "video",
+    accentColor: "#6366F1", // Indigo / Digital Connection
+    side: "right",
   },
 ];
