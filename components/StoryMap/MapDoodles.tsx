@@ -220,6 +220,16 @@ export function MilestoneDoodle({ type, color }: { type: string; color: string }
         </svg>
       );
 
+    case "cat":
+      return (
+        <svg viewBox="0 0 24 24" {...iconProps}>
+          <path d="M4 11V5l4 3h8l4-3v6c0 5-3.5 9-8 9s-8-4-8-9z" fill={`${color}15`} strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="9" cy="12" r="1.2" fill={color} />
+          <circle cx="15" cy="12" r="1.2" fill={color} />
+          <path d="M12 14.5l-.8 1h1.6l-.8-1zM5 13h3m-3 2h3m8-2h3m-3 2h3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+
     default:
       return (
         <svg viewBox="0 0 24 24" {...iconProps}>

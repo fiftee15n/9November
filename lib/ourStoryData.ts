@@ -8,7 +8,7 @@ export interface StoryMilestone {
   story: string;
   image?: string;
   imageAspect?: "portrait" | "landscape" | "square";
-  icon: "meet" | "hiking" | "monument" | "car" | "ski" | "cabin" | "house" | "trip" | "sushi" | "coffee" | "grad_m" | "grad_n" | "engaged" | "married" | "sparkles" | "heart" | "camera" | "luggage" | "flower";
+  icon: "meet" | "hiking" | "monument" | "car" | "ski" | "cabin" | "house" | "trip" | "sushi" | "coffee" | "grad_m" | "grad_n" | "engaged" | "married" | "sparkles" | "heart" | "camera" | "luggage" | "flower" | "cat";
   accentColor: string; // Tailwind / Hex color
   side: "left" | "right" | "center";
 }
@@ -236,5 +236,19 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     icon: "heart",
     accentColor: "#0E7490", // Deep Petrol / Teal Blue
     side: "right",
+  },
+  {
+    id: "cute-kitten",
+    stepNumber: "১৭",
+    title: "বিড়ালছানা ও আদুরে মুহূর্ত",
+    subtitle: "ছোট্ট বিড়ালছানার মায়াবী চোখ",
+    date: "শীত ২০২২",
+    location: "শহরের মায়াবী গলি",
+    story: "হঠাৎ দেখা পাওয়া ছোট্ট তুলতুলে বিড়ালছানাটাকে কোলে তুলে নেওয়ার মুহূর্ত। তোমার চোখের অপলক মায়া আর নিষ্পাপ হাসিতে জড়িয়ে ছিল অফুরন্ত স্নেহ।",
+    image: "/cute-kitten.jpg",
+    imageAspect: "portrait",
+    icon: "cat",
+    accentColor: "#F97316", // Warm Ginger Orange
+    side: "left",
   },
 ];
