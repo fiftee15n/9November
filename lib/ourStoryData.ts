@@ -112,4 +112,17 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#E11D48", // Rose Red / Crimson
     side: "left",
   },
+  {
+    id: "garden-swing",
+    stepNumber: "০৮",
+    title: "দোলনার পাশে মিষ্টি আলাপ",
+    subtitle: "বাগানের স্নিগ্ধতায় চোখের মায়া",
+    date: "ফেব্রুয়ারি ২০২২",
+    location: "বাগানের প্রাঙ্গণ",
+    story: "গাছের ডালে ঝুলন্ত ফেয়ারি লাইটের আলো, দোলনার পাশে দাঁড়িয়ে মিষ্টি আলাপ আর চোখে চোখ রেখে ভালোবাসার অমলিন নির্ভরতা।",
+    image: "/garden-date.jpg",
+    icon: "sparkles",
+    accentColor: "#0D9488", // Teal / Botanical Garden Green
+    side: "right",
+  },
 ];
