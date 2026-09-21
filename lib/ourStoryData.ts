@@ -181,4 +181,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#0284C7", // Sky / Lake Blue
     side: "right",
   },
+  {
+    id: "mehendi-hand",
+    stepNumber: "১৩",
+    title: "মেহেদি রাঙা হাত",
+    subtitle: "হাতে আঁকা ভালোবাসার আলপনা",
+    date: "শরৎ ২০২২",
+    location: "উৎসবের প্রাঙ্গণ",
+    story: "তোমার মেহেদি রাঙা হাতটি যখন প্রথমবার আমার হাতের ওপর রাখলে, সেই স্নিগ্ধ স্পর্শে মিশে ছিল উৎসবের আনন্দ আর চিরন্তন ভালোবাসার গভীর রং।",
+    image: "/mehendi-hand.jpg",
+    imageAspect: "portrait",
+    icon: "sparkles",
+    accentColor: "#D97706", // Mehendi Amber / Warm Henna
+    side: "left",
+  },
 ];
