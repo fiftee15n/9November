@@ -208,6 +208,18 @@ export function MilestoneDoodle({ type, color }: { type: string; color: string }
         </svg>
       );
 
+    case "flower":
+      return (
+        <svg viewBox="0 0 24 24" {...iconProps}>
+          <circle cx="12" cy="12" r="2.5" fill={color} />
+          <circle cx="12" cy="6.5" r="3" fill={`${color}15`} strokeLinecap="round" />
+          <circle cx="17.2" cy="10.2" r="3" fill={`${color}15`} strokeLinecap="round" />
+          <circle cx="15.2" cy="16.5" r="3" fill={`${color}15`} strokeLinecap="round" />
+          <circle cx="8.8" cy="16.5" r="3" fill={`${color}15`} strokeLinecap="round" />
+          <circle cx="6.8" cy="10.2" r="3" fill={`${color}15`} strokeLinecap="round" />
+        </svg>
+      );
+
     default:
       return (
         <svg viewBox="0 0 24 24" {...iconProps}>
