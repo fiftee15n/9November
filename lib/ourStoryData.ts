@@ -293,4 +293,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#EAB308", // Sunflower Gold
     side: "right",
   },
+  {
+    id: "cheek-caress-lake",
+    stepNumber: "২১",
+    title: "গাল ছুঁয়ে ভালোবাসার পরশ",
+    subtitle: "প্রকৃতির বুকে হৃদয়ের কাছাকাছি",
+    date: "২০২৩",
+    location: "শান্ত লেকের প্রান্তর",
+    story: "লেকের পাড়ে স্নিগ্ধ বিকেল, হাতে হাত আর আলতো করে তোমার গাল ছুঁয়ে দেওয়া। চোখে চোখ রাখার সেই মুহূর্তে কোনো শব্দের প্রয়োজন ছিল না—নীরব দৃষ্টিতেই লেখা ছিল আজীবনের ভালোবাসা।",
+    image: "/cheek-caress-lake.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#059669", // Meadow Emerald Green
+    side: "left",
+  },
 ];
