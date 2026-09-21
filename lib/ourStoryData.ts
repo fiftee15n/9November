@@ -209,4 +209,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#0891B2", // Ocean Cyan / Teal
     side: "right",
   },
+  {
+    id: "daisy-rose-bouquet",
+    stepNumber: "১৫",
+    title: "গোলাপ ও ডেইজির তোড়া",
+    subtitle: "ভালোবাসার রঙে সাজানো একগুচ্ছ ফুল",
+    date: "শরৎ ২০২২",
+    location: "আমাদের প্রিয় প্রাঙ্গণ",
+    story: "গোলাপি গোলাপ আর সাদা ডেইজির স্নিগ্ধতায় সাজানো ছোট্ট একটি তোড়া। পাশাপাশি দাঁড়িয়ে ভালোবাসার সুবাস ভাগ করে নেওয়ার চিরন্তন স্মৃতি।",
+    image: "/daisy-rose-bouquet.jpg",
+    imageAspect: "square",
+    icon: "flower",
+    accentColor: "#FB7185", // Coral Rose / Soft Peach
+    side: "left",
+  },
 ];
