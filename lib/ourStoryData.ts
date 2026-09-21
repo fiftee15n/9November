@@ -279,4 +279,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#0EA5E9", // Sky Blue
     side: "left",
   },
+  {
+    id: "sari-portrait",
+    stepNumber: "২০",
+    title: "শাড়িতে মায়াবী রূপ",
+    subtitle: "বুনো ফুলের সুবাসে স্নিগ্ধ হাসি",
+    date: "২০২৩",
+    location: "সবুজের আঙিনায়",
+    story: "নীল শাড়ির স্নিগ্ধ সাজ, এলোমেলো চুল আর হাতে একগুচ্ছ হলুদ বুনো ফুল। তোমার সেই লাজুক মধুর হাসিতে পুরো প্রকৃতি যেন এক নিমিষেই আলোকিত হয়ে উঠেছিল।",
+    image: "/sari-portrait.jpg",
+    imageAspect: "portrait",
+    icon: "flower",
+    accentColor: "#EAB308", // Sunflower Gold
+    side: "right",
+  },
 ];
