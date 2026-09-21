@@ -223,4 +223,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#FB7185", // Coral Rose / Soft Peach
     side: "left",
   },
+  {
+    id: "cozy-swing-selfie",
+    stepNumber: "১৬",
+    title: "কাঁধে মাথা রেখে নির্ভরতা",
+    subtitle: "বেতের দোলনায় কাটানো এক সন্ধ্যা",
+    date: "শীত ২০২২",
+    location: "আরামদায়ক ক্যাফে কোণ",
+    story: "বেতের দোলনায় পাশাপাশি বসা, তোমার মাথাটি আমার কাঁধে আলতো করে রাখা—এই নিঃশব্দ নির্ভরতার মাঝেই খুঁজে পাই জীবনের সবচেয়ে শান্তির আশ্রয়।",
+    image: "/cozy-swing-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#0E7490", // Deep Petrol / Teal Blue
+    side: "right",
+  },
 ];
