@@ -153,4 +153,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#10B981", // Fresh Emerald Green
     side: "right",
   },
+  {
+    id: "two-bouquets",
+    stepNumber: "১১",
+    title: "লাল গোলাপ ও শুভ্র উপহার",
+    subtitle: "দুই হাতে ভালোবাসার সুবাস",
+    date: "বসন্ত ২০২২",
+    location: "ভালোবাসার প্রাঙ্গণ",
+    story: "এক হাতে শুভ্র বেলি আর অন্য হাতে একগুচ্ছ টকটকে লাল গোলাপ। তোমার মুখে ফুটে ওঠা সেই মায়াবী হাসিই ছিল আমার সবচেয়ে সুন্দর প্রাপ্তি।",
+    image: "/two-bouquets.jpg",
+    imageAspect: "portrait",
+    icon: "flower",
+    accentColor: "#E11D48", // Vivid Rose Red
+    side: "left",
+  },
 ];
