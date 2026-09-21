@@ -93,7 +93,15 @@ function MapPhotoCard({
 
         {/* Photo Container */}
         {milestone.image && (
-          <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800">
+          <div
+            className={`relative w-full overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800 ${
+              milestone.imageAspect === "portrait"
+                ? "aspect-[3/4]"
+                : milestone.imageAspect === "square"
+                ? "aspect-square"
+                : "aspect-[4/3] sm:aspect-[16/11]"
+            }`}
+          >
             <img
               src={milestone.image}
               alt={milestone.title}
@@ -314,12 +322,12 @@ export function OurStoryMap() {
               </button>
 
               {/* Full Image Presentation */}
-              <div className="relative w-full max-h-[45vh] sm:max-h-[55vh] flex items-center justify-center bg-black/50 p-2 sm:p-3 overflow-hidden">
+              <div className="relative w-full max-h-[55vh] sm:max-h-[65vh] flex items-center justify-center bg-black/50 p-2 sm:p-3 overflow-hidden">
                 {STORY_MILESTONES[selectedIdx].image && (
                   <img
                     src={STORY_MILESTONES[selectedIdx].image}
                     alt={STORY_MILESTONES[selectedIdx].title}
-                    className="max-h-[42vh] sm:max-h-[52vh] w-auto rounded-xl object-contain shadow-2xl select-none"
+                    className="max-h-[52vh] sm:max-h-[62vh] w-auto rounded-xl object-contain shadow-2xl select-none"
                   />
                 )}
               </div>

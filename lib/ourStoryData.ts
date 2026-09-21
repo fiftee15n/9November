@@ -7,6 +7,7 @@ export interface StoryMilestone {
   location?: string;
   story: string;
   image?: string;
+  imageAspect?: "portrait" | "landscape" | "square";
   icon: "meet" | "hiking" | "monument" | "car" | "ski" | "cabin" | "house" | "trip" | "sushi" | "coffee" | "grad_m" | "grad_n" | "engaged" | "married" | "sparkles" | "heart" | "camera" | "luggage" | "flower";
   accentColor: string; // Tailwind / Hex color
   side: "left" | "right" | "center";
@@ -147,6 +148,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     location: "ফুলের দোকান",
     story: "তোমার পছন্দের শুভ্র ফুলের তোড়া হাতে নেওয়ার মুহূর্ত। প্রতিটি পাপড়িতে মিশে থাকা পবিত্র স্নিগ্ধতা যেন তোমারই সুন্দর হাসির প্রতিচ্ছবি।",
     image: "/flower-bouquet.jpg",
+    imageAspect: "portrait",
     icon: "flower",
     accentColor: "#10B981", // Fresh Emerald Green
     side: "right",
