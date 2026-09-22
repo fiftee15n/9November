@@ -307,4 +307,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#059669", // Meadow Emerald Green
     side: "left",
   },
+  {
+    id: "bamboo-gazebo",
+    stepNumber: "২২",
+    title: "কুটিরের ছায়ায় প্রশান্তি",
+    subtitle: "সবুজ হিজাবে স্নিগ্ধ ভালোবাসার বন্ধন",
+    date: "২০২৩",
+    location: "বাঁশের তৈরি কুটির",
+    story: "বেত ও বাঁশের সুন্দর কুটিরে পাশাপাশি বসা। তোমার হাতের নরম স্পর্শ আর শান্ত চাহনিতে প্রতিটি মুহূর্ত যেন শান্তির এক গভীর আশ্রয়ে পরিণত হয়েছিল।",
+    image: "/bamboo-gazebo.jpg",
+    imageAspect: "landscape",
+    icon: "cabin",
+    accentColor: "#14B8A6", // Mint / Sage Teal
+    side: "right",
+  },
 ];
