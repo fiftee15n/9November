@@ -139,20 +139,20 @@ export function HeaderBar() {
         </div>
       </motion.div>
 
-      {/* Right: Timer + Coordinates + Theme toggle */}
+      {/* Right: Countdown (mobile + desktop) + Clock & Date (tablet/desktop) + Theme toggle */}
       <motion.div
-        className="flex h-8 items-center gap-3 sm:gap-5"
+        className="flex h-8 items-center gap-2 sm:gap-4"
         initial={reduce ? false : { opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut", delay: 0.16 }}
       >
-        <div className="hidden items-center gap-2.5 text-[11px] text-neutral-400 sm:flex">
-          <span className="font-mono text-[10px]" suppressHydrationWarning>
+        <div className="flex items-center gap-1.5 sm:gap-2.5 text-[10px] sm:text-[11px] text-neutral-400">
+          <span className="hidden font-mono text-[10px] sm:inline" suppressHydrationWarning>
             {time ?? "00:00:00"}
           </span>
           {banglaDate && (
             <>
-              <span className="opacity-30">—</span>
+              <span className="hidden opacity-30 sm:inline">—</span>
               <span
                 className="hidden text-neutral-600 dark:text-neutral-300 font-medium md:inline"
                 style={{ fontFamily: "var(--font-bengali)" }}
@@ -165,7 +165,7 @@ export function HeaderBar() {
             <>
               <span className="hidden opacity-30 md:inline">—</span>
               <span
-                className="text-black dark:text-white font-medium tabular-nums"
+                className="text-black dark:text-white font-medium tabular-nums text-[10px] sm:text-[11px]"
                 style={{ fontFamily: "var(--font-bengali)" }}
                 title="১০ আগস্ট ২০২৪ থেকে"
               >
