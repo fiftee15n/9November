@@ -351,4 +351,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#2563EB", // DIU Royal Blue
     side: "right",
   },
+  {
+    id: "night-light-selfie",
+    stepNumber: "২৫",
+    title: "ল্যাম্পপোস্টের নরম আলোয়",
+    subtitle: "কাঁধে মাথা রেখে রাতের স্নিগ্ধ মুহূর্ত",
+    date: "২০২৩",
+    location: "শহরের নিঝুম আলোয়",
+    story: "মাথার ওপর ল্যাম্পপোস্টের নরম সোনালী আলো, আর আমার কাঁধে তোমার আলতো নির্ভরতা। রাতের শান্ত বাতাসে পাশাপাশি হেঁটে চলা আর হঠাৎ ফ্রেমবন্দী হওয়া সেই মিষ্টি মুহূর্ত—যেখানে পুরো পৃথিবী যেন আমাদের আলোতেই আলোকিত ছিল।",
+    image: "/night-light-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "sparkles",
+    accentColor: "#E11D48", // Vivid Rose / Magenta
+    side: "left",
+  },
 ];
