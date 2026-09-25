@@ -18,14 +18,12 @@ interface ChirkutItem {
 }
 
 interface ChirkutGroup {
-  index: string;
   name: string;
   items: ChirkutItem[];
 }
 
 const CHIRKUT_GROUPS: ChirkutGroup[] = [
   {
-    index: "01",
     name: "ভালোবাসার চিরকুট",
     items: [
       {
@@ -91,7 +89,6 @@ const CHIRKUT_GROUPS: ChirkutGroup[] = [
     ],
   },
   {
-    index: "02",
     name: "হৃদয়ের প্রেমপত্র",
     items: [
       {
@@ -123,7 +120,6 @@ const CHIRKUT_GROUPS: ChirkutGroup[] = [
     ],
   },
   {
-    index: "03",
     name: "কাব্য ও পঙক্তি",
     items: [
       {
@@ -156,7 +152,6 @@ const CHIRKUT_GROUPS: ChirkutGroup[] = [
     ],
   },
   {
-    index: "04",
     name: "গোপন চিরকুট",
     items: [
       {
@@ -287,16 +282,13 @@ export default function PlaygroundPage() {
             {CHIRKUT_GROUPS.map((group, i) => (
               <div
                 key={group.name}
-                className={`grid grid-cols-1 gap-2 py-4 sm:grid-cols-[140px_1fr] ${
+                className={`grid grid-cols-1 gap-2 py-4 sm:grid-cols-[145px_1fr] ${
                   i < CHIRKUT_GROUPS.length - 1
                     ? "border-b border-neutral-200/70 dark:border-neutral-800"
                     : ""
                 }`}
               >
-                <p className="flex items-baseline gap-2 text-[14px] leading-6">
-                  <span className="font-mono text-neutral-400 dark:text-neutral-500">
-                    {group.index}
-                  </span>
+                <p className="flex items-baseline text-[14px] leading-6">
                   <span
                     className="text-black dark:text-white font-medium"
                     style={{ fontFamily: "var(--font-bengali)" }}
