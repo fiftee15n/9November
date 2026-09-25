@@ -94,7 +94,7 @@ function SkillsGlyph(props: SVGProps<SVGSVGElement>) {
 
 // `disabled: true` keeps the item visible but non-navigable (unavailable)
 const NAV = [
-  { label: "Home", href: "/", Icon: HomeGlyph },
+  { label: "নীড়", href: "/", Icon: HomeGlyph },
   { label: "হাত ধরা", href: "/work", Icon: HandHoldingGlyph },
   { label: "Craft", href: "/playground", Icon: PlaygroundGlyph, disabled: true },
   { label: "Stack", href: "/skills", Icon: SkillsGlyph },
