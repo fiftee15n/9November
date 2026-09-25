@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { EmojiReaction } from "@/components/motion/emoji-reaction";
 import { Tooltip } from "@/components/motion/tooltip";
+import { getBanglaDate, getDaysTogether } from "@/lib/banglaCalendar";
 const CARD_W = 200;
 const CARD_HALF = CARD_W / 2;
 const HORIZ_PAD = 12;
@@ -16,8 +17,15 @@ export function HeaderBar() {
   const [logoHovered, setLogoHovered] = useState(false);
   const [pointerOffset, setPointerOffset] = useState(0);
   const [time, setTime] = useState<string | null>(null);
+  const [banglaDate, setBanglaDate] = useState<string>("");
+  const [daysTogether, setDaysTogether] = useState<string>("");
   const reduce = useReducedMotion() ?? false;
   const logoRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setBanglaDate(getBanglaDate());
+    setDaysTogether(getDaysTogether());
+  }, []);
 
   useEffect(() => {
     const fmt = () =>
@@ -142,8 +150,35 @@ export function HeaderBar() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut", delay: 0.16 }}
       >
-        <div className="hidden items-center font-mono text-[10px] text-neutral-400 md:flex">
-          <span suppressHydrationWarning>{time ?? "00:00:00"}</span>
+        <div className="hidden items-center gap-2.5 text-[11px] text-neutral-400 sm:flex">
+          <span className="font-mono text-[10px]" suppressHydrationWarning>
+            {time ?? "00:00:00"}
+          </span>
+          {banglaDate && (
+            <>
+              <span className="opacity-30">—</span>
+              <span
+                className="hidden text-neutral-600 dark:text-neutral-300 font-medium md:inline"
+                style={{ fontFamily: "var(--font-bengali)" }}
+              >
+                {banglaDate}
+              </span>
+            </>
+          )}
+          {daysTogether && (
+            <>
+              <span className="hidden opacity-30 md:inline">—</span>
+              <span
+                className="text-rose-500/90 dark:text-rose-400/90 font-medium flex items-center gap-1"
+                style={{ fontFamily: "var(--font-bengali)" }}
+                title="৯ নভেম্বর ২০২১ থেকে একসাথে পথচলা"
+              >
+                <span className="text-[10px] text-rose-500">❤️</span>
+                <span>{daysTogether} দিন</span>
+                <span className="hidden lg:inline">একসাথে</span>
+              </span>
+            </>
+          )}
         </div>
         <Tooltip content="Change theme" side="bottom">
           <ThemeToggle
