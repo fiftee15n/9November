@@ -6,8 +6,6 @@ import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { EmojiReaction } from "@/components/motion/emoji-reaction";
 import { Tooltip } from "@/components/motion/tooltip";
-import { useCoordinates } from "@/components/Hero/CoordinateTracker";
-
 const CARD_W = 200;
 const CARD_HALF = CARD_W / 2;
 const HORIZ_PAD = 12;
@@ -15,7 +13,6 @@ const HORIZ_PAD = 12;
 export function HeaderBar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const { coords } = useCoordinates();
   const [logoHovered, setLogoHovered] = useState(false);
   const [pointerOffset, setPointerOffset] = useState(0);
   const [time, setTime] = useState<string | null>(null);
@@ -145,13 +142,8 @@ export function HeaderBar() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut", delay: 0.16 }}
       >
-        <div className="hidden items-center gap-3 font-mono text-[10px] text-neutral-400 md:flex">
+        <div className="hidden items-center font-mono text-[10px] text-neutral-400 md:flex">
           <span suppressHydrationWarning>{time ?? "00:00:00"}</span>
-          <span className="opacity-30">—</span>
-          <span>
-            X:{String(coords.x).padStart(4, "\u00A0")} - Y:
-            {String(coords.y).padStart(4, "\u00A0")}
-          </span>
         </div>
         <Tooltip content="Change theme" side="bottom">
           <ThemeToggle
