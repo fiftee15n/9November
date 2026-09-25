@@ -60,20 +60,17 @@ function HandHoldingGlyph(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-function PlaygroundGlyph(props: SVGProps<SVGSVGElement>) {
+function LetterGlyph(props: SVGProps<SVGSVGElement>) {
   return (
     <PhosphorGlyph {...props}>
       <path
-        d="M84.27,171.73l-55.09-20.3a7.92,7.92,0,0,1,0-14.86l55.09-20.3,20.3-55.09a7.92,7.92,0,0,1,14.86,0l20.3,55.09,55.09,20.3a7.92,7.92,0,0,1,0,14.86l-55.09,20.3-20.3,55.09a7.92,7.92,0,0,1-14.86,0Z"
+        d="M224,56H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V72A16,16,0,0,0,224,56Zm-96,88L32,80V72l96,64,96-64v8Z"
         fill="currentColor"
         stroke="none"
         opacity="0.2"
       />
-      <path d="M84.27,171.73l-55.09-20.3a7.92,7.92,0,0,1,0-14.86l55.09-20.3,20.3-55.09a7.92,7.92,0,0,1,14.86,0l20.3,55.09,55.09,20.3a7.92,7.92,0,0,1,0,14.86l-55.09,20.3-20.3,55.09a7.92,7.92,0,0,1-14.86,0Z" />
-      <line x1="176" y1="16" x2="176" y2="64" />
-      <line x1="224" y1="72" x2="224" y2="104" />
-      <line x1="152" y1="40" x2="200" y2="40" />
-      <line x1="208" y1="88" x2="240" y2="88" />
+      <path d="M224,56H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V72A16,16,0,0,0,224,56Z" />
+      <polyline points="224 72 128 144 32 72" />
     </PhosphorGlyph>
   );
 }
@@ -100,10 +97,15 @@ function WishGlyph(props: SVGProps<SVGSVGElement>) {
 }
 
 // `disabled: true` keeps the item visible but non-navigable (unavailable)
-const NAV = [
+const NAV: {
+  label: string;
+  href: string;
+  Icon: (props: SVGProps<SVGSVGElement>) => React.JSX.Element;
+  disabled?: boolean;
+}[] = [
   { label: "নীড়", href: "/", Icon: HomeGlyph },
   { label: "হাত ধরা", href: "/work", Icon: HandHoldingGlyph },
-  { label: "Craft", href: "/playground", Icon: PlaygroundGlyph, disabled: true },
+  { label: "চিরকুট", href: "/playground", Icon: LetterGlyph },
   { label: "ইচ্ছে", href: "/skills", Icon: WishGlyph },
 ];
 
