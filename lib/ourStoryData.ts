@@ -421,4 +421,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#0891B2", // Cyan / Teal Ocean
     side: "left",
   },
+  {
+    id: "diu-jersey-selfie",
+    stepNumber: "৩০",
+    title: "ডিআইইউ জার্সিতে দুজন",
+    subtitle: "নীল জার্সির উষ্ণতা ও কাঁধে মাথা",
+    date: "২০২৩",
+    location: "ডিআইইউ ক্যাম্পাস গ্যালারি",
+    story: "বিশ্ববিদ্যালয়ের নীল জার্সিতে পাশাপাশি বসে মিষ্টি একটি সেলফি। ক্লাসের ফাঁকে কিংবা ক্যাম্পাসের গ্যালারিতে তোমার কাঁধে মাথা রাখার সেই চেনা নির্ভরতা—যেখানে প্রতিটি ক্যাম্পাসের দিনই হয়ে উঠেছিল ভালোবাসার একেকটি মধুর স্মৃতি।",
+    image: "/diu-jersey-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "camera",
+    accentColor: "#2563EB", // DIU Royal Blue
+    side: "right",
+  },
 ];
