@@ -337,4 +337,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#C2410C", // Warm Terracotta / Cinnamon
     side: "left",
   },
+  {
+    id: "diu-campus-hands",
+    stepNumber: "২৪",
+    title: "ক্যাম্পাসে হাতে হাত",
+    subtitle: "মাস্কের আড়ালে মিষ্টি চাহনি ও নির্ভরতা",
+    date: "২০২৩",
+    location: "ডিআইইউ ক্যাম্পাস প্রাঙ্গণ",
+    story: "ক্যাম্পাসের কোলাহলে পাশাপাশি বসে থাকা, মাস্কের আড়ালেও চোখের মায়াবী ভাষা পড়ে নেওয়া। তোমার হাতটি শক্ত করে ধরে রাখার সেই মুহূর্তটি যেন পুরো ক্যাম্পাসকে আমাদের ভালোবাসায় ভরিয়ে দিয়েছিল।",
+    image: "/diu-campus.jpg",
+    imageAspect: "landscape",
+    icon: "heart",
+    accentColor: "#2563EB", // DIU Royal Blue
+    side: "right",
+  },
 ];
