@@ -393,4 +393,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#16A34A", // Fresh Campus Green
     side: "left",
   },
+  {
+    id: "green-sari-videocall",
+    stepNumber: "২৮",
+    title: "সবুজ শাড়িতে স্নিগ্ধ রূপ",
+    subtitle: "ভিডিও কলে শাড়ির খুনসুটি ও মিষ্টি হাসির ঝিলিক",
+    date: "২০২৩",
+    location: "স্ক্রিনের দুই প্রান্তে",
+    story: "সবুজ শাড়ি পরে ক্যামেরার সামনে তোমার সেই লাজুক হাসি আর আঁচল উড়িয়ে আদুরে খুনসুটি। স্ক্রিনের এপার থেকে পলকহীন চোখে তাকিয়ে থাকা—দূরত্ব থাকলেও তোমার সেই রূপ আর অনাবিল খুশিতে আমার হৃদয় কানায় কানায় ভরে উঠেছিল।",
+    image: "/green-sari-videocall.jpg",
+    imageAspect: "portrait",
+    icon: "video",
+    accentColor: "#047857", // Deep Emerald Green
+    side: "right",
+  },
 ];
