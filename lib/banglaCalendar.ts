@@ -61,6 +61,40 @@ export function getBanglaDate(date = new Date()): string {
 // 10 August 2024
 const START_DATE = new Date("2024-08-10T00:00:00+06:00");
 
+export interface LiveTimeElapsed {
+  days: string;
+  hours: string;
+  minutes: string;
+  seconds: string;
+  formattedFull: string;
+  formattedCompact: string;
+}
+
+export function getLiveTimeElapsed(currentDate = new Date()): LiveTimeElapsed {
+  const diffMs = Math.max(0, currentDate.getTime() - START_DATE.getTime());
+  const totalSeconds = Math.floor(diffMs / 1000);
+
+  const days = Math.floor(totalSeconds / (3600 * 24));
+  const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  const pad2 = (n: number) => toBengaliNumber(String(n).padStart(2, "0"));
+  const daysStr = toBengaliNumber(new Intl.NumberFormat("en-US").format(days));
+  const hoursStr = pad2(hours);
+  const minutesStr = pad2(minutes);
+  const secondsStr = pad2(seconds);
+
+  return {
+    days: daysStr,
+    hours: hoursStr,
+    minutes: minutesStr,
+    seconds: secondsStr,
+    formattedFull: `${daysStr} দিন ${hoursStr} ঘণ্টা ${minutesStr} মিনিট ${secondsStr} সেকেন্ড`,
+    formattedCompact: `${daysStr} দিন ${hoursStr}:${minutesStr}:${secondsStr}`,
+  };
+}
+
 export function getDaysTogether(currentDate = new Date()): string {
   const diffTime = currentDate.getTime() - START_DATE.getTime();
   const diffDays = Math.max(1, Math.floor(diffTime / (1000 * 60 * 60 * 24)));

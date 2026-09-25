@@ -6,7 +6,8 @@ import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { EmojiReaction } from "@/components/motion/emoji-reaction";
 import { Tooltip } from "@/components/motion/tooltip";
-import { getBanglaDate, getDaysTogether } from "@/lib/banglaCalendar";
+import { getBanglaDate, getLiveTimeElapsed, type LiveTimeElapsed } from "@/lib/banglaCalendar";
+
 const CARD_W = 200;
 const CARD_HALF = CARD_W / 2;
 const HORIZ_PAD = 12;
@@ -18,16 +19,12 @@ export function HeaderBar() {
   const [pointerOffset, setPointerOffset] = useState(0);
   const [time, setTime] = useState<string | null>(null);
   const [banglaDate, setBanglaDate] = useState<string>("");
-  const [daysTogether, setDaysTogether] = useState<string>("");
+  const [elapsed, setElapsed] = useState<LiveTimeElapsed | null>(null);
   const reduce = useReducedMotion() ?? false;
   const logoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setBanglaDate(getBanglaDate());
-    setDaysTogether(getDaysTogether());
-  }, []);
-
-  useEffect(() => {
     const fmt = () =>
       new Intl.DateTimeFormat("en-GB", {
         hour: "2-digit",
@@ -35,8 +32,14 @@ export function HeaderBar() {
         second: "2-digit",
         hour12: false,
       }).format(new Date());
-    setTime(fmt());
-    const id = setInterval(() => setTime(fmt()), 1000);
+
+    const update = () => {
+      setTime(fmt());
+      setElapsed(getLiveTimeElapsed());
+    };
+
+    update();
+    const id = setInterval(update, 1000);
     return () => clearInterval(id);
   }, []);
 
@@ -165,15 +168,16 @@ export function HeaderBar() {
               </span>
             </>
           )}
-          {daysTogether && (
+          {elapsed && (
             <>
               <span className="hidden opacity-30 md:inline">—</span>
               <span
-                className="text-black dark:text-white font-medium"
+                className="text-black dark:text-white font-medium tabular-nums"
                 style={{ fontFamily: "var(--font-bengali)" }}
                 title="১০ আগস্ট ২০২৪ থেকে"
               >
-                {daysTogether} দিন
+                <span className="hidden lg:inline">{elapsed.formattedFull}</span>
+                <span className="inline lg:hidden">{elapsed.formattedCompact}</span>
               </span>
             </>
           )}
