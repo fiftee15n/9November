@@ -104,7 +104,7 @@ const NAV: {
   disabled?: boolean;
 }[] = [
   { label: "নীড়", href: "/", Icon: HomeGlyph },
-  { label: "হাত ধরা", href: "/work", Icon: HandHoldingGlyph },
+  { label: "হাত ধরা", href: "/hat-dhoro", Icon: HandHoldingGlyph },
   { label: "চিরকুট", href: "/chirkut", Icon: LetterGlyph },
   { label: "ইচ্ছে", href: "/ecche", Icon: WishGlyph },
 ];
