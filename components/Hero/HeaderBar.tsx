@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { EmojiReaction } from "@/components/motion/emoji-reaction";
@@ -12,6 +13,8 @@ const CARD_HALF = CARD_W / 2;
 const HORIZ_PAD = 12;
 
 export function HeaderBar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const { coords } = useCoordinates();
   const [logoHovered, setLogoHovered] = useState(false);
   const [pointerOffset, setPointerOffset] = useState(0);
@@ -54,7 +57,11 @@ export function HeaderBar() {
 
   return (
     <motion.header
-      className="sticky top-0 z-30 flex w-full items-center justify-between bg-background/70 backdrop-blur-md px-4 py-3 sm:px-6 md:px-10 border-b border-white/5"
+      className={`sticky top-0 z-30 flex w-full items-center justify-between px-4 py-3 sm:px-6 md:px-10 transition-colors duration-300 ${
+        isHome
+          ? "bg-transparent border-b border-transparent"
+          : "bg-background/70 backdrop-blur-md border-b border-white/5"
+      }`}
       initial={reduce ? false : { opacity: 0, y: -10, filter: "blur(6px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ duration: 0.45, ease: "easeOut" }}
