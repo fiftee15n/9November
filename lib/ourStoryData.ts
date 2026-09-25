@@ -379,4 +379,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#D97706", // Amber / Leather Tan
     side: "right",
   },
+  {
+    id: "campus-brick-adda",
+    stepNumber: "২৭",
+    title: "ক্যাম্পাসের সবুজ ছায়ায়",
+    subtitle: "ইটের বেদিতে মিষ্টি আড্ডা ও ভালোবাসার কথকতা",
+    date: "২০২৩",
+    location: "ক্যাম্পাস প্রাঙ্গণ",
+    story: "গাছের শীতল ছায়া, লাল ইটের বেদি আর তোমার সেই মিষ্টি মায়াবী চাহনি। ঘণ্টার পর ঘণ্টা গল্পে মেতে থাকা, যেখানে সময়ের কোনো হিসেব ছিল না—ছিল কেবল একে অপরের চোখে চোখ রেখে নিখাদ সুখের অনাবিল মুহূর্ত।",
+    image: "/campus-brick-adda.jpg",
+    imageAspect: "landscape",
+    icon: "meet",
+    accentColor: "#16A34A", // Fresh Campus Green
+    side: "left",
+  },
 ];
