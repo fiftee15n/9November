@@ -407,4 +407,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#047857", // Deep Emerald Green
     side: "right",
   },
+  {
+    id: "shy-hide-face-pov",
+    stepNumber: "২৯",
+    title: "লাজুক খুনসুটি ও স্নেহের পরশ",
+    subtitle: "মাথায় স্নেহের স্পর্শ ও লাজুক হাসির মুহূর্ত",
+    date: "২০২৩",
+    location: "আমাদের প্রিয় প্রাঙ্গণ",
+    story: "ক্যামেরার সামনে তোমার মুখ লুকিয়ে ফেলা সেই মিষ্টি লজ্জা আর আদুরে অভিমান। পরম স্নেহে তোমার মাথায় হাত রাখার সেই মুহূর্তে কোনো কথা না বলেও হৃদয়ের সবটুকু ভালোবাসা যেন তোমাকেই ছুঁয়ে গিয়েছিল।",
+    image: "/shy-hide-face-pov.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#0891B2", // Cyan / Teal Ocean
+    side: "left",
+  },
 ];
