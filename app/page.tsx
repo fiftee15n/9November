@@ -10,7 +10,12 @@ import { ProgressiveBlur } from "@/registry/magicui/progressive-blur";
 
 const FADE_UP = {
   hidden: { opacity: 0, y: 14, filter: "blur(6px)" },
-  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transitionEnd: { filter: "none" },
+  },
 };
 
 function HeroContent() {

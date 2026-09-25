@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import {
   motion,
   AnimatePresence,
@@ -170,6 +171,11 @@ function MapPhotoCard({
 
 export function OurStoryMap() {
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handlePrev = useCallback(() => {
     if (selectedIdx === null) return;
@@ -191,6 +197,17 @@ export function OurStoryMap() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [selectedIdx, handlePrev, handleNext]);
+
+  // Lock body scroll while modal is open
+  useEffect(() => {
+    if (selectedIdx !== null) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [selectedIdx]);
 
   return (
     <div className="relative w-full max-w-4xl mx-auto py-4 sm:py-8 px-2 sm:px-6">
@@ -274,110 +291,124 @@ export function OurStoryMap() {
 
 
 
-      {/* Fullscreen Cinema Modal */}
-      <AnimatePresence>
-        {selectedIdx !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-3 sm:p-4 backdrop-blur-xl"
-            onClick={() => setSelectedIdx(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, y: 20, opacity: 0 }}
-              animate={{ scale: 1, y: 0, opacity: 1 }}
-              exit={{ scale: 0.9, y: 20, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative max-h-[90vh] w-full max-w-lg sm:max-w-xl overflow-hidden rounded-3xl border border-white/10 bg-neutral-900 shadow-2xl text-white flex flex-col"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close Button */}
-              <button
-                type="button"
+      {/* Fullscreen Cinema Modal - Portaled to document.body to break out of any transform/filter stacking context */}
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {selectedIdx !== null && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/85 p-3 sm:p-4 backdrop-blur-xl"
                 onClick={() => setSelectedIdx(null)}
-                className="absolute top-3 right-3 z-30 flex size-8 sm:size-9 items-center justify-center rounded-full bg-black/70 text-white/80 transition-colors hover:bg-black hover:text-white"
-                aria-label="Close modal"
               >
-                ✕
-              </button>
-
-              {/* Prev / Next Nav */}
-              <button
-                type="button"
-                onClick={handlePrev}
-                className="absolute left-2 sm:left-3 top-1/2 z-30 -translate-y-1/2 flex size-9 sm:size-10 items-center justify-center rounded-full bg-black/70 text-white transition-colors hover:bg-black"
-                aria-label="Previous milestone"
-              >
-                ‹
-              </button>
-              <button
-                type="button"
-                onClick={handleNext}
-                className="absolute right-2 sm:right-3 top-1/2 z-30 -translate-y-1/2 flex size-9 sm:size-10 items-center justify-center rounded-full bg-black/70 text-white transition-colors hover:bg-black"
-                aria-label="Next milestone"
-              >
-                ›
-              </button>
-
-              {/* Full Image Presentation */}
-              <div className="relative w-full max-h-[55vh] sm:max-h-[65vh] flex items-center justify-center bg-black/50 p-2 sm:p-3 overflow-hidden">
-                {STORY_MILESTONES[selectedIdx].image && (
-                  <img
-                    src={STORY_MILESTONES[selectedIdx].image}
-                    alt={STORY_MILESTONES[selectedIdx].title}
-                    className="max-h-[52vh] sm:max-h-[62vh] w-auto rounded-xl object-contain shadow-2xl select-none"
-                  />
-                )}
-              </div>
-
-              {/* Details and Story */}
-              <div className="p-4 sm:p-6 bg-neutral-900 border-t border-white/5 overflow-y-auto">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                  <div>
-                    <span
-                      className="text-[11px] sm:text-xs font-bold tracking-wider block"
-                      style={{
-                        color: STORY_MILESTONES[selectedIdx].accentColor,
-                        fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif",
-                      }}
-                    >
-                      {STORY_MILESTONES[selectedIdx].stepNumber} • {STORY_MILESTONES[selectedIdx].title}
-                    </span>
-                    <h3
-                      className="text-lg sm:text-xl font-bold text-white mt-0.5"
-                      style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
-                    >
-                      {STORY_MILESTONES[selectedIdx].subtitle}
-                    </h3>
-                  </div>
-                  {STORY_MILESTONES[selectedIdx].location && (
-                    <span
-                      className="self-start sm:self-auto rounded-full bg-neutral-800 px-2.5 py-0.5 text-[11px] text-neutral-300"
-                      style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
-                    >
-                      📍 {STORY_MILESTONES[selectedIdx].location}
-                    </span>
-                  )}
-                </div>
-
-                <p
-                  className="mt-2.5 text-xs sm:text-sm text-neutral-300 leading-relaxed font-light"
-                  style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
+                <motion.div
+                  initial={{ scale: 0.9, y: 20, opacity: 0 }}
+                  animate={{ scale: 1, y: 0, opacity: 1 }}
+                  exit={{ scale: 0.9, y: 20, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative max-h-[90vh] w-full max-w-lg sm:max-w-xl overflow-hidden rounded-3xl border border-white/10 bg-neutral-900 shadow-2xl text-white flex flex-col"
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  {STORY_MILESTONES[selectedIdx].story}
-                </p>
+                  {/* Close Button */}
+                  <button
+                    type="button"
+                    onClick={() => setSelectedIdx(null)}
+                    className="absolute top-3 right-3 z-30 flex size-9 items-center justify-center rounded-full bg-black/70 text-white/90 border border-white/10 backdrop-blur-md transition-all hover:bg-black hover:scale-105 active:scale-95 cursor-pointer"
+                    aria-label="Close modal"
+                  >
+                    ✕
+                  </button>
 
-                <div className="mt-3 pt-2.5 border-t border-neutral-800 flex items-center justify-between text-[11px] text-neutral-500 font-mono">
-                  <span>তারিখ: {STORY_MILESTONES[selectedIdx].date}</span>
-                  <span>{selectedIdx + 1} / {STORY_MILESTONES.length}</span>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+                  {/* Prev / Next Nav */}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePrev();
+                    }}
+                    className="absolute left-2 sm:left-3 top-1/2 z-30 -translate-y-1/2 flex size-10 items-center justify-center rounded-full bg-black/70 text-white/90 border border-white/10 backdrop-blur-md transition-all hover:bg-black hover:scale-105 active:scale-95 cursor-pointer"
+                    aria-label="Previous milestone"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNext();
+                    }}
+                    className="absolute right-2 sm:right-3 top-1/2 z-30 -translate-y-1/2 flex size-10 items-center justify-center rounded-full bg-black/70 text-white/90 border border-white/10 backdrop-blur-md transition-all hover:bg-black hover:scale-105 active:scale-95 cursor-pointer"
+                    aria-label="Next milestone"
+                  >
+                    ›
+                  </button>
+
+                  {/* Full Image Presentation */}
+                  <div className="relative w-full max-h-[55vh] sm:max-h-[65vh] flex items-center justify-center bg-black/60 p-2 sm:p-3 overflow-hidden">
+                    {STORY_MILESTONES[selectedIdx].image && (
+                      <motion.img
+                        key={selectedIdx}
+                        src={STORY_MILESTONES[selectedIdx].image}
+                        alt={STORY_MILESTONES[selectedIdx].title}
+                        initial={{ opacity: 0, scale: 0.96 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.2 }}
+                        className="max-h-[52vh] sm:max-h-[62vh] w-auto rounded-xl object-contain shadow-2xl select-none"
+                      />
+                    )}
+                  </div>
+
+                  {/* Details and Story */}
+                  <div className="p-4 sm:p-6 bg-neutral-900 border-t border-white/5 overflow-y-auto">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                      <div>
+                        <span
+                          className="text-[11px] sm:text-xs font-bold tracking-wider block"
+                          style={{
+                            color: STORY_MILESTONES[selectedIdx].accentColor,
+                            fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif",
+                          }}
+                        >
+                          {STORY_MILESTONES[selectedIdx].stepNumber} • {STORY_MILESTONES[selectedIdx].title}
+                        </span>
+                        <h3
+                          className="text-lg sm:text-xl font-bold text-white mt-0.5"
+                          style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
+                        >
+                          {STORY_MILESTONES[selectedIdx].subtitle}
+                        </h3>
+                      </div>
+                      {STORY_MILESTONES[selectedIdx].location && (
+                        <span
+                          className="self-start sm:self-auto rounded-full bg-neutral-800 px-2.5 py-0.5 text-[11px] text-neutral-300"
+                          style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
+                        >
+                          📍 {STORY_MILESTONES[selectedIdx].location}
+                        </span>
+                      )}
+                    </div>
+
+                    <p
+                      className="mt-2.5 text-xs sm:text-sm text-neutral-300 leading-relaxed font-light"
+                      style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
+                    >
+                      {STORY_MILESTONES[selectedIdx].story}
+                    </p>
+
+                    <div className="mt-3 pt-2.5 border-t border-neutral-800 flex items-center justify-between text-[11px] text-neutral-500 font-mono">
+                      <span>তারিখ: {STORY_MILESTONES[selectedIdx].date}</span>
+                      <span>{selectedIdx + 1} / {STORY_MILESTONES.length}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
     </div>
   );
 }
