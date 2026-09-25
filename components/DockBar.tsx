@@ -105,8 +105,8 @@ const NAV: {
 }[] = [
   { label: "নীড়", href: "/", Icon: HomeGlyph },
   { label: "হাত ধরা", href: "/work", Icon: HandHoldingGlyph },
-  { label: "চিরকুট", href: "/playground", Icon: LetterGlyph },
-  { label: "ইচ্ছে", href: "/skills", Icon: WishGlyph },
+  { label: "চিরকুট", href: "/chirkut", Icon: LetterGlyph },
+  { label: "ইচ্ছে", href: "/ecche", Icon: WishGlyph },
 ];
 
 export function DockBar() {
