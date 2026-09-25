@@ -89,9 +89,6 @@ function MapPhotoCard({
         whileTap={{ scale: 0.98 }}
         className="relative overflow-hidden rounded-2xl border-2 border-dashed border-neutral-300/80 bg-white/95 p-2.5 sm:p-3.5 shadow-md transition-all duration-300 hover:border-solid hover:shadow-2xl dark:border-neutral-700/80 dark:bg-neutral-900/95 dark:shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
       >
-        {/* Washi Tape Accent */}
-        <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-10 sm:w-12 h-3 sm:h-3.5 bg-amber-200/70 dark:bg-amber-500/30 rounded-sm transform -rotate-2 border border-amber-300/50 shadow-xs pointer-events-none z-10" />
-
         {/* Photo Container */}
         {milestone.image && (
           <div

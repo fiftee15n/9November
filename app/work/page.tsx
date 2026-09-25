@@ -98,9 +98,6 @@ function AlbumPhotoCard({
           whileTap={{ scale: 0.98 }}
           className="relative overflow-hidden rounded-2xl border-2 border-white/80 bg-white/95 p-2.5 sm:p-3 shadow-md transition-all duration-300 hover:shadow-2xl dark:border-neutral-700/80 dark:bg-neutral-900/95 dark:shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
         >
-          {/* Subtle Washi Tape Accent on top */}
-          <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-11 sm:w-14 h-3 sm:h-3.5 bg-amber-200/70 dark:bg-amber-500/30 rounded-xs transform -rotate-1 border border-amber-300/50 shadow-xs pointer-events-none z-10" />
-
           {/* Photo Frame Container - Pure photo without title or caption */}
           <div className={`relative w-full overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800 ${aspect}`}>
             <img
