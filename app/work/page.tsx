@@ -22,19 +22,23 @@ const HAND_HOLDING_PHOTOS = [
   { id: "hands-6", src: "/diu-campus.jpg", aspect: "aspect-[4/3]" },
   { id: "hands-7", src: "/travel-luggage-hands.jpg", aspect: "aspect-[3/4]" },
   { id: "hands-8", src: "/first-hand.jpg", aspect: "aspect-square" },
-  { id: "hands-9", src: "/shy-hide-face-pov.jpg", aspect: "aspect-[3/4]" },
-  { id: "hands-10", src: "/memories/memory-3.jpg", aspect: "aspect-[3/4]" },
+  { id: "hands-9", src: "/memories/memory-4.jpg", aspect: "aspect-[3/4]" },
+  { id: "hands-10", src: "/shy-hide-face-pov.jpg", aspect: "aspect-[3/4]" },
+  { id: "hands-11", src: "/memories/memory-5.jpg", aspect: "aspect-[3/4]" },
+  { id: "hands-12", src: "/memories/memory-3.jpg", aspect: "aspect-[3/4]" },
 ];
 
 function AlbumPhotoCard({
   src,
   aspect,
   index,
+  isMobile,
   onClick,
 }: {
   src: string;
   aspect: string;
   index: number;
+  isMobile: boolean;
   onClick: () => void;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -54,12 +58,12 @@ function AlbumPhotoCard({
   const shineX = useTransform(mouseX, [-0.5, 0.5], ["0%", "100%"]);
   const shineY = useTransform(mouseY, [-0.5, 0.5], ["0%", "100%"]);
 
-  // Album photo resting rotation angles
+  // Album photo resting rotation angles - disabled on mobile for clean gallery alignment
   const angles = [-1.8, 1.5, -2.2, 1.8, -1.2, 2.0, -1.6, 1.4, -2.0, 1.6];
-  const paperRotation = angles[index % angles.length];
+  const paperRotation = isMobile ? 0 : angles[index % angles.length];
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (reduce || !cardRef.current) return;
+    if (reduce || isMobile || !cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
@@ -74,10 +78,10 @@ function AlbumPhotoCard({
 
   return (
     <motion.div
-      initial={reduce ? false : { opacity: 0, y: 24, scale: 0.94 }}
+      initial={reduce ? false : { opacity: 0, y: 16, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.45, delay: index * 0.05, ease: "easeOut" }}
-      className="break-inside-avoid mb-5 sm:mb-6"
+      transition={{ duration: 0.4, delay: Math.min(index * 0.04, 0.4), ease: "easeOut" }}
+      className="break-inside-avoid mb-2 sm:mb-5"
     >
       <div
         ref={cardRef}
@@ -89,17 +93,17 @@ function AlbumPhotoCard({
       >
         <motion.div
           style={{
-            rotateX: reduce ? 0 : rotateX,
-            rotateY: reduce ? 0 : rotateY,
+            rotateX: reduce || isMobile ? 0 : rotateX,
+            rotateY: reduce || isMobile ? 0 : rotateY,
             rotateZ: reduce ? 0 : paperRotation,
             transformStyle: "preserve-3d",
           }}
-          whileHover={{ scale: 1.03, rotateZ: 0 }}
-          whileTap={{ scale: 0.98 }}
-          className="relative overflow-hidden rounded-2xl border-2 border-white/80 bg-white/95 p-2.5 sm:p-3 shadow-md transition-all duration-300 hover:shadow-2xl dark:border-neutral-700/80 dark:bg-neutral-900/95 dark:shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
+          whileHover={{ scale: 1.025, rotateZ: 0 }}
+          whileTap={{ scale: 0.97 }}
+          className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/80 sm:border-2 bg-white/95 p-1 sm:p-2.5 shadow-xs sm:shadow-md transition-all duration-300 hover:shadow-2xl dark:border-neutral-700/80 dark:bg-neutral-900/95 dark:shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
         >
           {/* Photo Frame Container - Pure photo without title or caption */}
-          <div className={`relative w-full overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800 ${aspect}`}>
+          <div className={`relative w-full overflow-hidden rounded-lg sm:rounded-xl bg-neutral-100 dark:bg-neutral-800 ${aspect}`}>
             <img
               src={src}
               alt=""
@@ -126,9 +130,14 @@ export default function WorkPage() {
   const pb = useTransform(scrollYProgress, [0.2, 1], ["40px", "220px"]);
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const handlePrev = useCallback(() => {
@@ -166,17 +175,18 @@ export default function WorkPage() {
   return (
     <main className="flex flex-1 flex-col items-center justify-start bg-transparent text-foreground">
       <motion.div
-        className="relative flex w-full flex-1 flex-col items-center justify-start px-3 sm:px-6 pt-10 sm:pt-14"
+        className="relative flex w-full flex-1 flex-col items-center justify-start px-2 sm:px-6 pt-4 sm:pt-14"
         style={{ paddingBottom: pb }}
       >
-        {/* Album Masonry Gallery - No titles, no captions, pure photos */}
-        <div className="w-full max-w-4xl columns-1 sm:columns-2 md:columns-3 gap-5 sm:gap-6">
+        {/* Album Gallery - Compact 2 columns on mobile, 3-4 columns on desktop, no titles, no captions */}
+        <div className="w-full max-w-4xl columns-2 sm:columns-3 md:columns-3 lg:columns-4 gap-2 sm:gap-4 md:gap-5">
           {HAND_HOLDING_PHOTOS.map((photo, idx) => (
             <AlbumPhotoCard
               key={photo.id}
               src={photo.src}
               aspect={photo.aspect}
               index={idx}
+              isMobile={isMobile}
               onClick={() => setSelectedIdx(idx)}
             />
           ))}
@@ -201,7 +211,7 @@ export default function WorkPage() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.25 }}
-                className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/85 p-3 sm:p-6 backdrop-blur-xl"
+                className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/85 p-2 sm:p-6 backdrop-blur-xl"
                 onClick={() => setSelectedIdx(null)}
               >
                 <motion.div
@@ -209,14 +219,14 @@ export default function WorkPage() {
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 0.9, opacity: 0 }}
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative max-h-[92vh] max-w-3xl overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/90 shadow-2xl flex items-center justify-center p-2 sm:p-3"
+                  className="relative max-h-[92vh] max-w-3xl overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-neutral-900/90 shadow-2xl flex items-center justify-center p-1.5 sm:p-3"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {/* Close Button */}
                   <button
                     type="button"
                     onClick={() => setSelectedIdx(null)}
-                    className="absolute top-3 right-3 z-30 flex size-9 items-center justify-center rounded-full bg-black/70 text-white/90 border border-white/10 backdrop-blur-md transition-all hover:bg-black hover:scale-105 active:scale-95 cursor-pointer"
+                    className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 z-30 flex size-8 sm:size-9 items-center justify-center rounded-full bg-black/70 text-white/90 border border-white/10 backdrop-blur-md transition-all hover:bg-black hover:scale-105 active:scale-95 cursor-pointer text-xs sm:text-sm"
                     aria-label="Close"
                   >
                     ✕
@@ -229,7 +239,7 @@ export default function WorkPage() {
                       e.stopPropagation();
                       handlePrev();
                     }}
-                    className="absolute left-2 sm:left-3 top-1/2 z-30 -translate-y-1/2 flex size-10 items-center justify-center rounded-full bg-black/70 text-white/90 border border-white/10 backdrop-blur-md transition-all hover:bg-black hover:scale-105 active:scale-95 cursor-pointer"
+                    className="absolute left-1.5 sm:left-3 top-1/2 z-30 -translate-y-1/2 flex size-8 sm:size-10 items-center justify-center rounded-full bg-black/70 text-white/90 border border-white/10 backdrop-blur-md transition-all hover:bg-black hover:scale-105 active:scale-95 cursor-pointer text-sm sm:text-base"
                     aria-label="Previous"
                   >
                     ‹
@@ -242,22 +252,30 @@ export default function WorkPage() {
                       e.stopPropagation();
                       handleNext();
                     }}
-                    className="absolute right-2 sm:right-3 top-1/2 z-30 -translate-y-1/2 flex size-10 items-center justify-center rounded-full bg-black/70 text-white/90 border border-white/10 backdrop-blur-md transition-all hover:bg-black hover:scale-105 active:scale-95 cursor-pointer"
+                    className="absolute right-1.5 sm:right-3 top-1/2 z-30 -translate-y-1/2 flex size-8 sm:size-10 items-center justify-center rounded-full bg-black/70 text-white/90 border border-white/10 backdrop-blur-md transition-all hover:bg-black hover:scale-105 active:scale-95 cursor-pointer text-sm sm:text-base"
                     aria-label="Next"
                   >
                     ›
                   </button>
 
-                  {/* Full Image Display - No Title, No Caption */}
-                  <div className="relative max-h-[85vh] max-w-[85vw] flex items-center justify-center overflow-hidden rounded-2xl">
+                  {/* Full Image Display - No Title, No Caption, Touch Drag / Swipeable on Mobile */}
+                  <div className="relative max-h-[85vh] max-w-[90vw] sm:max-w-[85vw] flex items-center justify-center overflow-hidden rounded-xl sm:rounded-2xl">
                     <motion.img
                       key={selectedIdx}
                       src={HAND_HOLDING_PHOTOS[selectedIdx].src}
                       alt=""
                       initial={{ opacity: 0, scale: 0.97 }}
                       animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="max-h-[82vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl select-none"
+                      drag="x"
+                      dragConstraints={{ left: 0, right: 0 }}
+                      dragElastic={0.2}
+                      onDragEnd={(_e, { offset }) => {
+                        if (offset.x > 50) handlePrev();
+                        else if (offset.x < -50) handleNext();
+                      }}
+                      className="max-h-[82vh] w-auto max-w-full rounded-xl sm:rounded-2xl object-contain shadow-2xl select-none touch-pan-y"
                     />
                   </div>
                 </motion.div>
