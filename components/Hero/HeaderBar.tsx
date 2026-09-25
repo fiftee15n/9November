@@ -62,7 +62,7 @@ export function HeaderBar() {
 
   return (
     <motion.header
-      className="sticky top-0 z-30 flex w-full items-center justify-between bg-background/70 backdrop-blur-md px-4 py-3 sm:px-6 md:px-10 border-b border-white/5"
+      className="sticky top-0 z-30 flex w-full items-center justify-between bg-white/50 dark:bg-white/[0.04] backdrop-blur-xl px-4 py-3 sm:px-6 md:px-10 border-b border-black/[0.04] dark:border-white/10 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-colors"
       initial={reduce ? false : { opacity: 0, y: -10, filter: "blur(6px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ duration: 0.45, ease: "easeOut" }}
