@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { TextScramble } from "@/components/motion/text-scramble";
+import { PoeticTitle } from "@/components/motion/poetic-title";
 import { ProgressiveBlur } from "@/registry/magicui/progressive-blur";
 
 // same entrance the work page heading uses
@@ -93,26 +93,11 @@ export default function EcchePage() {
           ref={colRef}
           className="flex w-full max-w-[540px] flex-col gap-[25px]"
         >
-          {/* Heading — same hero greeting treatment as the work page */}
-          <motion.p
-            className="text-[24px] font-medium leading-none text-foreground"
-            style={{ fontFamily: "var(--font-bengali)" }}
-            initial={reduce ? false : { opacity: 0, y: 14, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.45, ease: "easeOut" }}
-          >
-            <TextScramble text="আমাদের ইচ্ছেতালিকা" />
-            <motion.span
-              className="mt-2 block font-mono text-[12px] font-light tracking-[-0.3px] text-neutral-500 dark:text-neutral-400 sm:ml-3 sm:mt-0 sm:inline-block"
-              variants={FADE_UP}
-              initial={reduce ? false : "hidden"}
-              animate="visible"
-              transition={{ duration: 0.45, ease: "easeOut", delay: 0.5 }}
-              style={{ fontFamily: "var(--font-bengali)" }}
-            >
-              স্বপ্ন ও স্মৃতির পথচলা
-            </motion.span>
-          </motion.p>
+          {/* Heading — poetic smooth transition */}
+          <PoeticTitle
+            title="আমাদের ইচ্ছেতালিকা"
+            subtitle="স্বপ্ন ও স্মৃতির পথচলা"
+          />
 
           {/* Bucket list — rows without numbers and icon pills */}
           <motion.div

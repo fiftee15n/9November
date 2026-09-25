@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "motion/react";
-import { TextScramble } from "@/components/motion/text-scramble";
+import { PoeticTitle } from "@/components/motion/poetic-title";
 import { ProgressiveBlur } from "@/registry/magicui/progressive-blur";
 
 const FADE_UP = {
@@ -197,26 +197,11 @@ export default function ChirkutPage() {
           ref={colRef}
           className="flex w-full max-w-[540px] flex-col gap-[25px]"
         >
-          {/* Heading — same hero greeting treatment as icche page */}
-          <motion.p
-            className="text-[24px] font-medium leading-none text-foreground"
-            style={{ fontFamily: "var(--font-bengali)" }}
-            initial={reduce ? false : { opacity: 0, y: 14, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.45, ease: "easeOut" }}
-          >
-            <TextScramble text="চিরকুট ও চিঠিপত্র" />
-            <motion.span
-              className="mt-2 block font-mono text-[12px] font-light tracking-[-0.3px] text-neutral-500 dark:text-neutral-400 sm:ml-3 sm:mt-0 sm:inline-block"
-              variants={FADE_UP}
-              initial={reduce ? false : "hidden"}
-              animate="visible"
-              transition={{ duration: 0.45, ease: "easeOut", delay: 0.5 }}
-              style={{ fontFamily: "var(--font-bengali)" }}
-            >
-              হৃদয়ের না-বলা যত কথা
-            </motion.span>
-          </motion.p>
+          {/* Heading — poetic smooth transition */}
+          <PoeticTitle
+            title="চিরকুট ও চিঠিপত্র"
+            subtitle="হৃদয়ের না-বলা যত কথা"
+          />
 
           {/* Interactive Note Display Box — opens selected note smoothly */}
           <motion.div
