@@ -13,7 +13,6 @@ const FADE_UP = {
 
 const BUCKET_LIST = [
   {
-    index: "01",
     name: "প্রেমের স্মৃতি ও মধুর মুহূর্ত",
     items: [
       { name: "প্রথম হাত ধরা", done: true },
@@ -32,7 +31,6 @@ const BUCKET_LIST = [
     ],
   },
   {
-    index: "02",
     name: "শুভ পরিণয় ও বিয়ের সাজ",
     items: [
       { name: "আংটি বদল ও শুভ সম্মতি", done: false },
@@ -45,7 +43,6 @@ const BUCKET_LIST = [
     ],
   },
   {
-    index: "03",
     name: "সংসার ও দাম্পত্য জীবন",
     items: [
       { name: "স্বপ্নের নীড় সাজানো", done: false },
@@ -61,7 +58,6 @@ const BUCKET_LIST = [
     ],
   },
   {
-    index: "04",
     name: "ভ্রমণ ও দূর সীমানায়",
     items: [
       { name: "সাজেক ভ্যালির মেঘ ছোঁয়া", done: false },
@@ -74,7 +70,6 @@ const BUCKET_LIST = [
     ],
   },
   {
-    index: "05",
     name: "অনন্ত নির্ভরতা ও বার্ধক্য",
     items: [
       { name: "জীবনের সব ঝড়ে অটুট ঢাল", done: true },
@@ -129,18 +124,15 @@ export default function SkillsPage() {
             {BUCKET_LIST.map((group, i) => (
               <div
                 key={group.name}
-                className={`grid grid-cols-1 gap-2 py-4 sm:grid-cols-[140px_1fr] ${
+                className={`grid grid-cols-1 gap-2 py-4 sm:grid-cols-[150px_1fr] ${
                   i < BUCKET_LIST.length - 1
                     ? "border-b border-neutral-200/70 dark:border-neutral-800"
                     : ""
                 }`}
               >
-                <p className="flex items-baseline gap-2 text-[14px] leading-6">
-                  <span className="font-mono text-neutral-400 dark:text-neutral-500">
-                    {group.index}
-                  </span>
+                <p className="flex items-baseline text-[14px] leading-6">
                   <span
-                    className="text-black dark:text-white"
+                    className="text-black dark:text-white font-medium"
                     style={{ fontFamily: "var(--font-bengali)" }}
                   >
                     {group.name}
