@@ -68,6 +68,7 @@ export interface LiveTimeElapsed {
   seconds: string;
   formattedFull: string;
   formattedCompact: string;
+  formattedShort: string;
 }
 
 export function getLiveTimeElapsed(currentDate = new Date()): LiveTimeElapsed {
@@ -85,13 +86,16 @@ export function getLiveTimeElapsed(currentDate = new Date()): LiveTimeElapsed {
   const minutesStr = pad2(minutes);
   const secondsStr = pad2(seconds);
 
+  const formattedShort = `${daysStr} দিন ${hoursStr}ঘ ${minutesStr}মি ${secondsStr}সে`;
+
   return {
     days: daysStr,
     hours: hoursStr,
     minutes: minutesStr,
     seconds: secondsStr,
     formattedFull: `${daysStr} দিন ${hoursStr} ঘণ্টা ${minutesStr} মিনিট ${secondsStr} সেকেন্ড`,
-    formattedCompact: `${daysStr} দিন ${hoursStr}:${minutesStr}:${secondsStr}`,
+    formattedCompact: formattedShort,
+    formattedShort,
   };
 }
 

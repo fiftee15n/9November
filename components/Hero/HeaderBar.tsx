@@ -169,8 +169,7 @@ export function HeaderBar() {
                 style={{ fontFamily: "var(--font-bengali)" }}
                 title="১০ আগস্ট ২০২৪ থেকে"
               >
-                <span className="hidden lg:inline">{elapsed.formattedFull}</span>
-                <span className="inline lg:hidden">{elapsed.formattedCompact}</span>
+                {elapsed.formattedShort}
               </span>
             </>
           )}
