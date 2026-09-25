@@ -146,32 +146,26 @@ export function HeaderBar() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut", delay: 0.16 }}
       >
-        <div className="flex items-center gap-1.5 sm:gap-2.5 text-[10px] sm:text-[11px] text-neutral-400">
+        <div className="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] text-neutral-400">
           <span className="hidden font-mono text-[10px] sm:inline" suppressHydrationWarning>
             {time ?? "00:00:00"}
           </span>
           {banglaDate && (
-            <>
-              <span className="hidden opacity-30 sm:inline">—</span>
-              <span
-                className="hidden text-neutral-600 dark:text-neutral-300 font-medium md:inline"
-                style={{ fontFamily: "var(--font-bengali)" }}
-              >
-                {banglaDate}
-              </span>
-            </>
+            <span
+              className="hidden text-neutral-600 dark:text-neutral-300 font-medium md:inline"
+              style={{ fontFamily: "var(--font-bengali)" }}
+            >
+              {banglaDate}
+            </span>
           )}
           {elapsed && (
-            <>
-              <span className="hidden opacity-30 md:inline">—</span>
-              <span
-                className="text-black dark:text-white font-medium tabular-nums text-[10px] sm:text-[11px]"
-                style={{ fontFamily: "var(--font-bengali)" }}
-                title="১০ আগস্ট ২০২৪ থেকে"
-              >
-                {elapsed.formattedShort}
-              </span>
-            </>
+            <span
+              className="text-black dark:text-white font-medium tabular-nums text-[10px] sm:text-[11px]"
+              style={{ fontFamily: "var(--font-bengali)" }}
+              title="১০ আগস্ট ২০২৪ থেকে"
+            >
+              {elapsed.formattedShort}
+            </span>
           )}
         </div>
         <Tooltip content="Change theme" side="bottom">
