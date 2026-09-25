@@ -78,16 +78,23 @@ function PlaygroundGlyph(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-function SkillsGlyph(props: SVGProps<SVGSVGElement>) {
+function WishGlyph(props: SVGProps<SVGSVGElement>) {
   return (
     <PhosphorGlyph {...props}>
-      <polygon
-        points="160 16 144 96 208 120 96 240 112 160 48 136 160 16"
+      <path
+        d="M176,16a8,8,0,0,0-7.42,4.94l-15.93,37.17-37.17,15.93a8,8,0,0,0,0,14.84l37.17,15.93,15.93,37.17a8,8,0,0,0,14.84,0l15.93-37.17,37.17-15.93a8,8,0,0,0,0-14.84l-37.17-15.93L183.42,20.94A8,8,0,0,0,176,16Z"
         fill="currentColor"
         stroke="none"
         opacity="0.2"
       />
-      <polygon points="160 16 144 96 208 120 96 240 112 160 48 136 160 16" />
+      <path d="M176,16a8,8,0,0,0-7.42,4.94l-15.93,37.17-37.17,15.93a8,8,0,0,0,0,14.84l37.17,15.93,15.93,37.17a8,8,0,0,0,14.84,0l15.93-37.17,37.17-15.93a8,8,0,0,0,0-14.84l-37.17-15.93L183.42,20.94A8,8,0,0,0,176,16Z" />
+      <path
+        d="M80,88a8,8,0,0,0-7.42,4.94L56.65,130.11,19.47,146a8,8,0,0,0,0,14.84l37.18,15.94,15.93,37.18a8,8,0,0,0,14.84,0l15.94-37.18L140.54,160.9a8,8,0,0,0,0-14.84L103.36,130.11,87.42,92.94A8,8,0,0,0,80,88Z"
+        fill="currentColor"
+        stroke="none"
+        opacity="0.2"
+      />
+      <path d="M80,88a8,8,0,0,0-7.42,4.94L56.65,130.11,19.47,146a8,8,0,0,0,0,14.84l37.18,15.94,15.93,37.18a8,8,0,0,0,14.84,0l15.94-37.18L140.54,160.9a8,8,0,0,0,0-14.84L103.36,130.11,87.42,92.94A8,8,0,0,0,80,88Z" />
     </PhosphorGlyph>
   );
 }
@@ -97,7 +104,7 @@ const NAV = [
   { label: "নীড়", href: "/", Icon: HomeGlyph },
   { label: "হাত ধরা", href: "/work", Icon: HandHoldingGlyph },
   { label: "Craft", href: "/playground", Icon: PlaygroundGlyph, disabled: true },
-  { label: "Stack", href: "/skills", Icon: SkillsGlyph },
+  { label: "ইচ্ছে", href: "/skills", Icon: WishGlyph },
 ];
 
 export function DockBar() {
