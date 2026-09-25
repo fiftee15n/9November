@@ -122,6 +122,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     location: "বাগানের প্রাঙ্গণ",
     story: "গাছের ডালে ঝুলন্ত ফেয়ারি লাইটের আলো, দোলনার পাশে দাঁড়িয়ে মিষ্টি আলাপ আর চোখে চোখ রেখে ভালোবাসার অমলিন নির্ভরতা।",
     image: "/garden-date.jpg",
+    imageAspect: "portrait",
     icon: "sparkles",
     accentColor: "#0D9488", // Teal / Botanical Garden Green
     side: "right",
@@ -135,6 +136,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     location: "সবুজের মাঝে",
     story: "ক্যামেরার ফ্রেমে মিষ্টি খুনসুটি, আদুরে স্পর্শে চিবুক ধরে রাখার সেই মায়াবী হাসি—যে হাসিতে মিশে ছিল নিখাদ আনন্দ আর চিরদিনের অধিকার।",
     image: "/playful-smile.jpg",
+    imageAspect: "portrait",
     icon: "heart",
     accentColor: "#EC4899", // Warm Pink / Magenta
     side: "left",
@@ -320,5 +322,19 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     icon: "cabin",
     accentColor: "#14B8A6", // Mint / Sage Teal
     side: "right",
+  },
+  {
+    id: "video-call-selfie",
+    stepNumber: "২৩",
+    title: "রাতজাগা মিষ্টি ভিডিও কল",
+    subtitle: "স্ক্রিনের ফ্রেমে ভালোবাসা ও নির্ভরতা",
+    date: "২০২৩",
+    location: "স্ক্রিনের দুই প্রান্তে",
+    story: "দূরত্ব ভুলে স্ক্রিনের দুই প্রান্তে ঘণ্টার পর ঘণ্টা জেগে থাকা। তোমার মিষ্টি হাসিমাখা মুখ আর আদুরে চাহনি—প্রতিটি ফ্রেমেই যেন ধরা থাকত একরাশ ভালোবাসা আর পরম নির্ভরতা।",
+    image: "/video-call-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "video",
+    accentColor: "#C2410C", // Warm Terracotta / Cinnamon
+    side: "left",
   },
 ];
