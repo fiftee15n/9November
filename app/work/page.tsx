@@ -127,7 +127,7 @@ function AlbumPhotoCard({
 
 export default function WorkPage() {
   const { scrollYProgress } = useScroll();
-  const pb = useTransform(scrollYProgress, [0.2, 1], ["40px", "220px"]);
+  const pb = useTransform(scrollYProgress, [0.2, 1], ["100px", "280px"]);
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
