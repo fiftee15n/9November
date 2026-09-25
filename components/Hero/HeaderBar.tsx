@@ -169,13 +169,11 @@ export function HeaderBar() {
             <>
               <span className="hidden opacity-30 md:inline">—</span>
               <span
-                className="text-rose-500/90 dark:text-rose-400/90 font-medium flex items-center gap-1"
+                className="text-black dark:text-white font-medium"
                 style={{ fontFamily: "var(--font-bengali)" }}
-                title="৯ নভেম্বর ২০২১ থেকে একসাথে পথচলা"
+                title="১০ আগস্ট ২০২৪ থেকে"
               >
-                <span className="text-[10px] text-rose-500">❤️</span>
-                <span>{daysTogether} দিন</span>
-                <span className="hidden lg:inline">একসাথে</span>
+                {daysTogether} দিন
               </span>
             </>
           )}

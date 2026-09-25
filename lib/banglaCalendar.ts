@@ -58,11 +58,11 @@ export function getBanglaDate(date = new Date()): string {
   return `${toBengaliNumber(bnDay)} ${bnMonth}, ${toBengaliNumber(bnYear)} বঙ্গাব্দ`;
 }
 
-// 09 November 2021: "যেদিন থেকে 'আমি' আর 'তুমি'-র গল্পটা 'আমরা' হয়ে গেল"
-const ANNIVERSARY_DATE = new Date("2021-11-09T00:00:00+06:00");
+// 10 August 2024
+const START_DATE = new Date("2024-08-10T00:00:00+06:00");
 
 export function getDaysTogether(currentDate = new Date()): string {
-  const diffTime = currentDate.getTime() - ANNIVERSARY_DATE.getTime();
+  const diffTime = currentDate.getTime() - START_DATE.getTime();
   const diffDays = Math.max(1, Math.floor(diffTime / (1000 * 60 * 60 * 24)));
   const formattedEn = new Intl.NumberFormat("en-US").format(diffDays);
   return toBengaliNumber(formattedEn);
