@@ -365,4 +365,18 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#E11D48", // Vivid Rose / Magenta
     side: "left",
   },
+  {
+    id: "travel-luggage-hands",
+    stepNumber: "২৬",
+    title: "ভ্রমণের প্রস্তুতি ও অপেক্ষা",
+    subtitle: "স্যুটকেস, ছোট ছোট যত্ন ও নিঃশব্দ মায়া",
+    date: "২০২৩",
+    location: "যাত্রার মুখে",
+    story: "একসাথে দূরে কোথাও ভ্রমণের প্রস্তুতি, স্যুটকেস গোছানো আর পথের জন্য প্রয়োজনীয় জিনিসগুলো গুছিয়ে রাখা। ঘড়ির কাঁটার টিকটিক শব্দে অপেক্ষার আনন্দ আর তোমার এই ছোট্ট যত্নগুলোর মাঝেই মিশে ছিল অসীম ভালোবাসা।",
+    image: "/travel-luggage-hands.jpg",
+    imageAspect: "portrait",
+    icon: "luggage",
+    accentColor: "#D97706", // Amber / Leather Tan
+    side: "right",
+  },
 ];
