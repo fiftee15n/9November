@@ -1,275 +1,274 @@
 "use client";
 
-import { content } from "@/lib/content";
-import { Infinity as InfinityIcon } from "lucide-react";
-import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
-import { TextScramble } from "@/components/motion/text-scramble";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+  useMotionValue,
+  useSpring,
+} from "motion/react";
 import { ProgressiveBlur } from "@/registry/magicui/progressive-blur";
 
-// same entrance the hero description uses
-const FADE_UP = {
-  hidden: { opacity: 0, y: 14, filter: "blur(6px)" },
-  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-};
+const HAND_HOLDING_PHOTOS = [
+  { id: "hands-1", src: "/hands-holding.jpg", aspect: "aspect-[3/4]" },
+  { id: "hands-2", src: "/memories/memory-2.jpg", aspect: "aspect-[3/4]" },
+  { id: "hands-3", src: "/mehendi-hand.jpg", aspect: "aspect-[3/4]" },
+  { id: "hands-4", src: "/follow-me-walk.jpg", aspect: "aspect-[3/4]" },
+  { id: "hands-5", src: "/airport-journey.jpg", aspect: "aspect-[4/3]" },
+  { id: "hands-6", src: "/diu-campus.jpg", aspect: "aspect-[4/3]" },
+  { id: "hands-7", src: "/travel-luggage-hands.jpg", aspect: "aspect-[3/4]" },
+  { id: "hands-8", src: "/first-hand.jpg", aspect: "aspect-square" },
+  { id: "hands-9", src: "/shy-hide-face-pov.jpg", aspect: "aspect-[3/4]" },
+  { id: "hands-10", src: "/memories/memory-3.jpg", aspect: "aspect-[3/4]" },
+];
 
-function CodeGlyph(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" strokeWidth={16} strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <polyline points="64 88 16 128 64 168" />
-      <polyline points="192 88 240 128 192 168" />
-      <line x1="160" y1="40" x2="96" y2="216" />
-    </svg>
-  );
-}
+function AlbumPhotoCard({
+  src,
+  aspect,
+  index,
+  onClick,
+}: {
+  src: string;
+  aspect: string;
+  index: number;
+  onClick: () => void;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion() ?? false;
 
-function PenGlyph(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" strokeWidth={16} strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <line x1="184" y1="72" x2="32" y2="224" />
-      <path d="M146.34,189.66a8,8,0,0,1-5.65,2.34H64V115.31a8,8,0,0,1,2.34-5.65L136.4,40.4a56,56,0,0,1,79.2,79.2Z" />
-      <line x1="112" y1="64.52" x2="112" y2="144" />
-      <line x1="136" y1="120" x2="215.2" y2="120" />
-    </svg>
-  );
-}
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-const ENTRY_ICONS = {
-  code: CodeGlyph,
-  pen: PenGlyph,
-};
-
-// [[label|url]] inside a highlight renders as a slightly darker, clearly
-// clickable link; everything else stays plain dim text
-function renderHighlight(h: string) {
-  return h.split(/(\[\[[^\]]+\]\])/g).map((part, i) => {
-    const match = part.match(/^\[\[([^|]+)\|([^\]]+)\]\]$/);
-    if (!match) return <span key={i}>{part}</span>;
-    return (
-      <a
-        key={i}
-        href={match[2]}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-medium text-neutral-700 transition-colors hover:text-foreground dark:text-neutral-300 dark:hover:text-white"
-      >
-        {match[1]}
-      </a>
-    );
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), {
+    stiffness: 250,
+    damping: 25,
   });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), {
+    stiffness: 250,
+    damping: 25,
+  });
+  const shineX = useTransform(mouseX, [-0.5, 0.5], ["0%", "100%"]);
+  const shineY = useTransform(mouseY, [-0.5, 0.5], ["0%", "100%"]);
+
+  // Album photo resting rotation angles
+  const angles = [-1.8, 1.5, -2.2, 1.8, -1.2, 2.0, -1.6, 1.4, -2.0, 1.6];
+  const paperRotation = angles[index % angles.length];
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (reduce || !cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
+  return (
+    <motion.div
+      initial={reduce ? false : { opacity: 0, y: 24, scale: 0.94 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.45, delay: index * 0.05, ease: "easeOut" }}
+      className="break-inside-avoid mb-5 sm:mb-6"
+    >
+      <div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onClick={onClick}
+        style={{ perspective: 1000 }}
+        className="group relative w-full cursor-pointer select-none"
+      >
+        <motion.div
+          style={{
+            rotateX: reduce ? 0 : rotateX,
+            rotateY: reduce ? 0 : rotateY,
+            rotateZ: reduce ? 0 : paperRotation,
+            transformStyle: "preserve-3d",
+          }}
+          whileHover={{ scale: 1.03, rotateZ: 0 }}
+          whileTap={{ scale: 0.98 }}
+          className="relative overflow-hidden rounded-2xl border-2 border-white/80 bg-white/95 p-2.5 sm:p-3 shadow-md transition-all duration-300 hover:shadow-2xl dark:border-neutral-700/80 dark:bg-neutral-900/95 dark:shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
+        >
+          {/* Subtle Washi Tape Accent on top */}
+          <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-11 sm:w-14 h-3 sm:h-3.5 bg-amber-200/70 dark:bg-amber-500/30 rounded-xs transform -rotate-1 border border-amber-300/50 shadow-xs pointer-events-none z-10" />
+
+          {/* Photo Frame Container - Pure photo without title or caption */}
+          <div className={`relative w-full overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800 ${aspect}`}>
+            <img
+              src={src}
+              alt=""
+              draggable={false}
+              className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
+
+            {/* Specular Light Gleam */}
+            <motion.div
+              style={{
+                background: `radial-gradient(circle at ${shineX} ${shineY}, rgba(255,255,255,0.4) 0%, transparent 65%)`,
+              }}
+              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            />
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
 }
 
 export default function WorkPage() {
-  const reduce = useReducedMotion() ?? false;
   const { scrollYProgress } = useScroll();
-  const pb = useTransform(scrollYProgress, [0.2, 1], ["40px", "300px"]);
+  const pb = useTransform(scrollYProgress, [0.2, 1], ["40px", "220px"]);
+  const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const handlePrev = useCallback(() => {
+    if (selectedIdx === null) return;
+    setSelectedIdx((prev) => (prev !== null ? (prev - 1 + HAND_HOLDING_PHOTOS.length) % HAND_HOLDING_PHOTOS.length : 0));
+  }, [selectedIdx]);
+
+  const handleNext = useCallback(() => {
+    if (selectedIdx === null) return;
+    setSelectedIdx((prev) => (prev !== null ? (prev + 1) % HAND_HOLDING_PHOTOS.length : 0));
+  }, [selectedIdx]);
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (selectedIdx === null) return;
+      if (e.key === "Escape") setSelectedIdx(null);
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [selectedIdx, handlePrev, handleNext]);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedIdx !== null) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [selectedIdx]);
+
   return (
-    <main className="flex flex-1 flex-col items-center justify-start bg-background text-foreground">
+    <main className="flex flex-1 flex-col items-center justify-start bg-transparent text-foreground">
       <motion.div
-  className="relative flex w-full flex-1 flex-col items-center justify-start px-6 pt-16"
-  style={{ paddingBottom: pb }}
->
-        <div className="flex w-full max-w-[540px] flex-col gap-[25px]">
-        {/* Heading — hero greeting treatment, bumped a size; fades up + unblurs
-            on mount, so it plays when arriving via the dock */}
-        <motion.p
-          className="text-[24px] font-medium leading-none text-foreground"
-          style={{ fontFamily: "var(--font-overused-grotesk)" }}
-          initial={reduce ? false : { opacity: 0, y: 14, filter: "blur(6px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
-        >
-          <TextScramble text="Experience" />
-          <motion.span
-            className="mt-2 block font-mono text-[12px] font-light tracking-[-0.3px] text-neutral-500 dark:text-neutral-400 sm:ml-3 sm:mt-0 sm:inline-block"
-            variants={FADE_UP}
-            initial={reduce ? false : "hidden"}
-            animate="visible"
-            transition={{ duration: 0.45, ease: "easeOut", delay: 0.5 }}
-          >
-            Where I&apos;ve worked &amp; what I&apos;ve built
-          </motion.span>
-        </motion.p>
-
-        {content.experience.map((job) => {
-          const Icon = ENTRY_ICONS[job.icon];
-          const location = (
-            <>
-              {job.location}
-              {job.locationNote && <span className="ml-1.5">{job.locationNote}</span>}
-              {job.end === null && (
-                <span aria-hidden className="relative ml-2.5 inline-block size-2.5">
-                  <span className="absolute -inset-1 animate-ping rounded-full bg-foreground/10 motion-reduce:hidden" />
-                  <span className="absolute -inset-1 rounded-full bg-foreground/10" />
-                  <span className="absolute inset-[2px] rounded-full bg-foreground" />
-                </span>
-              )}
-            </>
-          );
-          return (
-          <section key={job.company} className="w-full">
-            {/* Company row */}
-            <motion.div
-              className="flex items-center gap-3"
-              variants={FADE_UP}
-              initial={reduce ? false : "hidden"}
-              animate="visible"
-              transition={{ duration: 0.45, ease: "easeOut", delay: 0.15 }}
-            >
-              <a
-                href={job.url || undefined}
-                target={job.url ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                className="shrink-0"
-              >
-                {job.logo.length > 0 ? (
-                  <img src={job.logo} alt="" width={24} height={24} draggable={false} className={`size-6 rounded-full transition-opacity hover:opacity-70 ${job.logoInvert ? "dark:invert" : ""}`} />
-                ) : (
-                  <span className="flex size-6 items-center justify-center rounded-full bg-neutral-100 font-mono text-xs text-neutral-500 dark:bg-neutral-900 dark:text-neutral-400">
-                    {job.company.charAt(0)}
-                  </span>
-                )}
-              </a>
-              <div className="relative h-6 min-w-0 flex-1">
-                <a
-                  href={job.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute left-0 top-0 whitespace-nowrap text-[20px] leading-6 transition-opacity hover:opacity-70"
-                  style={{ fontFamily: "var(--font-overused-grotesk)" }}
-                >
-                  {job.company}
-                </a>
-                <span className="absolute right-0 top-1 hidden items-center whitespace-nowrap text-sm text-neutral-500 sm:flex dark:text-neutral-400">
-                  {location}
-                </span>
-              </div>
-            </motion.div>
-
-            {/* Location — own line under the company name on mobile; the row
-                can't fit it beside the name on narrow screens. No blur in the
-                entrance: a leftover blur(0px) filter keeps this line (with its
-                infinitely animating presence dot) in a composited layer that
-                rasterizes text softly on phones. */}
-            <motion.span
-              className="ml-9 mt-1 flex items-center whitespace-nowrap text-sm text-neutral-500 sm:hidden dark:text-neutral-400"
-              initial={reduce ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: "easeOut", delay: 0.15 }}
-            >
-              {location}
-            </motion.span>
-
-            {/* Timeline rail + entry — tile left-aligns with the company logo,
-                rail runs the tile's center, ends at the tag row with a curl */}
-            <div className="relative mt-4">
-              {/* rail ends exactly where the curl's arc begins (bottom offset
-                  + radius), otherwise the line overshoots and forks the arc */}
-              <motion.span
-                aria-hidden
-                className="absolute left-3 top-0 h-[calc(100%-26px)] w-px bg-neutral-300 dark:bg-neutral-700"
-                initial={reduce ? false : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.45, ease: "easeOut", delay: 0.22 }}
-              />
-              <motion.span
-                aria-hidden
-                className="absolute bottom-[18px] left-3 size-4 rounded-bl-[8px] border-b border-l border-neutral-300 dark:border-neutral-700"
-                initial={reduce ? false : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.45, ease: "easeOut", delay: 0.22 }}
-              />
-              <div>
-                {/* Role row */}
-                <motion.div
-                  className="flex items-start justify-between gap-3"
-                  variants={FADE_UP}
-                  initial={reduce ? false : "hidden"}
-                  animate="visible"
-                  transition={{ duration: 0.45, ease: "easeOut", delay: 0.22 }}
-                >
-                  <div className="flex min-w-0 items-start gap-3">
-                    <span className="relative flex size-6 shrink-0 items-center justify-center rounded-md bg-neutral-100 shadow-[0_0_0_1px_#ffffff,0_0_0_2px_rgba(228,228,231,0.5)] dark:bg-neutral-900 dark:shadow-[0_0_0_1px_#0a0a0a,0_0_0_2px_rgba(255,255,255,0.08)]">
-                      <Icon className="size-4 text-neutral-500" aria-hidden="true" />
-                    </span>
-                    <p className="text-base font-medium leading-6 text-foreground">{job.role}</p>
-                  </div>
-                </motion.div>
-
-                {/* Meta line */}
-                <motion.div
-                  className="ml-9 mt-1 flex items-center gap-2 text-sm leading-5 text-neutral-500 dark:text-neutral-400"
-                  variants={FADE_UP}
-                  initial={reduce ? false : "hidden"}
-                  animate="visible"
-                  transition={{ duration: 0.45, ease: "easeOut", delay: 0.29 }}
-                >
-                  <span>{job.type}</span>
-                  <span aria-hidden className="h-4 w-px bg-neutral-300 dark:bg-neutral-700" />
-                  <span>{job.start}</span>
-                  <span aria-hidden className="font-mono">—</span>
-                  {job.end ? (
-                    <span>{job.end}</span>
-                  ) : (
-                    <InfinityIcon className="size-[18px]" strokeWidth={1.333} />
-                  )}
-                  {job.duration && (
-                    <>
-                      <span aria-hidden className="h-4 w-px bg-neutral-300 dark:bg-neutral-700" />
-                      <span>{job.duration}</span>
-                    </>
-                  )}
-                </motion.div>
-
-                {/* Bullets */}
-                <ul className="ml-[27px] mt-3 space-y-[7.5px]">
-                  {job.highlights.map((h, i) => (
-                    <motion.li
-                      key={h}
-                      className="flex items-start gap-1.5 text-[15px] leading-6 text-neutral-500 dark:text-neutral-400"
-                      variants={FADE_UP}
-                      initial={reduce ? false : "hidden"}
-                      animate="visible"
-                      transition={{ duration: 0.45, ease: "easeOut", delay: 0.36 + i * 0.07 }}
-                    >
-                      <span aria-hidden className="flex w-[15px] shrink-0 justify-end text-[rgba(9,9,11,0.25)] dark:text-white/25">•</span>
-                      <span className="whitespace-pre-line">{renderHighlight(h)}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-
-                {/* Tags */}
-                {job.tags.length > 0 && (
-                  <motion.div
-                    className="ml-9 mt-3 flex flex-wrap gap-1.5 pb-2"
-                    variants={FADE_UP}
-                    initial={reduce ? false : "hidden"}
-                    animate="visible"
-                    transition={{ duration: 0.45, ease: "easeOut", delay: 0.36 + job.highlights.length * 0.07 + 0.05 }}
-                  >
-                    {job.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-neutral-100 px-1.5 py-0.5 font-mono text-xs leading-4 text-neutral-500 dark:bg-neutral-900 dark:text-neutral-400"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </motion.div>
-                )}
-              </div>
-            </div>
-          </section>
-          );
-        })}
+        className="relative flex w-full flex-1 flex-col items-center justify-start px-3 sm:px-6 pt-10 sm:pt-14"
+        style={{ paddingBottom: pb }}
+      >
+        {/* Album Masonry Gallery - No titles, no captions, pure photos */}
+        <div className="w-full max-w-4xl columns-1 sm:columns-2 md:columns-3 gap-5 sm:gap-6">
+          {HAND_HOLDING_PHOTOS.map((photo, idx) => (
+            <AlbumPhotoCard
+              key={photo.id}
+              src={photo.src}
+              aspect={photo.aspect}
+              index={idx}
+              onClick={() => setSelectedIdx(idx)}
+            />
+          ))}
         </div>
       </motion.div>
-{/* progressive blur at the bottom — exact mask values from magicui */}
-<ProgressiveBlur
- position="bottom"
- height="180px"
- className="fixed"
- blurLevels={[0.5, 1, 2, 4, 8, 16, 24, 32]}
- />
+
+      {/* Progressive Blur at the bottom */}
+      <ProgressiveBlur
+        position="bottom"
+        height="180px"
+        className="fixed"
+        blurLevels={[0.5, 1, 2, 4, 8, 16, 24, 32]}
+      />
+
+      {/* Fullscreen Photo Lightbox Modal - Portaled to document.body */}
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {selectedIdx !== null && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/85 p-3 sm:p-6 backdrop-blur-xl"
+                onClick={() => setSelectedIdx(null)}
+              >
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.9, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative max-h-[92vh] max-w-3xl overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/90 shadow-2xl flex items-center justify-center p-2 sm:p-3"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Close Button */}
+                  <button
+                    type="button"
+                    onClick={() => setSelectedIdx(null)}
+                    className="absolute top-3 right-3 z-30 flex size-9 items-center justify-center rounded-full bg-black/70 text-white/90 border border-white/10 backdrop-blur-md transition-all hover:bg-black hover:scale-105 active:scale-95 cursor-pointer"
+                    aria-label="Close"
+                  >
+                    ✕
+                  </button>
+
+                  {/* Previous Button */}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePrev();
+                    }}
+                    className="absolute left-2 sm:left-3 top-1/2 z-30 -translate-y-1/2 flex size-10 items-center justify-center rounded-full bg-black/70 text-white/90 border border-white/10 backdrop-blur-md transition-all hover:bg-black hover:scale-105 active:scale-95 cursor-pointer"
+                    aria-label="Previous"
+                  >
+                    ‹
+                  </button>
+
+                  {/* Next Button */}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNext();
+                    }}
+                    className="absolute right-2 sm:right-3 top-1/2 z-30 -translate-y-1/2 flex size-10 items-center justify-center rounded-full bg-black/70 text-white/90 border border-white/10 backdrop-blur-md transition-all hover:bg-black hover:scale-105 active:scale-95 cursor-pointer"
+                    aria-label="Next"
+                  >
+                    ›
+                  </button>
+
+                  {/* Full Image Display - No Title, No Caption */}
+                  <div className="relative max-h-[85vh] max-w-[85vw] flex items-center justify-center overflow-hidden rounded-2xl">
+                    <motion.img
+                      key={selectedIdx}
+                      src={HAND_HOLDING_PHOTOS[selectedIdx].src}
+                      alt=""
+                      initial={{ opacity: 0, scale: 0.97 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.2 }}
+                      className="max-h-[82vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl select-none"
+                    />
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
     </main>
   );
 }

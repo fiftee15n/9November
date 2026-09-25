@@ -44,18 +44,18 @@ function HomeGlyph(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-function WorkGlyph(props: SVGProps<SVGSVGElement>) {
+function HandHoldingGlyph(props: SVGProps<SVGSVGElement>) {
   return (
     <PhosphorGlyph {...props}>
       <path
-        d="M128,160,40,113.07h0v53.22a8,8,0,0,0,2,5.31c11.3,12.59,38.9,36.4,86,36.4s74.68-23.81,86-36.4a8,8,0,0,0,2-5.31V113.07Z"
+        d="M178,40c-20.65,0-38.73,12.5-46.79,30.82a4,4,0,0,1-6.42,0C116.73,52.5,98.65,40,78,40A46,46,0,0,0,32,86c0,53.52,90.41,114.73,94.24,117.29a3.61,3.61,0,0,0,3.52,0C133.59,200.73,224,139.52,224,86A46,46,0,0,0,178,40Z"
         fill="currentColor"
         stroke="none"
         opacity="0.2"
       />
-      <polygon points="8 96 128 32 248 96 128 160 8 96" />
-      <polyline points="128 96 184 125.87 184 240" />
-      <path d="M216,113.07v53.22a8,8,0,0,1-2,5.31c-11.3,12.59-38.9,36.4-86,36.4s-74.68-23.81-86-36.4a8,8,0,0,1-2-5.31V113.07" />
+      <path
+        d="M178,40c-20.65,0-38.73,12.5-46.79,30.82a4,4,0,0,1-6.42,0C116.73,52.5,98.65,40,78,40A46,46,0,0,0,32,86c0,53.52,90.41,114.73,94.24,117.29a3.61,3.61,0,0,0,3.52,0C133.59,200.73,224,139.52,224,86A46,46,0,0,0,178,40Z"
+      />
     </PhosphorGlyph>
   );
 }
@@ -95,7 +95,7 @@ function SkillsGlyph(props: SVGProps<SVGSVGElement>) {
 // `disabled: true` keeps the item visible but non-navigable (unavailable)
 const NAV = [
   { label: "Home", href: "/", Icon: HomeGlyph },
-  { label: "Work", href: "/work", Icon: WorkGlyph },
+  { label: "হাত ধরা", href: "/work", Icon: HandHoldingGlyph },
   { label: "Craft", href: "/playground", Icon: PlaygroundGlyph, disabled: true },
   { label: "Stack", href: "/skills", Icon: SkillsGlyph },
 ];
@@ -138,7 +138,12 @@ export function DockBar() {
                     className="flex size-full cursor-not-allowed flex-col items-center justify-center gap-[3px] text-neutral-400/70 opacity-60 dark:text-neutral-500/70"
                   >
                     <Icon className="size-[18px]" strokeWidth={1.5} aria-hidden />
-                    <span className="whitespace-nowrap text-[10px] leading-none">{label}</span>
+                    <span
+                      className="whitespace-nowrap text-[10px] leading-none"
+                      style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
+                    >
+                      {label}
+                    </span>
                   </span>
                 </DockItem>
               );
@@ -155,7 +160,12 @@ export function DockBar() {
                   }`}
                 >
                   <Icon className="size-[18px]" strokeWidth={1.5} aria-hidden />
-                  <span className="whitespace-nowrap text-[10px] leading-none">{label}</span>
+                  <span
+                    className="whitespace-nowrap text-[10px] leading-none"
+                    style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
+                  >
+                    {label}
+                  </span>
                 </Link>
               </DockItem>
             );
