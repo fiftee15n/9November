@@ -4,16 +4,21 @@ import dynamic from "next/dynamic";
 import { CoordinateProvider, useCoordinates } from "@/components/Hero/CoordinateTracker";
 import { HeaderBar } from "@/components/Hero/HeaderBar";
 
+import { usePathname } from "next/navigation";
+
 const RomanticBackgroundScene = dynamic(
   () => import("@/components/3d/RomanticBackground").then((mod) => mod.RomanticBackgroundScene),
   { ssr: false }
 );
 
 function Shell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isTrimatrik = pathname === "/trimatrik";
   const { handleMouseMove } = useCoordinates();
+
   return (
     <div className="relative flex min-h-screen flex-col" onMouseMove={handleMouseMove}>
-      <RomanticBackgroundScene />
+      {!isTrimatrik && <RomanticBackgroundScene />}
       <HeaderBar />
       {children}
     </div>

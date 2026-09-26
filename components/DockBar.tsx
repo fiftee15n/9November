@@ -96,6 +96,22 @@ function WishGlyph(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+function Cube3DGlyph(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PhosphorGlyph {...props}>
+      <path
+        d="M223.68,66.15,135.68,18a16,16,0,0,0-15.36,0L32.32,66.15a16,16,0,0,0-8.32,14v95.7a16,16,0,0,0,8.32,14l88,48.15a16,16,0,0,0,15.36,0l88-48.15a16,16,0,0,0,8.32-14V80.15A16,16,0,0,0,223.68,66.15ZM128,32l76.16,41.67L128,115.33,51.84,73.67ZM40,91.87l80,43.78v88.48L40,180.35Zm96,132.26V135.65l80-43.78v88.48Z"
+        fill="currentColor"
+        stroke="none"
+        opacity="0.2"
+      />
+      <path d="M223.68,66.15,135.68,18a16,16,0,0,0-15.36,0L32.32,66.15a16,16,0,0,0-8.32,14v95.7a16,16,0,0,0,8.32,14l88,48.15a16,16,0,0,0,15.36,0l88-48.15a16,16,0,0,0,8.32-14V80.15A16,16,0,0,0,223.68,66.15Z" />
+      <line x1="128" y1="120" x2="128" y2="232" />
+      <polyline points="224 74.63 128 120 32 74.63" />
+    </PhosphorGlyph>
+  );
+}
+
 // `disabled: true` keeps the item visible but non-navigable (unavailable)
 const NAV: {
   label: string;
@@ -107,6 +123,7 @@ const NAV: {
   { label: "হাত ধরা", href: "/hat-dhoro", Icon: HandHoldingGlyph },
   { label: "চিরকুট", href: "/chirkut", Icon: LetterGlyph },
   { label: "ইচ্ছে", href: "/ecche", Icon: WishGlyph },
+  { label: "ত্রিমাত্রিক", href: "/trimatrik", Icon: Cube3DGlyph },
 ];
 
 export function DockBar() {
