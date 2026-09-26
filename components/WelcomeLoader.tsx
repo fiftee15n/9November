@@ -95,12 +95,15 @@ const STORY_MOMENTS: StoryMoment[] = [
   },
 ];
 
+const SUBTITLE_TEXT = "তুমি, আমি এবং আমাদের গল্প";
+
 type Phase = "story" | "signature" | "moving";
 
 export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
   const reduce = useReducedMotion() ?? false;
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState<Phase>("story");
+  const [typedText, setTypedText] = useState("");
   const [path, setPath] = useState<{
     startX: number;
     startY: number;
@@ -162,20 +165,65 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
 
   useEffect(() => {
     if (phase !== "signature") return;
-    const t = setTimeout(() => setPhase("moving"), 800);
-    return () => clearTimeout(t);
-  }, [phase]);
+
+    if (reduce) {
+      setTypedText(SUBTITLE_TEXT);
+      const t = setTimeout(() => setPhase("moving"), 500);
+      return () => clearTimeout(t);
+    }
+
+    let charIndex = 0;
+    let typeTimer: NodeJS.Timeout | null = null;
+    let finishTimer: NodeJS.Timeout | null = null;
+
+    // Gentle delay after logo fades in before typing starts
+    const startTimer = setTimeout(() => {
+      const typeChar = () => {
+        if (charIndex < SUBTITLE_TEXT.length) {
+          charIndex++;
+          setTypedText(SUBTITLE_TEXT.slice(0, charIndex));
+          const char = SUBTITLE_TEXT[charIndex - 1];
+          const delay = char === "," ? 220 : char === " " ? 95 : 60;
+          typeTimer = setTimeout(typeChar, delay);
+        } else {
+          // Pause when typing finishes so user can comfortably read it
+          finishTimer = setTimeout(() => {
+            setPhase("moving");
+          }, 1200);
+        }
+      };
+      typeChar();
+    }, 450);
+
+    return () => {
+      clearTimeout(startTimer);
+      if (typeTimer) clearTimeout(typeTimer);
+      if (finishTimer) clearTimeout(finishTimer);
+    };
+  }, [phase, reduce]);
 
   // Keyboard navigation: Space, ArrowRight, Enter advances; Escape skips
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (phase !== "story") return;
-      if (e.key === " " || e.key === "ArrowRight" || e.key === "Enter") {
-        e.preventDefault();
-        nextSlide();
-      } else if (e.key === "Escape") {
-        e.preventDefault();
-        finishStory();
+      if (phase === "story") {
+        if (e.key === " " || e.key === "ArrowRight" || e.key === "Enter") {
+          e.preventDefault();
+          nextSlide();
+        } else if (e.key === "Escape") {
+          e.preventDefault();
+          finishStory();
+        }
+      } else if (phase === "signature") {
+        if (
+          e.key === " " ||
+          e.key === "ArrowRight" ||
+          e.key === "Enter" ||
+          e.key === "Escape"
+        ) {
+          e.preventDefault();
+          setTypedText(SUBTITLE_TEXT);
+          setPhase("moving");
+        }
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -198,6 +246,10 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
         if (phase === "story") {
           e.stopPropagation();
           nextSlide();
+        } else if (phase === "signature") {
+          e.stopPropagation();
+          setTypedText(SUBTITLE_TEXT);
+          setPhase("moving");
         }
       }}
       initial={{ opacity: 1 }}
@@ -335,59 +387,94 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
           </div>
         </>
       ) : (
-        <motion.div
-          key="signature"
-          aria-label="Logo"
-          initial={{
-            opacity: 0,
-            filter: "blur(8px)",
-            x: path.startX,
-            y: path.startY,
-            scale: 1,
-          }}
-          animate={
-            phase === "moving"
-              ? {
-                  opacity: 1,
-                  filter: "blur(0px)",
-                  x: path.endX,
-                  y: path.endY,
-                  scale: path.endScale,
-                  transition: { duration: 0.9, ease: EASE_OUT },
-                }
-              : {
-                  opacity: 1,
-                  filter: "blur(0px)",
-                  x: path.startX,
-                  y: path.startY,
-                  scale: 1,
-                  transition: {
-                    duration: 0.6,
-                    ease: "easeOut",
-                    filter: { duration: 0.7, ease: "easeOut" },
-                  },
-                }
-          }
-          onAnimationComplete={handleAnimationComplete}
-          style={
-            {
-              position: "fixed",
-              top: 0,
-              left: 0,
-              height: "140px",
-              width: "auto",
-              transformOrigin: "top left",
-              willChange: "transform, opacity",
-            } as const
-          }
-        >
-          <img
-            src="/logo-cropped.png"
-            alt="Logo"
-            className="h-[140px] w-auto object-contain select-none"
-            draggable={false}
-          />
-        </motion.div>
+        <>
+          <motion.div
+            key="signature"
+            aria-label="Logo"
+            initial={{
+              opacity: 0,
+              filter: "blur(8px)",
+              x: path.startX,
+              y: path.startY,
+              scale: 1,
+            }}
+            animate={
+              phase === "moving"
+                ? {
+                    opacity: 1,
+                    filter: "blur(0px)",
+                    x: path.endX,
+                    y: path.endY,
+                    scale: path.endScale,
+                    transition: { duration: 0.9, ease: EASE_OUT },
+                  }
+                : {
+                    opacity: 1,
+                    filter: "blur(0px)",
+                    x: path.startX,
+                    y: path.startY,
+                    scale: 1,
+                    transition: {
+                      duration: 0.6,
+                      ease: "easeOut",
+                      filter: { duration: 0.7, ease: "easeOut" },
+                    },
+                  }
+            }
+            onAnimationComplete={handleAnimationComplete}
+            style={
+              {
+                position: "fixed",
+                top: 0,
+                left: 0,
+                height: "140px",
+                width: "auto",
+                transformOrigin: "top left",
+                willChange: "transform, opacity",
+              } as const
+            }
+          >
+            <img
+              src="/logo-cropped.png"
+              alt="Logo"
+              className="h-[140px] w-auto object-contain select-none"
+              draggable={false}
+            />
+          </motion.div>
+
+          {/* Typewriter text below the logo on the black background */}
+          <motion.div
+            key="signature-typewriter"
+            initial={{ opacity: 0, y: 12 }}
+            animate={
+              phase === "moving"
+                ? {
+                    opacity: 0,
+                    y: -10,
+                    filter: "blur(6px)",
+                    transition: { duration: 0.35, ease: "easeIn" },
+                  }
+                : {
+                    opacity: 1,
+                    y: 0,
+                    filter: "blur(0px)",
+                    transition: { duration: 0.6, ease: "easeOut" },
+                  }
+            }
+            className="fixed inset-x-0 flex flex-col items-center justify-center pointer-events-none z-10 px-4"
+            style={{
+              top: `${path.startY + 158}px`,
+              fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif",
+            }}
+          >
+            <p className="text-base sm:text-lg md:text-xl font-light text-neutral-200 tracking-wide select-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
+              {typedText}
+              <span className="inline-block text-rose-400 font-light ml-1 animate-pulse">
+                |
+              </span>
+            </p>
+          </motion.div>
+        </>
       )}
     </motion.div>
   );
