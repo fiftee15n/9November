@@ -2,15 +2,21 @@
 
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
+import { useTheme } from "next-themes";
 import { TrimatrikScene } from "./TrimatrikScene";
 
 export function TrimatrikViewer() {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+
   return (
-    <div className="relative w-full h-[calc(100vh-64px)] min-h-[500px] bg-white select-none">
+    <div
+      className="relative w-full h-[calc(100vh-64px)] min-h-[500px] select-none bg-white dark:bg-[#0a0a0c] transition-colors duration-300"
+    >
       <Suspense
         fallback={
-          <div className="absolute inset-0 flex items-center justify-center bg-white">
-            <div className="w-10 h-10 rounded-full border-2 border-neutral-200 border-t-neutral-500 animate-spin" />
+          <div className="absolute inset-0 flex items-center justify-center bg-white dark:bg-[#0a0a0c]">
+            <div className="w-10 h-10 rounded-full border-2 border-neutral-200 dark:border-neutral-700 border-t-neutral-500 dark:border-t-neutral-400 animate-spin" />
           </div>
         }
       >
@@ -24,7 +30,7 @@ export function TrimatrikViewer() {
           }}
           className="w-full h-full cursor-grab active:cursor-grabbing"
         >
-          <TrimatrikScene />
+          <TrimatrikScene isDark={isDark} />
         </Canvas>
       </Suspense>
     </div>
