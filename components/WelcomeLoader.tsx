@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
-import { EASE_OUT } from "@/lib/ease";
 
 interface StoryMoment {
   id: string;
@@ -97,36 +96,22 @@ const STORY_MOMENTS: StoryMoment[] = [
 
 const SUBTITLE_TEXT = "তুমি, আমি এবং আমাদের গল্প";
 
-type Phase = "story" | "signature" | "moving";
+type Phase = "story" | "signature";
 
 export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
   const reduce = useReducedMotion() ?? false;
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState<Phase>("story");
   const [typedText, setTypedText] = useState("");
-  const [path, setPath] = useState<{
-    startX: number;
-    startY: number;
-    endX: number;
-    endY: number;
-    endScale: number;
-  } | null>(null);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const completedRef = useRef(false);
 
-  useEffect(() => {
-    const START_H = 140;
-    const el = document.getElementById("hero-signature");
-    const r = el?.getBoundingClientRect();
-    const w = START_H * (745 / 873);
-    setPath({
-      startX: (window.innerWidth - w) / 2,
-      startY: (window.innerHeight - START_H) / 2,
-      endX: r ? r.left : Math.max(8, window.innerWidth / 2 - 270),
-      endY: r ? r.top : 64,
-      endScale: r ? r.height / START_H : 0.8,
-    });
-  }, []);
+  const triggerReveal = useCallback(() => {
+    if (completedRef.current) return;
+    completedRef.current = true;
+    onComplete();
+  }, [onComplete]);
 
   const finishStory = useCallback(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
@@ -163,12 +148,13 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
     };
   }, [index, phase, reduce, nextSlide, currentDuration]);
 
+  // Typewriter effect in signature phase followed by cinematic dissolve reveal
   useEffect(() => {
     if (phase !== "signature") return;
 
     if (reduce) {
       setTypedText(SUBTITLE_TEXT);
-      const t = setTimeout(() => setPhase("moving"), 500);
+      const t = setTimeout(() => triggerReveal(), 600);
       return () => clearTimeout(t);
     }
 
@@ -176,7 +162,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
     let typeTimer: NodeJS.Timeout | null = null;
     let finishTimer: NodeJS.Timeout | null = null;
 
-    // Gentle delay after logo fades in before typing starts
+    // Gentle delay after logo illuminates before typing starts
     const startTimer = setTimeout(() => {
       const typeChar = () => {
         if (charIndex < SUBTITLE_TEXT.length) {
@@ -186,10 +172,10 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
           const delay = char === "," ? 220 : char === " " ? 95 : 60;
           typeTimer = setTimeout(typeChar, delay);
         } else {
-          // Pause when typing finishes so user can comfortably read it
+          // Pause when typing finishes so user can comfortably read it, then dissolve into home
           finishTimer = setTimeout(() => {
-            setPhase("moving");
-          }, 1200);
+            triggerReveal();
+          }, 1400);
         }
       };
       typeChar();
@@ -200,9 +186,9 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
       if (typeTimer) clearTimeout(typeTimer);
       if (finishTimer) clearTimeout(finishTimer);
     };
-  }, [phase, reduce]);
+  }, [phase, reduce, triggerReveal]);
 
-  // Keyboard navigation: Space, ArrowRight, Enter advances; Escape skips
+  // Keyboard navigation: Space, ArrowRight, Enter advances; Escape skips/reveals
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (phase === "story") {
@@ -222,19 +208,13 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
         ) {
           e.preventDefault();
           setTypedText(SUBTITLE_TEXT);
-          setPhase("moving");
+          triggerReveal();
         }
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [phase, nextSlide, finishStory]);
-
-  const handleAnimationComplete = () => {
-    if (phase === "moving") {
-      onComplete();
-    }
-  };
+  }, [phase, nextSlide, finishStory, triggerReveal]);
 
   return (
     <motion.div
@@ -249,19 +229,21 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
         } else if (phase === "signature") {
           e.stopPropagation();
           setTypedText(SUBTITLE_TEXT);
-          setPhase("moving");
+          triggerReveal();
         }
       }}
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1.0] }}
+      exit={{
+        opacity: 0,
+        filter: "blur(6px)",
+      }}
+      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       aria-modal="true"
       role="dialog"
       aria-label="Welcome Story"
     >
-
-      {/* Dynamic Background Photo Layer with clear, luminous presentation */}
+      {/* Dynamic Background Photo Layer during story phase */}
       <AnimatePresence>
         {phase === "story" && currentMoment.bgImage && (
           <motion.div
@@ -286,7 +268,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
         )}
       </AnimatePresence>
 
-      {phase === "story" || !path ? (
+      {phase === "story" ? (
         <>
           {/* Top minimal skip button */}
           <div
@@ -387,93 +369,106 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
           </div>
         </>
       ) : (
+        /* Signature Phase: Centered Logo + Ambient Warm Glow + Bengali Typewriter */
         <>
-          <motion.div
-            key="signature"
-            aria-label="Logo"
-            initial={{
-              opacity: 0,
-              filter: "blur(8px)",
-              x: path.startX,
-              y: path.startY,
-              scale: 1,
-            }}
-            animate={
-              phase === "moving"
-                ? {
-                    opacity: 1,
-                    filter: "blur(0px)",
-                    x: path.endX,
-                    y: path.endY,
-                    scale: path.endScale,
-                    transition: { duration: 0.9, ease: EASE_OUT },
-                  }
-                : {
-                    opacity: 1,
-                    filter: "blur(0px)",
-                    x: path.startX,
-                    y: path.startY,
-                    scale: 1,
-                    transition: {
-                      duration: 0.6,
-                      ease: "easeOut",
-                      filter: { duration: 0.7, ease: "easeOut" },
-                    },
-                  }
-            }
-            onAnimationComplete={handleAnimationComplete}
-            style={
-              {
-                position: "fixed",
-                top: 0,
-                left: 0,
-                height: "140px",
-                width: "auto",
-                transformOrigin: "top left",
-                willChange: "transform, opacity",
-              } as const
-            }
+          {/* Top minimal skip button */}
+          <div
+            className="relative z-10 flex w-full justify-end px-6 pt-6 sm:pt-8"
+            onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src="/logo-cropped.png"
-              alt="Logo"
-              className="h-[140px] w-auto object-contain select-none"
-              draggable={false}
-            />
-          </motion.div>
+            <button
+              type="button"
+              onClick={triggerReveal}
+              className="text-xs text-neutral-400 hover:text-white transition-colors px-2 py-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+            >
+              প্রবেশ করুন →
+            </button>
+          </div>
 
-          {/* Typewriter text below the logo on the black background */}
-          <motion.div
-            key="signature-typewriter"
-            initial={{ opacity: 0, y: 12 }}
-            animate={
-              phase === "moving"
-                ? {
-                    opacity: 0,
-                    y: -10,
-                    filter: "blur(6px)",
-                    transition: { duration: 0.35, ease: "easeIn" },
-                  }
-                : {
-                    opacity: 1,
-                    y: 0,
-                    filter: "blur(0px)",
-                    transition: { duration: 0.6, ease: "easeOut" },
-                  }
-            }
-            className="fixed inset-x-0 flex flex-col items-center justify-center pointer-events-none z-10 px-4"
-            style={{
-              top: `${path.startY + 158}px`,
-              fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif",
-            }}
-          >
-            <p className="text-base sm:text-lg md:text-xl font-light text-neutral-200 tracking-wide select-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
-              {typedText}
-              <span className="inline-block text-rose-400 font-light ml-1 animate-pulse">
-                |
-              </span>
-            </p>
-          </motion.div>
+          {/* Centered Logo with soft luminous bloom and dissolve */}
+          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6">
+            {/* Luminous warm ambient glow that blooms outward during reveal */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.7 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{
+                opacity: 0,
+                scale: 1.6,
+                filter: "blur(36px)",
+                transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1] },
+              }}
+              transition={{ duration: 1.0, ease: "easeOut" }}
+              className="absolute pointer-events-none -z-10 size-72 sm:size-96 rounded-full bg-[radial-gradient(circle,rgba(251,113,133,0.25)_0%,rgba(249,115,22,0.15)_35%,transparent_70%)] blur-2xl"
+            />
+
+            {/* Logo: gentle entrance and glowing expand-dissolve exit */}
+            <motion.div
+              key="signature-logo"
+              aria-label="Logo"
+              initial={{
+                opacity: 0,
+                scale: 0.92,
+                filter: "blur(12px)",
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                filter: "blur(0px)",
+                transition: {
+                  duration: 0.85,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              }}
+              exit={{
+                opacity: 0,
+                scale: 1.15,
+                filter: "blur(18px)",
+                transition: { duration: 1.0, ease: [0.22, 1, 0.36, 1] },
+              }}
+              className="relative flex items-center justify-center"
+            >
+              <img
+                src="/logo-cropped.png"
+                alt="Logo"
+                className="h-28 sm:h-36 md:h-40 w-auto object-contain select-none drop-shadow-[0_4px_28px_rgba(251,113,133,0.4)]"
+                draggable={false}
+              />
+            </motion.div>
+
+            {/* Typewriter subtitle beneath logo */}
+            <motion.div
+              key="signature-typewriter"
+              initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)",
+                transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+              }}
+              exit={{
+                opacity: 0,
+                y: 10,
+                filter: "blur(8px)",
+                transition: { duration: 0.45, ease: "easeIn" },
+              }}
+              className="mt-6 text-center pointer-events-none px-4"
+              style={{
+                fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif",
+              }}
+            >
+              <p className="text-base sm:text-lg md:text-xl font-light text-neutral-200 tracking-wide select-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
+                {typedText}
+                <span className="inline-block text-rose-400 font-light ml-1 animate-pulse">
+                  |
+                </span>
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Bottom subtle guidance */}
+          <div className="relative z-10 pb-8 text-center text-xs tracking-wide text-neutral-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
+            <span>ট্যাপ অথবা ক্লিক করে হোমপেজে প্রবেশ করুন</span>
+          </div>
         </>
       )}
     </motion.div>
