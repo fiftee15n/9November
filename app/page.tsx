@@ -66,13 +66,13 @@ function HeroContent() {
             className="mb-6 h-28 w-auto shrink-0 self-start"
             aria-label="Logo"
             style={{ x: sigSpringX, y: sigSpringY, rotate: sigSpringR }}
-            initial={reduce ? false : { opacity: 0, y: 14, filter: "blur(8px)" }}
+            initial={reduce ? false : { opacity: 0, y: 10 }}
             animate={
               welcomeDone
-                ? { opacity: 1, y: 0, filter: "blur(0px)" }
-                : { opacity: 0, y: 14, filter: "blur(8px)" }
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 10 }
             }
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            transition={{ duration: 1.0, ease: "easeOut", delay: 0.25 }}
           >
             <img
               src="/logo-cropped.png"

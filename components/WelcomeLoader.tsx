@@ -237,7 +237,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
       exit={{
         opacity: 0,
       }}
-      transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 1.8, ease: [0.25, 0.1, 0.25, 1.0] }}
       aria-modal="true"
       role="dialog"
       aria-label="Welcome Story"
@@ -384,31 +384,25 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
             </button>
           </div>
 
-          {/* Centered Logo: slowly blurs during exit while homepage opens */}
+          {/* Centered Logo: slowly fades out during exit while homepage opens */}
           <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6">
-            {/* Logo: clean entrance and slow progressive blur during transition */}
+            {/* Logo: clean entrance and slow, elegant fade out */}
             <motion.div
               key="signature-logo"
               aria-label="Logo"
               initial={{
                 opacity: 0,
-                scale: 0.95,
-                filter: "blur(10px)",
               }}
               animate={{
                 opacity: 1,
-                scale: 1,
-                filter: "blur(0px)",
                 transition: {
-                  duration: 0.85,
-                  ease: [0.22, 1, 0.36, 1],
+                  duration: 0.8,
+                  ease: "easeOut",
                 },
               }}
               exit={{
                 opacity: 0,
-                scale: 1.02,
-                filter: "blur(30px)",
-                transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] },
+                transition: { duration: 1.8, ease: [0.25, 0.1, 0.25, 1.0] },
               }}
               className="relative flex items-center justify-center"
             >
@@ -420,21 +414,18 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
               />
             </motion.div>
 
-            {/* Typewriter subtitle beneath logo */}
+            {/* Typewriter subtitle beneath logo: gently fades out */}
             <motion.div
               key="signature-typewriter"
-              initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{
                 opacity: 1,
                 y: 0,
-                filter: "blur(0px)",
-                transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+                transition: { duration: 0.6, ease: "easeOut", delay: 0.15 },
               }}
               exit={{
                 opacity: 0,
-                y: 8,
-                filter: "blur(12px)",
-                transition: { duration: 0.9, ease: "easeIn" },
+                transition: { duration: 1.0, ease: "easeInOut" },
               }}
               className="mt-6 text-center pointer-events-none px-4"
               style={{
