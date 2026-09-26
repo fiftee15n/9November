@@ -7,14 +7,8 @@ const TrimatrikViewer = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-screen flex flex-col items-center justify-center bg-[#070608] text-white">
-        <div className="w-12 h-12 rounded-full border-2 border-rose-500/20 border-t-rose-400 animate-spin" />
-        <p
-          className="mt-4 text-sm text-neutral-400 font-light animate-pulse"
-          style={{ fontFamily: "var(--font-bengali), sans-serif" }}
-        >
-          ত্রিমাত্রিক দৃশ্য তৈরি হচ্ছে…
-        </p>
+      <div className="w-full h-screen flex flex-col items-center justify-center bg-white dark:bg-[#0a0a0c]">
+        <div className="w-12 h-12 rounded-full border-2 border-neutral-200 dark:border-neutral-700 border-t-neutral-500 dark:border-t-neutral-400 animate-spin" />
       </div>
     ),
   }
@@ -22,7 +16,7 @@ const TrimatrikViewer = dynamic(
 
 export function TrimatrikClientPage() {
   return (
-    <main className="relative w-full min-h-screen bg-[#070608] overflow-hidden pt-16">
+    <main className="relative w-full min-h-screen bg-white dark:bg-[#0a0a0c] overflow-hidden pt-16">
       <TrimatrikViewer />
     </main>
   );
