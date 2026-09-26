@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { useThree } from "@react-three/fiber";
 import { OrbitControls, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
@@ -50,15 +49,6 @@ function CouplePlane() {
  */
 export function TrimatrikScene({ isDark }: { isDark: boolean }) {
   const controlsRef = useRef<OrbitControlsImpl>(null);
-  const { gl } = useThree();
-
-  // Sync WebGL clear color with the site theme
-  useEffect(() => {
-    gl.setClearColor(
-      new THREE.Color(isDark ? "#0a0a0c" : "#ffffff"),
-      1,
-    );
-  }, [gl, isDark]);
 
   return (
     <>

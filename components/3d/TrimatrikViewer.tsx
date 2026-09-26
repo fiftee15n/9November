@@ -26,7 +26,7 @@ export function TrimatrikViewer() {
           gl={{
             antialias: true,
             powerPreference: "high-performance",
-            alpha: false,
+            alpha: true,
           }}
           className="w-full h-full cursor-grab active:cursor-grabbing"
         >
