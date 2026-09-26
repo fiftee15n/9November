@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
+import { useRef, useState, useEffect } from "react";
+import { AnimatePresence, motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 import { WelcomeGate } from "@/components/WelcomeGate";
 import { useWelcomeDone } from "@/components/WelcomeDoneContext";
 import { TypewriterStory } from "@/components/Hero/TypewriterStory";
@@ -18,12 +18,32 @@ const FADE_UP = {
   },
 };
 
+// Persists through dock navigation in the same session
+let storyCompletedThisLoad = false;
+
 function HeroContent() {
   const welcomeDone = useWelcomeDone();
   const reduce = useReducedMotion() ?? false;
+  const [storyComplete, setStoryComplete] = useState(
+    () => storyCompletedThisLoad || reduce
+  );
   const { scrollYProgress } = useScroll();
   const pb = useTransform(scrollYProgress, [0.2, 1], ["40px", "200px"]);
   const sigRef = useRef<HTMLDivElement>(null);
+  const storyMapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (storyComplete && !reduce) {
+      // Automatically scroll to the story map cards when typewriting ends
+      const timer = setTimeout(() => {
+        storyMapRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 250);
+      return () => clearTimeout(timer);
+    }
+  }, [storyComplete, reduce]);
 
   // magnetic ink: the resting signature leans toward a nearby cursor
   const sigMagX = useMotionValue(0);
@@ -82,17 +102,30 @@ function HeroContent() {
             />
           </motion.div>
 
-          <TypewriterStory active={welcomeDone} />
+          <TypewriterStory
+            active={welcomeDone}
+            initialComplete={storyCompletedThisLoad}
+            onComplete={() => {
+              storyCompletedThisLoad = true;
+              setStoryComplete(true);
+            }}
+          />
 
-          <motion.div
-            variants={FADE_UP}
-            initial={reduce ? false : "hidden"}
-            animate={welcomeDone ? "visible" : "hidden"}
-            transition={{ duration: 0.45, ease: "easeOut", delay: 0.33 }}
-            className="mt-8 w-full"
-          >
-            <ProjectsSection />
-          </motion.div>
+          <AnimatePresence>
+            {storyComplete && (
+              <motion.div
+                ref={storyMapRef}
+                key="story-map-cards"
+                initial={reduce ? false : { opacity: 0, y: 32, filter: "blur(10px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="mt-8 w-full scroll-mt-16"
+              >
+                <ProjectsSection />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.div>
       {/* progressive blur at the bottom */}

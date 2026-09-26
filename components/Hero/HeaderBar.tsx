@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
+import { MusicToggle } from "@/components/audio/MusicToggle";
 import { EmojiReaction } from "@/components/motion/emoji-reaction";
 import { Tooltip } from "@/components/motion/tooltip";
 import { getBanglaDate, getLiveTimeElapsed, type LiveTimeElapsed } from "@/lib/banglaCalendar";
@@ -168,6 +169,7 @@ export function HeaderBar() {
             </span>
           )}
         </div>
+        <MusicToggle />
         <Tooltip content="Change theme" side="bottom">
           <ThemeToggle
             variant="circle-blur"

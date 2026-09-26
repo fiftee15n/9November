@@ -3,6 +3,7 @@ import { preload } from "react-dom";
 import "./globals.css";
 import { content } from "@/lib/content";
 import { ThemeProvider } from "@/components/theme-provider";
+import { MusicProvider } from "@/components/audio/MusicContext";
 import { DockBar } from "@/components/DockBar";
 import { SiteShell } from "@/components/SiteShell";
 import { Geist, Geist_Mono, Hind_Siliguri } from "next/font/google";
@@ -81,8 +82,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} ${overusedGrotesk.variable} ${hindSiliguri.variable}`}>
       <body className="antialiased font-sans">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <SiteShell>{children}</SiteShell>
-          <DockBar />
+          <MusicProvider>
+            <SiteShell>{children}</SiteShell>
+            <DockBar />
+          </MusicProvider>
         </ThemeProvider>
       </body>
     </html>

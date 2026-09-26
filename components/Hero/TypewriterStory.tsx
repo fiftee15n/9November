@@ -5,6 +5,8 @@ import { useReducedMotion, motion } from "motion/react";
 
 interface TypewriterStoryProps {
   active?: boolean;
+  onComplete?: () => void;
+  initialComplete?: boolean;
 }
 
 const TITLE_TEXT = "আমাদের ভালোবাসার গল্প";
@@ -15,24 +17,37 @@ const PARAGRAPHS = [
   "আজ আমাদের এই বিশেষ দিনে একটাই প্রার্থনা—সময়ের সাথে সাথে আমাদের ভালোবাসা যেন প্রতিদিন নতুন রঙে রঙিন হয়ে ওঠে, আর জীবনের প্রতিটি বাঁকে এভাবেই তোমার পাশে ছায়া হয়ে থাকতে পারি। শুভ বার্ষিকী, ভালোবাসা! ❤️",
 ];
 
-export function TypewriterStory({ active = true }: TypewriterStoryProps) {
+export function TypewriterStory({
+  active = true,
+  onComplete,
+  initialComplete = false,
+}: TypewriterStoryProps) {
   const reduce = useReducedMotion() ?? false;
-  const [titleTyped, setTitleTyped] = useState("");
-  const [paraTyped, setParaTyped] = useState<string[]>(["", "", ""]);
-  const [currentSection, setCurrentSection] = useState<number>(0); // 0: title, 1..3: paragraphs, 4: done
-  const [isComplete, setIsComplete] = useState(false);
+  const isInitiallyDone = initialComplete || reduce;
+
+  const [titleTyped, setTitleTyped] = useState(() => (isInitiallyDone ? TITLE_TEXT : ""));
+  const [paraTyped, setParaTyped] = useState<string[]>(() =>
+    isInitiallyDone ? PARAGRAPHS : ["", "", ""]
+  );
+  const [currentSection, setCurrentSection] = useState<number>(() =>
+    isInitiallyDone ? 4 : 0
+  ); // 0: title, 1..3: paragraphs, 4: done
+  const [isComplete, setIsComplete] = useState<boolean>(isInitiallyDone);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLSpanElement>(null);
+  const onCompleteRef = useRef(onComplete);
 
-  // If reduced motion is preferred, render everything immediately
   useEffect(() => {
-    if (reduce) {
-      setTitleTyped(TITLE_TEXT);
-      setParaTyped(PARAGRAPHS);
-      setIsComplete(true);
-      setCurrentSection(4);
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
+
+  // If initially completed or reduced motion, trigger onComplete immediately
+  useEffect(() => {
+    if (isInitiallyDone) {
+      onCompleteRef.current?.();
     }
-  }, [reduce]);
+  }, [isInitiallyDone]);
 
   useEffect(() => {
     if (!active || reduce || isComplete) return;
@@ -82,7 +97,7 @@ export function TypewriterStory({ active = true }: TypewriterStoryProps) {
         if (currentPText.length < targetText.length) {
           const nextLength = currentPText.length + 1;
           const char = targetText[currentPText.length];
-          
+
           setParaTyped((prev) => {
             const copy = [...prev];
             copy[pIdx] = targetText.slice(0, nextLength);
@@ -107,6 +122,8 @@ export function TypewriterStory({ active = true }: TypewriterStoryProps) {
             setIsComplete(true);
             setCurrentSection(4);
             autoScroll();
+            // Call onComplete automatically when typewriting ends
+            onCompleteRef.current?.();
           }
         }
       }
@@ -119,13 +136,6 @@ export function TypewriterStory({ active = true }: TypewriterStoryProps) {
       clearTimeout(timeoutId);
     };
   }, [active, reduce, isComplete, currentSection, titleTyped, paraTyped]);
-
-  const handleFastForward = () => {
-    setTitleTyped(TITLE_TEXT);
-    setParaTyped(PARAGRAPHS);
-    setIsComplete(true);
-    setCurrentSection(4);
-  };
 
   return (
     <div
