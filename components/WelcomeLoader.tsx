@@ -190,7 +190,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[9999] flex flex-col justify-between bg-[#131118] text-white select-none cursor-pointer overflow-hidden"
+      className="fixed inset-0 z-[9999] flex flex-col justify-between bg-black text-white select-none cursor-pointer overflow-hidden"
       style={{
         fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif",
       }}
@@ -208,8 +208,6 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
       role="dialog"
       aria-label="Welcome Story"
     >
-      {/* Ambient background glow for slides */}
-      <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_35%,rgba(160,50,85,0.18),transparent_75%)]" />
 
       {/* Dynamic Background Photo Layer with clear, luminous presentation */}
       <AnimatePresence>
