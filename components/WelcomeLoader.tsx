@@ -236,9 +236,8 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
       animate={{ opacity: 1 }}
       exit={{
         opacity: 0,
-        filter: "blur(6px)",
       }}
-      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
       aria-modal="true"
       role="dialog"
       aria-label="Welcome Story"
@@ -385,30 +384,16 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
             </button>
           </div>
 
-          {/* Centered Logo with soft luminous bloom and dissolve */}
+          {/* Centered Logo: slowly blurs during exit while homepage opens */}
           <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6">
-            {/* Luminous warm ambient glow that blooms outward during reveal */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.7 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{
-                opacity: 0,
-                scale: 1.6,
-                filter: "blur(36px)",
-                transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1] },
-              }}
-              transition={{ duration: 1.0, ease: "easeOut" }}
-              className="absolute pointer-events-none -z-10 size-72 sm:size-96 rounded-full bg-[radial-gradient(circle,rgba(251,113,133,0.25)_0%,rgba(249,115,22,0.15)_35%,transparent_70%)] blur-2xl"
-            />
-
-            {/* Logo: gentle entrance and glowing expand-dissolve exit */}
+            {/* Logo: clean entrance and slow progressive blur during transition */}
             <motion.div
               key="signature-logo"
               aria-label="Logo"
               initial={{
                 opacity: 0,
-                scale: 0.92,
-                filter: "blur(12px)",
+                scale: 0.95,
+                filter: "blur(10px)",
               }}
               animate={{
                 opacity: 1,
@@ -421,16 +406,16 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
               }}
               exit={{
                 opacity: 0,
-                scale: 1.15,
-                filter: "blur(18px)",
-                transition: { duration: 1.0, ease: [0.22, 1, 0.36, 1] },
+                scale: 1.02,
+                filter: "blur(30px)",
+                transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] },
               }}
               className="relative flex items-center justify-center"
             >
               <img
                 src="/logo-cropped.png"
                 alt="Logo"
-                className="h-28 sm:h-36 md:h-40 w-auto object-contain select-none drop-shadow-[0_4px_28px_rgba(251,113,133,0.4)]"
+                className="h-28 sm:h-36 md:h-40 w-auto object-contain select-none"
                 draggable={false}
               />
             </motion.div>
@@ -447,9 +432,9 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
               }}
               exit={{
                 opacity: 0,
-                y: 10,
-                filter: "blur(8px)",
-                transition: { duration: 0.45, ease: "easeIn" },
+                y: 8,
+                filter: "blur(12px)",
+                transition: { duration: 0.9, ease: "easeIn" },
               }}
               className="mt-6 text-center pointer-events-none px-4"
               style={{
