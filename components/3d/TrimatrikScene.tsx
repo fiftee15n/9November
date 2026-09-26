@@ -30,7 +30,7 @@ function CouplePlane() {
   const planeWidth = planeHeight * aspect;
 
   return (
-    <mesh ref={meshRef} position={[0, 0, 0]}>
+    <mesh ref={meshRef} position={[0, 0.4, 0]}>
       <planeGeometry args={[planeWidth, planeHeight]} />
       <meshBasicMaterial
         map={texture}
@@ -64,6 +64,7 @@ export function TrimatrikScene({ isDark }: { isDark: boolean }) {
         enablePan={false}
         enableZoom={false}
         autoRotate={false}
+        target={[0, 0.15, 0]}
         // Clamp so it stays mostly frontal — can swing side-to-side and tilt slightly
         minPolarAngle={Math.PI / 3}
         maxPolarAngle={Math.PI / 1.5}

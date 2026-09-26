@@ -11,7 +11,7 @@ export function TrimatrikViewer() {
 
   return (
     <div
-      className="relative w-full h-[calc(100vh-64px)] min-h-[500px] select-none"
+      className="relative w-full h-full select-none overflow-hidden pb-12 sm:pb-16"
     >
       <Suspense
         fallback={

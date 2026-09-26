@@ -16,7 +16,7 @@ const TrimatrikViewer = dynamic(
 
 export function TrimatrikClientPage() {
   return (
-    <main className="relative w-full min-h-screen overflow-hidden pt-16">
+    <main className="relative w-full flex-1 h-[calc(100dvh-57px)] overflow-hidden">
       <TrimatrikViewer />
     </main>
   );
