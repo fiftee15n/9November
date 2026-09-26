@@ -63,16 +63,16 @@ function HeroContent() {
           <motion.div
             id="hero-signature"
             ref={sigRef}
-            className="mb-6 h-28 w-auto shrink-0 self-start"
+            className="mb-6 h-28 w-auto shrink-0 self-center"
             aria-label="Logo"
             style={{ x: sigSpringX, y: sigSpringY, rotate: sigSpringR }}
-            initial={reduce ? false : { opacity: 0, y: 10 }}
+            initial={reduce ? false : { opacity: 0, scale: 0.94 }}
             animate={
               welcomeDone
-                ? { opacity: 1, y: 0 }
-                : { opacity: 0, y: 10 }
+                ? { opacity: 1, scale: 1 }
+                : { opacity: 0, scale: 0.94 }
             }
-            transition={{ duration: 1.4, ease: "easeOut", delay: 0.35 }}
+            transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
           >
             <img
               src="/logo-cropped.png"

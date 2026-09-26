@@ -386,15 +386,17 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
 
           {/* Centered Logo: slowly fades out during exit while homepage opens */}
           <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6">
-            {/* Logo: clean entrance and slow, elegant fade out */}
+            {/* Logo: clean entrance and slow, elegant fade out coming forward from center */}
             <motion.div
               key="signature-logo"
               aria-label="Logo"
               initial={{
                 opacity: 0,
+                scale: 0.96,
               }}
               animate={{
                 opacity: 1,
+                scale: 1,
                 transition: {
                   duration: 0.8,
                   ease: "easeOut",
@@ -402,7 +404,8 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
               }}
               exit={{
                 opacity: 0,
-                transition: { duration: 2.4, ease: [0.25, 0.1, 0.25, 1.0] },
+                scale: 1.08,
+                transition: { duration: 2.2, ease: [0.22, 1, 0.36, 1] },
               }}
               className="relative flex items-center justify-center"
             >
