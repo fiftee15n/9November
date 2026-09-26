@@ -225,11 +225,13 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
             <img
               src={currentMoment.bgImage}
               alt={currentMoment.title || "Background"}
-              className="size-full object-cover object-center filter brightness-[0.98] contrast-[1.02]"
+              className="size-full object-cover object-center filter brightness-[0.96] contrast-[1.02]"
             />
-            {/* Soft, light scrim: subtle top & bottom gradients and soft vignette so the photo details show clearly */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(0,0,0,0.22)_100%)]" />
+            {/* Dark shade with low opacity so text is clearly visible over the picture */}
+            <div className="absolute inset-0 bg-black/40" />
+            {/* Gentle gradient scrim for smooth edge framing and header/footer contrast */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/30" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,0,0.25)_100%)]" />
           </motion.div>
         )}
       </AnimatePresence>
