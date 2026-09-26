@@ -296,7 +296,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
             <button
               type="button"
               onClick={finishStory}
-              className="text-xs text-neutral-200 hover:text-white bg-black/35 hover:bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 transition-all shadow-sm"
+              className="text-xs text-neutral-300 hover:text-white transition-colors px-2 py-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
             >
               এড়িয়ে যান →
             </button>
