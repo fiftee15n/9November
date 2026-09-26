@@ -172,10 +172,10 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
           const delay = char === "," ? 220 : char === " " ? 95 : 60;
           typeTimer = setTimeout(typeChar, delay);
         } else {
-          // Pause when typing finishes so user can comfortably read it, then dissolve into home
+          // Pause after typing finishes so user can comfortably read it, then dissolve into home
           finishTimer = setTimeout(() => {
             triggerReveal();
-          }, 1400);
+          }, 2400);
         }
       };
       typeChar();
@@ -237,7 +237,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
       exit={{
         opacity: 0,
       }}
-      transition={{ duration: 1.8, ease: [0.25, 0.1, 0.25, 1.0] }}
+      transition={{ duration: 2.4, ease: [0.25, 0.1, 0.25, 1.0] }}
       aria-modal="true"
       role="dialog"
       aria-label="Welcome Story"
@@ -402,7 +402,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
               }}
               exit={{
                 opacity: 0,
-                transition: { duration: 1.8, ease: [0.25, 0.1, 0.25, 1.0] },
+                transition: { duration: 2.4, ease: [0.25, 0.1, 0.25, 1.0] },
               }}
               className="relative flex items-center justify-center"
             >
@@ -425,7 +425,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
               }}
               exit={{
                 opacity: 0,
-                transition: { duration: 1.0, ease: "easeInOut" },
+                transition: { duration: 1.4, ease: "easeInOut" },
               }}
               className="mt-6 text-center pointer-events-none px-4"
               style={{

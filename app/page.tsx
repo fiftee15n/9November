@@ -72,7 +72,7 @@ function HeroContent() {
                 ? { opacity: 1, y: 0 }
                 : { opacity: 0, y: 10 }
             }
-            transition={{ duration: 1.0, ease: "easeOut", delay: 0.25 }}
+            transition={{ duration: 1.4, ease: "easeOut", delay: 0.35 }}
           >
             <img
               src="/logo-cropped.png"
