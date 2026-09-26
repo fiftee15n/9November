@@ -5,49 +5,43 @@ import { Canvas } from "@react-three/fiber";
 import {
   RotateCcw,
   Sparkles,
-  Layers,
-  Box,
-  Eye,
   Sun,
   Sunset,
-  Moon,
   Maximize2,
   Minimize2,
+  Hand,
   Compass,
+  Heart,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import {
-  TrimatrikScene,
-  type TrimatrikMode,
-  type TrimatrikLighting,
-} from "./TrimatrikScene";
+import { TrimatrikScene, type TrimatrikLighting } from "./TrimatrikScene";
 
 function LoadingScreen() {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-20 backdrop-blur-md">
+    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#09080c]/90 z-20 backdrop-blur-md">
       <div className="relative flex items-center justify-center">
         <div className="w-16 h-16 rounded-full border-2 border-rose-500/20 border-t-rose-400 animate-spin" />
-        <div className="absolute w-8 h-8 rounded-full border-2 border-amber-400/20 border-b-amber-300 animate-spin animate-reverse" />
+        <div className="absolute w-8 h-8 rounded-full border-2 border-amber-400/20 border-b-amber-300 animate-spin" style={{ animationDirection: "reverse" }} />
       </div>
       <p
         className="mt-6 text-sm text-neutral-300 font-light tracking-wide animate-pulse"
         style={{ fontFamily: "var(--font-bengali), sans-serif" }}
       >
-        ত্রিমাত্রিক স্মৃতি লোড হচ্ছে…
+        ত্রিমাত্রিক দৃশ্য তৈরি হচ্ছে…
       </p>
     </div>
   );
 }
 
 export function TrimatrikViewer() {
-  const [mode, setMode] = useState<TrimatrikMode>("spatial");
-  const [depthScale, setDepthScale] = useState<number>(0.65);
-  const [lighting, setLighting] = useState<TrimatrikLighting>("sunset");
   const [autoRotate, setAutoRotate] = useState<boolean>(true);
   const [showParticles, setShowParticles] = useState<boolean>(true);
+  const [lighting, setLighting] = useState<TrimatrikLighting>("sunset");
   const [cameraResetTrigger, setCameraResetTrigger] = useState<number>(0);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
-  const [showControls, setShowControls] = useState<boolean>(true);
+  const [showInfo, setShowInfo] = useState<boolean>(true);
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -60,272 +54,211 @@ export function TrimatrikViewer() {
   };
 
   return (
-    <div className="relative w-full h-[calc(100vh-64px)] min-h-[600px] overflow-hidden bg-[#070608] select-none">
-      {/* Three.js 3D WebGL Viewport */}
+    <div className="relative w-full h-[calc(100vh-64px)] min-h-[640px] overflow-hidden bg-radial from-[#180e1b] via-[#0d0910] to-[#070508] select-none">
+      {/* 3D WebGL Canvas (Amar Lipi stage) */}
       <Suspense fallback={<LoadingScreen />}>
         <Canvas
           shadows
-          camera={{ position: [0, 0, 5.2], fov: 48 }}
+          camera={{ position: [0, 0.4, 5.6], fov: 40 }}
           dpr={[1, 2]}
           gl={{
             antialias: true,
             powerPreference: "high-performance",
-            alpha: false,
+            alpha: true,
           }}
           className="w-full h-full cursor-grab active:cursor-grabbing"
         >
-          <color attach="background" args={["#080709"]} />
           <TrimatrikScene
-            mode={mode}
-            depthScale={depthScale}
-            lighting={lighting}
             autoRotate={autoRotate}
             showParticles={showParticles}
+            lighting={lighting}
             cameraResetTrigger={cameraResetTrigger}
           />
         </Canvas>
       </Suspense>
 
-      {/* Top Header Badge */}
-      <div className="absolute top-4 left-4 z-20 flex flex-col gap-1 pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-black/45 backdrop-blur-xl border border-white/10 shadow-lg pointer-events-auto"
-        >
-          <div className="size-2 rounded-full bg-rose-500 animate-ping" />
-          <span
-            className="text-sm sm:text-base font-medium text-white tracking-wide"
-            style={{ fontFamily: "var(--font-bengali), sans-serif" }}
-          >
-            ত্রিমাত্রিক স্মৃতি
+      {/* Floating Drag-to-Turn Hint Banner (Amar Lipi style) */}
+      <motion.div
+        initial={{ opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.6 }}
+        className="absolute top-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
+      >
+        <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 text-neutral-300 text-xs shadow-lg">
+          <Hand className="size-3.5 text-amber-400 animate-bounce" />
+          <span style={{ fontFamily: "var(--font-bengali), sans-serif" }}>
+            ৩৬০° ঘুরিয়ে দেখতে মাউস বা আঙুল দিয়ে ড্র্যাগ করুন
           </span>
-          <span className="text-xs px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">
-            3D
-          </span>
-        </motion.div>
-        <p
-          className="text-xs text-neutral-400 font-light drop-shadow-md pl-1 hidden sm:block"
+        </div>
+      </motion.div>
+
+      {/* Top Right Floating Controls (Amar Lipi style) */}
+      <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
+        {/* Auto-Spin Toggle */}
+        <button
+          type="button"
+          onClick={() => setAutoRotate(!autoRotate)}
+          className={`flex items-center gap-2 px-3 py-2 rounded-full backdrop-blur-xl text-xs font-medium transition-all shadow-lg border ${
+            autoRotate
+              ? "bg-rose-500/20 text-rose-200 border-rose-500/40 shadow-rose-500/10"
+              : "bg-black/50 text-neutral-300 border-white/10 hover:bg-white/10"
+          }`}
+          title={autoRotate ? "ঘূর্ণন থামান (Pause Spin)" : "ঘূর্ণন চালু করুন (Auto Spin)"}
           style={{ fontFamily: "var(--font-bengali), sans-serif" }}
         >
-          সূর্যাস্তের মায়াবী আলোয় তুমি আর আমি…
-        </p>
-      </div>
-
-      {/* Top Right Quick Actions */}
-      <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
-        <button
-          type="button"
-          onClick={() => setCameraResetTrigger((c) => c + 1)}
-          title="ক্যামেরা রিসেট করুন"
-          className="p-2.5 rounded-xl bg-black/45 hover:bg-black/70 backdrop-blur-xl border border-white/10 text-neutral-200 hover:text-white transition-all shadow-md active:scale-95"
-        >
-          <RotateCcw className="size-4" />
+          <span
+            className={`size-2 rounded-full transition-colors ${
+              autoRotate ? "bg-rose-400 animate-pulse" : "bg-neutral-500"
+            }`}
+          />
+          <Compass className={`size-3.5 ${autoRotate ? "animate-spin" : ""}`} style={{ animationDuration: "8s" }} />
+          <span className="hidden sm:inline">ঘূর্ণন</span>
         </button>
 
+        {/* Falling Letters & Petals Toggle */}
         <button
           type="button"
-          onClick={toggleFullscreen}
-          title={isFullscreen ? "ফুলস্ক্রিন থেকে বের হন" : "ফুলস্ক্রিন করুন"}
-          className="p-2.5 rounded-xl bg-black/45 hover:bg-black/70 backdrop-blur-xl border border-white/10 text-neutral-200 hover:text-white transition-all shadow-md active:scale-95 hidden sm:flex"
+          onClick={() => setShowParticles(!showParticles)}
+          className={`p-2 sm:px-3 sm:py-2 rounded-full backdrop-blur-xl text-xs font-medium transition-all shadow-lg border flex items-center gap-1.5 ${
+            showParticles
+              ? "bg-amber-500/20 text-amber-200 border-amber-500/40 shadow-amber-500/10"
+              : "bg-black/50 text-neutral-400 border-white/10 hover:bg-white/10"
+          }`}
+          title="ভাসমান লিপি ও পাপড়ি (Toggle Falling Letters & Petals)"
+          style={{ fontFamily: "var(--font-bengali), sans-serif" }}
         >
-          {isFullscreen ? (
-            <Minimize2 className="size-4" />
+          <Sparkles className="size-3.5 text-amber-400" />
+          <span className="hidden sm:inline">ভাসমান লিপি</span>
+        </button>
+
+        {/* Lighting Mood Toggle */}
+        <button
+          type="button"
+          onClick={() => setLighting(lighting === "sunset" ? "twilight" : "sunset")}
+          className="p-2 sm:px-3 sm:py-2 rounded-full bg-black/50 backdrop-blur-xl text-xs font-medium text-neutral-200 border border-white/10 hover:bg-white/10 transition-all shadow-lg flex items-center gap-1.5"
+          title="আলো পরিবর্তন (Toggle Sunset/Twilight)"
+          style={{ fontFamily: "var(--font-bengali), sans-serif" }}
+        >
+          {lighting === "sunset" ? (
+            <>
+              <Sunset className="size-3.5 text-amber-400" />
+              <span className="hidden sm:inline">সূর্যাস্ত</span>
+            </>
           ) : (
-            <Maximize2 className="size-4" />
+            <>
+              <Sun className="size-3.5 text-purple-400" />
+              <span className="hidden sm:inline">গোধূলি</span>
+            </>
           )}
         </button>
 
+        {/* Reset View Button */}
         <button
           type="button"
-          onClick={() => setShowControls((s) => !s)}
-          title="কন্ট্রোলস টগল করুন"
-          className={`p-2.5 rounded-xl backdrop-blur-xl border transition-all shadow-md active:scale-95 ${
-            showControls
-              ? "bg-rose-500/25 border-rose-500/40 text-rose-200"
-              : "bg-black/45 hover:bg-black/70 border-white/10 text-neutral-300"
-          }`}
+          onClick={() => setCameraResetTrigger((c) => c + 1)}
+          className="p-2 rounded-full bg-black/50 backdrop-blur-xl text-neutral-300 hover:text-white border border-white/10 hover:bg-white/10 transition-all shadow-lg"
+          title="রিসেট ভিউ (Reset View)"
         >
-          <Compass className="size-4" />
+          <RotateCcw className="size-3.5" />
+        </button>
+
+        {/* Fullscreen Button */}
+        <button
+          type="button"
+          onClick={toggleFullscreen}
+          className="p-2 rounded-full bg-black/50 backdrop-blur-xl text-neutral-300 hover:text-white border border-white/10 hover:bg-white/10 transition-all shadow-lg"
+          title={isFullscreen ? "ছোট করুন" : "ফুলস্ক্রিন"}
+        >
+          {isFullscreen ? <Minimize2 className="size-3.5" /> : <Maximize2 className="size-3.5" />}
         </button>
       </div>
 
-      {/* Floating Interactive HUD Controls Bar */}
+      {/* Floating Hero Info Glass Panel (Amar Lipi style) */}
       <AnimatePresence>
-        {showControls && (
+        {showInfo && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            className="absolute bottom-20 sm:bottom-22 inset-x-4 max-w-2xl mx-auto z-20 pointer-events-none"
+            transition={{ duration: 0.5 }}
+            className="absolute bottom-6 left-4 sm:left-8 max-w-[calc(100vw-32px)] sm:max-w-md z-20"
           >
-            <div className="flex flex-col gap-3 p-3.5 sm:p-4 rounded-3xl bg-black/60 backdrop-blur-2xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.6)] pointer-events-auto text-white">
-              {/* Row 1: Mode Switcher */}
-              <div className="flex items-center justify-between gap-1.5 p-1 rounded-2xl bg-white/5 border border-white/10">
-                <button
-                  type="button"
-                  onClick={() => setMode("spatial")}
-                  className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all ${
-                    mode === "spatial"
-                      ? "bg-gradient-to-r from-rose-500 to-amber-500 text-white shadow-md shadow-rose-500/25"
-                      : "text-neutral-400 hover:text-white hover:bg-white/5"
-                  }`}
-                  style={{ fontFamily: "var(--font-bengali), sans-serif" }}
-                >
-                  <Eye className="size-3.5" />
-                  <span>ত্রিমাত্রিক ডায়োরামা</span>
-                </button>
+            <div className="relative p-5 rounded-3xl bg-black/45 backdrop-blur-2xl border border-white/15 shadow-2xl overflow-hidden">
+              {/* Subtle Warm Sunset Ambient Glow inside card */}
+              <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-rose-500/20 blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-8 -left-8 w-24 h-24 rounded-full bg-amber-500/15 blur-2xl pointer-events-none" />
 
+              {/* Header Badge */}
+              <div className="relative flex items-center justify-between mb-2">
+                <div className="flex items-center gap-2">
+                  <div className="size-2 rounded-full bg-rose-500 animate-ping" />
+                  <span
+                    className="text-xs font-medium text-rose-300 tracking-wider uppercase"
+                    style={{ fontFamily: "var(--font-bengali), sans-serif" }}
+                  >
+                    ত্রিমাত্রিক স্মৃতি • 3D Diorama
+                  </span>
+                </div>
                 <button
                   type="button"
-                  onClick={() => setMode("layered")}
-                  className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all ${
-                    mode === "layered"
-                      ? "bg-gradient-to-r from-rose-500 to-amber-500 text-white shadow-md shadow-rose-500/25"
-                      : "text-neutral-400 hover:text-white hover:bg-white/5"
-                  }`}
-                  style={{ fontFamily: "var(--font-bengali), sans-serif" }}
+                  onClick={() => setShowInfo(false)}
+                  className="text-xs text-neutral-400 hover:text-neutral-200 transition-colors px-1.5 py-0.5 rounded-md hover:bg-white/10"
                 >
-                  <Layers className="size-3.5" />
-                  <span>লেয়ার ভিউ</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setMode("wireframe")}
-                  className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all ${
-                    mode === "wireframe"
-                      ? "bg-gradient-to-r from-rose-500 to-amber-500 text-white shadow-md shadow-rose-500/25"
-                      : "text-neutral-400 hover:text-white hover:bg-white/5"
-                  }`}
-                  style={{ fontFamily: "var(--font-bengali), sans-serif" }}
-                >
-                  <Box className="size-3.5" />
-                  <span>ওয়্যারফ্রেম</span>
+                  ✕
                 </button>
               </div>
 
-              {/* Row 2: Sliders & Quick Toggles */}
-              <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
-                {/* Depth Extrusion Slider */}
-                <div className="flex items-center gap-2.5 flex-1 min-w-[200px]">
-                  <span
-                    className="text-neutral-300 font-light whitespace-nowrap"
-                    style={{ fontFamily: "var(--font-bengali), sans-serif" }}
-                  >
-                    গভীরতা (Depth):
-                  </span>
-                  <input
-                    type="range"
-                    min="0.1"
-                    max="1.5"
-                    step="0.05"
-                    value={depthScale}
-                    onChange={(e) => setDepthScale(parseFloat(e.target.value))}
-                    className="flex-1 accent-rose-500 cursor-pointer h-1.5 bg-neutral-700 rounded-lg"
-                  />
-                  <span className="text-[11px] font-mono text-neutral-400 w-8 text-right">
-                    {depthScale.toFixed(2)}x
-                  </span>
-                </div>
+              {/* Title in Bengali */}
+              <h1
+                className="relative text-lg sm:text-xl font-bold text-white leading-snug drop-shadow-sm"
+                style={{ fontFamily: "var(--font-bengali), sans-serif" }}
+              >
+                সূর্যাস্তের মায়াবী আলোয় তুমি আর আমি
+              </h1>
 
-                {/* Lighting Presets */}
-                <div className="flex items-center gap-1.5">
-                  <button
-                    type="button"
-                    onClick={() => setLighting("sunset")}
-                    title="স্বর্ণালী সূর্যাস্ত"
-                    className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border transition-all ${
-                      lighting === "sunset"
-                        ? "bg-amber-500/20 border-amber-500/50 text-amber-300 shadow-sm"
-                        : "border-white/10 text-neutral-400 hover:text-white"
-                    }`}
-                  >
-                    <Sunset className="size-3.5" />
-                    <span className="hidden sm:inline" style={{ fontFamily: "var(--font-bengali), sans-serif" }}>
-                      সূর্যাস্ত
-                    </span>
-                  </button>
+              {/* Lede Story Text */}
+              <p
+                className="relative mt-2 text-xs sm:text-sm text-neutral-300 leading-relaxed font-light"
+                style={{ fontFamily: "var(--font-bengali), sans-serif" }}
+              >
+                লেকপাড়ের বেঞ্চে সূর্যাস্তের মায়াবী আলোয় কাটানো আমাদের সেই প্রিয় বিকেল। অমর লিপির মতো জীবন্ত ত্রিমাত্রিক ভাস্কর্যে সংরক্ষিত — প্রতিটি কোণ থেকে ভালোবাসার অনুভূতি।
+              </p>
 
-                  <button
-                    type="button"
-                    onClick={() => setLighting("twilight")}
-                    title="রোমান্টিক গোধূলি"
-                    className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border transition-all ${
-                      lighting === "twilight"
-                        ? "bg-purple-500/20 border-purple-500/50 text-purple-300 shadow-sm"
-                        : "border-white/10 text-neutral-400 hover:text-white"
-                    }`}
-                  >
-                    <Moon className="size-3.5" />
-                    <span className="hidden sm:inline" style={{ fontFamily: "var(--font-bengali), sans-serif" }}>
-                      গোধূলি
-                    </span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setLighting("afternoon")}
-                    title="উজ্জ্বল অপরাহ্ন"
-                    className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border transition-all ${
-                      lighting === "afternoon"
-                        ? "bg-yellow-500/20 border-yellow-500/50 text-yellow-300 shadow-sm"
-                        : "border-white/10 text-neutral-400 hover:text-white"
-                    }`}
-                  >
-                    <Sun className="size-3.5" />
-                    <span className="hidden sm:inline" style={{ fontFamily: "var(--font-bengali), sans-serif" }}>
-                      অপরাহ্ন
-                    </span>
-                  </button>
-                </div>
-
-                {/* Toggles: Auto-rotate & Particles */}
-                <div className="flex items-center gap-1.5 ml-auto">
-                  <button
-                    type="button"
-                    onClick={() => setAutoRotate((r) => !r)}
-                    title={autoRotate ? "অটো-ঘূর্ণন বন্ধ করুন" : "অটো-ঘূর্ণন চালু করুন"}
-                    className={`px-2.5 py-1 rounded-lg border text-xs font-medium transition-all ${
-                      autoRotate
-                        ? "bg-rose-500/20 border-rose-500/40 text-rose-300"
-                        : "border-white/10 text-neutral-400 hover:text-white"
-                    }`}
-                    style={{ fontFamily: "var(--font-bengali), sans-serif" }}
-                  >
-                    ঘূর্ণন {autoRotate ? "চালু" : "বন্ধ"}
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setShowParticles((p) => !p)}
-                    title="ভাসমান আলো কণা"
-                    className={`p-1.5 rounded-lg border transition-all ${
-                      showParticles
-                        ? "bg-amber-500/20 border-amber-500/40 text-amber-300"
-                        : "border-white/10 text-neutral-400 hover:text-white"
-                    }`}
-                  >
-                    <Sparkles className="size-3.5" />
-                  </button>
-                </div>
+              {/* Metadata Badges */}
+              <div
+                className="relative mt-3.5 pt-3 border-t border-white/10 flex flex-wrap items-center gap-2 text-[11px] text-neutral-400"
+                style={{ fontFamily: "var(--font-bengali), sans-serif" }}
+              >
+                <span className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-300 flex items-center gap-1.5">
+                  <Heart className="size-3 text-rose-400 fill-rose-400" />
+                  ৯ নভেম্বর
+                </span>
+                <span className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-300">
+                  লেক ভিউ ডায়েরি
+                </span>
+                <span className="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300">
+                  ৩৬০° ইন্টারঅ্যাক্টিভ ভিউ
+                </span>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Floating Bottom Center Guidance Hint */}
-      <div className="absolute bottom-6 inset-x-0 z-10 flex justify-center pointer-events-none">
-        <div
-          className="px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[11px] sm:text-xs text-neutral-400 font-light drop-shadow-md"
+      {/* Re-open Info button when minimized */}
+      {!showInfo && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          type="button"
+          onClick={() => setShowInfo(true)}
+          className="absolute bottom-6 left-6 z-20 px-3.5 py-2 rounded-full bg-black/60 backdrop-blur-xl border border-white/15 text-neutral-300 hover:text-white text-xs shadow-xl flex items-center gap-2 hover:bg-white/10 transition-all"
           style={{ fontFamily: "var(--font-bengali), sans-serif" }}
         >
-          🖱️ মাউস ড্র্যাগ করে ৩ডি ঘুরে দেখুন • স্ক্রোল করে জুম করুন
-        </div>
-      </div>
+          <Heart className="size-3.5 text-rose-400 fill-rose-400" />
+          <span>স্মৃতির বিবরণ দেখুন</span>
+        </motion.button>
+      )}
     </div>
   );
 }
