@@ -20,6 +20,7 @@ const STORY_MOMENTS: StoryMoment[] = [
     title: "৯ নভেম্বর",
     subtitle: "একটা তারিখ… যে তারিখটা আমাদের হয়ে গেল।",
     duration: 4500,
+    bgImage: "/couple-sunset-bg.jpg",
   },
   {
     id: "farmgate",
@@ -40,6 +41,7 @@ const STORY_MOMENTS: StoryMoment[] = [
     title: "এক মুঠো ফুল",
     subtitle: "ছোট্ট কিছু ফুল,\nআর তার চেয়েও বড় হয়ে থাকা একটা অনুভূতি।",
     duration: 4800,
+    bgImage: "/flower-bouquet.jpg",
   },
   {
     id: "tsc",
@@ -53,6 +55,7 @@ const STORY_MOMENTS: StoryMoment[] = [
     title: "মিস হয়ে যাওয়া বাস",
     subtitle: "তোমার ইউনিভার্সিটির বাসটা মিস হয়ে গেল…\nআর সেই ছোট্ট ঘটনাটাই আমাদের দিনটাকে আরও দীর্ঘ করে দিল।",
     duration: 5500,
+    bgImage: "/rickshaw-ride.jpg",
   },
   {
     id: "metro",
@@ -73,11 +76,13 @@ const STORY_MOMENTS: StoryMoment[] = [
     title: "তোমার হলের সামনে",
     subtitle: "দিনটা সেখানেই শেষ হয়েছিল…\nকিন্তু আমাদের গল্পটা নয়।",
     duration: 5200,
+    bgImage: "/diu-campus.jpg",
   },
   {
     id: "silence",
     type: "silence",
     duration: 3000, // ৩ সেকেন্ডের সম্পূর্ণ নীরবতা
+    bgImage: "/hands-holding.jpg",
   },
   {
     id: "climax",
@@ -86,6 +91,7 @@ const STORY_MOMENTS: StoryMoment[] = [
     subtitle: "এই ছোট্ট পথচলাই একদিন\nআমাদের সবচেয়ে সুন্দর স্মৃতিগুলোর শুরু হয়ে থাকবে।",
     footer: "৯ নভেম্বর — যেদিন থেকে “আমি” আর “তুমি”-র গল্পটা “আমরা” হয়ে গেল।",
     duration: 7000,
+    bgImage: "/couple-sunset-bg.jpg",
   },
 ];
 
@@ -184,7 +190,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[9999] flex flex-col justify-between bg-black text-white select-none cursor-pointer overflow-hidden"
+      className="fixed inset-0 z-[9999] flex flex-col justify-between bg-[#131118] text-white select-none cursor-pointer overflow-hidden"
       style={{
         fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif",
       }}
@@ -202,25 +208,28 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
       role="dialog"
       aria-label="Welcome Story"
     >
-      {/* Dynamic Background Photo Layer (e.g. Farmgate Sunset Painting) */}
+      {/* Ambient background glow for slides */}
+      <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_35%,rgba(160,50,85,0.18),transparent_75%)]" />
+
+      {/* Dynamic Background Photo Layer with clear, luminous presentation */}
       <AnimatePresence>
         {phase === "story" && currentMoment.bgImage && (
           <motion.div
             key={currentMoment.bgImage}
-            initial={{ opacity: 0, scale: 1.08 }}
+            initial={{ opacity: 0, scale: 1.06 }}
             animate={{ opacity: 1, scale: 1.0 }}
-            exit={{ opacity: 0, scale: 1.04 }}
+            exit={{ opacity: 0, scale: 1.03 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0 pointer-events-none z-0 overflow-hidden"
           >
             <img
               src={currentMoment.bgImage}
               alt={currentMoment.title || "Background"}
-              className="size-full object-cover object-center filter brightness-[0.7] contrast-[1.05]"
+              className="size-full object-cover object-center filter brightness-[0.98] contrast-[1.02]"
             />
-            {/* Cinematic Gradient Scrim to keep typography ultra crisp */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/85" />
-            <div className="absolute inset-0 bg-radial from-transparent via-black/30 to-black/80" />
+            {/* Soft, light scrim: subtle top & bottom gradients and soft vignette so the photo details show clearly */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(0,0,0,0.22)_100%)]" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -235,7 +244,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
             <button
               type="button"
               onClick={finishStory}
-              className="text-xs text-neutral-600 hover:text-neutral-300 transition-colors px-3 py-1.5 rounded-full"
+              className="text-xs text-neutral-200 hover:text-white bg-black/35 hover:bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 transition-all shadow-sm"
             >
               এড়িয়ে যান →
             </button>
@@ -265,11 +274,11 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
                     className="flex flex-col items-center justify-center text-center space-y-6"
                   >
-                    <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-neutral-400">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-neutral-100 drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
                       {currentMoment.title}
                     </h2>
 
-                    <p className="text-2xl sm:text-3xl md:text-4xl font-medium text-neutral-100 whitespace-pre-line leading-relaxed max-w-2xl">
+                    <p className="text-2xl sm:text-3xl md:text-4xl font-medium text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.95)] drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] whitespace-pre-line leading-relaxed max-w-2xl">
                       {currentMoment.subtitle}
                     </p>
 
@@ -278,7 +287,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.8, duration: 1.2 }}
-                        className="pt-6 border-t border-neutral-800/80 mt-6 max-w-xl text-sm sm:text-base md:text-lg text-neutral-400 font-light leading-relaxed"
+                        className="pt-6 border-t border-white/25 mt-6 max-w-xl text-sm sm:text-base md:text-lg text-neutral-100 drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] font-light leading-relaxed"
                       >
                         {currentMoment.footer}
                       </motion.div>
@@ -295,7 +304,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
                     className="flex flex-col items-center justify-center"
                   >
                     {/* Moment Title */}
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-neutral-100 leading-tight">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.95)] drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] leading-tight">
                       {currentMoment.title}
                     </h1>
 
@@ -309,7 +318,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
                           duration: 1.0,
                           ease: "easeOut",
                         }}
-                        className="mt-4 sm:mt-5 text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-neutral-300 whitespace-pre-line max-w-2xl"
+                        className="mt-4 sm:mt-5 text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)] drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] whitespace-pre-line max-w-2xl"
                       >
                         {currentMoment.subtitle}
                       </motion.p>
@@ -321,7 +330,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
           </div>
 
           {/* Subtle footer hint */}
-          <div className="relative z-10 pb-8 text-center text-xs tracking-wide text-neutral-700">
+          <div className="relative z-10 pb-8 text-center text-xs tracking-wide text-neutral-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
             <span>ট্যাপ অথবা ক্লিক করে এগিয়ে যান</span>
           </div>
         </>
