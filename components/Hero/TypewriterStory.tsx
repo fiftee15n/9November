@@ -145,7 +145,7 @@ export function TypewriterStory({
     >
       {/* Title */}
       <div className="relative flex items-center">
-        <h1 className="text-[20px] sm:text-[24px] md:text-[26px] font-semibold leading-snug text-foreground">
+        <h1 className="text-[20px] sm:text-[24px] md:text-[26px] font-semibold leading-snug text-black dark:text-white">
           {titleTyped}
           {currentSection === 0 && !isComplete && (
             <span
@@ -158,7 +158,7 @@ export function TypewriterStory({
 
       {/* Paragraph 1 */}
       {(currentSection >= 1 || paraTyped[0].length > 0) && (
-        <p className="mt-3 sm:mt-4 whitespace-pre-line text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed text-neutral-600 dark:text-neutral-300">
+        <p className="mt-3 sm:mt-4 whitespace-pre-line text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed text-black dark:text-white">
           {paraTyped[0]}
           {currentSection === 1 && !isComplete && (
             <span
@@ -171,7 +171,7 @@ export function TypewriterStory({
 
       {/* Paragraph 2 */}
       {(currentSection >= 2 || paraTyped[1].length > 0) && (
-        <p className="mt-3 sm:mt-4 whitespace-pre-line text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed text-neutral-600 dark:text-neutral-300">
+        <p className="mt-3 sm:mt-4 whitespace-pre-line text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed text-black dark:text-white">
           {paraTyped[1]}
           {currentSection === 2 && !isComplete && (
             <span
@@ -184,7 +184,7 @@ export function TypewriterStory({
 
       {/* Paragraph 3 */}
       {(currentSection >= 3 || paraTyped[2].length > 0) && (
-        <p className="mt-3 sm:mt-4 whitespace-pre-line text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed text-neutral-600 dark:text-neutral-300">
+        <p className="mt-3 sm:mt-4 whitespace-pre-line text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed text-black dark:text-white">
           {paraTyped[2]}
           {currentSection === 3 && !isComplete && (
             <span
