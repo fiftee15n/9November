@@ -561,7 +561,22 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#F43F5E", // Floral Rose Red
     side: "left",
   },
+  {
+    id: "mehendi-chin-pose",
+    stepNumber: "৪০",
+    title: "মেহেদি রাঙা হাতে আদুরে খুনসুটি",
+    subtitle: "ঐতিহাসিক ইটের দেওয়ালে ভালোবাসার ফ্রেম",
+    date: "২০২৪",
+    location: "ঐতিহাসিক প্রাঙ্গণ",
+    story: "মেহেদি রাঙা দুটি হাতে আলতো করে আমার চিবুক ধরে রাখার সেই মিষ্টি খুনসুটি। তোমার চোখের দুষ্টুমি আর হাসিমাখা চাহনিতে মিশে ছিল পরম নির্ভরতা—ঐতিহাসিক লাল ইটের প্রাচীরের সামনে আমাদের এই মুহূর্তটি যেন চিরন্তন ভালোবাসার স্মারকে পরিণত হয়েছিল।",
+    image: "/mehendi-chin-pose.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#C2410C", // Warm Terracotta / Henna Rust
+    side: "right",
+  },
 ];
+
 
 
 
