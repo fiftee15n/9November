@@ -179,7 +179,7 @@ export function ColophonSection() {
               />
             </svg>
           </span>
-          <span className="text-xs">© 2026 Shakib. All rights reserved.</span>
+          <span className="text-xs">© 2026 Jahangir Alam Tamal. All rights reserved.</span>
         </div>
         <div className="ml-auto flex items-center gap-3">
           {content.socials

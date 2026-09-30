@@ -168,4 +168,4 @@
 
 ## 📜 License
 
-Created with ❤️ by Shakib Ali for **Tamal & Diba** (৯ নভেম্বর). All rights reserved.
+Created with ❤️ by **Jahangir Alam Tamal** for **Tamal & Diba** (৯ নভেম্বর). All rights reserved.
