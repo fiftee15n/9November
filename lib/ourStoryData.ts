@@ -575,7 +575,22 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#C2410C", // Warm Terracotta / Henna Rust
     side: "right",
   },
+  {
+    id: "rose-hijab-videocall",
+    stepNumber: "৪১",
+    title: "ভিডিও কলে মিষ্টি মুহূর্ত",
+    subtitle: "স্ক্রিনের দুই প্রান্তে ভালোবাসার গল্প",
+    date: "২০২৪",
+    location: "স্ক্রিনের দুই প্রান্তে",
+    story: "দূরত্ব যতই থাকুক, স্ক্রিনে তোমার এই মিষ্টি হাসিমাখা মুখ দেখার সাথে সাথেই সমস্ত ক্লান্তি দূর হয়ে যেত। মিষ্টি খুনসুটি, ঘণ্টার পর ঘণ্টা না ফুরানো গল্প—স্ক্রিনের দুই প্রান্তে থেকেও আমরা যেন একে অপরের সবচেয়ে কাছে ছিলাম।",
+    image: "/rose-hijab-videocall.jpg",
+    imageAspect: "portrait",
+    icon: "video",
+    accentColor: "#BE185D", // Dusty Rose / Mauve
+    side: "left",
+  },
 ];
+
 
 
 
