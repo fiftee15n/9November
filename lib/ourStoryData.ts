@@ -603,7 +603,22 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#EAB308", // Sunflower Gold
     side: "right",
   },
+  {
+    id: "cozy-booth-selfie",
+    stepNumber: "৪৩",
+    title: "রেস্টুরেন্টে মাথায় মাথা রেখে",
+    subtitle: "দুজনের হাসিতে রঙিন এক মধুর দুপুর",
+    date: "২০২৪",
+    location: "আমাদের প্রিয় রেস্টুরেন্ট",
+    story: "রেস্টুরেন্টের শান্ত কোণে পাশাপাশি বসা, মাথায় মাথা ঠেকিয়ে মিষ্টি একটি মুহূর্ত ফ্রেমবন্দী করা। তোমার এই মিষ্টি নির্ভরতা আর নিষ্পাপ হাসির মাঝেই আমি খুঁজে পাই জীবনের সবচেয়ে শান্তির ঠিকানা।",
+    image: "/cozy-booth-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "coffee",
+    accentColor: "#0D9488", // Fresh Sage Teal
+    side: "left",
+  },
 ];
+
 
 
 
