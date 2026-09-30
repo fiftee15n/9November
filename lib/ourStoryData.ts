@@ -519,7 +519,22 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#E11D48", // Vivid Crimson Rose
     side: "right",
   },
+  {
+    id: "sunlit-greenery-selfie",
+    stepNumber: "৩৭",
+    title: "সবুজ পাতার ছায়ায় মিষ্টি রোদ্দুর",
+    subtitle: "গাছের পাতায় সোনালী রোদের আলো",
+    date: "২০২৪",
+    location: "সবুজ বৃক্ষের ছায়াতল",
+    story: "মাথার ওপর সবুজ পাতার নরম ছায়া আর ফাঁক গলে আসা সোনালী রোদের ঝিলিক। পাশাপাশি দাঁড়িয়ে ক্যামেরার লেন্সে একমুঠো হাসি ভাগ করে নেওয়ার মুহূর্ত—তোমার চোখের মায়াবী উজ্জ্বলতায় প্রকৃতির সবটুকু সৌন্দর্য যেন আরো উজ্জ্বল হয়ে উঠেছিল।",
+    image: "/sunlit-greenery-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "sparkles",
+    accentColor: "#16A34A", // Fresh Leaf Green
+    side: "left",
+  },
 ];
+
 
 
 
