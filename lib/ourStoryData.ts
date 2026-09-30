@@ -491,7 +491,22 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#BE185D", // Warm Berry / Rose
     side: "right",
   },
+  {
+    id: "cozy-mirror-selfie",
+    stepNumber: "৩৫",
+    title: "আয়নায় আদুরে খুনসুটি",
+    subtitle: "নীল সোয়েটারের উষ্ণতা ও মিষ্টি সেলফি",
+    date: "শীত ২০২৩",
+    location: "আমাদের প্রিয় কোণ",
+    story: "তোমার হাতে ফোন, আর আয়নায় ধরা পড়া আমাদের মিষ্টি দুটি মুখ। আমার কাঁধ তোমার দিকে হেলিয়ে দিয়ে নিঃশব্দে পাশে দাঁড়ানো—নীল সোয়েটার আর তোমার মিষ্টি হাসিতে সেই দিনটি যেন একমুঠো উষ্ণতায় ভরে উঠেছিল।",
+    image: "/cozy-mirror-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "camera",
+    accentColor: "#0284C7", // Cozy Sky Blue
+    side: "left",
+  },
 ];
+
 
 
 
