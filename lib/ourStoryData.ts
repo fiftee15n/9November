@@ -547,7 +547,22 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#1D4ED8", // Royal Navy Blue
     side: "right",
   },
+  {
+    id: "diba-birthday-cake",
+    stepNumber: "৩৯",
+    title: "দিবার জন্য ভালোবাসার কেক",
+    subtitle: "দোয়া আর ভালোবাসায় মোড়ানো জন্মদিনের ক্ষণ",
+    date: "২০২৪",
+    location: "আমাদের স্নিগ্ধ বাগান",
+    story: "লাল ফুলের নকশায় সাজানো শুভ্র কেক, যাতে লেখা একরাশ ভালোবাসা আর হৃদয়ের গভীর প্রার্থনা—'Dua hai ke har khushi apke mangalkar bane'। পরম মায়ায় কেকটির দিকে তাকিয়ে থাকা তোমার সেই আনন্দভরা চোখ—তোমার হাসিমুখের চেয়ে সুন্দর উপহার আর কী হতে পারে!",
+    image: "/diba-birthday-cake.jpg",
+    imageAspect: "portrait",
+    icon: "flower",
+    accentColor: "#F43F5E", // Floral Rose Red
+    side: "left",
+  },
 ];
+
 
 
 
