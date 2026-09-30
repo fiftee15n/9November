@@ -463,6 +463,21 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#E11D48", // Warm Rose / Crimson
     side: "right",
   },
+  {
+    id: "cafe-mirror-selfie",
+    stepNumber: "৩৩",
+    title: "আয়নায় মিষ্টি ফ্রেম ও সেলফি",
+    subtitle: "হাত জড়িয়ে মিষ্টি হাসির মুহূর্ত",
+    date: "২০২৩",
+    location: "আমাদের প্রিয় ক্যাফে",
+    story: "ক্যাফের উষ্ণ আলো আর কোলাহলের মাঝে আয়নায় নিজেদের ফ্রেমবন্দী করা। আমার হাত শক্ত করে ধরে তোমার সেই মিষ্টি লাজুক হাসি—প্রতিটি পলকে যেন লেখা ছিল নির্ভরতার হাজারো না-বলা কথা আর অফুরন্ত ভালোবাসা।",
+    image: "/cafe-mirror-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "camera",
+    accentColor: "#D97706", // Amber / Warm Cafe Caramel
+    side: "left",
+  },
 ];
+
 
 
