@@ -589,7 +589,22 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#BE185D", // Dusty Rose / Mauve
     side: "left",
   },
+  {
+    id: "paras-dairy-selfie",
+    stepNumber: "৪২",
+    title: "হঠাৎ তোলা মিষ্টি সেলফি",
+    subtitle: "হলুদ দোকানের সামনে মিষ্টি স্মৃতি",
+    date: "২০২৪",
+    location: "শহরের মিষ্টি কোণে",
+    story: "ঘুরতে বেরিয়ে হঠাৎ ক্যামেরার ফ্রেমে নিজেদের বন্দি করে নেওয়া। তোমার মিষ্টি হাসিতে মাথা এলিয়ে দেওয়া আর রোদের আলোয় ঝলমলে হলুদ ব্যাকগ্রাউন্ড—সাধারণ একটি দিনের এই অসাধারণ মুহূর্তটি হৃদয়ে রঙিন হয়ে রইল।",
+    image: "/paras-dairy-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "camera",
+    accentColor: "#EAB308", // Sunflower Gold
+    side: "right",
+  },
 ];
+
 
 
 
