@@ -435,4 +435,19 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#2563EB", // DIU Royal Blue
     side: "right",
   },
+  {
+    id: "campus-walk-together",
+    stepNumber: "৩১",
+    title: "লাল ইটের পথে পাশাপাশি",
+    subtitle: "হাতে হাত রেখে ক্যাম্পাসের মায়াবী বিকেল",
+    date: "২০২৩",
+    location: "ক্যাম্পাস লেকভিউ ওয়াকওয়ে",
+    story: "ক্যাম্পাসের লাল ইটের পথ ধরে তোমার হাতটি শক্ত করে ধরে পাশাপাশি দাঁড়িয়ে থাকা। একপাশে শান্ত লেকের জল, অন্যপাশে চেনা ক্যাম্পাস আর দখিনা হাওয়া—হাতে হাত রেখে তাকিয়ে থাকার এই নিশ্চিন্ত নির্ভরতায় মিশে ছিল আজীবন একসাথে চলার অনন্ত বিশ্বাস।",
+    image: "/campus-walk-together.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#059669", // Meadow Emerald Green
+    side: "left",
+  },
 ];
+
