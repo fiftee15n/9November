@@ -617,7 +617,22 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#0D9488", // Fresh Sage Teal
     side: "left",
   },
+  {
+    id: "wall-painting-mural",
+    stepNumber: "৪৪",
+    title: "দেওয়াল জুড়ে রঙের মেলা",
+    subtitle: "দেওয়ালে আঁকা ভালোবাসার রঙিন স্মৃতি",
+    date: "২০২৪",
+    location: "ক্যাম্পাস চত্বর",
+    story: "হাতে রং-তুলি নিয়ে দেওয়ালজুড়ে রঙের মেলা বসানো। পাশাপাশি দাঁড়িয়ে দেওয়াল রাঙানোর সেই চঞ্চলতা আর নিখাদ আনন্দ—প্রতিটি রঙের ছোঁয়ায় যেন ছড়িয়ে ছিল আমাদের স্বপ্নের রঙিন প্রতিচ্ছবি আর একসাথে গড়া অমলিন স্মৃতি।",
+    image: "/wall-painting-mural.jpg",
+    imageAspect: "landscape",
+    icon: "sparkles",
+    accentColor: "#2563EB", // Artistic Cobalt Blue
+    side: "right",
+  },
 ];
+
 
 
 
