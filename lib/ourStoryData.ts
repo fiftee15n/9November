@@ -449,5 +449,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#059669", // Meadow Emerald Green
     side: "left",
   },
+  {
+    id: "tender-shoulder-hug",
+    stepNumber: "৩২",
+    title: "কাঁধে চিবুক ও স্নেহের আলিঙ্গন",
+    subtitle: "হিজাবের স্নিগ্ধতায় আদুরে নির্ভরতা",
+    date: "২০২৩",
+    location: "আমাদের ভালোবাসার আঙিনা",
+    story: "আমার কাঁধের ওপর আলতো করে তোমার চিবুক আর স্নেহের কোমল পরশ। পৃথিবীর সমস্ত ব্যস্ততা আর কোলাহলের মাঝে এই ছোট্ট স্পর্শটুকু যেন এক টুকরো পরম নির্ভরতা—যেখানে কোনো দ্বিধা নেই, আছে শুধু নিখাদ ভালোবেসে আজীবন পাশে থাকার নিশ্চিন্ত অনুভূতি।",
+    image: "/tender-shoulder-hug.jpg",
+    imageAspect: "portrait",
+    icon: "sparkles",
+    accentColor: "#E11D48", // Warm Rose / Crimson
+    side: "right",
+  },
 ];
+
 
