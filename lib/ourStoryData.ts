@@ -505,7 +505,22 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#0284C7", // Cozy Sky Blue
     side: "left",
   },
+  {
+    id: "forehead-kiss-flowers",
+    stepNumber: "৩৬",
+    title: "কপালে স্নেহের পরশ ও ফুল",
+    subtitle: "হাতে বেলি ফুলের মালা ও একগুচ্ছ ফুল",
+    date: "শীত ২০২৩",
+    location: "আমাদের প্রিয় প্রাঙ্গণ",
+    story: "তোমার কপালে পরম স্নেহের এক ফোঁটা চুম্বন। হাতে বেলি ফুলের মিষ্টি মালা আর লাল ফুল, চাদরের উষ্ণতায় চোখ বুজে তোমার সেই প্রশান্ত হাসি—যেখানে কোনো কথার প্রয়োজন ছিল না, নিঃশব্দেই হৃদয় ছুঁয়ে গিয়েছিল আজীবন পাশে থাকার পবিত্র অঙ্গীকার।",
+    image: "/forehead-kiss-flowers.jpg",
+    imageAspect: "portrait",
+    icon: "flower",
+    accentColor: "#E11D48", // Vivid Crimson Rose
+    side: "right",
+  },
 ];
+
 
 
 
