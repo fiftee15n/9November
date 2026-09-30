@@ -533,7 +533,22 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#16A34A", // Fresh Leaf Green
     side: "left",
   },
+  {
+    id: "navy-festive-evening",
+    stepNumber: "৩৮",
+    title: "নীল পোশাকে উৎসবের সন্ধ্যা",
+    subtitle: "বাগানের ফেয়ারি লাইট ও মিষ্টি নির্ভরতা",
+    date: "২০২৪",
+    location: "আলো ঝলমলে বাগান প্রাঙ্গণ",
+    story: "উষ্ণ বাতি আর ঝুলন্ত ফেয়ারি লাইটের আলোয় সাজানো এক মায়াবী সন্ধ্যা। দুজনের একই রঙের গাঢ় নীল পোশাকে পাশাপাশি থাকা, তোমার কাঁধে হাত রেখে পরম নির্ভরতার সেই মধুর মুহূর্ত—যেখানে প্রতিটি আলো যেন আমাদের ভালোবাসার গল্পটাকেই নতুন করে রাঙিয়ে দিচ্ছিল।",
+    image: "/navy-festive-evening.jpg",
+    imageAspect: "portrait",
+    icon: "sparkles",
+    accentColor: "#1D4ED8", // Royal Navy Blue
+    side: "right",
+  },
 ];
+
 
 
 
