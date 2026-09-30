@@ -477,7 +477,22 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#D97706", // Amber / Warm Cafe Caramel
     side: "left",
   },
+  {
+    id: "better-together-cake",
+    stepNumber: "৩৪",
+    title: "বেটার টুগেদার কেক ও উদযাপন",
+    subtitle: "দুজনে মিলে কেক কাটার মধুর ক্ষণ",
+    date: "২০২৩",
+    location: "ক্যাম্পাসের শান্ত প্রাঙ্গণ",
+    story: "একটি ছোট্ট চকোলেট কেক, যার ওপর পরম ভালোবাসায় লেখা 'Better Together'। পাশাপাশি বসে দুজন মিলে সেই কেক হাতে নেওয়ার মুহূর্তে মিশে ছিল একসাথে পথচলার আনন্দ আর হৃদয়ের গভীরতম টান—সত্যিই, আমরা দুজন একসাথে থাকলেই পৃথিবীটা সবচেয়ে সুন্দর।",
+    image: "/better-together-cake.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#BE185D", // Warm Berry / Rose
+    side: "right",
+  },
 ];
+
 
 
 
