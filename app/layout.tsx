@@ -57,6 +57,7 @@ export default function RootLayout({
   preload("/tsc.jpg", { as: "image" });
   preload("/metro.jpg", { as: "image" });
   preload("/airport.jpg", { as: "image" });
+  preload("/wall-painting-mural.jpg", { as: "image" });
   preload("/first-met.jpg", { as: "image" });
   preload("/first-glance.jpg", { as: "image" });
   preload("/first-date.jpg", { as: "image" });
