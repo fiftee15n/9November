@@ -16,6 +16,7 @@ const BUCKET_LIST = [
     name: "প্রেমের স্মৃতি ও মধুর মুহূর্ত",
     items: [
       { name: "প্রথম হাত ধরা", done: true },
+      { name: "তার হাতটা ধরা", done: true },
       { name: "হুডখোলা রিকশা ভ্রমণ", done: true },
       { name: "এক ছাতায় বৃষ্টি ভেজা", done: true },
       { name: "টিএসসির মাটির কাপে চা", done: true },
