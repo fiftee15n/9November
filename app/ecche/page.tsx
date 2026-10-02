@@ -17,7 +17,7 @@ const BUCKET_LIST = [
     items: [
       { name: "প্রথম হাত ধরা", done: true },
       { name: "তার হাতটা ধরা", done: true },
-      { name: "পরম স্নেহে তার হাতে মুখে তুলে খাওয়া", done: true },
+      { name: "নিজের হাতে তাকে খাইয়ে দেওয়া", done: true },
       { name: "হুডখোলা রিকশা ভ্রমণ", done: true },
       { name: "এক ছাতায় বৃষ্টি ভেজা", done: true },
       { name: "টিএসসির মাটির কাপে চা", done: true },
@@ -68,6 +68,7 @@ const BUCKET_LIST = [
       { name: "বারান্দার টবে ফুলবাগান", done: false },
       { name: "অসুস্থতায় পরম যত্নে সেবা", done: false },
       { name: "তুলতুলে বিড়ালছানা দত্তক", done: false },
+      { name: "মাঝে মাঝে শাড়ি পরে তার অপেক্ষায় থাকা", done: false },
       { name: "ক্লান্ত সন্ধ্যায় কাঁধে মাথা", done: false },
       { name: "আমাদের ভালোবাসার প্রতিচ্ছবি", done: false },
     ],
