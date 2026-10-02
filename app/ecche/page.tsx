@@ -64,6 +64,7 @@ const BUCKET_LIST = [
       { name: "স্বপ্নের নীড় সাজানো", done: false },
       { name: "এক কাপ চায়ে সকাল শুরু", done: false },
       { name: "ছুটির সকালে একসাথে রান্না", done: false },
+      { name: "রান্নাঘরে কাজের মাঝে মিষ্টি সঙ্গ দেওয়া", done: false },
       { name: "হাত ধরে কাঁচাবাজারে যাওয়া", done: false },
       { name: "প্রতি শুক্রবার বিকেলে বাইরে মিষ্টি সময় কাটানো", done: false },
       { name: "প্রথম সেহরি ও ইফতার", done: false },
