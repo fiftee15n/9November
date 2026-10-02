@@ -21,6 +21,7 @@ const BUCKET_LIST = [
       { name: "হুডখোলা রিকশা ভ্রমণ", done: true },
       { name: "এক ছাতায় বৃষ্টি ভেজা", done: true },
       { name: "টিএসসির মাটির কাপে চা", done: true },
+      { name: "মাঝে মাঝে তার নিজের হাতে বানানো চা খাওয়া", done: false },
       { name: "খোপায় বেলি ফুলের মালা", done: true },
       { name: "হাতে বেলি / গাজরার মালা পড়িয়ে দেওয়া", done: true },
       { name: "রেশমি কাচের চুড়ি পরানো", done: false },
