@@ -63,6 +63,7 @@ const BUCKET_LIST = [
     name: "ভ্রমণ ও দূর সীমানায়",
     items: [
       { name: "একসাথে সমুদ্র দেখা", done: false },
+      { name: "একসাথে সূর্যোদয় দেখা", done: false },
       { name: "সাজেক ভ্যালির মেঘ ছোঁয়া", done: false },
       { name: "সৈকতে লাল সূর্যাস্ত দেখা", done: false },
       { name: "সিলেটের সবুজ চা বাগান", done: false },
