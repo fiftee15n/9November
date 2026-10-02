@@ -27,6 +27,8 @@ const BUCKET_LIST = [
       { name: "বইমেলায় হাত ধরে ঘোরা", done: false },
       { name: "হাতে লেখা প্রেমপত্র", done: false },
       { name: "মাঝরাতে আইসক্রিম ডেট", done: false },
+      { name: "একসাথে বসে দীর্ঘসময় চাঁদ দেখা", done: false },
+      { name: "ছাদে বা নিরিবিলি কোথাও আকাশ ভরা তারা দেখা", done: false },
       { name: "কপালে স্নেহের চুম্বন", done: true },
     ],
   },
@@ -60,6 +62,7 @@ const BUCKET_LIST = [
   {
     name: "ভ্রমণ ও দূর সীমানায়",
     items: [
+      { name: "একসাথে সমুদ্র দেখা", done: false },
       { name: "সাজেক ভ্যালির মেঘ ছোঁয়া", done: false },
       { name: "সৈকতে লাল সূর্যাস্ত দেখা", done: false },
       { name: "সিলেটের সবুজ চা বাগান", done: false },
