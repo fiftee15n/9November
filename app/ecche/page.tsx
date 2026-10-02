@@ -86,6 +86,7 @@ const BUCKET_LIST = [
       { name: "শান্ত নদীতে নৌকায় ভাসা", done: false },
       { name: "পাহাড়ে তাঁবুতে তারা দেখা", done: false },
       { name: "হাত ধরে সারা দেশ ঘুরে বেড়ানো", done: false },
+      { name: "একসাথে সারা দেশ ঘুরে বেড়ানো", done: false },
       { name: "পাসপোর্ট হাতে বিশ্বভ্রমণ", done: false },
       { name: "বৃষ্টির দিনে লং ড্রাইভ", done: false },
     ],
