@@ -30,6 +30,7 @@ const BUCKET_LIST = [
       { name: "এক ইয়ারফোনে গান শোনা", done: true },
       { name: "বইমেলায় হাত ধরে ঘোরা", done: false },
       { name: "হাতে লেখা প্রেমপত্র", done: false },
+      { name: "বুক পকেটের মানিব্যাগে পরম যত্নে রাখা ছোট্ট ছবি", done: true },
       { name: "মাঝরাতে আইসক্রিম ডেট", done: false },
       { name: "নিঝুম রাতে রিকশায় পাশাপাশি ঘোরা", done: false },
       { name: "একসাথে বসে দীর্ঘসময় চাঁদ দেখা", done: false },
