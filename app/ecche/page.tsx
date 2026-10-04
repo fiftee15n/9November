@@ -25,6 +25,7 @@ const BUCKET_LIST = [
       { name: "খোপায় বেলি ফুলের মালা", done: true },
       { name: "হাতে বেলি / গাজরার মালা পড়িয়ে দেওয়া", done: true },
       { name: "রেশমি কাচের চুড়ি পরানো", done: false },
+      { name: "তার জন্য দুহাত ভরে মেহেদী রাঙানো", done: true },
       { name: "নীল শাড়িতে বিশেষ সাজ", done: true },
       { name: "ভিডিও কলে রাত জাগা", done: true },
       { name: "এক ইয়ারফোনে গান শোনা", done: true },
