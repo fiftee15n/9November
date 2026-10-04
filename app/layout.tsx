@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { preload } from "react-dom";
 import "./globals.css";
-import { content } from "@/lib/content";
 import { ThemeProvider } from "@/components/theme-provider";
 import { MusicProvider } from "@/components/audio/MusicContext";
 import { DockBar } from "@/components/DockBar";
@@ -71,13 +70,6 @@ export default function RootLayout({
   preload("/memories/memory-4.jpg", { as: "image" });
   preload("/memories/memory-5.jpg", { as: "image" });
   preload("/hands-holding.jpg", { as: "image" });
-  preload("/avatar.gif", { as: "image" });
-  preload("/badges/company-logo.svg", { as: "image" });
-  preload("/badges/orbix.png", { as: "image" });
-  preload("/badges/screens.png", { as: "image" });
-  preload("/badges/pintop.png", { as: "image" });
-  preload("/x-avatar.png", { as: "image" });
-  preload("/linkedin-avatar.png", { as: "image" });
 
   return (
     <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} ${overusedGrotesk.variable} ${hindSiliguri.variable}`}>
