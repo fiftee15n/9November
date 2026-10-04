@@ -49,26 +49,69 @@ export function TypewriterStory({
     }
   }, [isInitiallyDone]);
 
+  const targetScrollY = useRef(0);
+  const userInteractedAt = useRef(0);
+
+  // Dedicated continuous RAF auto-scroller for typing
+  // Keeps the active cursor comfortably centered and visible, avoiding browser smooth-scroll lockups
+  useEffect(() => {
+    if (!active || reduce || isComplete) return;
+
+    let rafId: number;
+
+    const onUserTouch = () => {
+      userInteractedAt.current = performance.now();
+      targetScrollY.current = window.scrollY;
+    };
+
+    window.addEventListener("touchstart", onUserTouch, { passive: true });
+    window.addEventListener("touchmove", onUserTouch, { passive: true });
+    window.addEventListener("wheel", onUserTouch, { passive: true });
+
+    const tick = () => {
+      if (cursorRef.current) {
+        const rect = cursorRef.current.getBoundingClientRect();
+        const vh = window.innerHeight;
+        // On mobile, the dock & progressive blur occupy the lower ~180px.
+        // We want the cursor to stay above that, comfortably around 50% to 58% of the viewport.
+        const safeBottom = Math.min(vh * 0.58, vh - 180);
+
+        if (rect.bottom > safeBottom) {
+          const diff = rect.bottom - safeBottom;
+          targetScrollY.current = Math.max(targetScrollY.current, window.scrollY + diff);
+        }
+      }
+
+      const now = performance.now();
+      const isUserInteracting = now - userInteractedAt.current < 1200;
+
+      if (!isUserInteracting && targetScrollY.current > window.scrollY) {
+        const remaining = targetScrollY.current - window.scrollY;
+        if (remaining > 0.5) {
+          // Buttery smooth lerp dampening at native refresh rate (60fps/120fps)
+          const step = Math.min(remaining * 0.14, 8);
+          window.scrollTo(0, window.scrollY + step);
+        }
+      }
+
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("touchstart", onUserTouch);
+      window.removeEventListener("touchmove", onUserTouch);
+      window.removeEventListener("wheel", onUserTouch);
+    };
+  }, [active, reduce, isComplete]);
+
   useEffect(() => {
     if (!active || reduce || isComplete) return;
 
     let timeoutId: NodeJS.Timeout;
     let isCancelled = false;
-
-    // Helper to scroll cursor into view smoothly as text expands
-    const autoScroll = () => {
-      if (cursorRef.current) {
-        const rect = cursorRef.current.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-        // If cursor is in the lower 40% of the screen or below, gently scroll
-        if (rect.bottom > viewportHeight - 160) {
-          window.scrollBy({
-            top: rect.bottom - (viewportHeight - 200),
-            behavior: "smooth",
-          });
-        }
-      }
-    };
 
     const typeNextChar = () => {
       if (isCancelled) return;
@@ -79,7 +122,6 @@ export function TypewriterStory({
           const nextLength = titleTyped.length + 1;
           const char = TITLE_TEXT[titleTyped.length];
           setTitleTyped(TITLE_TEXT.slice(0, nextLength));
-          autoScroll();
 
           const delay = char === " " || char === "—" ? 70 : 35;
           timeoutId = setTimeout(typeNextChar, delay);
@@ -103,7 +145,6 @@ export function TypewriterStory({
             copy[pIdx] = targetText.slice(0, nextLength);
             return copy;
           });
-          autoScroll();
 
           // Natural cadence with punctuation pauses
           let delay = 24;
@@ -121,9 +162,10 @@ export function TypewriterStory({
           } else {
             setIsComplete(true);
             setCurrentSection(4);
-            autoScroll();
-            // Call onComplete automatically when typewriting ends
-            onCompleteRef.current?.();
+            // Give the user a brief, graceful moment to absorb the final message & heart
+            timeoutId = setTimeout(() => {
+              onCompleteRef.current?.();
+            }, 850);
           }
         }
       }
