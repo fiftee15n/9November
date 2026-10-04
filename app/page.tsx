@@ -21,8 +21,8 @@ const FADE_UP = {
 // Persists through dock navigation in the same session
 let storyCompletedThisLoad = false;
 
-// Cinematic smooth scroll that gracefully brings the storymap card into view
-function smoothScrollToElement(element: HTMLElement, duration = 1100, offset = 36) {
+// Custom cinematic slow smooth scroll that gracefully brings the storymap card into view
+function slowScrollToElement(element: HTMLElement, duration = 2400, offset = 40) {
   const rect = element.getBoundingClientRect();
   const targetY = Math.max(0, rect.top + window.scrollY - offset);
   const startY = window.scrollY;
@@ -33,42 +33,31 @@ function smoothScrollToElement(element: HTMLElement, duration = 1100, offset = 3
   let animId: number;
   let userInterrupted = false;
 
-  let touchStartY = 0;
-  const onTouchStart = (e: TouchEvent) => {
-    touchStartY = e.touches[0]?.clientY ?? 0;
-  };
-  const onTouchMove = (e: TouchEvent) => {
-    const currentY = e.touches[0]?.clientY ?? 0;
-    // Only interrupt if the user actually swipes with intention (drag > 10px)
-    if (Math.abs(currentY - touchStartY) > 10) {
-      userInterrupted = true;
-      cleanup();
-    }
-  };
-  const onWheel = () => {
+  const onUserInteraction = () => {
     userInterrupted = true;
     cleanup();
   };
 
   const cleanup = () => {
-    window.removeEventListener("wheel", onWheel);
-    window.removeEventListener("touchstart", onTouchStart);
-    window.removeEventListener("touchmove", onTouchMove);
+    window.removeEventListener("wheel", onUserInteraction);
+    window.removeEventListener("touchstart", onUserInteraction);
+    window.removeEventListener("keydown", onUserInteraction);
     cancelAnimationFrame(animId);
   };
 
-  window.addEventListener("wheel", onWheel, { passive: true });
-  window.addEventListener("touchstart", onTouchStart, { passive: true });
-  window.addEventListener("touchmove", onTouchMove, { passive: true });
+  window.addEventListener("wheel", onUserInteraction, { passive: true });
+  window.addEventListener("touchstart", onUserInteraction, { passive: true });
+  window.addEventListener("keydown", onUserInteraction, { passive: true });
 
-  // Luxurious easeOutQuart curve: starts smoothly, glides at steady pace, and eases softly to a stop
-  const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
+  // Silky smooth easeInOutCubic curve
+  const easeInOutCubic = (t: number) =>
+    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
   const step = (currentTime: number) => {
     if (userInterrupted) return;
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / duration, 1);
-    const easeProgress = easeOutQuart(progress);
+    const easeProgress = easeInOutCubic(progress);
 
     window.scrollTo(0, startY + distance * easeProgress);
 
@@ -99,12 +88,12 @@ function HeroContent() {
     if (storyComplete && isFirstCompletionRef.current) {
       isFirstCompletionRef.current = false;
       let cleanupScroll: (() => void) | undefined;
-      // Start smooth scroll once the card entrance begins
+      // Start slow scroll gently once the slow reveal has begun
       const timer = setTimeout(() => {
         if (storyMapRef.current) {
-          cleanupScroll = smoothScrollToElement(storyMapRef.current, 1100, 36);
+          cleanupScroll = slowScrollToElement(storyMapRef.current, 2400, 40);
         }
-      }, 250);
+      }, 450);
 
       return () => {
         clearTimeout(timer);
@@ -190,7 +179,7 @@ function HeroContent() {
                 initial={
                   reduce
                     ? false
-                    : { opacity: 0, y: 24, filter: "blur(4px)" }
+                    : { opacity: 0, y: 50, filter: "blur(12px)" }
                 }
                 animate={{
                   opacity: 1,
@@ -200,8 +189,8 @@ function HeroContent() {
                 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{
-                  duration: 0.9,
-                  ease: [0.16, 1, 0.3, 1],
+                  duration: 2.2,
+                  ease: [0.22, 1, 0.36, 1],
                 }}
                 className="mt-8 w-full scroll-mt-16"
               >
