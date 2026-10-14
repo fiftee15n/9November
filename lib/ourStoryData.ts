@@ -645,6 +645,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#15803D", // Olive / Forest Green
     side: "left",
   },
+  {
+    id: "warm-yellow-mirror-selfie",
+    stepNumber: "৪৬",
+    title: "আয়নায় ভালোবাসার সোনালী প্রতিচ্ছবি",
+    subtitle: "হলুদ আলোয় ফ্রেমবন্দী একমুঠো স্নিগ্ধ হাসি ও নির্ভরতা",
+    date: "২০২৪",
+    location: "শহরের উজ্জ্বল এক কোণে",
+    story: "হলুদ দেওয়ালের উষ্ণ আভায় আয়নার সামনে পাশাপাশি দাঁড়িয়ে থাকা। আমার পাশে আলতো করে ঘেঁষে দাঁড়িয়ে তোমার সেই স্নিগ্ধ মিষ্টি হাসি, আর ক্যামেরার ফ্রেমে ধরা পড়া দুজনার মায়াবী দৃষ্টি—যেন এক নিমিষেই বন্দি হয়ে আছে পৃথিবীর সবটুকু আলো আর অনাবিল প্রশান্তি। সাধারণ একটি মিরর সেলফিও তোমার উপস্থিতিতে হয়ে ওঠে ভালোবাসার একেকটি সোনালী কবিতা, যেখানে প্রতিটি প্রতিচ্ছবিতেই লেখা থাকে আজীবন একসাথে হাসিমুখে পাশে থাকার গভীর নির্ভরতা।",
+    image: "/warm-yellow-mirror-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "camera",
+    accentColor: "#D97706", // Luminous Warm Amber / Golden Glow
+    side: "right",
+  },
 ];
 
 
