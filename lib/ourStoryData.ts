@@ -799,6 +799,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#C2410C", // Autumn Rust / Warm Terracotta
     side: "right",
   },
+  {
+    id: "table-hands-pink-petals",
+    stepNumber: "৫৭",
+    title: "কাঁচের টেবিলে ভালোবাসার প্রতিফলন",
+    subtitle: "গোলাপি বাগানবিলাসের মাঝে কাঁচের ওপর হাত রাখা",
+    date: "২০২৪",
+    location: "ক্যাফের বাগান প্রাঙ্গণ",
+    story: "কাঁচের টেবিলের ওপর ছড়িয়ে থাকা গোলাপি বাগানবিলাসের পাপড়ি আর তার মায়াবী প্রতিফলন। তোমার নরম হাতের ওপর আমার হাতটি পরম ভালোবাসায় জড়িয়ে রাখা—যেখানে কাঁচের বুকেও স্পষ্ট হয়ে ওঠে আমাদের অটুট বন্ধনের প্রতিচ্ছবি। চারপাশের কোলাহল ভুলে নিভৃতে হাত ধরে বসে থাকা এই ছোট্ট ক্ষণটি যেন অনন্ত প্রেমের এক স্নিগ্ধ কাব্য।",
+    image: "/table-hands-pink-petals.jpg",
+    imageAspect: "square",
+    icon: "coffee",
+    accentColor: "#EC4899", // Vibrant Bougainvillea Pink
+    side: "left",
+  },
 ];
 
 
