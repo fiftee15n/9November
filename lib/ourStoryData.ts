@@ -757,6 +757,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#E11D48", // Romantic Rose Crimson
     side: "left",
   },
+  {
+    id: "linked-arms-beli-mala",
+    stepNumber: "৫৪",
+    title: "বাহু জড়িয়ে পরম নির্ভরতা",
+    subtitle: "হাতে বেলি ফুলের গজরা ও বাহুতে নিশ্চিন্ত আশ্রয়",
+    date: "২০২৪",
+    location: "আমাদের ভালোবাসার প্রাঙ্গণ",
+    story: "আমার বাহুটি শক্ত করে জড়িয়ে তোমার আলতো নির্ভরতায় বসে থাকা। তোমার হাতে বেলি ফুলের মিষ্টি গজরা, অনামিকায় জ্বলজ্বল করা ছোট্ট সোনার আংটি আর কোলে ভালোবাসার একগুচ্ছ ফুল। কোনো কোলাহল নেই, কোনো তাড়া নেই—কেবল পাশাপাশি বসে থাকা আর তোমার নিঃশব্দ স্পর্শের শান্তিময় অনুভূতির মাঝেই আমি খুঁজে পাই পৃথিবীর সবচেয়ে নিরাপদ আর সুন্দর আশ্রয়।",
+    image: "/linked-arms-beli-mala.jpg",
+    imageAspect: "landscape",
+    icon: "flower",
+    accentColor: "#D97706", // Warm Golden Amber / Jasmine Glow
+    side: "right",
+  },
 ];
 
 
