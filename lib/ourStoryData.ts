@@ -631,6 +631,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#0D9488", // Fresh Sage Teal
     side: "right",
   },
+  {
+    id: "kneeling-gentle-care",
+    stepNumber: "৪৫",
+    title: "হাঁটু গেড়ে পরম যত্ন",
+    subtitle: "পথের মাঝে নিচু হয়ে পোশাক ঠিক করার মিষ্টি মুহূর্ত",
+    date: "২০২৪",
+    location: "পথের মাঝে",
+    story: "রাস্তার মাঝে দুহাতে পরম যত্নে তোমার পোশাক ঠিক করে দেওয়ার সেই মিষ্টি মুহূর্ত। লোকলজ্জা ভুলে হাঁটু গেড়ে বসে তোমার খেয়াল রাখা—ভালোবাসা তো কেবল বড় বড় প্রতিশ্রুতিতে নয়, পথের মাঝে এমন ছোট ছোট নিঃশব্দ যত্ন আর গভীর নির্ভরতার মাঝেই আজীবন বেঁচে থাকে।",
+    image: "/kneeling-care.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#15803D", // Olive / Forest Green
+    side: "left",
+  },
 ];
 
 
