@@ -715,6 +715,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#BE123C", // Festive Crimson Rose / Warm Henna
     side: "right",
   },
+  {
+    id: "pinky-promise-hands",
+    stepNumber: "৫১",
+    title: "কড়ে আঙুলে মিষ্টি প্রতিশ্রুতি",
+    subtitle: "ছোট্ট আঙুল ছুঁয়ে আজীবন পাশে থাকার অঙ্গীকার",
+    date: "২০২৪",
+    location: "আমাদের নিভৃত ভুবনে",
+    story: "উষ্ণ চাদরের ওমে পাশাপাশি বসে থাকা, আর নিঃশব্দে তোমার কড়ে আঙুলে নিজের আঙুল জড়িয়ে নেওয়া। জীবনে বড় বড় প্রতিশ্রুতির চেয়ে এমন ছোট্ট আঙুল ছোঁয়ার মুহূর্তগুলোই বেশি সত্যি—যেখানে কোনো কথার আড়ম্বর নেই, কেবল কড়ে আঙুলের এক চিলতে বাঁধনে জড়িয়ে থাকে সারাটি জীবন হাত না ছাড়ার অটুট বিশ্বাস আর অনন্ত ভালোবাসা।",
+    image: "/pinky-promise-hands.jpg",
+    imageAspect: "portrait",
+    icon: "sparkles",
+    accentColor: "#8B5CF6", // Cozy Violet / Soft Amethyst Purple
+    side: "left",
+  },
 ];
 
 
