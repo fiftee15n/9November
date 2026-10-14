@@ -813,6 +813,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#EC4899", // Vibrant Bougainvillea Pink
     side: "left",
   },
+  {
+    id: "palm-to-palm-sunlight",
+    stepNumber: "৫৮",
+    title: "হাতের তালুতে উষ্ণ নির্ভরতা",
+    subtitle: "মিষ্টি রোদের আলোয় হাতের তালুতে হাত রেখে বসা",
+    date: "২০২৪",
+    location: "শান্ত রোদ্দুরের ছায়ায়",
+    story: "মিষ্টি রোদের ওমে পাশাপাশি বসে থাকা, আর তোমার নরম হাতটি নিজের উন্মুক্ত হাতের তালুতে পরম নির্ভরতায় জড়িয়ে রাখা। কোনো কথার প্রয়োজন নেই, কোনো তাড়া নেই—আঙুলে আঙুল আলতো করে ছুঁয়ে থাকা এই প্রশান্ত মুহূর্তেই যেন জীবনের সমস্ত ক্লান্তি জুড়িয়ে যায়, হৃদয় ভরে ওঠে নিখাদ ভালোবাসার গভীর শান্তিতে।",
+    image: "/palm-to-palm-sunlight.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#0284C7", // Sunlit Sky Blue / Serene Warmth
+    side: "right",
+  },
 ];
 
 
