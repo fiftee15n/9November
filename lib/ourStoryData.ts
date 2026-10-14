@@ -785,6 +785,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#059669", // Fresh Botanical Emerald Green
     side: "left",
   },
+  {
+    id: "autumn-leaves-walk",
+    stepNumber: "৫৬",
+    title: "ঝরা পাতার পথে হাত ধরে পথচলা",
+    subtitle: "হেমন্তের সোনালী ঘাস আর ঝরা পাতার নরম বিছানায়",
+    date: "২০২৪",
+    location: "শান্ত প্রকৃতির আঙিনায়",
+    story: "পায়ের নিচে শুকিয়ে যাওয়া সোনালী ঘাস আর ঝরা পাতার মৃদু মচমচ শব্দ। শীতের আগমনী হাওয়ায় উষ্ণ শাল জড়িয়ে তোমার হাতটি শক্ত করে ধরে হেঁটে চলা—যেখানে পথের কোনো শেষ নেই, শুধু আছে পাশাপাশি পা ফেলে এগিয়ে যাওয়ার মধুর শান্তি আর প্রকৃতির বুকে লেখা আমাদের নিঃশব্দ ভালোবাসার গল্প।",
+    image: "/autumn-leaves-walk.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#C2410C", // Autumn Rust / Warm Terracotta
+    side: "right",
+  },
 ];
 
 
