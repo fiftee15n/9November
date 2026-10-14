@@ -701,6 +701,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#0284C7", // Sky Blue / Ocean Serenity
     side: "left",
   },
+  {
+    id: "holding-both-mehendi-hands",
+    stepNumber: "৫০",
+    title: "উভয় হাতে ভালোবাসার নির্ভরতা",
+    subtitle: "দুটি মেহেদি রাঙা হাত পরম যত্নে নিজের করে নেওয়া",
+    date: "২০২৪",
+    location: "উৎসবের স্নিগ্ধ প্রাঙ্গণে",
+    story: "লাল পোশাকের জমকালো সাজ, আর তোমার দুটি হাতজুড়ে আঁকা মেহেদির অপূর্ব নকশা। পরম শ্রদ্ধায় আর অফুরন্ত ভালোবাসায় তোমার দুটি হাতই আমার হাতের মাঝে আগলে রাখা—যেখানে কোনো কথার প্রয়োজন ছিল না। দুটি হাতের এই উষ্ণ স্পর্শে যেন মিশে ছিল আজীবনের সুরক্ষা, নিঃশব্দ নির্ভরতা আর সারাজীবন এভাবেই পাশাপাশি চলার পবিত্র প্রতিশ্রুতি।",
+    image: "/holding-both-mehendi-hands.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#BE123C", // Festive Crimson Rose / Warm Henna
+    side: "right",
+  },
 ];
 
 
