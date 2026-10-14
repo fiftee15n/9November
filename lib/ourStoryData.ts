@@ -771,6 +771,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#D97706", // Warm Golden Amber / Jasmine Glow
     side: "right",
   },
+  {
+    id: "hand-in-hand-beli-mala",
+    stepNumber: "৫৫",
+    title: "বেলি ফুলের মালায় হাত ধরে পথচলা",
+    subtitle: "মায়াবী গজরার সুবাস ও হাতে হাত রেখে এগিয়ে চলা",
+    date: "২০২৪",
+    location: "আমাদের চেনা পথের বাঁকে",
+    story: "তোমার হাতে শক্ত করে হাত রাখা, আর কবজিতে জড়িয়ে থাকা বেলি ফুলের স্নিগ্ধ মিষ্টি সুবাস। শহরের পথে পাশাপাশি হেঁটে চলার এই মুহূর্তগুলোতে কোনো জটিলতা নেই—আছে কেবল দুটি হাতের নিবিড় স্পর্শ আর আজীবন এভাবে একসাথে পথচলার এক অটুট, নিঃশব্দ অঙ্গীকার।",
+    image: "/hand-in-hand-beli-mala.jpg",
+    imageAspect: "portrait",
+    icon: "hiking",
+    accentColor: "#059669", // Fresh Botanical Emerald Green
+    side: "left",
+  },
 ];
 
 
