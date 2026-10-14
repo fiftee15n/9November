@@ -841,6 +841,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#2563EB", // Royal Blue / Deep Bond
     side: "left",
   },
+  {
+    id: "pavement-walk-yellow-dress",
+    stepNumber: "৬০",
+    title: "হাঁটার ছন্দে তোমার হাত ধরে",
+    subtitle: "হলুদ জামার সোনালী রঙ আর পথচলার মিষ্টি মুহূর্ত",
+    date: "২০২৪",
+    location: "শহরের ছায়াময় ফুটপাতে",
+    story: "ফুটপাতের পাথুরে পথে পাশাপাশি হেঁটে চলা, তোমার এক হাত আমার হাতের মুঠোয় পরম আদরে আবদ্ধ। পরনে তোমার নকশাদার সোনালী-হলুদ জামা, বাতাসে হালকা ওড়নার দোলা, আর প্রতি পদক্ষেপে একসঙ্গে তাল মিলিয়ে এগিয়ে যাওয়া। গন্তব্য যেখানেই হোক না কেন, তোমার হাতটি এভাবে ধরে পৃথিবীর যে কোনো পথ অনন্তকাল হেঁটে পার করে দেওয়া যায়।",
+    image: "/pavement-walk-yellow-dress.jpg",
+    imageAspect: "portrait",
+    icon: "hiking",
+    accentColor: "#D97706", // Golden Mustard / Warm Walking Sunshine
+    side: "right",
+  },
 ];
 
 
