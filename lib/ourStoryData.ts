@@ -827,6 +827,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#0284C7", // Sunlit Sky Blue / Serene Warmth
     side: "right",
   },
+  {
+    id: "wooden-table-handclasp",
+    stepNumber: "৫৯",
+    title: "কাঠের টেবিলে নিবিড় নির্ভরতা",
+    subtitle: "নীল শার্টের আবেশ আর শক্ত করে হাত জড়িয়ে রাখা",
+    date: "২০২৪",
+    location: "আমাদের প্রিয় আড্ডা",
+    story: "কাঠের টেবিলের ওপর তোমার নরম হাতটি পরম নির্ভরতায় আঁকড়ে ধরা। নীল শার্টের আবেশ, হাতের ঘড়ির নিঃশব্দ টিকটিক আর তার মাঝে দুই হাতের নিবিড় স্পর্শ—যেখানে শব্দের কোনো প্রয়োজন পড়ে না। একে অপরের হাত শক্ত করে ধরে থাকার এই ছোট্ট অনুভূতিতেই মিশে থাকে আজীবন পাশে থাকার নিঃশব্দ অঙ্গীকার আর পরম নিরাপত্তা।",
+    image: "/wooden-table-handclasp.jpg",
+    imageAspect: "portrait",
+    icon: "coffee",
+    accentColor: "#2563EB", // Royal Blue / Deep Bond
+    side: "left",
+  },
 ];
 
 
