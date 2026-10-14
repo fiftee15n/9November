@@ -729,6 +729,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#8B5CF6", // Cozy Violet / Soft Amethyst Purple
     side: "left",
   },
+  {
+    id: "beli-mala-red-flowers",
+    stepNumber: "৫২",
+    title: "বেলি ফুলের মালা ও একগুচ্ছ লাল ফুল",
+    subtitle: "হাতে বেলি ফুলের সুবাস আর পাশে ভালোবাসার লাল উপহার",
+    date: "২০২৪",
+    location: "আমাদের প্রিয় প্রাঙ্গণ",
+    story: "টেবিলের ওপর রাখা একগুচ্ছ টকটকে লাল ফুল, তোমার হাতে বেলি ফুলের স্নিগ্ধ মালা আর অনামিকায় জ্বলজ্বল করা ছোট্ট ভালোবাসার আংটি। বেলি ফুলের পবিত্র সুবাস আর লাল ফুলের গভীর ভালোবাসায় সাজানো এই ক্ষণে তোমার হাতটি নিজের হাতের ওপর পরম নির্ভরতায় জড়িয়ে নেওয়া—যেখানে পৃথিবীর সব ক্লান্তি মুছে যায়, আর হৃদয়ে রয়ে যায় কেবল শুভ্র সুবাস আর আজীবন ভালোবেসে যাওয়ার মিষ্টি নিশ্চয়তা।",
+    image: "/beli-mala-red-flowers.jpg",
+    imageAspect: "portrait",
+    icon: "flower",
+    accentColor: "#DC2626", // Scarlet Floral Red
+    side: "right",
+  },
 ];
 
 
