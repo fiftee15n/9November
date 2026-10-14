@@ -673,6 +673,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#2563EB", // Denim Indigo Blue
     side: "left",
   },
+  {
+    id: "mehendi-ring-promise",
+    stepNumber: "৪৮",
+    title: "মেহেদি রাঙা হাতে আজীবনের অঙ্গীকার",
+    subtitle: "বাগানবিলাসের পাপড়ি ও অনামিকায় ভালোবাসার আংটি",
+    date: "২০২৪",
+    location: "আমাদের নিভৃত কোণে",
+    story: "কালো টেবিলের ওপর ছড়িয়ে থাকা বাগানবিলাসের স্নিগ্ধ গোলাপি পাপড়ি, তোমার মেহেদি রাঙা হাত আর অনামিকায় জ্বলজ্বল করা ছোট্ট ভালোবাসার আংটি। পরম মমতায় তোমার হাতটি নিজের হাতের মাঝে তুলে নেওয়ার সেই নিঃশব্দ মুহূর্তে যেন থমকে দাঁড়িয়েছিল সময়। এই স্পর্শে ছিল না কোনো দ্বিধা, ছিল কেবল আজীবন এক সাথে পথচলার অটুট নির্ভরতা আর হৃদয়ের গভীরতম এক পবিত্র অঙ্গীকার।",
+    image: "/mehendi-ring-hands.jpg",
+    imageAspect: "portrait",
+    icon: "engaged",
+    accentColor: "#DB2777", // Bougainvillea Pink / Romantic Magenta
+    side: "right",
+  },
 ];
 
 
