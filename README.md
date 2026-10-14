@@ -18,8 +18,8 @@
 - Real-time character-by-character typewriter effect with custom pause timings and cursor blinking.
 - **Cinematic Auto-Reveal**: Seamlessly and slowly scrolls the viewport down to bring the Story Map into view upon story completion.
 
-### 2. 🗺️ Illustrated Story Map (`OurStoryMap` — ৫২টি মাইলস্টোন)
-- **52 Handcrafted Milestones**: Tracking every significant memory from the first encounter in September 2021 to 2024.
+### 2. 🗺️ Illustrated Story Map (`OurStoryMap` — ৫৩টি মাইলস্টোন)
+- **53 Handcrafted Milestones**: Tracking every significant memory from the first encounter in September 2021 to 2024.
 - **3D Alive Photo Cards (`MapPhotoCard`)**:
   - Interactive mouse-tracking 3D tilt with damped spring physics.
   - Realistic specular light reflection overlay on hover.

@@ -743,6 +743,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#DC2626", // Scarlet Floral Red
     side: "right",
   },
+  {
+    id: "flowers-on-heart",
+    stepNumber: "৫৩",
+    title: "হৃদস্পন্দনে ভালোবাসার ফুল",
+    subtitle: "শুভ্র পাঞ্জাবির বুকে পরম মায়ায় ফুলের পরশ",
+    date: "২০২৪",
+    location: "আমাদের হৃদয়ের আঙিনায়",
+    story: "শুভ্র পাঞ্জাবির বুকে আলতো করে তোমার হাতটি রাখা, আর হাতের ছোঁয়ায় হৃদস্পন্দনের প্রতিটি তালে মিশে যাওয়া একগুচ্ছ সাদা ও লাল ফুলের স্নিগ্ধ সুবাস। অনামিকার আংটি ছুঁয়ে থাকা তোমার এই নরম স্পর্শটি যেন নিঃশব্দেই জানিয়ে দেয়—আমার প্রতিটি নিঃশ্বাস, প্রতিটি স্পন্দন কেবল তোমাকেই ভালোবাসার জন্য সৃষ্টি হয়েছে।",
+    image: "/flowers-on-heart.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#E11D48", // Romantic Rose Crimson
+    side: "left",
+  },
 ];
 
 
