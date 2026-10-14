@@ -687,6 +687,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#DB2777", // Bougainvillea Pink / Romantic Magenta
     side: "right",
   },
+  {
+    id: "white-roses-ring-bouquet",
+    stepNumber: "৪৯",
+    title: "শুভ্র গোলাপ ও অনামিকার দ্যুতি",
+    subtitle: "আকাশি সাজে শুভ্র গোলাপের তোড়া আর ভালোবাসার পরশ",
+    date: "২০২৪",
+    location: "আমাদের বিশেষ দিনে",
+    story: "আকাশি রঙের স্নিগ্ধ সাজে পাশাপাশি দাঁড়িয়ে থাকা। তোমার হাতে শোভা পাওয়া একগুচ্ছ শুভ্র গোলাপের সুবাস, আর অনামিকায় জ্বলজ্বল করা ভালোবাসার ছোট্ট আংটিটি যেন আমাদের প্রতিটি স্বপ্নের জীবন্ত প্রতিচ্ছবি। পরম মায়ায় তোমার হাতটি আমার হাতের ওপর তুলে নিয়ে নিঃশব্দে অনুভব করা—জীবনের সবচেয়ে পবিত্র অনুভূতিগুলো এভাবেই শুভ্র গোলাপের মতো অমলিন সুবাস ছড়িয়ে চিরদিন হৃদয়ে বেঁচে থাকে।",
+    image: "/white-roses-ring-bouquet.jpg",
+    imageAspect: "portrait",
+    icon: "flower",
+    accentColor: "#0284C7", // Sky Blue / Ocean Serenity
+    side: "left",
+  },
 ];
 
 
