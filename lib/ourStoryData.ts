@@ -659,6 +659,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#D97706", // Luminous Warm Amber / Golden Glow
     side: "right",
   },
+  {
+    id: "shared-backpack-walk",
+    stepNumber: "৪৭",
+    title: "একই ব্যাগের হাতলে দুটি হাত",
+    subtitle: "ইটের বাঁধানো পথে ভাগ করে নেওয়া পথচলার আনন্দ",
+    date: "২০২৪",
+    location: "আমাদের চেনা ওয়াকওয়ে",
+    story: "ইটের বাঁধানো পথ ধরে পাশাপাশি হেঁটে চলা, আর একটি ছোট্ট ব্যাগের হাতল দুজনে মিলে পরম ভালোবাসায় ভাগ করে নেওয়া। জীবনের দীর্ঘ পথচলায় কোনো বোঝাই আর ভার মনে হয় না, যখন প্রতিটি পদক্ষেপে পাশে থাকে এমন নির্ভরতার মিষ্টি পরশ। একই হাতলে রাখা দুটি হাত যেন নিঃশব্দেই বলে যায়—জীবনের প্রতিটি আনন্দ আর দায়িত্ব, এভাবেই আজীবন ভাগ করে নিয়ে আমরা একসাথে এগিয়ে চলব।",
+    image: "/shared-backpack-walk.jpg",
+    imageAspect: "landscape",
+    icon: "luggage",
+    accentColor: "#2563EB", // Denim Indigo Blue
+    side: "left",
+  },
 ];
 
 
