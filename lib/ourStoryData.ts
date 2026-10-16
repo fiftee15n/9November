@@ -855,6 +855,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#D97706", // Golden Mustard / Warm Walking Sunshine
     side: "right",
   },
+  {
+    id: "felt-wool-holding-hands",
+    stepNumber: "৬১",
+    title: "উলের ওমে চিরন্তন হাত ধরা",
+    subtitle: "উলের নরম ছোঁয়ায় বোনা ভালোবাসার অটুট বন্ধন",
+    date: "২০২৪",
+    location: "ভালোবাসার নিভৃত কোণ",
+    story: "উলের নরম সুতোয় পরম যত্নে বোনা দুটি হাত—ঠিক যেমন প্রতিটি মুহূর্তে একে অপরের হাত ভালোবেসে আঁকড়ে রাখি। সবুজ ও কালোর ওমে, আঙুলে আঙুল জড়িয়ে থাকা এই শিল্পকর্মটি যেন চিরকাল পাশাপাশি থাকার আর হাত না ছাড়ার এক মিষ্টি ও চিরন্তন প্রতিচ্ছবি।",
+    image: "/felt-wool-holding-hands.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#10B981", // Emerald / Warm Woolen Craft
+    side: "left",
+  },
 ];
 
 

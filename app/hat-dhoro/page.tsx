@@ -26,6 +26,7 @@ const HAND_HOLDING_PHOTOS = [
   { id: "hands-10", src: "/shy-hide-face-pov.jpg", aspect: "aspect-[3/4]" },
   { id: "hands-11", src: "/memories/memory-5.jpg", aspect: "aspect-[3/4]" },
   { id: "hands-12", src: "/memories/memory-3.jpg", aspect: "aspect-[3/4]" },
+  { id: "hands-13", src: "/felt-wool-holding-hands.jpg", aspect: "aspect-[3/4]" },
 ];
 
 function AlbumPhotoCard({
