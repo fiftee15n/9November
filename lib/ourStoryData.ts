@@ -911,6 +911,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#8B5CF6", // Purple / Stylish Shopping Date
     side: "right",
   },
+  {
+    id: "felt-wool-chin-pose",
+    stepNumber: "৬৫",
+    title: "চিবুকে হাত রেখে পরম মায়া",
+    subtitle: "উলের নরম সুতোয় বোনা স্নেহের চিরচেনা ভঙ্গি",
+    date: "২০২৪",
+    location: "সবুজ প্রকৃতির মাঝে",
+    story: "পেছন থেকে স্নেহের পরশে জড়িয়ে ধরে পরম আদরে চিবুক ছুঁয়ে দেওয়া। সেই চিরচেনা ভালোবাসার ভঙ্গি, আঙুলে সোনার আংটির আভা, আর আমাদের মুখের অমলিন মিষ্টি হাসি। উলের সূক্ষ্ম কারুকাজে রূপকথার মতো ফুটে ওঠা এই প্রতিটি স্পর্শে মিশে আছে আজীবন একে অপরকে আগলে রাখার অটুট প্রতিশ্রুতি।",
+    image: "/felt-wool-chin-pose.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#F59E0B", // Amber / Warm Loving Glow
+    side: "left",
+  },
 ];
 
 
