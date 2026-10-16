@@ -925,6 +925,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#F59E0B", // Amber / Warm Loving Glow
     side: "left",
   },
+  {
+    id: "felt-wool-sari-graceful-walk",
+    stepNumber: "৬৬",
+    title: "সবুজ শাড়িতে স্নিগ্ধ লাজুকতা",
+    subtitle: "গাছগাছালির ছায়াবীথিতে তোমার অপরূপ পদচারণা",
+    date: "২০২৪",
+    location: "সবুজ প্রকৃতির পথ",
+    story: "গাছে ঘেরা শান্ত পথ ধরে তোমার একা এগিয়ে চলা, পরনে জলপাই-সবুজ শাড়ি আর খোলা চুলে মিষ্টি এক লাজুক আবেশ। মাটির দিকে দৃষ্টি রেখে শাড়ির কুঁচি সামলে নেওয়া সেই স্নিগ্ধ ভঙ্গিটি যেন এক জীবন্ত কবিতা। উলের কোমল পরশে রূপকথার মতো ফুটে ওঠা এই সৌন্দর্যে জড়িয়ে আছে মুগ্ধতার অনন্ত সুর।",
+    image: "/felt-wool-sari-graceful-walk.jpg",
+    imageAspect: "portrait",
+    icon: "flower",
+    accentColor: "#15803D", // Forest Green / Botanical Elegance
+    side: "right",
+  },
 ];
 
 
