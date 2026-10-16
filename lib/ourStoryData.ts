@@ -883,6 +883,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#F43F5E", // Rose / Warm Woolen Portrait
     side: "right",
   },
+  {
+    id: "felt-wool-greenery-walk",
+    stepNumber: "৬৩",
+    title: "সবুজের মাঝে কাঁধে মাথা রেখে",
+    subtitle: "সবুজ শাড়ির স্নিগ্ধতা আর ছায়াবীথির মায়াবী পথচলা",
+    date: "২০২৪",
+    location: "সবুজ ছায়াময় পথ",
+    story: "গাছগাছালির ছায়ায় ঘেরা শান্ত পথ, তোমার কাঁধে আলতো করে মাথা রেখে পরম নিশ্চিন্তে দাঁড়িয়ে থাকা। জলপাই-সবুজ শাড়ির স্নিগ্ধ আবেশ আর তোমার স্নেহের নিবিড় স্পর্শে মনে হয়—সারাটা জীবন যেন এই পথ ধরেই তোমার পাশে পাশে হেঁটে চলা যায়। উলের প্রতিটি ভাঁজে রূপকথার মতো ফুটে উঠেছে আমাদের একসাথে পথচলার চিরন্তন ভালোবাসা।",
+    image: "/felt-wool-greenery-walk.jpg",
+    imageAspect: "portrait",
+    icon: "hiking",
+    accentColor: "#059669", // Emerald Green / Lush Nature Walk
+    side: "left",
+  },
 ];
 
 
