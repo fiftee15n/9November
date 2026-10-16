@@ -869,6 +869,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#10B981", // Emerald / Warm Woolen Craft
     side: "left",
   },
+  {
+    id: "felt-wool-couple-portrait",
+    stepNumber: "৬২",
+    title: "উলের ফ্রেমে আমাদের হাসিমুখ",
+    subtitle: "উলের কোমল ছোঁয়ায় জীবন্ত হয়ে ওঠা মিষ্টি যুগলবন্দী",
+    date: "২০২৪",
+    location: "ভালোবাসার রঙিন জগৎ",
+    story: "উলের নরম সুতোয় পরম ভালোবাসায় গড়ে তোলা আমাদের দুটি হাসিমাখা মুখ। মায়াবী ডাগর দুটি চোখ, গালে মিষ্টি লাজুক আভা আর পাশাপাশি থাকা দুটি প্রাণের নিখাদ নির্ভরতায় বোনা এই প্রতিচ্ছবি। কল্পনার রঙ আর ভালোবাসার ওম মিশে তৈরি এই মিষ্টি স্মারকটি যেন আমাদের প্রতিটি স্মৃতির আনন্দ আর চিরন্তন একতার প্রতীক।",
+    image: "/felt-wool-couple-portrait.jpg",
+    imageAspect: "portrait",
+    icon: "sparkles",
+    accentColor: "#F43F5E", // Rose / Warm Woolen Portrait
+    side: "right",
+  },
 ];
 
 
