@@ -897,6 +897,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#059669", // Emerald Green / Lush Nature Walk
     side: "left",
   },
+  {
+    id: "felt-wool-shopping-mirror-selfie",
+    stepNumber: "৬৪",
+    title: "শপিং ডেটের মিষ্টি আয়না সেলফি",
+    subtitle: "উলের ফ্রেমে বন্দি আমাদের খুনসুটি আর শপিং আড্ডা",
+    date: "২০২৪",
+    location: "শপিং আউটলেট",
+    story: "আউটলেটের আলো ঝলমলে করিডোরে পাশাপাশি দাঁড়িয়ে আয়নায় সেলফি তোলার সেই মিষ্টি মুহূর্ত। হাতে শপিং ব্যাগ, কাঁধে ব্যাকপ্যাক আর ক্যামেরা তাক করে তোমার সেই চঞ্চল মিষ্টি ভঙ্গি। উলের সূক্ষ্ম বুননে তৈরি এই শিল্পে জীবন্ত হয়ে উঠেছে কেনাকাটার ফাঁকে আমাদের খুনসুটি, একরাশ হাসি আর পরম নির্ভরতার অমলিন ভালোবাসা।",
+    image: "/felt-wool-shopping-mirror-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "camera",
+    accentColor: "#8B5CF6", // Purple / Stylish Shopping Date
+    side: "right",
+  },
 ];
 
 
