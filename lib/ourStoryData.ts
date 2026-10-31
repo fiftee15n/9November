@@ -1023,6 +1023,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#6366F1", // Indigo / Digital Connection
     side: "right",
   },
+  {
+    id: "felt-wool-heritage-arch-romance",
+    stepNumber: "৭৩",
+    title: "খাঁজকাটা খিলানে চোখে চোখ",
+    subtitle: "লাল জামা আর কাঁধে মেহেন্দির স্নিগ্ধ স্পর্শ",
+    date: "২০২৪",
+    location: "ঐতিহাসিক তোরণ প্রাঙ্গণ",
+    story: "ঐতিহাসিক খাঁজকাটা খিলানের নিচে মুখোমুখি দাঁড়িয়ে এক অপলক দৃষ্টি। তোমার পরনে নকশাদার লাল জামা, কাঁধে মেহেন্দি রাঙা হাতের আলতো নির্ভরতা আর হাতে হাত রেখে পাশে থাকা। ল্যাভেন্ডার পাঞ্জাবির স্নিগ্ধতায় তোমাকে ভালোবেসে জড়িয়ে রাখার সেই মিষ্টি অনুভূতি। উলের নিপুণ শিল্পে চিরস্থায়ী হয়ে রইল আমাদের উৎসবের আনন্দ আর চিরন্তন রোমান্টিক এক গল্প।",
+    image: "/felt-wool-heritage-arch-romance.jpg",
+    imageAspect: "portrait",
+    icon: "monument",
+    accentColor: "#BE123C", // Deep Rose / Festive Crimson
+    side: "left",
+  },
 ];
 
 
