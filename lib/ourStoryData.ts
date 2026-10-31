@@ -939,6 +939,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#15803D", // Forest Green / Botanical Elegance
     side: "right",
   },
+  {
+    id: "felt-wool-comforting-touch",
+    stepNumber: "৬৭",
+    title: "মাথায় স্নেহের পরশ ও প্রশান্তি",
+    subtitle: "সবুজ ছায়ায় বসে পরম যত্নে মাথায় হাত রাখা",
+    date: "২০২৪",
+    location: "ক্যাম্পাসের সবুজ প্রাঙ্গণ",
+    story: "গাছের ছায়ায় ঘেরা সবুজ প্রাঙ্গণে ইটের বাঁধানো চত্বরে বসে পরম নিশ্চিন্তের এক মিষ্টি দুপুর। তোমার মাথাটি পরম স্নেহে আলতো করে ছুঁয়ে দেওয়া, আর নিখাদ শান্তিতে সব ক্লান্তি ভুলে তোমার ডুবে থাকা। উলের নরম ছোঁয়ায় বোনা এই মায়াবী মুহূর্তে মিশে আছে নিঃশব্দ নির্ভরতা, পরম যত্ন আর আজীবন একে অপরের শান্তির আশ্রয় হয়ে থাকার চিরন্তন ভালোবাসা।",
+    image: "/felt-wool-comforting-touch.jpg",
+    imageAspect: "landscape",
+    icon: "heart",
+    accentColor: "#EAB308", // Warm Sunlit Amber / Gentle Affection
+    side: "left",
+  },
 ];
 
 
