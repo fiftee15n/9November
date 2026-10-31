@@ -1065,6 +1065,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#0284C7", // Sky Cerulean Blue
     side: "left",
   },
+  {
+    id: "felt-wool-dressing-mirror-call",
+    stepNumber: "৭৬",
+    title: "ড্রেসিং টেবিলের আয়না ও মিষ্টি কল",
+    subtitle: "গোলাপি ঘরে ভিডিও কলের মিষ্টি খুনসুটি",
+    date: "২০২৪",
+    location: "নিজের মিষ্টি শোবার ঘরে",
+    story: "ড্রেসিং টেবিলের আয়নার সামনে বসে গোলাপি ফোনে সেলফি তোলা, আর স্ক্রিনের এক কোণে ভিডিও কলে তোমার মুগ্ধ দৃষ্টিতে চেয়ে থাকা। মেজেন্টা জামা, শুভ্র হিজাব আর নিপুণ কসমেটিকসের মাঝে যেন ফুটে উঠেছে এক রূপকথার নিভৃত ভুবন। বহু দূর থেকেও ভিডিও কলের প্রতিটি মুহূর্তে এভাবেই তোমার মিষ্টি উপস্থিতি আমার সারা বেলাকে রঙিন করে রাখে।",
+    image: "/felt-wool-dressing-mirror-call.jpg",
+    imageAspect: "portrait",
+    icon: "video",
+    accentColor: "#DB2777", // Vibrant Pink / Magenta
+    side: "right",
+  },
 ];
 
 
