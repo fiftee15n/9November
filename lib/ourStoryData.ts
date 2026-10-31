@@ -995,6 +995,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#D97706", // Warm Golden Amber / Sunlit Earth
     side: "right",
   },
+  {
+    id: "felt-wool-hair-touch-selfie",
+    stepNumber: "৭১",
+    title: "চুলে হাত রেখে আদুরে হাসি",
+    subtitle: "মাথা এলিয়ে একরাশ ভালোবাসার খুনসুটি",
+    date: "২০২৪",
+    location: "আমাদের নিভৃত ভুবন",
+    story: "ক্যামেরার লেন্সে অপলক তাকিয়ে পরম আদরে চুলে হাত বুলিয়ে দেওয়া। তোমার মুখে লেগে থাকা সেই খিলখিল হাসি আর আমার কাঁধে আলতো করে মাথা রেখে মিশে থাকার মিষ্টি অধিকার। উলের কোমল রেশমে বোনা আমাদের এই রূপকথার মতো মুহূর্তে প্রকাশ পায় নিঃশর্ত ভালোবাসা, নির্ভরতা আর একে অপরের সান্নিধ্যে খুঁজে পাওয়া নিখাদ সুখ।",
+    image: "/felt-wool-hair-touch-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "sparkles",
+    accentColor: "#E11D48", // Vivid Rose Red / Loving Warmth
+    side: "left",
+  },
 ];
 
 
