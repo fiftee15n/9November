@@ -1079,6 +1079,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#DB2777", // Vibrant Pink / Magenta
     side: "right",
   },
+  {
+    id: "moonlit-boat-ride",
+    stepNumber: "৭৭",
+    title: "চাঁদের আলো ও রাতের নৌকাবিলাস",
+    subtitle: "জলের বুকে শহরের আলোর নাচন আর শান্ত নিস্তব্ধতা",
+    date: "২০২৪",
+    location: "শান্ত জলের বুকে",
+    story: "রাতের আকাশে রূপালী চাঁদ, জলের বুকে শহরের সোনালী বাতিগুলোর মায়াবী প্রতিচ্ছবি। কাঠের নৌকায় পা এলিয়ে বসে মৃদু ঢেউয়ের দোলায় ভেসে চলা। রাতের ঠান্ডা বাতাস আর নিস্তব্ধতার মাঝে এক অচেনা প্রশান্তি—যেখানে প্রতিটি ঢেউয়ের শব্দে মিশে থাকে তোমার স্মৃতি আর হৃদয়ের গহীনে তোমাকে পাওয়ার নিখাদ ভালোলাগা।",
+    image: "/moonlit-boat-ride.jpg",
+    imageAspect: "portrait",
+    icon: "trip",
+    accentColor: "#F59E0B", // Warm Amber / Moonlit Gold
+    side: "left",
+  },
 ];
 
 
