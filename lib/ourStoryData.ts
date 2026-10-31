@@ -1037,6 +1037,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#BE123C", // Deep Rose / Festive Crimson
     side: "left",
   },
+  {
+    id: "felt-wool-royal-blue-sari",
+    stepNumber: "৭৪",
+    title: "নীল শাড়িতে অপরূপ স্নিগ্ধতা",
+    subtitle: "গাঢ় নীল শাড়ি ও শুভ্রতার মোহময় রূপ",
+    date: "২০২৪",
+    location: "হলওয়ে ও সিঁড়ির প্রাঙ্গণ",
+    story: "গাঢ় নীল রঙের শাড়িতে তোমাকে দেখে এক নিমিষেই থমকে যায় চারপাশ। শুভ্র ব্লাউজ, খোলা চুলের ঢেউ আর শাড়ির আঁচল আলতো করে ধরে রাখার সেই মোহময় লাজুক ভঙ্গি। বড় বড় ডাগর চোখের মায়াবী চাহনিতে লুকিয়ে থাকা সেই অমলিন মিষ্টি হাসি। উলের সূক্ষ্ম রেশমে বোনা এই প্রতিটি ভাঁজে রূপকথার রাজকন্যার মতো ফুটে উঠেছে তোমার অনাবিল রূপ আর চিরন্তন ভালোবাসা।",
+    image: "/felt-wool-royal-blue-sari.jpg",
+    imageAspect: "portrait",
+    icon: "flower",
+    accentColor: "#2563EB", // Royal Cobalt Blue
+    side: "right",
+  },
 ];
 
 
