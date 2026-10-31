@@ -967,6 +967,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#F59E0B", // Warm Amber / Golden Yellow
     side: "right",
   },
+  {
+    id: "felt-wool-fuchka-date",
+    stepNumber: "৬৯",
+    title: "ফুচকা ডেট ও টক-মিষ্টি হাসি",
+    subtitle: "রাস্তার ধারের ফুচকার বাটি আর তোমার মিষ্টি চঞ্চলতা",
+    date: "২০২৪",
+    location: "রাস্তার ধারের প্রিয় ফুচকা চত্বর",
+    story: "রাস্তার ধারে দাঁড়িয়ে একসঙ্গে ফুচকা খাওয়ার লোভনীয় আনন্দ। হাতে চামচ নিয়ে ফুচকার বাটি সামনে রেখে তোমার সেই দুষ্টু-মিষ্টি ডাগর চোখের চাহনি আর একগাল হাসি। পেছনে ফুচকার গাড়ির ব্যস্ততা আর ভিড়ের মাঝেও কেবল তোমাকে ঘিরেই সব আকর্ষণ। উলের নরম ছোঁয়ায় ফুটে ওঠা আমাদের এই মুহূর্তটি যেন চিরচেনা ভালোবাসার এক খাঁটি টক-ঝাল-মিষ্টি স্মৃতি।",
+    image: "/felt-wool-fuchka-date.jpg",
+    imageAspect: "portrait",
+    icon: "sushi",
+    accentColor: "#EA580C", // Spiced Orange / Tangy Tamarind
+    side: "left",
+  },
 ];
 
 
