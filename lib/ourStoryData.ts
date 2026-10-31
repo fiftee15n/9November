@@ -953,6 +953,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#EAB308", // Warm Sunlit Amber / Gentle Affection
     side: "left",
   },
+  {
+    id: "felt-wool-mirror-selfie",
+    stepNumber: "৬৮",
+    title: "আয়নাবন্দী মিষ্টি সেলফি",
+    subtitle: "হলুদ ফোনে আয়নায় ফ্রেমবন্দী আমাদের মিষ্টি যুগলবন্দী",
+    date: "২০২৪",
+    location: "আয়নার সামনে মিষ্টি মুহূর্ত",
+    story: "আয়নার সামনে পাশাপাশি দাঁড়িয়ে হলুদ ফোনে মিষ্টি সেলফি তোলার মুহূর্ত। বাদামি হিজাবে তোমার মায়াবী মিষ্টি হাসি আর পাশে দাঁড়িয়ে পরম নির্ভরতায় ফ্রেমবন্দী করা আমাদের দুটি মুখ। উলের কোমল সুতোয় জীবন্ত হয়ে ওঠা এই শিল্পে মিশে আছে খুনসুটি, একরাশ ভালোবাসা আর রূপকথার মতো সুন্দর এক অমলিন স্মৃতি।",
+    image: "/felt-wool-mirror-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "camera",
+    accentColor: "#F59E0B", // Warm Amber / Golden Yellow
+    side: "right",
+  },
 ];
 
 
