@@ -1009,6 +1009,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#E11D48", // Vivid Rose Red / Loving Warmth
     side: "left",
   },
+  {
+    id: "felt-wool-video-call",
+    stepNumber: "৭২",
+    title: "ভিডিও কলে দূরত্বের মায়া",
+    subtitle: "স্ক্রিনে তোমার মায়াবী চোখ আর মিষ্টি হাসি",
+    date: "২০২৪",
+    location: "স্ক্রিনের দুই প্রান্তে ভালোবাসা",
+    story: "দূরত্ব যাই থাকুক না কেন, স্ক্রিনের ওপারে তোমার সেই মায়াবী চোখ আর চঞ্চল মিষ্টি হাসি নিমেষেই দূরত্বকে মুছে দেয়। ভিডিও কলে তোমার দিকে অপলক তাকিয়ে থাকা আর ছোট ছোট খুনসুটিতে মেতে ওঠা। উলের নরম রেশমে বোনা এই ডিজিটাল সংযোগের স্মারকটি যেন জানান দেয়—যত দূরেই থাকি না কেন, আমাদের মন সর্বদা একসাথেই জুড়ে থাকে।",
+    image: "/felt-wool-video-call.jpg",
+    imageAspect: "portrait",
+    icon: "video",
+    accentColor: "#6366F1", // Indigo / Digital Connection
+    side: "right",
+  },
 ];
 
 
