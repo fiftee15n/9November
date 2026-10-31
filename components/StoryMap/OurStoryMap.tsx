@@ -119,9 +119,9 @@ function MapPhotoCard({
 
         {/* Milestone Caption Area */}
         <div className="mt-2.5 sm:mt-3 text-left">
-          <div className="flex items-center justify-between gap-1 mb-1">
+          <div className="mb-1">
             <span
-              className="text-[10px] sm:text-[11px] font-bold tracking-wider px-2.5 py-0.5 rounded-full"
+              className="inline-block text-[10px] sm:text-[11px] font-bold tracking-wider px-2.5 py-0.5 rounded-full"
               style={{
                 backgroundColor: `${milestone.accentColor}18`,
                 color: milestone.accentColor,
@@ -129,12 +129,6 @@ function MapPhotoCard({
               }}
             >
               {milestone.stepNumber} • {milestone.title}
-            </span>
-            <span
-              className="text-[10px] text-neutral-400"
-              style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
-            >
-              {milestone.date}
             </span>
           </div>
 
@@ -259,12 +253,6 @@ export function OurStoryMap() {
                       >
                         {m.title}
                       </span>
-                      <p
-                        className="text-[10px] sm:text-[11px] text-neutral-400 mt-0.5"
-                        style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}
-                      >
-                        {m.date}
-                      </p>
                     </div>
                   </div>
 
@@ -395,8 +383,7 @@ export function OurStoryMap() {
                       {STORY_MILESTONES[selectedIdx].story}
                     </p>
 
-                    <div className="mt-3 pt-2.5 border-t border-neutral-800 flex items-center justify-between text-[11px] text-neutral-500 font-mono">
-                      <span>তারিখ: {STORY_MILESTONES[selectedIdx].date}</span>
+                    <div className="mt-3 pt-2.5 border-t border-neutral-800 flex items-center justify-end text-[11px] text-neutral-500 font-mono">
                       <span>{selectedIdx + 1} / {STORY_MILESTONES.length}</span>
                     </div>
                   </div>
