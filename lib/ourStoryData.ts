@@ -33,7 +33,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     image: "/wall-painting-mural.jpg",
     imageAspect: "landscape",
     icon: "sparkles",
-    accentColor: "#2563EB", // Artistic Cobalt Blue
+    accentColor: "#2563EB",
     side: "center",
   },
   {
