@@ -981,6 +981,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#EA580C", // Spiced Orange / Tangy Tamarind
     side: "left",
   },
+  {
+    id: "felt-wool-sitting-hand-in-hand",
+    stepNumber: "৭০",
+    title: "ঘাসের প্রাঙ্গণে আঙুলে আঙুল",
+    subtitle: "শীতের নরম রোদে পাশাপাশি বসে হাত ধরা",
+    date: "২০২৪",
+    location: "সবুজ ঘাসের স্নিগ্ধ প্রাঙ্গণ",
+    story: "শীতের মিষ্টি রোদে খোলা আকাশের নিচে পাশাপাশি বসা। তোমার নরম হাতটি পরম ভালোবাসায় নিজের মুঠোয় শক্ত করে ধরে রাখা। বাদামি সোয়েটার আর শুভ্রতার ওমে আঙুলে আঙুল জড়িয়ে থাকা এই মুহূর্তটিতে যেন দুনিয়ার সব ব্যস্ততা থেমে গেছে। উলের কোমল পরশে বোনা আমাদের এই হাত ধরায় মিশে আছে নিঃশব্দ নির্ভরতা আর আজীবন শক্ত করে ধরে রাখার প্রতিশ্রুতি।",
+    image: "/felt-wool-sitting-hand-in-hand.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#D97706", // Warm Golden Amber / Sunlit Earth
+    side: "right",
+  },
 ];
 
 
