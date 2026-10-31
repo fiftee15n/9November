@@ -1051,6 +1051,20 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     accentColor: "#2563EB", // Royal Cobalt Blue
     side: "right",
   },
+  {
+    id: "felt-wool-arm-holding-ring",
+    stepNumber: "৭৫",
+    title: "বাহু জড়িয়ে পরম নির্ভরতা",
+    subtitle: "আঙুলে সোনার আংটি আর বিশ্বস্ত এক স্পর্শ",
+    date: "২০২৪",
+    location: "ভালোবাসার ওম মাখা মুহূর্ত",
+    story: "আমার বাহু শক্ত করে জড়িয়ে ধরে তোমার পরম নিশ্চিন্তে থাকা। আঙুলে জ্বলজ্বল করা সোনার আংটি আর নকশাদার শুভ্র সোয়েটারের স্নিগ্ধতায় মিশে থাকা সেই গভীর মায়া। আকাশী রঙের ওমে তোমার এই একটি স্পর্শ যেন পুরো পৃথিবীর সমস্ত কোলাহল ভুলিয়ে এনে দেয় এক স্বর্গীয় শান্তি। উলের নিখাদ সুতোয় বোনা এই নির্ভরতা আজীবন পাশে থাকার এক নিঃশব্দ অঙ্গীকার।",
+    image: "/felt-wool-arm-holding-ring.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#0284C7", // Sky Cerulean Blue
+    side: "left",
+  },
 ];
 
 
