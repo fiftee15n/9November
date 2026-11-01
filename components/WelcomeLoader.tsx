@@ -54,7 +54,7 @@ const STORY_MOMENTS: StoryMoment[] = [
     title: "মিস হয়ে যাওয়া বাস",
     subtitle: "তোমার ইউনিভার্সিটির বাসটা মিস হয়ে গেল…\nআর সেই ছোট্ট ঘটনাটাই আমাদের দিনটাকে আরও দীর্ঘ করে দিল।",
     duration: 5500,
-    bgImage: "/rickshaw-ride.jpg",
+    bgImage: "/missed-bus.jpg",
   },
   {
     id: "metro",

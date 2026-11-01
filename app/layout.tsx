@@ -54,6 +54,7 @@ export default function RootLayout({
   preload("/farmgate.jpg", { as: "image" });
   preload("/first-hand.jpg", { as: "image" });
   preload("/tsc.jpg", { as: "image" });
+  preload("/missed-bus.jpg", { as: "image" });
   preload("/metro.jpg", { as: "image" });
   preload("/airport.jpg", { as: "image" });
   preload("/wall-painting-mural.jpg", { as: "image" });
