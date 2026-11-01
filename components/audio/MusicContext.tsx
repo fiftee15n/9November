@@ -9,6 +9,8 @@ import React, {
   useState,
 } from "react";
 
+import { usePathname } from "next/navigation";
+
 interface MusicContextType {
   isPlaying: boolean;
   togglePlay: () => void;
@@ -19,19 +21,43 @@ interface MusicContextType {
 const MusicContext = createContext<MusicContextType | null>(null);
 
 export function MusicProvider({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const userPausedRef = useRef<boolean>(false);
 
-  // Play function
+  // Play function with robust unlock handling
   const play = useCallback(async () => {
-    if (!audioRef.current) return;
+    const audio = audioRef.current;
+    if (!audio) return;
     try {
       userPausedRef.current = false;
-      await audioRef.current.play();
+      await audio.play();
       setIsPlaying(true);
     } catch (err) {
-      console.warn("Audio play blocked or deferred:", err);
+      // If browser blocked it because user hasn't clicked yet since arriving at this phase,
+      // register capture listeners so the very next gesture immediately starts audio.
+      const unlockAudio = async () => {
+        if (userPausedRef.current) return;
+        try {
+          await audio.play();
+          setIsPlaying(true);
+        } catch {}
+        removeUnlockListeners();
+      };
+
+      const captureOpts: AddEventListenerOptions = { capture: true, passive: true };
+      const removeUnlockListeners = () => {
+        window.removeEventListener("pointerdown", unlockAudio, { capture: true });
+        window.removeEventListener("click", unlockAudio, { capture: true });
+        window.removeEventListener("touchstart", unlockAudio, { capture: true });
+        window.removeEventListener("keydown", unlockAudio, { capture: true });
+      };
+
+      window.addEventListener("pointerdown", unlockAudio, captureOpts);
+      window.addEventListener("click", unlockAudio, captureOpts);
+      window.addEventListener("touchstart", unlockAudio, captureOpts);
+      window.addEventListener("keydown", unlockAudio, captureOpts);
     }
   }, []);
 
@@ -54,77 +80,18 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
     }
   }, [play, pause]);
 
-  // Autoplay attempt on mount + unlock on first interaction if blocked
+  // Audio initialization: only auto-start on mount if NOT on "/" (where WelcomeLoader controls start at "তুমি আমি আমাদের গল্প")
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Reset pause state on every page open so music always plays when opening the web
     userPausedRef.current = false;
-    try {
-      sessionStorage.removeItem("music_user_paused");
-    } catch {
-      // Ignore storage restrictions if any
-    }
-
-    // Set gentle romantic background volume
     audio.volume = 0.65;
 
-    let isUnlocked = false;
-
-    const startAudio = async () => {
-      if (userPausedRef.current || isUnlocked) return;
-      try {
-        await audio.play();
-        setIsPlaying(true);
-        isUnlocked = true;
-        cleanupListeners();
-      } catch {
-        // Autoplay policy prevented unmuted playback without interaction; keep listeners alive
-      }
-    };
-
-    const captureOpts: AddEventListenerOptions = { capture: true, passive: true };
-
-    const cleanupListeners = () => {
-      const rmOpts = { capture: true };
-      window.removeEventListener("pointerdown", startAudio, rmOpts);
-      window.removeEventListener("click", startAudio, rmOpts);
-      window.removeEventListener("touchstart", startAudio, rmOpts);
-      window.removeEventListener("touchend", startAudio, rmOpts);
-      window.removeEventListener("keydown", startAudio, rmOpts);
-      window.removeEventListener("scroll", startAudio, rmOpts);
-      window.removeEventListener("wheel", startAudio, rmOpts);
-
-      document.removeEventListener("pointerdown", startAudio, rmOpts);
-      document.removeEventListener("click", startAudio, rmOpts);
-      document.removeEventListener("touchstart", startAudio, rmOpts);
-      document.removeEventListener("touchend", startAudio, rmOpts);
-      document.removeEventListener("keydown", startAudio, rmOpts);
-    };
-
-    // 1. Try immediate autoplay on page open
-    startAudio();
-
-    // 2. Fallback: unlock on the very first gesture anywhere on the page (capture phase catches even if stopPropagation is used)
-    window.addEventListener("pointerdown", startAudio, captureOpts);
-    window.addEventListener("click", startAudio, captureOpts);
-    window.addEventListener("touchstart", startAudio, captureOpts);
-    window.addEventListener("touchend", startAudio, captureOpts);
-    window.addEventListener("keydown", startAudio, captureOpts);
-    window.addEventListener("scroll", startAudio, captureOpts);
-    window.addEventListener("wheel", startAudio, captureOpts);
-
-    document.addEventListener("pointerdown", startAudio, captureOpts);
-    document.addEventListener("click", startAudio, captureOpts);
-    document.addEventListener("touchstart", startAudio, captureOpts);
-    document.addEventListener("touchend", startAudio, captureOpts);
-    document.addEventListener("keydown", startAudio, captureOpts);
-
-    return () => {
-      cleanupListeners();
-    };
-  }, []);
+    if (pathname && pathname !== "/") {
+      play();
+    }
+  }, [pathname, play]);
 
   // Sync state if audio element fires native events
   useEffect(() => {

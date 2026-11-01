@@ -123,7 +123,6 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
   }, [play]);
 
   const nextSlide = useCallback(() => {
-    play();
     setIndex((prev) => {
       if (prev < STORY_MOMENTS.length - 1) {
         return prev + 1;
@@ -132,7 +131,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
         return prev;
       }
     });
-  }, [finishStory, play]);
+  }, [finishStory]);
 
   const currentMoment = STORY_MOMENTS[index];
   const currentDuration = currentMoment?.duration ?? 4800;
@@ -152,6 +151,13 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, [index, phase, reduce, nextSlide, currentDuration]);
+
+  // Automatically start song when reaching "তুমি আমি এবং আমাদের গল্প"
+  useEffect(() => {
+    if (phase === "signature") {
+      play();
+    }
+  }, [phase, play]);
 
   // Typewriter effect in signature phase followed by cinematic dissolve reveal
   useEffect(() => {
@@ -196,7 +202,6 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
   // Keyboard navigation: Space, ArrowRight, Enter advances; Escape skips/reveals
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      play();
       if (phase === "story") {
         if (e.key === " " || e.key === "ArrowRight" || e.key === "Enter") {
           e.preventDefault();
@@ -213,6 +218,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
           e.key === "Escape"
         ) {
           e.preventDefault();
+          play();
           setTypedText(SUBTITLE_TEXT);
           triggerReveal();
         }
@@ -229,11 +235,11 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
         fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif",
       }}
       onClick={(e) => {
-        play();
         if (phase === "story") {
           e.stopPropagation();
           nextSlide();
         } else if (phase === "signature") {
+          play();
           e.stopPropagation();
           setTypedText(SUBTITLE_TEXT);
           triggerReveal();
@@ -276,61 +282,14 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
 
       {phase === "story" ? (
         <>
-          {/* Top minimal action bar with music status and skip */}
+          {/* Top minimal skip button */}
           <div
-            className="relative z-10 flex w-full items-center justify-between px-6 pt-6 sm:pt-8"
+            className="relative z-10 flex w-full justify-end px-6 pt-6 sm:pt-8"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
-              onClick={() => {
-                if (!isPlaying) {
-                  play();
-                } else {
-                  togglePlay();
-                }
-              }}
-              className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-3 py-1.5 text-xs text-white backdrop-blur-md transition-all hover:bg-black/60 hover:border-white/35 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
-              aria-label={isPlaying ? "Pause music" : "Play music"}
-            >
-              {isPlaying ? (
-                <>
-                  <div
-                    className="flex items-end justify-center gap-[2.5px] h-3.5 w-3.5 text-rose-400"
-                    aria-hidden="true"
-                  >
-                    <motion.span
-                      className="w-[2px] rounded-full bg-current"
-                      animate={{ height: ["4px", "14px", "7px", "13px", "4px"] }}
-                      transition={{ repeat: Infinity, duration: 1.1, ease: "easeInOut" }}
-                    />
-                    <motion.span
-                      className="w-[2px] rounded-full bg-current"
-                      animate={{ height: ["12px", "5px", "14px", "6px", "12px"] }}
-                      transition={{ repeat: Infinity, duration: 0.95, ease: "easeInOut", delay: 0.15 }}
-                    />
-                    <motion.span
-                      className="w-[2px] rounded-full bg-current"
-                      animate={{ height: ["6px", "14px", "4px", "11px", "6px"] }}
-                      transition={{ repeat: Infinity, duration: 1.25, ease: "easeInOut", delay: 0.3 }}
-                    />
-                  </div>
-                  <span className="font-light text-neutral-200">গান চলছে</span>
-                </>
-              ) : (
-                <>
-                  <span className="text-rose-400 animate-pulse">🎵</span>
-                  <span className="font-light text-neutral-200 hover:text-white">গান শুনুন</span>
-                </>
-              )}
-            </button>
-
-            <button
-              type="button"
-              onClick={() => {
-                play();
-                finishStory();
-              }}
+              onClick={finishStory}
               className="text-xs text-neutral-300 hover:text-white transition-colors px-2 py-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
             >
               এড়িয়ে যান →
