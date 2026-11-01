@@ -28,7 +28,6 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
     if (!audioRef.current) return;
     try {
       userPausedRef.current = false;
-      sessionStorage.setItem("music_user_paused", "false");
       await audioRef.current.play();
       setIsPlaying(true);
     } catch (err) {
@@ -40,7 +39,6 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
   const pause = useCallback(() => {
     if (!audioRef.current) return;
     userPausedRef.current = true;
-    sessionStorage.setItem("music_user_paused", "true");
     audioRef.current.pause();
     setIsPlaying(false);
   }, []);
@@ -61,15 +59,16 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
     const audio = audioRef.current;
     if (!audio) return;
 
+    // Reset pause state on every page open so music always plays when opening the web
+    userPausedRef.current = false;
+    try {
+      sessionStorage.removeItem("music_user_paused");
+    } catch {
+      // Ignore storage restrictions if any
+    }
+
     // Set gentle romantic background volume
     audio.volume = 0.65;
-
-    // Check if user previously paused intentionally in this session
-    const previouslyPaused = sessionStorage.getItem("music_user_paused") === "true";
-    if (previouslyPaused) {
-      userPausedRef.current = true;
-      return;
-    }
 
     let isUnlocked = false;
 
@@ -81,27 +80,46 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
         isUnlocked = true;
         cleanupListeners();
       } catch {
-        // Autoplay policy prevented playback without interaction; keep listeners alive
+        // Autoplay policy prevented unmuted playback without interaction; keep listeners alive
       }
     };
 
+    const captureOpts: AddEventListenerOptions = { capture: true, passive: true };
+
     const cleanupListeners = () => {
-      window.removeEventListener("pointerdown", startAudio);
-      window.removeEventListener("click", startAudio);
-      window.removeEventListener("touchstart", startAudio);
-      window.removeEventListener("keydown", startAudio);
-      window.removeEventListener("scroll", startAudio);
+      const rmOpts = { capture: true };
+      window.removeEventListener("pointerdown", startAudio, rmOpts);
+      window.removeEventListener("click", startAudio, rmOpts);
+      window.removeEventListener("touchstart", startAudio, rmOpts);
+      window.removeEventListener("touchend", startAudio, rmOpts);
+      window.removeEventListener("keydown", startAudio, rmOpts);
+      window.removeEventListener("scroll", startAudio, rmOpts);
+      window.removeEventListener("wheel", startAudio, rmOpts);
+
+      document.removeEventListener("pointerdown", startAudio, rmOpts);
+      document.removeEventListener("click", startAudio, rmOpts);
+      document.removeEventListener("touchstart", startAudio, rmOpts);
+      document.removeEventListener("touchend", startAudio, rmOpts);
+      document.removeEventListener("keydown", startAudio, rmOpts);
     };
 
-    // 1. Try immediate autoplay
+    // 1. Try immediate autoplay on page open
     startAudio();
 
-    // 2. Fallback: unlock on the very first gesture anywhere on the page
-    window.addEventListener("pointerdown", startAudio, { passive: true });
-    window.addEventListener("click", startAudio, { passive: true });
-    window.addEventListener("touchstart", startAudio, { passive: true });
-    window.addEventListener("keydown", startAudio, { passive: true });
-    window.addEventListener("scroll", startAudio, { passive: true });
+    // 2. Fallback: unlock on the very first gesture anywhere on the page (capture phase catches even if stopPropagation is used)
+    window.addEventListener("pointerdown", startAudio, captureOpts);
+    window.addEventListener("click", startAudio, captureOpts);
+    window.addEventListener("touchstart", startAudio, captureOpts);
+    window.addEventListener("touchend", startAudio, captureOpts);
+    window.addEventListener("keydown", startAudio, captureOpts);
+    window.addEventListener("scroll", startAudio, captureOpts);
+    window.addEventListener("wheel", startAudio, captureOpts);
+
+    document.addEventListener("pointerdown", startAudio, captureOpts);
+    document.addEventListener("click", startAudio, captureOpts);
+    document.addEventListener("touchstart", startAudio, captureOpts);
+    document.addEventListener("touchend", startAudio, captureOpts);
+    document.addEventListener("keydown", startAudio, captureOpts);
 
     return () => {
       cleanupListeners();
@@ -131,6 +149,7 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
       <audio
         ref={audioRef}
         loop
+        playsInline
         preload="auto"
         className="hidden"
         aria-hidden="true"
