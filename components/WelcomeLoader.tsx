@@ -45,7 +45,7 @@ const STORY_MOMENTS: StoryMoment[] = [
   {
     id: "tsc",
     title: "টিএসসি",
-    subtitle: "রিকশায় পাশাপাশি,\nশহরটা সেদিন যেন একটু ধীর হয়ে গিয়েছিল।",
+    subtitle: "শহরটা সেদিন যেন একটু ধীর হয়ে গিয়েছিল।",
     duration: 5200,
     bgImage: "/tsc.jpg",
   },
