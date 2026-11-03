@@ -7,60 +7,10 @@ import { useWelcomeDone } from "@/components/WelcomeDoneContext";
 import { TypewriterStory } from "@/components/Hero/TypewriterStory";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ProgressiveBlur } from "@/registry/magicui/progressive-blur";
+import { slowScrollToElement } from "@/lib/slowScroll";
 
 // Persists through dock navigation in the same session
 let storyCompletedThisLoad = false;
-
-// Custom cinematic slow smooth scroll that gracefully brings the storymap card into view
-function slowScrollToElement(element: HTMLElement, duration = 2400, offset = 40) {
-  const rect = element.getBoundingClientRect();
-  const targetY = Math.max(0, rect.top + window.scrollY - offset);
-  const startY = window.scrollY;
-  const distance = targetY - startY;
-  if (Math.abs(distance) < 8) return () => {};
-
-  const startTime = performance.now();
-  let animId: number;
-  let userInterrupted = false;
-
-  const onUserInteraction = () => {
-    userInterrupted = true;
-    cleanup();
-  };
-
-  const cleanup = () => {
-    window.removeEventListener("wheel", onUserInteraction);
-    window.removeEventListener("touchstart", onUserInteraction);
-    window.removeEventListener("keydown", onUserInteraction);
-    cancelAnimationFrame(animId);
-  };
-
-  window.addEventListener("wheel", onUserInteraction, { passive: true });
-  window.addEventListener("touchstart", onUserInteraction, { passive: true });
-  window.addEventListener("keydown", onUserInteraction, { passive: true });
-
-  // Silky smooth easeInOutCubic curve
-  const easeInOutCubic = (t: number) =>
-    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-  const step = (currentTime: number) => {
-    if (userInterrupted) return;
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const easeProgress = easeInOutCubic(progress);
-
-    window.scrollTo(0, startY + distance * easeProgress);
-
-    if (progress < 1) {
-      animId = requestAnimationFrame(step);
-    } else {
-      cleanup();
-    }
-  };
-
-  animId = requestAnimationFrame(step);
-  return cleanup;
-}
 
 function HeroContent() {
   const welcomeDone = useWelcomeDone();

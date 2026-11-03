@@ -4,6 +4,10 @@ import { useRef, useState } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "motion/react";
 import { PoeticTitle } from "@/components/motion/poetic-title";
 import { ProgressiveBlur } from "@/registry/magicui/progressive-blur";
+import { slowScrollTo } from "@/lib/slowScroll";
+
+// gentle glide back up to the note box when a chirkut is opened
+const SCROLL_TO_NOTE_MS = 1400;
 
 const FADE_UP = {
   hidden: { opacity: 0, y: 14, filter: "blur(6px)" },
@@ -186,9 +190,27 @@ const CHIRKUT_GROUPS: ChirkutGroup[] = [
 export default function ChirkutPage() {
   const reduce = useReducedMotion() ?? false;
   const colRef = useRef<HTMLDivElement>(null);
+  const noteBoxRef = useRef<HTMLDivElement>(null);
+  const cancelScrollRef = useRef<(() => void) | null>(null);
   const [selectedItem, setSelectedItem] = useState<ChirkutItem>(
     CHIRKUT_GROUPS[1].items[0] // 9 November letter by default
   );
+
+  // bring the note box back into view so the opened chirkut is readable —
+  // on mobile the pills sit below it; on desktop it's usually already visible
+  const openChirkut = (item: ChirkutItem) => {
+    setSelectedItem(item);
+    const box = noteBoxRef.current;
+    if (!box) return;
+    const rect = box.getBoundingClientRect();
+    const headerBottom = 72; // sticky header + breathing room
+    const fullyVisible = rect.top >= headerBottom && rect.bottom <= window.innerHeight;
+    if (!fullyVisible) {
+      cancelScrollRef.current?.();
+      if (reduce) window.scrollTo(0, 0);
+      else cancelScrollRef.current = slowScrollTo(0, SCROLL_TO_NOTE_MS);
+    }
+  };
 
   return (
     <main className="flex flex-1 flex-col items-center justify-start bg-background text-foreground">
@@ -205,6 +227,7 @@ export default function ChirkutPage() {
 
           {/* Interactive Note Display Box — opens selected note smoothly */}
           <motion.div
+            ref={noteBoxRef}
             variants={FADE_UP}
             initial={reduce ? false : "hidden"}
             animate="visible"
@@ -289,7 +312,7 @@ export default function ChirkutPage() {
                       <button
                         key={item.id}
                         type="button"
-                        onClick={() => setSelectedItem(item)}
+                        onClick={() => openChirkut(item)}
                         className={`flex h-6 items-center rounded-full px-2.5 text-[12px] leading-4 transition-all duration-200 cursor-pointer select-none active:scale-95 ${
                           isSelected
                             ? "bg-rose-500 text-white shadow-xs dark:bg-rose-600"
