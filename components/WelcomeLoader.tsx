@@ -164,7 +164,6 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
     if (phase !== "signature") return;
 
     if (reduce) {
-      setTypedText(SUBTITLE_TEXT);
       const t = setTimeout(() => triggerReveal(), 600);
       return () => clearTimeout(t);
     }
@@ -496,7 +495,7 @@ export function WelcomeLoader({ onComplete }: { onComplete: () => void }) {
               }}
             >
               <p className="text-base sm:text-lg md:text-xl font-light text-neutral-200 tracking-wide select-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
-                {typedText}
+                {reduce ? SUBTITLE_TEXT : typedText}
                 <span className="inline-block text-rose-400 font-light ml-1 animate-pulse">
                   |
                 </span>

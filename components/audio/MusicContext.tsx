@@ -27,21 +27,20 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
   const userPausedRef = useRef<boolean>(false);
 
   // Play function with robust unlock handling
+  // isPlaying is driven by the element's native play/pause events (below)
   const play = useCallback(async () => {
     const audio = audioRef.current;
     if (!audio) return;
     try {
       userPausedRef.current = false;
       await audio.play();
-      setIsPlaying(true);
-    } catch (err) {
+    } catch {
       // If browser blocked it because user hasn't clicked yet since arriving at this phase,
       // register capture listeners so the very next gesture immediately starts audio.
       const unlockAudio = async () => {
         if (userPausedRef.current) return;
         try {
           await audio.play();
-          setIsPlaying(true);
         } catch {}
         removeUnlockListeners();
       };

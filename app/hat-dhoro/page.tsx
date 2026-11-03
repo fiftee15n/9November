@@ -12,6 +12,7 @@ import {
   useSpring,
 } from "motion/react";
 import { ProgressiveBlur } from "@/registry/magicui/progressive-blur";
+import { useMediaQuery, useMounted } from "@/lib/hooks/use-mounted";
 
 const HAND_HOLDING_PHOTOS = [
   { id: "story-8", src: "/airport-journey.jpg", aspect: "aspect-[4/3]" },
@@ -141,16 +142,8 @@ export default function HatDhoroPage() {
   const { scrollYProgress } = useScroll();
   const pb = useTransform(scrollYProgress, [0.2, 1], ["100px", "280px"]);
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
-  const [mounted, setMounted] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const checkMobile = () => setIsMobile(window.innerWidth < 640);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  const mounted = useMounted();
+  const isMobile = useMediaQuery("(max-width: 639.98px)");
 
   const handlePrev = useCallback(() => {
     if (selectedIdx === null) return;

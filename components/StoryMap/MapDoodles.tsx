@@ -5,10 +5,8 @@ import React from "react";
 // Top Ribbon Banner with Couple names
 export function StoryHeaderBanner({
   title = "Tamal & Diba's Story",
-  names = "Tamal & Diba",
 }: {
   title?: string;
-  names?: string;
 }) {
   return (
     <div className="relative w-full max-w-2xl mx-auto my-4 sm:my-6 px-2 sm:px-4 select-none">

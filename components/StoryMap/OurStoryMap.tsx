@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import { useMounted } from "@/lib/hooks/use-mounted";
 import { createPortal } from "react-dom";
 import {
   motion,
@@ -162,11 +163,7 @@ function MapPhotoCard({
 
 export function OurStoryMap() {
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   const handlePrev = useCallback(() => {
     if (selectedIdx === null) return;

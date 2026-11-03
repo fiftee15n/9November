@@ -35,7 +35,6 @@ const CLIMB_SPREAD = 78;
 const EASE = [0.4, 0.3, 0.5, 1] as const;
 const SWAY = [0, 0.3, 0.65, 1];
 
-const GAP = 16;
 const EDGE = 8;
 
 const SIZES = {

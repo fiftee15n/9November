@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useMemo, useEffect, useState } from "react";
+import { useRef, useMemo, useEffect } from "react";
+import { useMounted } from "@/lib/hooks/use-mounted";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { useTheme } from "next-themes";
@@ -35,6 +36,38 @@ interface PetalData {
   swaySpeed: number;
 }
 
+function createPetals(count: number, boundX: number, boundY: number): PetalData[] {
+  const arr: PetalData[] = [];
+  for (let i = 0; i < count; i++) {
+    arr.push({
+      pos: new THREE.Vector3(
+        (Math.random() - 0.5) * boundX * 2,
+        Math.random() * boundY * 2 - boundY,
+        (Math.random() - 0.5) * 8
+      ),
+      rot: new THREE.Euler(
+        Math.random() * Math.PI * 2,
+        Math.random() * Math.PI * 2,
+        Math.random() * Math.PI * 2
+      ),
+      rotSpeed: new THREE.Vector3(
+        (Math.random() - 0.5) * 0.012,
+        (Math.random() - 0.5) * 0.016,
+        (Math.random() - 0.5) * 0.012
+      ),
+      velocity: new THREE.Vector3(
+        -0.004 - Math.random() * 0.008,
+        -0.01 - Math.random() * 0.012,
+        (Math.random() - 0.5) * 0.004
+      ),
+      scale: 0.12 + Math.random() * 0.16,
+      swayOffset: Math.random() * Math.PI * 2,
+      swaySpeed: 0.5 + Math.random() * 0.7,
+    });
+  }
+  return arr;
+}
+
 function FloatingPetals({ count = 35 }: { count?: number }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const petalGeo = useMemo(() => createPetalGeometry(), []);
@@ -44,43 +77,19 @@ function FloatingPetals({ count = 35 }: { count?: number }) {
   const boundX = Math.max(viewport.width * 1.2, 20);
   const boundY = Math.max(viewport.height * 1.2, 18);
 
-  const petals = useMemo<PetalData[]>(() => {
-    const arr: PetalData[] = [];
-    for (let i = 0; i < count; i++) {
-      arr.push({
-        pos: new THREE.Vector3(
-          (Math.random() - 0.5) * boundX * 2,
-          Math.random() * boundY * 2 - boundY,
-          (Math.random() - 0.5) * 8
-        ),
-        rot: new THREE.Euler(
-          Math.random() * Math.PI * 2,
-          Math.random() * Math.PI * 2,
-          Math.random() * Math.PI * 2
-        ),
-        rotSpeed: new THREE.Vector3(
-          (Math.random() - 0.5) * 0.012,
-          (Math.random() - 0.5) * 0.016,
-          (Math.random() - 0.5) * 0.012
-        ),
-        velocity: new THREE.Vector3(
-          -0.004 - Math.random() * 0.008,
-          -0.01 - Math.random() * 0.012,
-          (Math.random() - 0.5) * 0.004
-        ),
-        scale: 0.12 + Math.random() * 0.16,
-        swayOffset: Math.random() * Math.PI * 2,
-        swaySpeed: 0.5 + Math.random() * 0.7,
-      });
-    }
-    return arr;
+  // petals are mutated every frame, so they live in a ref (re-seeded when the
+  // bounds change) rather than in render-time memoized state
+  const petalsRef = useRef<PetalData[]>([]);
+  useEffect(() => {
+    petalsRef.current = createPetals(count, boundX, boundY);
   }, [count, boundX, boundY]);
 
   useFrame((state) => {
     if (!meshRef.current) return;
     const time = state.clock.getElapsedTime();
+    const petals = petalsRef.current;
 
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < petals.length; i++) {
       const p = petals[i];
 
       p.pos.y += p.velocity.y;
@@ -129,6 +138,27 @@ function FloatingPetals({ count = 35 }: { count?: number }) {
   );
 }
 
+// Seeded once per bounds change; the random layout is intentionally
+// non-deterministic, and this only renders client-side
+function createFireflies(count: number, boundX: number, boundY: number) {
+  const pos = new Float32Array(count * 3);
+  const vel = new Float32Array(count * 3);
+  const phs = new Float32Array(count);
+
+  for (let i = 0; i < count; i++) {
+    pos[i * 3] = (Math.random() - 0.5) * boundX * 2;
+    pos[i * 3 + 1] = (Math.random() - 0.5) * boundY * 2;
+    pos[i * 3 + 2] = (Math.random() - 0.5) * 10;
+
+    phs[i] = Math.random() * Math.PI * 2;
+
+    vel[i * 3] = (Math.random() - 0.5) * 0.005;
+    vel[i * 3 + 1] = (Math.random() - 0.5) * 0.007;
+    vel[i * 3 + 2] = (Math.random() - 0.5) * 0.005;
+  }
+  return [pos, vel, phs] as const;
+}
+
 // Glowing Fireflies / Warm Bokeh Embers
 function GlowingFireflies({ count = 50 }: { count?: number }) {
   const pointsRef = useRef<THREE.Points>(null);
@@ -137,24 +167,10 @@ function GlowingFireflies({ count = 50 }: { count?: number }) {
   const boundX = Math.max(viewport.width * 1.2, 22);
   const boundY = Math.max(viewport.height * 1.2, 20);
 
-  const [positions, velocities, phases] = useMemo(() => {
-    const pos = new Float32Array(count * 3);
-    const vel = new Float32Array(count * 3);
-    const phs = new Float32Array(count);
-
-    for (let i = 0; i < count; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * boundX * 2;
-      pos[i * 3 + 1] = (Math.random() - 0.5) * boundY * 2;
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 10;
-
-      phs[i] = Math.random() * Math.PI * 2;
-
-      vel[i * 3] = (Math.random() - 0.5) * 0.005;
-      vel[i * 3 + 1] = (Math.random() - 0.5) * 0.007;
-      vel[i * 3 + 2] = (Math.random() - 0.5) * 0.005;
-    }
-    return [pos, vel, phs];
-  }, [count, boundX, boundY]);
+  const [positions, velocities, phases] = useMemo(
+    () => createFireflies(count, boundX, boundY),
+    [count, boundX, boundY]
+  );
 
   const texture = useMemo(() => {
     if (typeof document === "undefined") return null;
@@ -182,7 +198,7 @@ function GlowingFireflies({ count = 50 }: { count?: number }) {
     for (let i = 0; i < count; i++) {
       let x = posAttr.getX(i) + velocities[i * 3] + Math.sin(time * 0.5 + phases[i]) * 0.003;
       let y = posAttr.getY(i) + velocities[i * 3 + 1] + Math.cos(time * 0.4 + phases[i]) * 0.003;
-      let z = posAttr.getZ(i) + velocities[i * 3 + 2];
+      const z = posAttr.getZ(i) + velocities[i * 3 + 2];
 
       if (x > boundX) x = -boundX;
       if (x < -boundX) x = boundX;
@@ -250,11 +266,7 @@ function MouseLight() {
 
 export function RomanticBackgroundScene() {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   if (!mounted) return null;
 

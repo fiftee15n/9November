@@ -1,12 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { MusicToggle } from "@/components/audio/MusicToggle";
 import { EmojiReaction } from "@/components/motion/emoji-reaction";
 import { Tooltip } from "@/components/motion/tooltip";
-import { getBanglaDate, getLiveTimeElapsed, type LiveTimeElapsed } from "@/lib/banglaCalendar";
+import { getBanglaDate, getLiveTimeElapsed } from "@/lib/banglaCalendar";
+import { useNowSeconds } from "@/lib/hooks/use-now-seconds";
+
+const TIME_FMT = new Intl.DateTimeFormat("en-GB", {
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hour12: false,
+});
 
 const CARD_W = 200;
 const CARD_HALF = CARD_W / 2;
@@ -15,31 +24,13 @@ const HORIZ_PAD = 12;
 export function HeaderBar() {
   const [logoHovered, setLogoHovered] = useState(false);
   const [pointerOffset, setPointerOffset] = useState(0);
-  const [time, setTime] = useState<string | null>(null);
-  const [banglaDate, setBanglaDate] = useState<string>("");
-  const [elapsed, setElapsed] = useState<LiveTimeElapsed | null>(null);
+  const nowSeconds = useNowSeconds();
+  const now = nowSeconds === null ? null : new Date(nowSeconds * 1000);
+  const time = now ? TIME_FMT.format(now) : null;
+  const banglaDate = now ? getBanglaDate(now) : "";
+  const elapsed = now ? getLiveTimeElapsed(now) : null;
   const reduce = useReducedMotion() ?? false;
   const logoRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setBanglaDate(getBanglaDate());
-    const fmt = () =>
-      new Intl.DateTimeFormat("en-GB", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false,
-      }).format(new Date());
-
-    const update = () => {
-      setTime(fmt());
-      setElapsed(getLiveTimeElapsed());
-    };
-
-    update();
-    const id = setInterval(update, 1000);
-    return () => clearInterval(id);
-  }, []);
 
   function handlePointerMove(e: React.MouseEvent<HTMLDivElement>) {
     if (!logoRef.current) return;
@@ -87,7 +78,7 @@ export function HeaderBar() {
           onMouseMove={handlePointerMove}
           onMouseLeave={() => setLogoHovered(false)}
         >
-          <a
+          <Link
             href="/"
             className="group relative z-10 flex items-center gap-2 text-sm font-medium tracking-tight"
           >
@@ -104,7 +95,7 @@ export function HeaderBar() {
             <span className="text-base sm:text-lg font-bold tracking-normal text-foreground" style={{ fontFamily: "var(--font-bengali), var(--font-geist-sans), sans-serif" }}>
               আমরা
             </span>
-          </a>
+          </Link>
           <AnimatePresence>
             {logoHovered && (
               <motion.div
