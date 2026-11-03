@@ -15,15 +15,14 @@ import { ProgressiveBlur } from "@/registry/magicui/progressive-blur";
 import { useMediaQuery, useMounted } from "@/lib/hooks/use-mounted";
 
 const HAND_HOLDING_PHOTOS = [
+  { id: "story-4", src: "/first-met.jpg", aspect: "aspect-square" },
+  { id: "story-6", src: "/tea-date.jpg", aspect: "aspect-[3/4]" },
   { id: "story-8", src: "/airport-journey.jpg", aspect: "aspect-[4/3]" },
   { id: "story-13", src: "/follow-me-walk.jpg", aspect: "aspect-[3/4]" },
   { id: "story-14", src: "/mehendi-hand.jpg", aspect: "aspect-[3/4]" },
   { id: "story-16", src: "/daisy-rose-bouquet.jpg", aspect: "aspect-square" },
-  { id: "story-23", src: "/bamboo-gazebo.jpg", aspect: "aspect-[4/3]" },
-  { id: "story-25", src: "/diu-campus.jpg", aspect: "aspect-[4/3]" },
   { id: "story-27", src: "/travel-luggage-hands.jpg", aspect: "aspect-[3/4]" },
   { id: "story-30", src: "/shy-hide-face-pov.jpg", aspect: "aspect-[3/4]" },
-  { id: "story-32", src: "/campus-walk-together.jpg", aspect: "aspect-[3/4]" },
   { id: "story-47", src: "/shared-backpack-walk.jpg", aspect: "aspect-[4/3]" },
   { id: "story-48", src: "/mehendi-ring-hands.jpg", aspect: "aspect-[3/4]" },
   { id: "story-49", src: "/white-roses-ring-bouquet.jpg", aspect: "aspect-[3/4]" },
@@ -38,6 +37,8 @@ const HAND_HOLDING_PHOTOS = [
   { id: "story-59", src: "/wooden-table-handclasp.jpg", aspect: "aspect-[3/4]" },
   { id: "story-60", src: "/pavement-walk-yellow-dress.jpg", aspect: "aspect-[3/4]" },
   { id: "story-61", src: "/felt-wool-holding-hands.jpg", aspect: "aspect-[3/4]" },
+  { id: "story-70", src: "/felt-wool-sitting-hand-in-hand.jpg", aspect: "aspect-[3/4]" },
+  { id: "story-75", src: "/felt-wool-arm-holding-ring.jpg", aspect: "aspect-[3/4]" },
 ];
 
 
