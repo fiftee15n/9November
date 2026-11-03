@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { MusicToggle } from "@/components/audio/MusicToggle";
-import { EmojiReaction } from "@/components/motion/emoji-reaction";
 import { Tooltip } from "@/components/motion/tooltip";
 import { getBanglaDate, getLiveTimeElapsed } from "@/lib/banglaCalendar";
 import { useNowSeconds } from "@/lib/hooks/use-now-seconds";
@@ -59,18 +58,13 @@ export function HeaderBar() {
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ duration: 0.45, ease: "easeOut" }}
     >
-      {/* Left: Emoji reaction + Logo with avatar hover */}
+      {/* Left: Logo with avatar hover */}
       <motion.div
         className="flex items-center gap-2.5 sm:gap-3"
         initial={reduce ? false : { opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut", delay: 0.08 }}
       >
-        <Tooltip content="Add reaction" side="bottom">
-          <span className="inline-flex">
-            <EmojiReaction size="sm" align="left" />
-          </span>
-        </Tooltip>
         <div
           ref={logoRef}
           className="relative flex h-8 items-center"
