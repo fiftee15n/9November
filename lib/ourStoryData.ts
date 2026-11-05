@@ -42,8 +42,8 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     title: "প্রথম ডেট",
     subtitle: "প্রথম ডেট ও হাঁটা",
     date: "সেপ্টেম্বর ২০২১",
-    location: "সবুজের মাঝে",
-    story: "একসাথে হেঁটে চলা, প্রথমবার কফির কাপে আড্ডা আর হৃদস্পন্দনের দ্রুত ওঠানামা।",
+    location: "টি এস সি, ঢাকা বিশ্ববিদ্যালয়",
+    story: "একসাথে হেঁটে চলা, প্রথমবার চায়ের কাপে আড্ডা আর হৃদস্পন্দনের দ্রুত ওঠানামা।",
     image: "/first-date.jpg",
     icon: "hiking",
     accentColor: "#10B981", // Emerald
