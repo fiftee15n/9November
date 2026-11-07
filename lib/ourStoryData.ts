@@ -478,8 +478,64 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     side: "left",
   },
   {
-    id: "matching-blue",
+    id: "campus-brick-adda",
     stepNumber: "৩৪",
+    title: "ক্যাম্পাসের সবুজ ছায়ায়",
+    subtitle: "ইটের বেদিতে মিষ্টি আড্ডা ও ভালোবাসার কথকতা",
+    date: "২০২৩",
+    location: "ক্যাম্পাস প্রাঙ্গণ",
+    story: "গাছের শীতল ছায়া, লাল ইটের বেদি আর তোমার সেই মিষ্টি মায়াবী চাহনি। ঘণ্টার পর ঘণ্টা গল্পে মেতে থাকা, যেখানে সময়ের কোনো হিসেব ছিল না—ছিল কেবল একে অপরের চোখে চোখ রেখে নিখাদ সুখের অনাবিল মুহূর্ত।",
+    image: "/campus-brick-adda.jpg",
+    imageAspect: "landscape",
+    icon: "meet",
+    accentColor: "#16A34A", // Fresh Campus Green
+    side: "right",
+  },
+  {
+    id: "diu-jersey-selfie",
+    stepNumber: "৩৫",
+    title: "ডিআইইউ জার্সিতে দুজন",
+    subtitle: "নীল জার্সির উষ্ণতা ও কাঁধে মাথা",
+    date: "২০২৩",
+    location: "ডিআইইউ ক্যাম্পাস গ্যালারি",
+    story: "বিশ্ববিদ্যালয়ের নীল জার্সিতে পাশাপাশি বসে মিষ্টি একটি সেলফি। ক্লাসের ফাঁকে কিংবা ক্যাম্পাসের গ্যালারিতে তোমার কাঁধে মাথা রাখার সেই চেনা নির্ভরতা—যেখানে প্রতিটি ক্যাম্পাসের দিনই হয়ে উঠেছিল ভালোবাসার একেকটি মধুর স্মৃতি।",
+    image: "/diu-jersey-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "camera",
+    accentColor: "#2563EB", // DIU Royal Blue
+    side: "left",
+  },
+  {
+    id: "shy-hide-face-pov",
+    stepNumber: "৩৬",
+    title: "লাজুক খুনসুটি ও স্নেহের পরশ",
+    subtitle: "মাথায় স্নেহের স্পর্শ ও লাজুক হাসির মুহূর্ত",
+    date: "২০২৩",
+    location: "আমাদের প্রিয় প্রাঙ্গণ",
+    story: "ক্যামেরার সামনে তোমার মুখ লুকিয়ে ফেলা সেই মিষ্টি লজ্জা আর আদুরে অভিমান। পরম স্নেহে তোমার মাথায় হাত রাখার সেই মুহূর্তে কোনো কথা না বলেও হৃদয়ের সবটুকু ভালোবাসা যেন তোমাকেই ছুঁয়ে গিয়েছিল।",
+    image: "/shy-hide-face-pov.jpg",
+    imageAspect: "portrait",
+    icon: "heart",
+    accentColor: "#0891B2", // Cyan / Teal Ocean
+    side: "right",
+  },
+  {
+    id: "night-light-selfie",
+    stepNumber: "৩৭",
+    title: "ল্যাম্পপোস্টের নরম আলোয়",
+    subtitle: "কাঁধে মাথা রেখে রাতের স্নিগ্ধ মুহূর্ত",
+    date: "২০২৩",
+    location: "শহরের নিঝুম আলোয়",
+    story: "মাথার ওপর ল্যাম্পপোস্টের নরম সোনালী আলো, আর আমার কাঁধে তোমার আলতো নির্ভরতা। রাতের শান্ত বাতাসে পাশাপাশি হেঁটে চলা আর হঠাৎ ফ্রেমবন্দী হওয়া সেই মিষ্টি মুহূর্ত—যেখানে পুরো পৃথিবী যেন আমাদের আলোতেই আলোকিত ছিল।",
+    image: "/night-light-selfie.jpg",
+    imageAspect: "portrait",
+    icon: "sparkles",
+    accentColor: "#E11D48", // Vivid Rose / Magenta
+    side: "left",
+  },
+  {
+    id: "matching-blue",
+    stepNumber: "৩৮",
     title: "আকাশি রঙে দুজন",
     subtitle: "একই রঙে রাঙানো সুন্দর একটি দিন",
     date: "২০২৩",
@@ -492,8 +548,22 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     side: "right",
   },
   {
+    id: "felt-wool-roadside-selfie",
+    stepNumber: "৩৯",
+    title: "সবুজ পথের ধারে সেলফি",
+    subtitle: "গাছের ছায়ায় পাশাপাশি দুটি হাসিমুখ",
+    date: "২০২৪",
+    location: "গ্রামের সবুজ পথের ধারে",
+    story: "সবুজ গাছের সারি, কাঠের বেড়া আর খোলা আকাশের নিচে পথের ধারে থেমে তোলা একটি মিষ্টি সেলফি। পিঠে ব্যাগ, পাশে তুমি—আমার দিকে মাথা হেলিয়ে তোমার সেই নরম হাসি। একসাথে নতুন পথে বেরিয়ে পড়ার আনন্দ আর প্রকৃতির স্নিগ্ধতায় মিশে থাকা এই মুহূর্তটি যেন আমাদের পথচলার এক সবুজ স্মারক।",
+    image: "/felt-wool-rickshaw-roadside-selfie.png",
+    imageAspect: "landscape",
+    icon: "trip",
+    accentColor: "#65A30D", // Fresh Leaf Green
+    side: "left",
+  },
+  {
     id: "sari-portrait",
-    stepNumber: "৩৫",
+    stepNumber: "৪০",
     title: "শাড়িতে মায়াবী রূপ",
     subtitle: "বুনো ফুলের সুবাসে স্নিগ্ধ হাসি",
     date: "২০২৩",
@@ -503,11 +573,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "flower",
     accentColor: "#EAB308", // Sunflower Gold
-    side: "left",
+    side: "right",
   },
   {
     id: "cheek-caress-lake",
-    stepNumber: "৩৬",
+    stepNumber: "৪১",
     title: "গাল ছুঁয়ে ভালোবাসার পরশ",
     subtitle: "প্রকৃতির বুকে হৃদয়ের কাছাকাছি",
     date: "২০২৩",
@@ -517,11 +587,25 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "heart",
     accentColor: "#059669", // Meadow Emerald Green
+    side: "left",
+  },
+  {
+    id: "white-roses-ring-bouquet",
+    stepNumber: "৪২",
+    title: "শুভ্র গোলাপ ও অনামিকার দ্যুতি",
+    subtitle: "আকাশি সাজে শুভ্র গোলাপের তোড়া আর ভালোবাসার পরশ",
+    date: "২০২৪",
+    location: "আমাদের বিশেষ দিনে",
+    story: "আকাশি রঙের স্নিগ্ধ সাজে পাশাপাশি দাঁড়িয়ে থাকা। তোমার হাতে শোভা পাওয়া একগুচ্ছ শুভ্র গোলাপের সুবাস, আর অনামিকায় জ্বলজ্বল করা ভালোবাসার ছোট্ট আংটিটি যেন আমাদের প্রতিটি স্বপ্নের জীবন্ত প্রতিচ্ছবি। পরম মায়ায় তোমার হাতটি আমার হাতের ওপর তুলে নিয়ে নিঃশব্দে অনুভব করা—জীবনের সবচেয়ে পবিত্র অনুভূতিগুলো এভাবেই শুভ্র গোলাপের মতো অমলিন সুবাস ছড়িয়ে চিরদিন হৃদয়ে বেঁচে থাকে।",
+    image: "/white-roses-ring-bouquet.jpg",
+    imageAspect: "portrait",
+    icon: "flower",
+    accentColor: "#0284C7", // Sky Blue / Ocean Serenity
     side: "right",
   },
   {
     id: "bamboo-gazebo",
-    stepNumber: "৩৭",
+    stepNumber: "৪৩",
     title: "কুটিরের ছায়ায় প্রশান্তি",
     subtitle: "সবুজ হিজাবে স্নিগ্ধ ভালোবাসার বন্ধন",
     date: "২০২৩",
@@ -535,7 +619,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "video-call-selfie",
-    stepNumber: "৩৮",
+    stepNumber: "৪৪",
     title: "রাতজাগা মিষ্টি ভিডিও কল",
     subtitle: "স্ক্রিনের ফ্রেমে ভালোবাসা ও নির্ভরতা",
     date: "২০২৩",
@@ -548,64 +632,8 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     side: "right",
   },
   {
-    id: "night-light-selfie",
-    stepNumber: "৩৯",
-    title: "ল্যাম্পপোস্টের নরম আলোয়",
-    subtitle: "কাঁধে মাথা রেখে রাতের স্নিগ্ধ মুহূর্ত",
-    date: "২০২৩",
-    location: "শহরের নিঝুম আলোয়",
-    story: "মাথার ওপর ল্যাম্পপোস্টের নরম সোনালী আলো, আর আমার কাঁধে তোমার আলতো নির্ভরতা। রাতের শান্ত বাতাসে পাশাপাশি হেঁটে চলা আর হঠাৎ ফ্রেমবন্দী হওয়া সেই মিষ্টি মুহূর্ত—যেখানে পুরো পৃথিবী যেন আমাদের আলোতেই আলোকিত ছিল।",
-    image: "/night-light-selfie.jpg",
-    imageAspect: "portrait",
-    icon: "sparkles",
-    accentColor: "#E11D48", // Vivid Rose / Magenta
-    side: "left",
-  },
-  {
-    id: "campus-brick-adda",
-    stepNumber: "৪০",
-    title: "ক্যাম্পাসের সবুজ ছায়ায়",
-    subtitle: "ইটের বেদিতে মিষ্টি আড্ডা ও ভালোবাসার কথকতা",
-    date: "২০২৩",
-    location: "ক্যাম্পাস প্রাঙ্গণ",
-    story: "গাছের শীতল ছায়া, লাল ইটের বেদি আর তোমার সেই মিষ্টি মায়াবী চাহনি। ঘণ্টার পর ঘণ্টা গল্পে মেতে থাকা, যেখানে সময়ের কোনো হিসেব ছিল না—ছিল কেবল একে অপরের চোখে চোখ রেখে নিখাদ সুখের অনাবিল মুহূর্ত।",
-    image: "/campus-brick-adda.jpg",
-    imageAspect: "landscape",
-    icon: "meet",
-    accentColor: "#16A34A", // Fresh Campus Green
-    side: "right",
-  },
-  {
-    id: "shy-hide-face-pov",
-    stepNumber: "৪১",
-    title: "লাজুক খুনসুটি ও স্নেহের পরশ",
-    subtitle: "মাথায় স্নেহের স্পর্শ ও লাজুক হাসির মুহূর্ত",
-    date: "২০২৩",
-    location: "আমাদের প্রিয় প্রাঙ্গণ",
-    story: "ক্যামেরার সামনে তোমার মুখ লুকিয়ে ফেলা সেই মিষ্টি লজ্জা আর আদুরে অভিমান। পরম স্নেহে তোমার মাথায় হাত রাখার সেই মুহূর্তে কোনো কথা না বলেও হৃদয়ের সবটুকু ভালোবাসা যেন তোমাকেই ছুঁয়ে গিয়েছিল।",
-    image: "/shy-hide-face-pov.jpg",
-    imageAspect: "portrait",
-    icon: "heart",
-    accentColor: "#0891B2", // Cyan / Teal Ocean
-    side: "left",
-  },
-  {
-    id: "diu-jersey-selfie",
-    stepNumber: "৪২",
-    title: "ডিআইইউ জার্সিতে দুজন",
-    subtitle: "নীল জার্সির উষ্ণতা ও কাঁধে মাথা",
-    date: "২০২৩",
-    location: "ডিআইইউ ক্যাম্পাস গ্যালারি",
-    story: "বিশ্ববিদ্যালয়ের নীল জার্সিতে পাশাপাশি বসে মিষ্টি একটি সেলফি। ক্লাসের ফাঁকে কিংবা ক্যাম্পাসের গ্যালারিতে তোমার কাঁধে মাথা রাখার সেই চেনা নির্ভরতা—যেখানে প্রতিটি ক্যাম্পাসের দিনই হয়ে উঠেছিল ভালোবাসার একেকটি মধুর স্মৃতি।",
-    image: "/diu-jersey-selfie.jpg",
-    imageAspect: "portrait",
-    icon: "camera",
-    accentColor: "#2563EB", // DIU Royal Blue
-    side: "right",
-  },
-  {
     id: "campus-walk-together",
-    stepNumber: "৪৩",
+    stepNumber: "৪৫",
     title: "লাল ইটের পথে পাশাপাশি",
     subtitle: "হাতে হাত রেখে ক্যাম্পাসের মায়াবী বিকেল",
     date: "২০২৩",
@@ -619,7 +647,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "tender-shoulder-hug",
-    stepNumber: "৪৪",
+    stepNumber: "৪৬",
     title: "কাঁধে চিবুক ও স্নেহের আলিঙ্গন",
     subtitle: "হিজাবের স্নিগ্ধতায় আদুরে নির্ভরতা",
     date: "২০২৩",
@@ -633,7 +661,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "cafe-mirror-selfie",
-    stepNumber: "৪৫",
+    stepNumber: "৪৭",
     title: "আয়নায় মিষ্টি ফ্রেম ও সেলফি",
     subtitle: "হাত জড়িয়ে মিষ্টি হাসির মুহূর্ত",
     date: "২০২৩",
@@ -647,7 +675,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "better-together-cake",
-    stepNumber: "৪৬",
+    stepNumber: "৪৮",
     title: "বেটার টুগেদার কেক ও উদযাপন",
     subtitle: "দুজনে মিলে কেক কাটার মধুর ক্ষণ",
     date: "২০২৩",
@@ -661,7 +689,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "forehead-kiss-flowers",
-    stepNumber: "৪৭",
+    stepNumber: "৪৯",
     title: "কপালে স্নেহের পরশ ও ফুল",
     subtitle: "হাতে বেলি ফুলের মালা ও একগুচ্ছ ফুল",
     date: "শীত ২০২৩",
@@ -675,7 +703,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "sunlit-greenery-selfie",
-    stepNumber: "৪৮",
+    stepNumber: "৫০",
     title: "সবুজ পাতার ছায়ায় মিষ্টি রোদ্দুর",
     subtitle: "গাছের পাতায় সোনালী রোদের আলো",
     date: "২০২৪",
@@ -689,7 +717,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "navy-festive-evening",
-    stepNumber: "৪৯",
+    stepNumber: "৫১",
     title: "নীল পোশাকে উৎসবের সন্ধ্যা",
     subtitle: "বাগানের ফেয়ারি লাইট ও মিষ্টি নির্ভরতা",
     date: "২০২৪",
@@ -703,7 +731,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "diba-birthday-cake",
-    stepNumber: "৫০",
+    stepNumber: "৫২",
     title: "দিবার জন্য ভালোবাসার কেক",
     subtitle: "দোয়া আর ভালোবাসায় মোড়ানো জন্মদিনের ক্ষণ",
     date: "২০২৪",
@@ -717,7 +745,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "mehendi-chin-pose",
-    stepNumber: "৫১",
+    stepNumber: "৫৩",
     title: "মেহেদি রাঙা হাতে আদুরে খুনসুটি",
     subtitle: "ঐতিহাসিক ইটের দেওয়ালে ভালোবাসার ফ্রেম",
     date: "২০২৪",
@@ -731,7 +759,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "rose-hijab-videocall",
-    stepNumber: "৫২",
+    stepNumber: "৫৪",
     title: "ভিডিও কলে মিষ্টি মুহূর্ত",
     subtitle: "স্ক্রিনের দুই প্রান্তে ভালোবাসার গল্প",
     date: "২০২৪",
@@ -745,7 +773,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "paras-dairy-selfie",
-    stepNumber: "৫৩",
+    stepNumber: "৫৫",
     title: "হঠাৎ তোলা মিষ্টি সেলফি",
     subtitle: "হলুদ দোকানের সামনে মিষ্টি স্মৃতি",
     date: "২০২৪",
@@ -759,7 +787,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "cozy-booth-selfie",
-    stepNumber: "৫৪",
+    stepNumber: "৫৬",
     title: "রেস্টুরেন্টে মাথায় মাথা রেখে",
     subtitle: "দুজনের হাসিতে রঙিন এক মধুর দুপুর",
     date: "২০২৪",
@@ -773,7 +801,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "kneeling-gentle-care",
-    stepNumber: "৫৫",
+    stepNumber: "৫৭",
     title: "হাঁটু গেড়ে পরম যত্ন",
     subtitle: "পথের মাঝে নিচু হয়ে পোশাক ঠিক করার মিষ্টি মুহূর্ত",
     date: "২০২৪",
@@ -787,7 +815,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "warm-yellow-mirror-selfie",
-    stepNumber: "৫৬",
+    stepNumber: "৫৮",
     title: "আয়নায় ভালোবাসার সোনালী প্রতিচ্ছবি",
     subtitle: "হলুদ আলোয় ফ্রেমবন্দী একমুঠো স্নিগ্ধ হাসি ও নির্ভরতা",
     date: "২০২৪",
@@ -801,7 +829,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "shared-backpack-walk",
-    stepNumber: "৫৭",
+    stepNumber: "৫৯",
     title: "একই ব্যাগের হাতলে দুটি হাত",
     subtitle: "ইটের বাঁধানো পথে ভাগ করে নেওয়া পথচলার আনন্দ",
     date: "২০২৪",
@@ -815,7 +843,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
   },
   {
     id: "mehendi-ring-promise",
-    stepNumber: "৫৮",
+    stepNumber: "৬০",
     title: "মেহেদি রাঙা হাতে আজীবনের অঙ্গীকার",
     subtitle: "বাগানবিলাসের পাপড়ি ও অনামিকায় ভালোবাসার আংটি",
     date: "২০২৪",
@@ -828,22 +856,8 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     side: "right",
   },
   {
-    id: "white-roses-ring-bouquet",
-    stepNumber: "৫৯",
-    title: "শুভ্র গোলাপ ও অনামিকার দ্যুতি",
-    subtitle: "আকাশি সাজে শুভ্র গোলাপের তোড়া আর ভালোবাসার পরশ",
-    date: "২০২৪",
-    location: "আমাদের বিশেষ দিনে",
-    story: "আকাশি রঙের স্নিগ্ধ সাজে পাশাপাশি দাঁড়িয়ে থাকা। তোমার হাতে শোভা পাওয়া একগুচ্ছ শুভ্র গোলাপের সুবাস, আর অনামিকায় জ্বলজ্বল করা ভালোবাসার ছোট্ট আংটিটি যেন আমাদের প্রতিটি স্বপ্নের জীবন্ত প্রতিচ্ছবি। পরম মায়ায় তোমার হাতটি আমার হাতের ওপর তুলে নিয়ে নিঃশব্দে অনুভব করা—জীবনের সবচেয়ে পবিত্র অনুভূতিগুলো এভাবেই শুভ্র গোলাপের মতো অমলিন সুবাস ছড়িয়ে চিরদিন হৃদয়ে বেঁচে থাকে।",
-    image: "/white-roses-ring-bouquet.jpg",
-    imageAspect: "portrait",
-    icon: "flower",
-    accentColor: "#0284C7", // Sky Blue / Ocean Serenity
-    side: "left",
-  },
-  {
     id: "holding-both-mehendi-hands",
-    stepNumber: "৬০",
+    stepNumber: "৬১",
     title: "উভয় হাতে ভালোবাসার নির্ভরতা",
     subtitle: "দুটি মেহেদি রাঙা হাত পরম যত্নে নিজের করে নেওয়া",
     date: "২০২৪",
@@ -853,11 +867,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "heart",
     accentColor: "#BE123C", // Festive Crimson Rose / Warm Henna
-    side: "right",
+    side: "left",
   },
   {
     id: "beli-mala-red-flowers",
-    stepNumber: "৬১",
+    stepNumber: "৬২",
     title: "বেলি ফুলের মালা ও একগুচ্ছ লাল ফুল",
     subtitle: "হাতে বেলি ফুলের সুবাস আর পাশে ভালোবাসার লাল উপহার",
     date: "২০২৪",
@@ -867,11 +881,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "flower",
     accentColor: "#DC2626", // Scarlet Floral Red
-    side: "left",
+    side: "right",
   },
   {
     id: "flowers-on-heart",
-    stepNumber: "৬২",
+    stepNumber: "৬৩",
     title: "হৃদস্পন্দনে ভালোবাসার ফুল",
     subtitle: "শুভ্র পাঞ্জাবির বুকে পরম মায়ায় ফুলের পরশ",
     date: "২০২৪",
@@ -881,11 +895,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "heart",
     accentColor: "#E11D48", // Romantic Rose Crimson
-    side: "right",
+    side: "left",
   },
   {
     id: "linked-arms-beli-mala",
-    stepNumber: "৬৩",
+    stepNumber: "৬৪",
     title: "বাহু জড়িয়ে পরম নির্ভরতা",
     subtitle: "হাতে বেলি ফুলের গজরা ও বাহুতে নিশ্চিন্ত আশ্রয়",
     date: "২০২৪",
@@ -895,11 +909,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "landscape",
     icon: "flower",
     accentColor: "#D97706", // Warm Golden Amber / Jasmine Glow
-    side: "left",
+    side: "right",
   },
   {
     id: "hand-in-hand-beli-mala",
-    stepNumber: "৬৪",
+    stepNumber: "৬৫",
     title: "বেলি ফুলের মালায় হাত ধরে পথচলা",
     subtitle: "মায়াবী গজরার সুবাস ও হাতে হাত রেখে এগিয়ে চলা",
     date: "২০২৪",
@@ -909,11 +923,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "hiking",
     accentColor: "#059669", // Fresh Botanical Emerald Green
-    side: "right",
+    side: "left",
   },
   {
     id: "autumn-leaves-walk",
-    stepNumber: "৬৫",
+    stepNumber: "৬৬",
     title: "ঝরা পাতার পথে হাত ধরে পথচলা",
     subtitle: "হেমন্তের সোনালী ঘাস আর ঝরা পাতার নরম বিছানায়",
     date: "২০২৪",
@@ -923,11 +937,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "heart",
     accentColor: "#C2410C", // Autumn Rust / Warm Terracotta
-    side: "left",
+    side: "right",
   },
   {
     id: "palm-to-palm-sunlight",
-    stepNumber: "৬৬",
+    stepNumber: "৬৭",
     title: "হাতের তালুতে উষ্ণ নির্ভরতা",
     subtitle: "মিষ্টি রোদের আলোয় হাতের তালুতে হাত রেখে বসা",
     date: "২০২৪",
@@ -937,11 +951,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "heart",
     accentColor: "#0284C7", // Sunlit Sky Blue / Serene Warmth
-    side: "right",
+    side: "left",
   },
   {
     id: "wooden-table-handclasp",
-    stepNumber: "৬৭",
+    stepNumber: "৬৮",
     title: "কাঠের টেবিলে নিবিড় নির্ভরতা",
     subtitle: "নীল শার্টের আবেশ আর শক্ত করে হাত জড়িয়ে রাখা",
     date: "২০২৪",
@@ -951,11 +965,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "coffee",
     accentColor: "#2563EB", // Royal Blue / Deep Bond
-    side: "left",
+    side: "right",
   },
   {
     id: "pavement-walk-yellow-dress",
-    stepNumber: "৬৮",
+    stepNumber: "৬৯",
     title: "হাঁটার ছন্দে তোমার হাত ধরে",
     subtitle: "হলুদ জামার সোনালী রঙ আর পথচলার মিষ্টি মুহূর্ত",
     date: "২০২৪",
@@ -965,11 +979,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "hiking",
     accentColor: "#D97706", // Golden Mustard / Warm Walking Sunshine
-    side: "right",
+    side: "left",
   },
   {
     id: "felt-wool-holding-hands",
-    stepNumber: "৬৯",
+    stepNumber: "৭০",
     title: "উলের ওমে চিরন্তন হাত ধরা",
     subtitle: "উলের নরম ছোঁয়ায় বোনা ভালোবাসার অটুট বন্ধন",
     date: "২০২৪",
@@ -979,11 +993,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "heart",
     accentColor: "#10B981", // Emerald / Warm Woolen Craft
-    side: "left",
+    side: "right",
   },
   {
     id: "felt-wool-couple-portrait",
-    stepNumber: "৭০",
+    stepNumber: "৭১",
     title: "উলের ফ্রেমে আমাদের হাসিমুখ",
     subtitle: "উলের কোমল ছোঁয়ায় জীবন্ত হয়ে ওঠা মিষ্টি যুগলবন্দী",
     date: "২০২৪",
@@ -993,11 +1007,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "sparkles",
     accentColor: "#F43F5E", // Rose / Warm Woolen Portrait
-    side: "right",
+    side: "left",
   },
   {
     id: "felt-wool-greenery-walk",
-    stepNumber: "৭১",
+    stepNumber: "৭২",
     title: "সবুজের মাঝে কাঁধে মাথা রেখে",
     subtitle: "সবুজ শাড়ির স্নিগ্ধতা আর ছায়াবীথির মায়াবী পথচলা",
     date: "২০২৪",
@@ -1007,11 +1021,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "hiking",
     accentColor: "#059669", // Emerald Green / Lush Nature Walk
-    side: "left",
+    side: "right",
   },
   {
     id: "felt-wool-shopping-mirror-selfie",
-    stepNumber: "৭২",
+    stepNumber: "৭৩",
     title: "শপিং ডেটের মিষ্টি আয়না সেলফি",
     subtitle: "উলের ফ্রেমে বন্দি আমাদের খুনসুটি আর শপিং আড্ডা",
     date: "২০২৪",
@@ -1021,11 +1035,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "camera",
     accentColor: "#8B5CF6", // Purple / Stylish Shopping Date
-    side: "right",
+    side: "left",
   },
   {
     id: "felt-wool-chin-pose",
-    stepNumber: "৭৩",
+    stepNumber: "৭৪",
     title: "চিবুকে হাত রেখে পরম মায়া",
     subtitle: "উলের নরম সুতোয় বোনা স্নেহের চিরচেনা ভঙ্গি",
     date: "২০২৪",
@@ -1035,11 +1049,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "heart",
     accentColor: "#F59E0B", // Amber / Warm Loving Glow
-    side: "left",
+    side: "right",
   },
   {
     id: "felt-wool-sari-graceful-walk",
-    stepNumber: "৭৪",
+    stepNumber: "৭৫",
     title: "সবুজ শাড়িতে স্নিগ্ধ লাজুকতা",
     subtitle: "গাছগাছালির ছায়াবীথিতে তোমার অপরূপ পদচারণা",
     date: "২০২৪",
@@ -1049,11 +1063,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "flower",
     accentColor: "#15803D", // Forest Green / Botanical Elegance
-    side: "right",
+    side: "left",
   },
   {
     id: "felt-wool-fuchka-date",
-    stepNumber: "৭৫",
+    stepNumber: "৭৬",
     title: "ফুচকা ডেট ও টক-মিষ্টি হাসি",
     subtitle: "রাস্তার ধারের ফুচকার বাটি আর তোমার মিষ্টি চঞ্চলতা",
     date: "২০২৪",
@@ -1063,11 +1077,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "sushi",
     accentColor: "#EA580C", // Spiced Orange / Tangy Tamarind
-    side: "left",
+    side: "right",
   },
   {
     id: "felt-wool-sitting-hand-in-hand",
-    stepNumber: "৭৬",
+    stepNumber: "৭৭",
     title: "ঘাসের প্রাঙ্গণে আঙুলে আঙুল",
     subtitle: "শীতের নরম রোদে পাশাপাশি বসে হাত ধরা",
     date: "২০২৪",
@@ -1077,11 +1091,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "heart",
     accentColor: "#D97706", // Warm Golden Amber / Sunlit Earth
-    side: "right",
+    side: "left",
   },
   {
     id: "felt-wool-video-call",
-    stepNumber: "৭৭",
+    stepNumber: "৭৮",
     title: "ভিডিও কলে দূরত্বের মায়া",
     subtitle: "স্ক্রিনে তোমার মায়াবী চোখ আর মিষ্টি হাসি",
     date: "২০২৪",
@@ -1091,11 +1105,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "video",
     accentColor: "#6366F1", // Indigo / Digital Connection
-    side: "left",
+    side: "right",
   },
   {
     id: "felt-wool-heritage-arch-romance",
-    stepNumber: "৭৮",
+    stepNumber: "৭৯",
     title: "খাঁজকাটা খিলানে চোখে চোখ",
     subtitle: "লাল জামা আর কাঁধে মেহেন্দির স্নিগ্ধ স্পর্শ",
     date: "২০২৪",
@@ -1105,11 +1119,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "monument",
     accentColor: "#BE123C", // Deep Rose / Festive Crimson
-    side: "right",
+    side: "left",
   },
   {
     id: "felt-wool-arm-holding-ring",
-    stepNumber: "৭৯",
+    stepNumber: "৮০",
     title: "বাহু জড়িয়ে পরম নির্ভরতা",
     subtitle: "আঙুলে সোনার আংটি আর বিশ্বস্ত এক স্পর্শ",
     date: "২০২৪",
@@ -1119,11 +1133,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "heart",
     accentColor: "#0284C7", // Sky Cerulean Blue
-    side: "left",
+    side: "right",
   },
   {
     id: "felt-wool-dressing-mirror-call",
-    stepNumber: "৮০",
+    stepNumber: "৮১",
     title: "ড্রেসিং টেবিলের আয়না ও মিষ্টি কল",
     subtitle: "গোলাপি ঘরে ভিডিও কলের মিষ্টি খুনসুটি",
     date: "২০২৪",
@@ -1133,11 +1147,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "video",
     accentColor: "#DB2777", // Vibrant Pink / Magenta
-    side: "right",
+    side: "left",
   },
   {
     id: "moonlit-boat-ride",
-    stepNumber: "৮১",
+    stepNumber: "৮২",
     title: "চাঁদের আলো ও রাতের নৌকাবিলাস",
     subtitle: "জলের বুকে শহরের আলোর নাচন আর শান্ত নিস্তব্ধতা",
     date: "২০২৪",
@@ -1147,7 +1161,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "trip",
     accentColor: "#F59E0B", // Warm Amber / Moonlit Gold
-    side: "left",
+    side: "right",
   },
 ];
 
