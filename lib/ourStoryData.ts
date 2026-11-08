@@ -1108,22 +1108,8 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     side: "right",
   },
   {
-    id: "felt-wool-couple-portrait",
-    stepNumber: "৭৯",
-    title: "উলের ফ্রেমে আমাদের হাসিমুখ",
-    subtitle: "উলের কোমল ছোঁয়ায় জীবন্ত হয়ে ওঠা মিষ্টি যুগলবন্দী",
-    date: "২০২৪",
-    location: "ভালোবাসার রঙিন জগৎ",
-    story: "উলের নরম সুতোয় পরম ভালোবাসায় গড়ে তোলা আমাদের দুটি হাসিমাখা মুখ। মায়াবী ডাগর দুটি চোখ, গালে মিষ্টি লাজুক আভা আর পাশাপাশি থাকা দুটি প্রাণের নিখাদ নির্ভরতায় বোনা এই প্রতিচ্ছবি। কল্পনার রঙ আর ভালোবাসার ওম মিশে তৈরি এই মিষ্টি স্মারকটি যেন আমাদের প্রতিটি স্মৃতির আনন্দ আর চিরন্তন একতার প্রতীক।",
-    image: "/felt-wool-couple-portrait.jpg",
-    imageAspect: "portrait",
-    icon: "sparkles",
-    accentColor: "#F43F5E", // Rose / Warm Woolen Portrait
-    side: "left",
-  },
-  {
     id: "felt-wool-arm-holding-ring",
-    stepNumber: "৮০",
+    stepNumber: "৭৯",
     title: "বাহু জড়িয়ে পরম নির্ভরতা",
     subtitle: "আঙুলে সোনার আংটি আর বিশ্বস্ত এক স্পর্শ",
     date: "২০২৪",
@@ -1133,11 +1119,11 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "heart",
     accentColor: "#0284C7", // Sky Cerulean Blue
-    side: "right",
+    side: "left",
   },
   {
     id: "moonlit-boat-ride",
-    stepNumber: "৮১",
+    stepNumber: "৮০",
     title: "চাঁদের আলো ও রাতের নৌকাবিলাস",
     subtitle: "জলের বুকে শহরের আলোর নাচন আর শান্ত নিস্তব্ধতা",
     date: "২০২৪",
@@ -1147,7 +1133,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     imageAspect: "portrait",
     icon: "trip",
     accentColor: "#F59E0B", // Warm Amber / Moonlit Gold
-    side: "left",
+    side: "right",
   },
 ];
 
