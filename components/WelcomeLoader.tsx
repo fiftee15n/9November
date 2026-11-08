@@ -18,7 +18,7 @@ const STORY_MOMENTS: StoryMoment[] = [
   {
     id: "date-intro",
     title: "৯ নভেম্বর",
-    subtitle: "একটা তারিখ… যে তারিখটা আমাদের হয়ে গেল।",
+    subtitle: "একটা তারিখ \n যে তারিখটা আমাদের হয়ে গেল।",
     duration: 4500,
     bgImage: "/couple-sunset-bg.jpg",
   },
@@ -32,7 +32,7 @@ const STORY_MOMENTS: StoryMoment[] = [
   {
     id: "first-hand",
     title: "প্রথম হাত ধরা",
-    subtitle: "সেদিন প্রথমবার তোমার হাতটা ধরেছিলাম…\nজানি না কেন, কিন্তু ছাড়তে ইচ্ছে করেনি।",
+    subtitle: "সেদিন প্রথমবার তোমার হাতটা ধরেছিলাম \nজানি না কেন, কিন্তু ছাড়তে ইচ্ছে করেনি।",
     duration: 5200,
     bgImage: "/first-hand.jpg",
   },
@@ -60,7 +60,7 @@ const STORY_MOMENTS: StoryMoment[] = [
   {
     id: "metro",
     title: "মেট্রোর পথে",
-    subtitle: "বাস না থাক, পথ তো থেমে থাকেনি—\nআমরাও থামিনি।",
+    subtitle: "বাস না থাক, পথ তো থেমে থাকেনি \nআমরাও থামিনি।",
     duration: 5200,
     bgImage: "/metro.jpg",
   },
@@ -87,7 +87,7 @@ const STORY_MOMENTS: StoryMoment[] = [
   {
     id: "climax",
     type: "climax",
-    title: "সেদিন আমরা জানতাম না…",
+    title: "সেদিন আমরা জানতাম না",
     subtitle: "এই ছোট্ট পথচলাই একদিন\nআমাদের সবচেয়ে সুন্দর স্মৃতিগুলোর শুরু হয়ে থাকবে।",
     footer: "যেদিন থেকে “আমি” আর “তুমি”-র গল্পটা “আমরা” হয়ে গেল।",
     duration: 7000,
