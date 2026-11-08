@@ -79,12 +79,16 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
     }
   }, [play, pause]);
 
-  // Audio initialization: only auto-start on mount if NOT on "/" (where WelcomeLoader controls start at "তুমি আমি আমাদের গল্প")
+  // Audio initialization: runs once per site load. Only auto-start if the visitor
+  // landed on a page other than "/" (where WelcomeLoader controls the start at
+  // "তুমি আমি আমাদের গল্প"). Later page switches must NOT touch playback, so a
+  // song the user turned off stays off, and one that is on keeps playing.
+  const initializedRef = useRef<boolean>(false);
   useEffect(() => {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio || initializedRef.current) return;
+    initializedRef.current = true;
 
-    userPausedRef.current = false;
     audio.volume = 0.65;
 
     if (pathname && pathname !== "/") {
