@@ -18,7 +18,7 @@ export const OUR_STORY_HEADER = {
   bengaliTitle: "তমাল ও দিবা'র গল্প",
   coupleNames: "Tamal & Diba",
   bengaliNames: "তমাল ও দিবা",
-  subtitle: "আমাদের জীবনের সুন্দরতম অধ্যায়গুলোর স্মৃতিময় মানচিত্র",
+  subtitle: "আমাদের জীবনের সুন্দরতম অধ্যায়গুলোর স্মৃতিময়",
 };
 
 export const STORY_MILESTONES: StoryMilestone[] = [
